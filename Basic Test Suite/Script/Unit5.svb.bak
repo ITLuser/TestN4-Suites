@@ -7,6 +7,14 @@ shell.CurrentDirectory = "C:\XPS_Batch"
 shell.Run "xps.bat"
 End Sub
 
-Sub xpsOpen
-  
+'Method for XPS login
+Sub xpsLogIn(UserName,Password)
+  Dim wndASITHREED
+  Set wndASITHREED = Aliases.Sparcs_N4_Client.wndASITHREED
+  Call wndASITHREED.Click(163, 14)
+  Call wndASITHREED.Keys("[Down]")
+  Call wndASITHREED.Click(148, 97)
+  Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+UserName+"[Tab]"+Password+"[Enter]")
+  Aliases.Sparcs_N4_Client.wndProToolsMainWndClass.Maximize
 End Sub
+
