@@ -54,6 +54,41 @@
 										<Value PropertyType="0" Value="Navis N4 3.1.13&#32;&#32;Rev 245418-Admin" Type="5" />
 									</Property>
 								</Properties>
+								<Children>
+									<Child Name="MDIClient" Key="{98615A6E-C934-4ABF-AD9F-C6FFDEFDD1A0}" ParallelWalk="True">
+										<Image FileName="1448857981" Left="0" Top="42" Right="1364" Bottom="728" />
+										<Properties>
+											<Property Name="WndClass">
+												<Value PropertyType="0" Value="MDIClient" Type="5" />
+											</Property>
+										</Properties>
+										<Children>
+											<Child Name="wndProToolsSubMDIWndClass" Key="{3689FB96-AD34-4D2C-912E-D6691FD264D4}" ParallelWalk="True">
+												<Image FileName="1448857981" Left="2" Top="82" Right="818" Bottom="420" />
+												<TypeInfo Item0="{E2392F5A-6E70-435F-B4A5-EF0A5B6A478A}" />
+												<Properties>
+													<Property Name="WndClass">
+														<Value PropertyType="0" Value="ProToolsSubMDIWndClass" Type="5" />
+													</Property>
+													<Property Name="WndCaption">
+														<Value PropertyType="0" Value="Script Player: scr_ActivateEmpties.txt" Type="5" />
+													</Property>
+												</Properties>
+											</Child>
+										</Children>
+									</Child>
+								</Children>
+							</Child>
+							<Child Name="dlg" Key="{494D1D41-61FF-4370-AC86-280E375C41B9}" ParallelWalk="True">
+								<Image FileName="-1332197340" Left="0" Top="0" Right="682" Bottom="480" />
+								<Properties>
+									<Property Name="WndClass">
+										<Value PropertyType="0" Value="#32770" Type="5" />
+									</Property>
+									<Property Name="WndCaption">
+										<Value PropertyType="0" Value="Choose a script file to play:" Type="5" />
+									</Property>
+								</Properties>
 							</Child>
 						</Children>
 					</Child>
@@ -65,7 +100,12 @@
 		<Child Name="Sparcs_N4_Client" Owner="{AF030BE7-C5F2-444B-B19C-2C3B36CF72DA}">
 			<Child Name="xpsMainWindow" Owner="{BC75276C-2E76-408D-8CE5-B3B540352040}" />
 			<Child Name="xpsLoginWindow" Owner="{51C51330-EAA7-462B-AA29-7F4AB524347D}" />
-			<Child Name="xpsMainWinodw2" Owner="{73592CE4-613B-4C69-A966-B471A53591C5}" />
+			<Child Name="xpsMainWinodw2" Owner="{73592CE4-613B-4C69-A966-B471A53591C5}">
+				<Child Name="MDIClient" Owner="{98615A6E-C934-4ABF-AD9F-C6FFDEFDD1A0}">
+					<Child Name="PlayScriptWindow" Owner="{3689FB96-AD34-4D2C-912E-D6691FD264D4}" />
+				</Child>
+			</Child>
+			<Child Name="xpsPlayScriptSelectWindow" Owner="{494D1D41-61FF-4370-AC86-280E375C41B9}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
@@ -535,6 +575,71 @@
 						<ReturnValue Param0="3" />
 					</Child>
 					<Child Name="WndCaption" Doc="Returns the window&apos;s caption." IsBasic="True" Data="ZI4L2L4SAU8ZN">
+						<ReturnValue Param0="8" />
+					</Child>
+				</FunctionDescriptions>
+			</Data>
+		</Child>
+		<Child Hash="-968344847" Key="{E2392F5A-6E70-435F-B4A5-EF0A5B6A478A}">
+			<Data Properties="BD72876F40146E44AE1CE3663EB0DF15UFFFFFFFFFFFFFFFFV4L9ZZY">
+				<FunctionDescriptions>
+					<Child Name="Close" Doc="Closes the specified Window object." IsBasic="True" Param0="WaitTimeout" Data="ZI4L1L4L1Z018ZN">
+						<Param0>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="2000" Type="0" />
+						</Param0>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="Click" Doc="Simulates a left-button single click in a window or control as specified (relative position, shift keys)." IsBasic="True" Param0="ClientX" Param1="ClientY" Param2="Shift" Data="ZI4L1L4L3Z018ZN">
+						<Param0>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param0>
+						<Param1>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param1>
+						<Param2>
+							<TypeDesc Param0="29" Type0="TShiftKey" />
+							<ParamDesc Flags="49" Value="0" Type="0" />
+						</Param2>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="ClickR" Doc="Simulates a right-button single click in a window or control as specified (relative position, shift keys)." IsBasic="True" Param0="ClientX" Param1="ClientY" Param2="Shift" Data="ZI4L1L4L3Z018ZN">
+						<Param0>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param0>
+						<Param1>
+							<TypeDesc Param0="3" />
+							<ParamDesc Flags="49" Value="-1" Type="0" />
+						</Param1>
+						<Param2>
+							<TypeDesc Param0="29" Type0="TShiftKey" />
+							<ParamDesc Flags="49" Value="0" Type="0" />
+						</Param2>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="Keys" Doc="Simulates one or several keypresses." IsBasic="True" Param0="Keys" Data="ZI4L1L4L1Z018ZN">
+						<Param0>
+							<TypeDesc Param0="8" />
+							<ParamDesc Flags="1" />
+						</Param0>
+						<ReturnValue Param0="24" />
+					</Child>
+					<Child Name="Visible" Doc="Specifies whether an onscreen object is visible to users." IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="Width" Doc="The object&apos;s width in pixels." IsBasic="True" Data="ZI4L2L4ZO3ZN">
+						<ReturnValue Param0="3" />
+					</Child>
+					<Child Name="Height" Doc="The object&apos;s height in pixels." IsBasic="True" Data="ZI4L2L4ZO3ZN">
+						<ReturnValue Param0="3" />
+					</Child>
+					<Child Name="Enabled" Doc="Specifies whether the object is enabled or disabled." IsBasic="True" Data="ZI4L2L4ZOBZN">
+						<ReturnValue Param0="11" />
+					</Child>
+					<Child Name="WndCaption" Doc="Returns the window&apos;s caption." IsBasic="True" Data="ZI4L2L4ZO8ZN">
 						<ReturnValue Param0="8" />
 					</Child>
 				</FunctionDescriptions>

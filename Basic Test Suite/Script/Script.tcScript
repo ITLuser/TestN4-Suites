@@ -16,6 +16,9 @@
 		<child name="Unit5" key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="Unit5.svb" />
 		</child>
+		<child name="sample" key="{0A3D3C27-78B3-4421-8895-8F48EB59BD0E}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="sample.svb" />
+		</child>
 	</children>
 	<folders>
 		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
@@ -26,6 +29,7 @@
 		<folder caption="XPS" description="A logical folder that is used to organize project items and elements." moniker="">
 			<references>
 				<ref key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" />
+				<ref key="{0A3D3C27-78B3-4421-8895-8F48EB59BD0E}" />
 			</references>
 		</folder>
 		<folder caption="N4 Mobile" description="A logical folder that is used to organize project items and elements." moniker="">
