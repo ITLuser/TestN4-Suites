@@ -10,11 +10,18 @@ End Sub
 'Method for XPS login
 Sub xpsLogIn(UserName,Password)
   Dim wndASITHREED
-  Set wndASITHREED = Aliases.Sparcs_N4_Client.wndASITHREED
+  Set wndASITHREED = Aliases.Sparcs_N4_Client.xpsLoginWindow
   Call wndASITHREED.Click(163, 14)
   Call wndASITHREED.Keys("[Down]")
   Call wndASITHREED.Click(148, 97)
   Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+UserName+"[Tab]"+Password+"[Enter]")
-  'Aliases.Sparcs_N4_Client.wndProToolsMainWndClass.Maximize
+  Aliases.Sparcs_N4_Client.xpsMainWinodw2.Maximize
 End Sub
 
+Sub xpsCloseApplication
+  Dim AppProcess
+ ' Obtains the N4 process
+ Set AppProcess = Sys.Process("Sparcs N4 Client")
+ ' Closes the process
+ AppProcess.Close
+End Sub 
