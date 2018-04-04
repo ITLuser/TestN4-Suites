@@ -6,3 +6,8 @@ sub OpenXPS
 shell.CurrentDirectory = "C:\XPS_Batch"
 shell.Run "xps.bat"
 End Sub
+
+'Method for XPS login
+Sub xpsLogIn
+  
+End Sub
