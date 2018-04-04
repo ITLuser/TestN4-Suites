@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="Unit1" key="{0F437420-9C3A-4013-9118-D93A58732F54}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Unit1.svb" />
+		</child>
+		<child name="Unit2" key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Unit2.svb" />
+		</child>
+		<child name="Unit3" key="{60726032-F55A-4038-AAC0-A8F4C4364402}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Unit3.svb" />
+		</child>
+		<child name="Unit4" key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Unit4.svb" />
+		</child>
+		<child name="Unit5" key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="Unit5.svb" />
+		</child>
+	</children>
+	<folders>
+		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" />
+			</references>
+		</folder>
+		<folder caption="XPS" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" />
+			</references>
+		</folder>
+		<folder caption="N4 Mobile" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{60726032-F55A-4038-AAC0-A8F4C4364402}" />
+			</references>
+		</folder>
+		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" />
+			</references>
+		</folder>
+	</folders>
+</Root>

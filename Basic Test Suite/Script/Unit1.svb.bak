@@ -1,0 +1,31 @@
+﻿Dim objDataRow
+
+Sub flowname(fname)
+Set objDataRow = CreateObject("Scripting.Dictionary")
+  set objexcel = Createobject("Excel.Application")
+Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
+Set objDriverSheet = objWorkbook.Worksheets("TestData")
+columncount = objDriverSheet.usedrange.columns.count
+rowcount = objDriverSheet.usedrange.rows.count
+For Iter = 1 to rowcount
+CellValue = Trim(objDriverSheet.Cells(Iter,1))
+If CellValue = fname then
+TargetRow = Iter
+
+Exit For
+End If
+'Log.Message CellValue
+Next
+'Log.Message TargetRow
+'Log.Message CellValue
+
+For col = 1 To columncount
+   sCellName = Trim(objDriverSheet.Cells(1,col))
+   sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
+   'objDataRow.Item(sCellName) = sCellValue
+   objDataRow.Add sCellName, sCellValue
+   'Log.Message sCellValue
+   
+Next
+
+End Sub
