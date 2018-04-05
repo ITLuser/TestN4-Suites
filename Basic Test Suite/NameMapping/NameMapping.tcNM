@@ -108,6 +108,58 @@
 									</Property>
 								</Properties>
 							</Child>
+							<Child Name="n4HomeView" Key="{10364F0E-59D0-4563-9E91-8092A24F214D}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="homeView" Type="5" />
+									</Property>
+								</Properties>
+								<Children>
+									<Child Name="RootPane" Key="{AD79B3D5-35F8-4CA5-9215-9DE7CDD523C2}" ParallelWalk="True">
+										<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+										<Properties>
+											<Property Name="JavaFullClassName">
+												<Value PropertyType="0" Value="javax.swing.JRootPane" Type="5" />
+											</Property>
+											<Property Name="AWTComponentAccessibleName">
+												<Value PropertyType="0" Value="" Type="5" />
+											</Property>
+											<Property Name="AWTComponentIndex">
+												<Value PropertyType="0" Value="0" Type="0" />
+											</Property>
+										</Properties>
+										<Children>
+											<Child Name="null_layeredPane" Key="{B85EC55F-46E1-4686-ACF5-D2BAF57867D6}" ParallelWalk="True">
+												<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+												<Properties>
+													<Property Name="AWTComponentName">
+														<Value PropertyType="0" Value="null.layeredPane" Type="5" />
+													</Property>
+												</Properties>
+												<Children>
+													<Child Name="n4MainMenuBar" Key="{8453CDC4-888A-482E-BA94-46DBEE7AE6CB}" ParallelWalk="True">
+														<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+														<Properties>
+															<Property Name="AWTComponentName">
+																<Value PropertyType="0" Value="mainMenuBar" Type="5" />
+															</Property>
+														</Properties>
+													</Child>
+												</Children>
+											</Child>
+										</Children>
+									</Child>
+								</Children>
+							</Child>
+							<Child Name="ARG089_LineOperator" Key="{9C4DA680-703B-479A-BBB1-A1C8BB7C7A29}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ARG089.LineOperator" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
 						</Children>
 					</Child>
 				</Children>
@@ -127,6 +179,10 @@
 		</Child>
 		<Child Name="jp2launcher" Owner="{D923FE8D-43B1-4256-9F3A-9E8A8B937538}">
 			<Child Name="n4Loginview" Owner="{CA013F98-E915-4D45-A72F-B20F541F1F86}" />
+			<Child Name="n4HomeView" Owner="{10364F0E-59D0-4563-9E91-8092A24F214D}">
+				<Child Name="n4MainMenuBar" Owner="{8453CDC4-888A-482E-BA94-46DBEE7AE6CB}" />
+			</Child>
+			<Child Name="n4AddLineOperatorWindow" Owner="{9C4DA680-703B-479A-BBB1-A1C8BB7C7A29}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">

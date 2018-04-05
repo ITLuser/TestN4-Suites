@@ -1,32 +1,62 @@
-﻿
-'Method to Open XPS through Batch file
-'Created on 04/04/2018 by Anantha Narayanan
+﻿' To reference one unit
+'USEUNIT CommonRoutines
+
+'Opening XPS through Batch file
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
 sub OpenXPS
   Set shell = CreateObject("WScript.Shell")
-shell.CurrentDirectory = "C:\XPS_Batch"
-shell.Run "xps.bat"
+  shell.CurrentDirectory = "C:\XPS_Batch"
+  shell.Run "xps.bat"
 End Sub
 
-'Method for XPS login
-Sub xpsLogIn(UserName,Password)
+'Xps Login
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsLogIn
   Dim wndASITHREED
   Set wndASITHREED = Aliases.Sparcs_N4_Client.xpsLoginWindow
   Call wndASITHREED.Click(163, 14)
   Call wndASITHREED.Keys("[Down]")
   Call wndASITHREED.Click(148, 97)
-  Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+UserName+"[Tab]"+Password+"[Enter]")
+  Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+flowData.Item("XPS_Username")+"[Tab]"+flowData.Item("XPS_Password")+"[Enter]")
   Aliases.Sparcs_N4_Client.xpsMainWinodw2.Maximize
 End Sub
+
+'Loading playscript
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
 Sub xpsSelectPlayScript
   Dim sparcs_N4_Client
   Dim wndProToolsMainWndClass
   Set sparcs_N4_Client = Aliases.Sparcs_N4_Client
   Set wndProToolsMainWndClass = sparcs_N4_Client.xpsMainWinodw2
   Call wndProToolsMainWndClass.MainMenu.Click("File|Play Script...")
-  Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile("C:\Sparcs Script\scr_ActivateEmpties.txt", "Text Files (*.txt)")
+  Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile(flowData.Item("PlayScript"), "Text Files (*.txt)")
   Call wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Click(274, 67)
 End Sub
 
+'Closing playscript window
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsPlayScriptWindowClose
+  Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Close
+End Sub
+
+
+'Closing XPS application
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
 Sub xpsCloseApplication
   Dim AppProcess
  ' Obtains the N4 process
@@ -34,3 +64,4 @@ Sub xpsCloseApplication
  ' Closes the process
  AppProcess.Close
 End Sub 
+
