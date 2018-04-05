@@ -92,6 +92,24 @@
 							</Child>
 						</Children>
 					</Child>
+					<Child Name="jp2launcher" Key="{D923FE8D-43B1-4256-9F3A-9E8A8B937538}" ParallelWalk="True">
+						<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+						<Properties>
+							<Property Name="ProcessName">
+								<Value PropertyType="0" Value="jp2launcher" Type="5" />
+							</Property>
+						</Properties>
+						<Children>
+							<Child Name="n4Loginview" Key="{CA013F98-E915-4D45-A72F-B20F541F1F86}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="loginView" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+						</Children>
+					</Child>
 				</Children>
 			</Child>
 		</Children>
@@ -106,6 +124,9 @@
 				</Child>
 			</Child>
 			<Child Name="xpsPlayScriptSelectWindow" Owner="{494D1D41-61FF-4370-AC86-280E375C41B9}" />
+		</Child>
+		<Child Name="jp2launcher" Owner="{D923FE8D-43B1-4256-9F3A-9E8A8B937538}">
+			<Child Name="n4Loginview" Owner="{CA013F98-E915-4D45-A72F-B20F541F1F86}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
@@ -644,6 +665,9 @@
 					</Child>
 				</FunctionDescriptions>
 			</Data>
+		</Child>
+		<Child Hash="0" Key="{E5798357-5E31-409B-AC8F-459B9514F6A1}">
+			<Data Properties="ZZKFFFFFFFFFFFFFFFFN8L4ZZZL" />
 		</Child>
 	</TypeInfo>
 </Root>
