@@ -1,11 +1,14 @@
-﻿Dim objDataRow
+﻿Dim flowData
 ReDim fieldvalueChar(1)
 
 'Creating Dictionary mapping for Test Data from Excel
-'Flow Name should be given as argument for method
-'Created on 04/04/2018 by Anantha Narayanan 
-Sub flowname(fname)
-Set objDataRow = CreateObject("Scripting.Dictionary")
+'Input Parameters: Flowname
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Set flowData = CreateObject("Scripting.Dictionary")
+Sub fetchData(fname)
   set objexcel = Createobject("Excel.Application")
 Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
 Set objDriverSheet = objWorkbook.Worksheets("TestData")
@@ -26,16 +29,24 @@ Next
 For col = 1 To columncount
    sCellName = Trim(objDriverSheet.Cells(1,col))
    sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
-   'objDataRow.Item(sCellName) = sCellValue
-   objDataRow.Add sCellName, sCellValue
+   'flowData.Item(sCellName) = sCellValue
+   If Len(sCellValue) Then
+   flowData.Add sCellName, sCellValue
+   End If
    'Log.Message sCellValue
    
 Next
 
 End Sub
 
+
 'Readind N4 IP path currentcluster.csv
-'Created on 04/04/2018 by Anantha Narayanan
+'Input Parameters: playscript path
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
 Set objWorkbook = objExcel.Workbooks.Open _
@@ -56,7 +67,11 @@ objExcel.Quit
 End Sub
 
 'Opening N4 through jnlp
-'Created on 04/04/2018 by Anantha Narayanan
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+
 Sub OpenN4
 
  Call ClusterDetails

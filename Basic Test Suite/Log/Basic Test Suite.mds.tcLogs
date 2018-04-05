@@ -23,11 +23,11 @@
 		<Node name="logs">
 			<Node name="log idx=0000">
 				<Prp name="caption" type="S" value=""/>
-				<Prp name="datetime" type="D" value="43194.4830632986"/>
+				<Prp name="datetime" type="D" value="43195.6915324537"/>
 				<Prp name="description" type="S" value=""/>
-				<Prp name="key" type="S" value="{4A553CB1-CFA6-4F8B-9EFE-6EE35CABD310}"/>
-				<Prp name="nameofroot" type="S" value="Script Test Log [Unit5\OpenXPS]"/>
-				<Prp name="relpath" type="S" value="4_4_2018_11_35 AM_36_669\Description.tcLog"/>
+				<Prp name="key" type="S" value="{553B961C-435C-4A3B-9D95-A94B1A46F170}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [XPSCommonRoutines\play]"/>
+				<Prp name="relpath" type="S" value="4_5_2018_4_35 PM_48_404\Description.tcLog"/>
 				<Prp name="status" type="I" value="0"/>
 			</Node>
 		</Node>
