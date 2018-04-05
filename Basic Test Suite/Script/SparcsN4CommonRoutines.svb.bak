@@ -1,1 +1,98 @@
-﻿
+﻿'To login N4
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by: 
+Sub n4LogIn(username,password)
+  aqUtils.Delay 5000
+  Dim EnterUserName,EnterPassWord,Loginbtn
+  If Aliases.jp2launcher.FindChild("AWTComponentName", "loginView", "20", "true").Exists Then
+    Set EnterUserName = Aliases.jp2launcher.FindChild("AWTComponentName", "username", "20", "true")
+    EnterUserName.Keys(username)
+    Set EnterPassWord = Aliases.jp2launcher.FindChild("AWTComponentName", "password", "20", "true")
+    EnterPassWord.Keys(password)
+    Set Loginbtn = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__LOGIN", "20", "true")
+    Loginbtn.Click
+    aqUtils.Delay 5000
+  If Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+    Log.Checkpoint("User is logged in successfully")
+  ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+    Log.Checkpoint("User login failed")
+  End If
+  Else
+    Log.Checkpoint("Login form is not found")
+  End If
+End Sub
+
+'To Select Scope
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4ScopeSelection(Operator,Complex,Facility,Yard)
+  Dim EnterOperator,EnterComplex,EnterFacility,EnterYard,ClickGo
+    If Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+      Set EnterOperator = Aliases.jp2launcher.FindChild("AWTComponentName", "operator", "20", "true")
+      EnterOperator.Keys(Operator)  
+      Set EnterComplex = Aliases.jp2launcher.FindChild("AWTComponentName", "complex", "20", "true")
+      EnterComplex.Keys(Complex)  
+      Set EnterFacility = Aliases.jp2launcher.FindChild("AWTComponentName", "facility", "20", "true")
+      EnterFacility.Keys(Facility) 
+      Set EnterYard = Aliases.jp2launcher.FindChild("AWTComponentName", "yard", "20", "true")
+      EnterYard.Keys(Yard) 
+      Set ClickGo = Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true")
+      ClickGo.Click
+      aqUtils.Delay 5000  
+    If Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Exists Then
+      Log.Checkpoint("Scope is selected Successfully")
+      Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Maximize
+    ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Exists Then
+      Log.Checkpoint("Scope selection failed")  
+    End If
+      aqUtils.Delay 5000
+    ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+      Log.Checkpoint("Scope selection site not found")
+    End If 
+End Sub
+
+'To Select WorkMode
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4SelectWorkMode(WorkMode)
+  Dim SelWorkMode
+    aqUtils.Delay 5000
+    SelWorkMode = WorkMode
+      If SelWorkMode = "Operations" Then
+      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Unit", 20, True).Visible Then
+        Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Operations")
+        Log.Checkpoint "Operations is selected successfully"
+      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Unit", 20, True).Visible Then
+        Log.Checkpoint"Operations is already selected"
+      End If
+      ElseIf SelWorkMode = "Administration" Then
+      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Archive", 20, True).Visible Then
+        Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Administration")
+        Log.Checkpoint "Administration is selected successfully"
+      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Archive", 20, True).Visible Then
+        Log.Checkpoint"Administration is already selected"
+      End If
+      ElseIf SelWorkMode = "Configuration" Then
+      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Services", 20, True).Visible Then
+        Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Configuration")
+        Log.Checkpoint "Configuration is selected successfully"
+      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Services", 20, True).Visible Then
+        Log.Checkpoint"Configuration is already selected"
+      End If
+      End If
+End Sub
+
+Sub Play
+  Call n4LogIn("admin","Admin")
+  Call n4ScopeSelection("OPR1","CPX11","FCY111","YRD1111")
+  Call n4SelectWorkMode("Configuration")
+End Sub
