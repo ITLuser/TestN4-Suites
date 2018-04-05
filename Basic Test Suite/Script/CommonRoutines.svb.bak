@@ -1,0 +1,78 @@
+﻿Dim objDataRow
+ReDim fieldvalueChar(1)
+
+'Creating Dictionary mapping for Test Data from Excel
+'Flow Name should be given as argument for method
+'Created on 04/04/2018 by Anantha Narayanan 
+Sub flowname(fname)
+Set objDataRow = CreateObject("Scripting.Dictionary")
+  set objexcel = Createobject("Excel.Application")
+Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
+Set objDriverSheet = objWorkbook.Worksheets("TestData")
+columncount = objDriverSheet.usedrange.columns.count
+rowcount = objDriverSheet.usedrange.rows.count
+For Iter = 1 to rowcount
+CellValue = Trim(objDriverSheet.Cells(Iter,1))
+If CellValue = fname then
+TargetRow = Iter
+
+Exit For
+End If
+'Log.Message CellValue
+Next
+'Log.Message TargetRow
+'Log.Message CellValue
+
+For col = 1 To columncount
+   sCellName = Trim(objDriverSheet.Cells(1,col))
+   sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
+   'objDataRow.Item(sCellName) = sCellValue
+   objDataRow.Add sCellName, sCellValue
+   'Log.Message sCellValue
+   
+Next
+
+End Sub
+
+'Readind N4 IP path currentcluster.csv
+'Created on 04/04/2018 by Anantha Narayanan
+Public Sub ClusterDetails
+  Set objExcel = CreateObject("Excel.Application")
+Set objWorkbook = objExcel.Workbooks.Open _
+   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
+    
+   'Static Array
+  'ReDim fieldvalueChar(1)
+'MsgBox objExcel.Cells(2, 9).Value
+'Row and column count
+rowCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Rows.count
+colCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Columns.count  
+intRow = rowCount
+fieldvalueChar(0) = objExcel.Cells(intRow, 9)
+'Wscript.Echo fieldvalueChar(0)
+'MsgBox(fieldvalueChar(0))
+
+objExcel.Quit
+End Sub
+
+'Opening N4 through jnlp
+'Created on 04/04/2018 by Anantha Narayanan
+Sub OpenN4
+
+ Call ClusterDetails
+ 
+  ' Add a Java Web Start application to the project
+  ind = TestedApps.AddJavaWebStartApp
+  Set app = TestedApps.Items(ind)
+
+  ' Specify Web Start application's launch parameters
+  app.JWSLauncher = "C:\\Program Files\\Java\\jre1.8.0_60\\bin\\javaws.exe"
+  'app.Location = fieldvalueChar(0)+":10080/apex/apex.jnlp"
+  app.Location = fieldvalueChar(0)+":8280/apex/apex.jnlp"
+  ' Launches the Web Start application
+  app.Run
+ TestedApps.Clear
+  ' Test the application
+  Call Securitywarning
+  'app.Close
+End Sub

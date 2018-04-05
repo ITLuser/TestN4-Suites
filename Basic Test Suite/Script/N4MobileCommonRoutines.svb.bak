@@ -1,0 +1,6 @@
+﻿'Method to Open N4 mobile
+Sub OpenN4Mobile 
+
+  Browsers.Item(btChrome).Run("http://192.168.1.144:8280/apex/entry.faces")
+  
+End Sub

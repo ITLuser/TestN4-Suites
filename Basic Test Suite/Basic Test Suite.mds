@@ -23,6 +23,9 @@
 				<ref key="{EDCEEF48-551C-4C6C-B0A1-1B6234FF27F5}" />
 			</references>
 		</folder>
+		<folder caption="NewFolder1" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references />
+		</folder>
 	</folders>
 	<config language="{897793E3-73F3-4895-A956-3D41D3A24A45}" />
 	<testItems key="{6FEE70F5-9D08-476B-9A07-33EB39D47CC0}">
