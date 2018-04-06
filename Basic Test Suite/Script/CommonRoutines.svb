@@ -10,8 +10,8 @@ ReDim fieldvalueChar(1)
 Set flowData = CreateObject("Scripting.Dictionary")
 Sub fetchData(fname)
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
-  Set objDriverSheet = objWorkbook.Worksheets("TestData")
+  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITLAdmin\Desktop\Test N4\TestData.xlsx")
+  Set objDriverSheet = objWorkbook.Worksheets("SparcsN4")
   columncount = objDriverSheet.usedrange.columns.count
   rowcount = objDriverSheet.usedrange.rows.count
   For Iter = 1 to rowcount
@@ -49,7 +49,7 @@ End Sub
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
   Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
+   ("C:\Users\ITLAdmin\Desktop\Test N4\currentcluster.csv")
     
    'Static Array
   'ReDim fieldvalueChar(1)
@@ -85,6 +85,34 @@ Sub OpenN4
   app.Run
   TestedApps.Clear
   ' Test the application
-  Call Securitywarning
+  'Call Securitywarning
   'app.Close
+End Sub
+
+'To Perform Click Operation
+'Created: 06/04/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub ClickOperation(Object,ButtonName)
+If Object.Exists Then
+Object.Click
+Log.Message("The "+ButtonName+ " is clicked successfully")
+Else
+Log.Error("The "+Object +" does not exists")
+End If
+End Sub
+
+'To Perform Enter Operation
+'Created: 06/04/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub EnterOperation(Object,Value,FieldName)
+If Object.Exists Then
+Object.Keys(Value)
+Log.Message("The value "+Value+" is entered in "+FieldName+" field")
+Else
+Log.Error("The "+Object +"does not exists")
+End If
 End Sub

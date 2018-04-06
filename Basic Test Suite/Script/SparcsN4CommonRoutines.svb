@@ -1,28 +1,33 @@
-﻿'To login N4
+﻿'USEUNIT CommonRoutines
+
+'To login N4
 'Input Parameters: By using Dictionary Object
 'Created: 05/04/2018 
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by: 
-Sub n4LogIn(username,password)
+Sub n4LogIn
   aqUtils.Delay 5000
   Dim EnterUserName,EnterPassWord,Loginbtn
-  If Aliases.jp2launcher.FindChild("AWTComponentName", "loginView", "20", "true").Exists Then
-    Set EnterUserName = Aliases.jp2launcher.FindChild("AWTComponentName", "username", "20", "true")
-    EnterUserName.Keys(username)
-    Set EnterPassWord = Aliases.jp2launcher.FindChild("AWTComponentName", "password", "20", "true")
-    EnterPassWord.Keys(password)
-    Set Loginbtn = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__LOGIN", "20", "true")
-    Loginbtn.Click
-    aqUtils.Delay 5000
-  If Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
-    Log.Checkpoint("User is logged in successfully")
-  ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
-    Log.Checkpoint("User login failed")
-  End If
-  Else
-    Log.Checkpoint("Login form is not found")
-  End If
+    If Aliases.jp2launcher.n4Loginview.WaitProperty("Exists", True, 50000) Then
+    If Aliases.jp2launcher.n4Loginview.WaitProperty("Visible", True, 5000) Then
+      Set EnterUserName = Aliases.jp2launcher.FindChild("AWTComponentName", "username", "20", "true")
+      Call CommonRoutines.EnterOperation(EnterUserName,(flowData.Item("User Name")),"UserName")
+      Set EnterPassWord = Aliases.jp2launcher.FindChild("AWTComponentName", "password", "20", "true")
+      Call CommonRoutines.EnterOperation(EnterPassWord,(flowData.Item("Password")),"PassWord")
+      Set Loginbtn = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__LOGIN", "20", "true")
+      Call CommonRoutines.ClickOperation(Loginbtn,"Login Button")
+      aqUtils.Delay 5000
+      Set AcceptSite = Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true")
+    If AcceptSite.Exists Then
+      Log.Checkpoint("User is logged in successfully")
+    ElseIf not AcceptSite.Exists Then
+      Log.Checkpoint("User login failed")
+    End If
+    Else
+      Log.Error("User form is not found")
+    End If
+    End If
 End Sub
 
 'To Select Scope
@@ -31,28 +36,31 @@ End Sub
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4ScopeSelection(Operator,Complex,Facility,Yard)
+Sub n4ScopeSelection
   Dim EnterOperator,EnterComplex,EnterFacility,EnterYard,ClickGo
-    If Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+  Set AcceptSite = Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true")
+    If AcceptSite.Exists Then
       Set EnterOperator = Aliases.jp2launcher.FindChild("AWTComponentName", "operator", "20", "true")
-      EnterOperator.Keys(Operator)  
+      Call CommonRoutines.EnterOperation(EnterOperator,(flowData.Item("Operator")),"Operator")
       Set EnterComplex = Aliases.jp2launcher.FindChild("AWTComponentName", "complex", "20", "true")
-      EnterComplex.Keys(Complex)  
+      Call CommonRoutines.EnterOperation(EnterComplex,(flowData.Item("Complex")),"Complex")
       Set EnterFacility = Aliases.jp2launcher.FindChild("AWTComponentName", "facility", "20", "true")
-      EnterFacility.Keys(Facility) 
+      Call CommonRoutines.EnterOperation(EnterFacility,(flowData.Item("Facility")),"Facility")
       Set EnterYard = Aliases.jp2launcher.FindChild("AWTComponentName", "yard", "20", "true")
-      EnterYard.Keys(Yard) 
+      Call CommonRoutines.EnterOperation(EnterYard,(flowData.Item("Yard")),"Yard") 
+      aqUtils.Delay 2000
       Set ClickGo = Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true")
-      ClickGo.Click
-      aqUtils.Delay 5000  
-    If Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Exists Then
+      Call CommonRoutines.ClickOperation(ClickGo,"Go Button")
+      aqUtils.Delay 5000
+      Set HomeView = Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true")
+    If HomeView.Exists Then
       Log.Checkpoint("Scope is selected Successfully")
       Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Maximize
-    ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "homeView", "20", "true").Exists Then
+    ElseIf not HomeView.Exists Then
       Log.Checkpoint("Scope selection failed")  
     End If
       aqUtils.Delay 5000
-    ElseIf not Aliases.jp2launcher.FindChild("AWTComponentName", "ACCEPT_SITE", "20", "true").Exists Then
+    ElseIf not AcceptSite.Exists Then
       Log.Checkpoint("Scope selection site not found")
     End If 
 End Sub
@@ -63,36 +71,250 @@ End Sub
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4SelectWorkMode(WorkMode)
-  Dim SelWorkMode
-    aqUtils.Delay 5000
-    SelWorkMode = WorkMode
+Sub n4SelectWorkMode
+  Dim SelWorkMode,SelMenu
+  aqUtils.Delay 2000
+  Set SelMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "topLevelMenu", 20, True)
+  SelMenu.Click
+  SelWorkMode = (flowData.Item("WorkMode"))
       If SelWorkMode = "Operations" Then
-      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Unit", 20, True).Visible Then
+        Set OperationsMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_OPERATIONS]", 20, True)
+      If OperationsMenu.Enabled Then
         Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Operations")
         Log.Checkpoint "Operations is selected successfully"
-      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Unit", 20, True).Visible Then
+      ElseIf Not OperationsMenu.Enabled Then
         Log.Checkpoint"Operations is already selected"
       End If
       ElseIf SelWorkMode = "Administration" Then
-      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Archive", 20, True).Visible Then
+        aqUtils.Delay 2000
+        Set AdministrationMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_ADMINISTRATION]", 20, True)
+      If AdministrationMenu.Enabled Then
         Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Administration")
         Log.Checkpoint "Administration is selected successfully"
-      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Archive", 20, True).Visible Then
+      ElseIf Not AdministrationMenu.Enabled Then
         Log.Checkpoint"Administration is already selected"
       End If
       ElseIf SelWorkMode = "Configuration" Then
-      If not Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Services", 20, True).Visible Then
+        aqUtils.Delay 2000
+      If Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_CONFIGURATION]", 20, True).Enabled Then
         Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Configuration")
         Log.Checkpoint "Configuration is selected successfully"
-      ElseIf Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Services", 20, True).Visible Then
+      ElseIf Not Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_CONFIGURATION]", 20, True).Visible Then
         Log.Checkpoint"Configuration is already selected"
       End If
       End If
 End Sub
 
+'To Add Routing Point
+'Input Parameters: By using Dictionary Object
+'Created: 06/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4RoutingPoint
+  Dim Add,EnterPointID,UNLocation,ActualPOD,ScheduleDCode,ScheduleKCode,SPLCCode,Terminal,PlaceHolder,IsPlaceHolder,Save,Refresh,Search
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs") 
+  aqUtils.Delay 2000
+  Call n4SelectWorkMode
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Routing|Routing Points")
+  aqUtils.Delay 2000
+  Set Add = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_CREATE", 20, True)
+  Add.Click
+  aqUtils.Delay 5000
+  Set EnterPointID = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointId", 20, True)
+  EnterPointID.Keys(flowData.Item("PointID"))
+  Set UNLocation =  Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointUnLoc", 20, True)
+  UNLocation.Keys(flowData.Item("UNLocationCode"))
+  Set ActualPOD = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointActualPOD", 20, True)
+  ActualPOD.Keys(flowData.Item("ActualPortOfDischarge"))
+  Set ScheduleDCode = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointScheduleDCode", 20, True)
+  ScheduleDCode.Keys(flowData.Item("Dcode"))
+  Set ScheduleKCode = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointScheduleKCode", 20, True)
+  ScheduleKCode.Keys(flowData.Item("Kcode"))
+  Set SPLCCode = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointSplcCode", 20, True)
+  SPLCCode.Keys(flowData.Item("SPLCCodeValue"))
+  Set Terminal = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointTerminal", 20, True)
+  Terminal.Keys(flowData.Item("TerminalValue"))
+  Set PlaceHolder = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "pointIsPlaceholderPoint", 20, True)
+  IsPlaceHolder = (flowData.Item("PlaceHolderValue"))
+    If IsPlaceHolder = "true" Then
+      PlaceHolder.Click
+    End If
+  Set Save = Aliases.jp2launcher.n4AddRoutingPointWindow.FindChild("AWTComponentName", "LABEL_ACTION_SAVE", 20, True)
+  Save.Click
+  Set Refresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+  Refresh.Click
+  Set Search = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
+  Search.Keys(flowData.Item("PointID"))
+  Search.Keys("[Enter]")
+  Aliases.jp2launcher.FindChild("AWTComponentName", "ARG033", 20, True).selectAll
+    If Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True).Enabled Then
+      Log.Checkpoint ("Routing Point is created Successfully")
+    Else
+      Log.Checkpoint ("Routing Point is not Created")
+    End If
+End Sub
+
+'To Purge Routing Point
+'Input Parameters: By using Dictionary Object
+'Created: 06/04/2018 
+'Created by: Soundarya
+'Reviewed:
+'Reviewed by:
+Sub n4PurgeRoutingPoint
+  Dim SearchRoutingPoint,Edit,Actionbtn,Refresh
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs") 
+  aqUtils.Delay 2000
+  Call n4SelectWorkMode
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Routing|Routing Points")
+  aqUtils.Delay 2000
+  Set SearchRoutingPoint = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
+  SearchRoutingPoint.Keys(flowData.Item("PointID"))
+  SearchRoutingPoint.Keys("[Enter]")
+  Aliases.jp2launcher.FindChild("AWTComponentName", "ARG033", 20, True).selectAll
+  Set Edit = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True)
+    If  Edit.Enabled Then
+      Log.Checkpoint "Routing point is present"
+    Else
+      Log.Checkpoint "Routing point is not present"
+    End If
+  Set Actionbtn = Aliases.jp2launcher.FindChild("AWTComponentName", "MENU__ACTIONS", 20, True)
+  Actionbtn.Click
+  Actionbtn.SwingPopupMenu.Click("Purge")
+  Set Refresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+  Refresh.Click
+    If not Edit.Enabled Then
+      Log.Checkpoint "Routing point Deleted successfully"
+    ElseIf Edit.Enabled Then
+      Log.Checkpoint "Routing point already deleted"  
+    End if
+End Sub
+
+'To Create Carrier Service
+'Input Parameters: By using Dictionary Object
+'Created: 06/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+Sub n4CreateCarrierService
+  Dim CreateService,EnterID,EnterName,EnterMode,CarrierMode,AddPoint1,EnterPoint,Port(4),SaveService,Refresh,QuickSearch,Edit,Table
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+  aqUtils.Delay 2000
+  Call n4SelectWorkMode
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Carriers|Carrier Services")
+  Set CreateService = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20,True)
+  CreateService.Click
+  Set EnterID = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName","srvcId",20,True)
+  EnterID.Keys(flowData.Item("ServiceID"))
+  Set EnterName = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName", "srvcName", 20, True)
+  aqUtils.Delay 500
+  EnterName.Keys(flowData.Item("ServiceName"))
+  Set EnterMode = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName", "srvcCarrierMode", 20, True)
+  aqUtils.Delay 500
+  CarrierMode = (flowData.Item("CarrierMode"))
+    If CarrierMode = "Vessel" Then
+        EnterMode.Keys("Vessel")
+    ElseIf CarrierMode = "Train" Then
+        EnterMode.Keys("Train")
+    ElseIf CarrierMode = "Truck" Then
+        EnterMode.Keys("Truck")
+    End If
+  Set AddPoint1 = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName", "ADD_PORT", 20, True)
+  AddPoint1.Click
+  Set EnterPoint = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName", "chooserLookupField", 20, True)
+  Port(0)=(flowData.Item("Port1"))
+  Port(1)=(flowData.Item("Port2"))
+  Port(2)=(flowData.Item("Port3"))
+  Port(3)=(flowData.Item("Port4"))
+  Port(4)=(flowData.Item("Port5"))
+  EnterPoint.Keys(Port(0))
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Enter]")
+  aqUtils.Delay 500
+  EnterPoint.Keys(Port(1))
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Enter]")
+  aqUtils.Delay 500
+  EnterPoint.Keys(Port(2))
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Enter]")
+  aqUtils.Delay 500
+  EnterPoint.Keys(Port(3))
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Enter]")
+  aqUtils.Delay 500
+  EnterPoint.Keys(Port(4))
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Enter]")
+  aqUtils.Delay 500
+  EnterPoint.Keys("[Esc]")
+  Set SaveService = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName", "LABEL_ACTION_SAVE", 20, True)
+  SaveService.Click
+  Set Refresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+  Refresh.Click
+  Set QuickSearch = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
+  QuickSearch.Keys(flowData.Item("ServiceID"))
+  QuickSearch.Keys("[Enter]")
+  Set Table = Aliases.jp2launcher.FindChild("AWTComponentName", "ARG035", 20, True)
+  Table.selectAll
+  Set Edit = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True)
+  Edit.Click
+    If Edit.Enabled Then
+      Log.Checkpoint "Carrier Service Created Successfully"
+    Else
+      Log.Checkpoint "Carrier Service not found"
+    End If
+  aqUtils.Delay 1000
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+End Sub
+
+'To Purge Carrier Service
+'Input Parameters: By using Dictionary Object
+'Created: 06/04/2018 
+'Created by: Soundarya
+'Reviewed:
+'Reviewed by:
+Sub n4PurgeCarrierService
+  Dim SearchService,Edit,Actionbtn,Refresh,Table,HomeView
+  Set HomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  HomeView.Click("Windows|Close All Tabs")
+  aqUtils.Delay 2000
+  Call n4SelectWorkMode
+  HomeView.Click("Carriers|Carrier Services")
+  Set  SearchService = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
+  SearchService.Keys(flowData.Item("ServiceID"))
+  SearchService.Keys("[Enter]")
+  Set Table = Aliases.jp2launcher.FindChild("AWTComponentName", "ARG035", 20, True)
+  Table.selectAll
+  Set Edit = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True)
+  Edit.Click
+    If Edit.Enabled Then
+      Log.Checkpoint "Carrier Service is present"
+    Else
+      Log.Checkpoint "Carrier Service is not present"
+    End If
+  Set Actionbtn = Aliases.jp2launcher.FindChild("AWTComponentName", "MENU__ACTIONS", 20, True)
+  Actionbtn.Click
+  Actionbtn.SwingPopupMenu.Click("Purge")
+  Set Refresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+  Refresh.Click
+    If not Edit.Enabled Then
+      Log.Checkpoint "Carrier service Deleted successfully"
+    Else
+      Log.Checkpoint "Carrier Service already deleted"  
+    End if
+  aqUtils.Delay 1000
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+End Sub
+
 Sub Play
-  Call n4LogIn("admin","Admin")
-  Call n4ScopeSelection("OPR1","CPX11","FCY111","YRD1111")
-  Call n4SelectWorkMode("Configuration")
+  Call CommonRoutines.fetchData("N4Login")
+  Call CommonRoutines.OpenN4
+  Call n4LogIn
+  Call n4ScopeSelection
+  'Call n4RoutingPoint
+  'Call n4PurgeRoutingPoint
+  'Call n4CreateCarrierService
+  'Call n4PurgeCarrierService
 End Sub
