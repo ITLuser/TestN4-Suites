@@ -10,6 +10,11 @@ sub OpenXPS
   Set shell = CreateObject("WScript.Shell")
   shell.CurrentDirectory = "C:\XPS_Batch"
   shell.Run "xps.bat"
+  If Aliases.Sparcs_N4_Client.xpsLoginWindow.Exists then 
+   Log.Checkpoint "XPS Opened successfully"
+  Else
+   Log.Error "Unable to open XPS"
+  End If
 End Sub
 
 'Xps Login
@@ -24,7 +29,14 @@ Sub xpsLogIn
   Call wndASITHREED.Keys("[Down]")
   Call wndASITHREED.Click(148, 97)
   Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+flowData.Item("XPS_Username")+"[Tab]"+flowData.Item("XPS_Password")+"[Enter]")
-  Aliases.Sparcs_N4_Client.xpsMainWinodw2.Maximize
+  aqUtils.Delay 2000
+  If Aliases.Sparcs_N4_Client.xpsLoginWindow.Exists then 
+   Log.Error "XPS Login Failed"
+  Else
+  Log.Checkpoint "XPS Login successful"
+   Aliases.Sparcs_N4_Client.xpsMainWinodw2.Maximize
+  End If
+  
 End Sub
 
 'Loading playscript
@@ -33,13 +45,24 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub xpsSelectPlayScript
-  Dim sparcs_N4_Client
-  Dim wndProToolsMainWndClass
+  Dim sparcs_N4_Client,wndProToolsMainWndClass
   Set sparcs_N4_Client = Aliases.Sparcs_N4_Client
   Set wndProToolsMainWndClass = sparcs_N4_Client.xpsMainWinodw2
   Call wndProToolsMainWndClass.MainMenu.Click("File|Play Script...")
-  Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile(flowData.Item("PlayScript"), "Text Files (*.txt)")
-  Call wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Click(274, 67)
+  If sparcs_N4_Client.xpsPlayScriptSelectWindow.Exists Then 
+    Log.Checkpoint "Choose Play Script window is available"
+    Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile(flowData.Item("PlayScript"), "Text Files (*.txt)")
+    If wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Exists Then 
+      Log.Checkpoint "ScriptPlayer Window is available"
+      Call wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Click(274, 67)
+    Else
+      Log.Error "ScriptPlayer Window is not available"  
+    End If
+  Else
+    Log.Error "Choose Play Script window is not available"
+  End If
+  
+  
 End Sub
 
 'Closing playscript window
@@ -49,6 +72,11 @@ End Sub
 'Reviewed by:
 Sub xpsPlayScriptWindowClose
   Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Close
+  If Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Exists Then
+    Log.Error "ScriptPlayer Window is not closed"
+  Else
+    Log.Checkpoint "ScriptPlayer Window is closed"
+  End If
 End Sub
 
 
@@ -64,4 +92,12 @@ Sub xpsCloseApplication
  ' Closes the process
  AppProcess.Close
 End Sub 
+
+Sub play
+  Call CommonRoutines.fetchData("xps")
+  Call OpenXPS
+  Call xpsLogIn
+  call xpsSelectPlayScript
+  Call xpsPlayScriptWindowClose
+End Sub
 
