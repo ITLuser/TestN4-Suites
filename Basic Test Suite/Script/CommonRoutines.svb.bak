@@ -10,32 +10,31 @@ ReDim fieldvalueChar(1)
 Set flowData = CreateObject("Scripting.Dictionary")
 Sub fetchData(fname)
   set objexcel = Createobject("Excel.Application")
-Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
-Set objDriverSheet = objWorkbook.Worksheets("TestData")
-columncount = objDriverSheet.usedrange.columns.count
-rowcount = objDriverSheet.usedrange.rows.count
-For Iter = 1 to rowcount
-CellValue = Trim(objDriverSheet.Cells(Iter,1))
-If CellValue = fname then
-TargetRow = Iter
-
-Exit For
-End If
+  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITLAdmin\Desktop\Test N4\TestData.xlsx")
+  Set objDriverSheet = objWorkbook.Worksheets("SparcsN4")
+  columncount = objDriverSheet.usedrange.columns.count
+  rowcount = objDriverSheet.usedrange.rows.count
+  For Iter = 1 to rowcount
+    CellValue = Trim(objDriverSheet.Cells(Iter,1))
+    If CellValue = fname then
+      TargetRow = Iter
+  Exit For
+    End If
 'Log.Message CellValue
-Next
+  Next
 'Log.Message TargetRow
 'Log.Message CellValue
 
-For col = 1 To columncount
-   sCellName = Trim(objDriverSheet.Cells(1,col))
-   sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
-   'flowData.Item(sCellName) = sCellValue
-   If Len(sCellValue) Then
-   flowData.Add sCellName, sCellValue
-   End If
+  For col = 1 To columncount
+  sCellName = Trim(objDriverSheet.Cells(1,col))
+  sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
+  'flowData.Item(sCellName) = sCellValue
+  If Len(sCellValue) Then
+    flowData.Add sCellName, sCellValue
+  End If
    'Log.Message sCellValue
    
-Next
+  Next
 
 End Sub
 
@@ -49,21 +48,20 @@ End Sub
 
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
-Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
+  Set objWorkbook = objExcel.Workbooks.Open _
+   ("C:\Users\ITLAdmin\Desktop\Test N4\currentcluster.csv")
     
    'Static Array
   'ReDim fieldvalueChar(1)
 'MsgBox objExcel.Cells(2, 9).Value
 'Row and column count
-rowCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Rows.count
-colCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Columns.count  
-intRow = rowCount
-fieldvalueChar(0) = objExcel.Cells(intRow, 9)
+  rowCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Rows.count
+  colCount=objExcel.ActiveWorkbook.Sheets(1).UsedRange.Columns.count  
+  intRow = rowCount
+  fieldvalueChar(0) = objExcel.Cells(intRow, 9)
 'Wscript.Echo fieldvalueChar(0)
 'MsgBox(fieldvalueChar(0))
-
-objExcel.Quit
+  objExcel.Quit
 End Sub
 
 'Opening N4 through jnlp
@@ -71,10 +69,9 @@ End Sub
 'Created by: Anantha Narayanan
 'Reviewed: 
 'Reviewed by:
-
 Sub OpenN4
 
- Call ClusterDetails
+  Call ClusterDetails
  
   ' Add a Java Web Start application to the project
   ind = TestedApps.AddJavaWebStartApp
@@ -86,8 +83,36 @@ Sub OpenN4
   app.Location = fieldvalueChar(0)+":8280/apex/apex.jnlp"
   ' Launches the Web Start application
   app.Run
- TestedApps.Clear
+  TestedApps.Clear
   ' Test the application
-  Call Securitywarning
+  'Call Securitywarning
   'app.Close
+End Sub
+
+'To Perform Click Operation
+'Created: 06/04/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub ClickOperation(Object,ButtonName)
+If Object.Exists Then
+Object.Click
+Log.Message("The "+ButtonName+ " is clicked successfully")
+Else
+Log.Error("The "+Object +"does not exists")
+End If
+End Sub
+
+'To Perform Enter Operation
+'Created: 06/04/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub EnterOperation(Object,Value,FieldName)
+If Object.Exists Then
+Object.Keys(Value)
+Log.Message("The value "+Value+" is entered in "+FieldName+" field")
+Else
+Log.Error("The "+Object +"does not exists")
+End If
 End Sub
