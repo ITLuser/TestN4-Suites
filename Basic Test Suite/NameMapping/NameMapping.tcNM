@@ -161,7 +161,6 @@
 								</Properties>
 							</Child>
 							<Child Name="n4AddRoutingPointWindow" Key="{B2CC42EC-5A9A-4169-A8C0-0AE2BDAF2364}" ParallelWalk="True">
-								<Image FileName="-2087415627" Left="2" Top="2" Right="282" Bottom="270" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
@@ -170,11 +169,44 @@
 								</Properties>
 							</Child>
 							<Child Name="n4AddCarrierService" Key="{CC333B75-C562-4317-90FC-26AFC995B083}" ParallelWalk="True">
-								<Image FileName="-185304755" Left="2" Top="2" Right="349" Bottom="411" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
 										<Value PropertyType="0" Value="ARG036.CarrierService" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddEdiTradingPartnerWindow" Key="{108B0D94-0700-4EA8-8F92-57FCD2CB3AEC}" ParallelWalk="True">
+								<Image FileName="-983723526" Left="2" Top="2" Right="697" Bottom="258" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="EDI002.EdiTradingPartner" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddEquipmentTypeWindow" Key="{46F5C15C-B161-48F2-B474-20763C2D2E29}" ParallelWalk="True">
+								<Image FileName="1741734298" Left="2" Top="2" Right="440" Bottom="453" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ARG002.EquipType" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="VSL004_Vessel" Key="{0F4FDA50-049F-464E-8383-930C8B0475BD}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="VSL004.Vessel" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="VSL014_VesselVisitDetails" Key="{0F2D55DD-2212-4CC0-B793-56A3215EC934}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="VSL014.VesselVisitDetails" Type="5" />
 									</Property>
 								</Properties>
 							</Child>
@@ -203,6 +235,10 @@
 			<Child Name="n4AddLineOperatorWindow" Owner="{9C4DA680-703B-479A-BBB1-A1C8BB7C7A29}" />
 			<Child Name="n4AddRoutingPointWindow" Owner="{B2CC42EC-5A9A-4169-A8C0-0AE2BDAF2364}" />
 			<Child Name="n4AddCarrierServiceWindow" Owner="{CC333B75-C562-4317-90FC-26AFC995B083}" />
+			<Child Name="n4AddEdiTradingPartnerWindow" Owner="{108B0D94-0700-4EA8-8F92-57FCD2CB3AEC}" />
+			<Child Name="n4AddEquipmentTypeWindow" Owner="{46F5C15C-B161-48F2-B474-20763C2D2E29}" />
+			<Child Name="n4VesselWindow" Owner="{0F4FDA50-049F-464E-8383-930C8B0475BD}" />
+			<Child Name="n4AddVesselVisitWindow" Owner="{0F2D55DD-2212-4CC0-B793-56A3215EC934}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">

@@ -16,6 +16,9 @@
 		<child name="XPSCommonRoutines" key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="XPSCommonRoutines.svb" />
 		</child>
+		<child name="MultipleSheets" key="{2CF0272C-670E-4883-BC71-F59177B20AEC}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="MultipleSheets.svb" />
+		</child>
 	</children>
 	<folders>
 		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
