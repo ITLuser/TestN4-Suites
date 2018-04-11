@@ -461,18 +461,4 @@ Sub n4PurgeTradingPartner
       Log.Checkpoint "EDI Trading Partner is not found"
     End If
 End Sub
-Sub Play
-  'Call CommonRoutines.fetchData("RoutingPoint")
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
-  'Call CommonRoutines.fetchData("N4Login")
-  'Call CommonRoutines.OpenN4
-  Call n4LogIn
-  'Call n4ScopeSelection
-  'Call n4SelectWorkMode
-  Call n4EdiTradingPartner
-  'Call n4CreatEquipmentType
-  'Call n4PurgeEquipmentType
-  'Call n4PurgeRoutingPoint
-  'Call n4CreateCarrierService
-  'Call n4PurgeCarrierService
-End Sub
+

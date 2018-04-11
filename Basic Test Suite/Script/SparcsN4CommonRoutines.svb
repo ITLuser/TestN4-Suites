@@ -462,3 +462,122 @@ Sub n4PurgeTradingPartner
     End If
 End Sub
 
+'ToCreate Basedata for LineOperator
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+
+Sub n4CreateLineoperator
+   Dim ObjCreateLop,ObjLinename,Save,cancel,Objsearchlop,value,verify,Lineoperator,Objname,ObjScac,ObjBIC,Objlineselec
+   aqUtils.Delay 2000     
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|Line Operators")
+   aqUtils.Delay 500
+   Set ObjCreateLop =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+   Call CommonRoutines.ClickOperation(ObjCreateLop,"CreateLineoperator")
+   aqUtils.Delay 2000
+   Set ObjLinename = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuId",20, True)
+   If ObjLinename.WaitProperty("Exists", True, 40000) Then
+    ObjLinename.Keys(flowData.Item("LineOperator"))
+    ObjLinename.Keys("[Tab]")
+    aqUtils.Delay 500
+    Set Objname = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuName",20, True)
+    Call CommonRoutines.ClickOperation(Objname,"LineName")
+    aqUtils.Delay 500
+    Objname.Keys(flowData.Item("LineOperator_Name"))
+    Objname.Keys("[Tab]")
+    Set ObjScac = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuScac",20, True)
+    Call CommonRoutines.ClickOperation(ObjScac,"ScacCode")
+    ObjScac.Keys(flowData.Item("Scac_Code"))
+    ObjScac.Keys("[Tab]")
+    aqUtils.Delay 1000
+    Set ObjBIC = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuBic",20, True)
+    aqUtils.Delay 500
+    Call CommonRoutines.EnterOperation(ObjBIC,(flowData.Item("Bic_Code")),"BicCode")
+    Set Save =  Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    Call CommonRoutines.ClickOperation(Save,"Savelineoperator")
+   End If
+   aqUtils.Delay 1000
+   Set cancel =  Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","LABEL_ACTION_CANCEL",20, True)
+   Call CommonRoutines.ClickOperation(cancel,"CancelLineoperator")
+   aqUtils.Delay 2000
+   Set Objsearchlop = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   Objsearchlop.Keys(flowData.Item("LineOperator_Name"))
+   Objsearchlop.Keys("[Enter]")
+   aqUtils.Delay 1000
+   Set  Objlineselec = Aliases.jp2launcher.FindChild("AWTComponentName","ARG088",20, True)
+   Objlineselec.selectAll
+   aqUtils.Delay 500 
+   Set edit = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_EDIT",20, True)
+   If edit.Enabled Then
+    Log.Checkpoint "Line operator Successfully created" 
+   Else
+    Log.Error "Line operator doesnt exists"
+   End If
+End Sub
+
+'To Purge Lineoperator 
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4PurgeLineop
+   Dim action,Objlineselect,ObjRefresh,Objminus,Objsearchop,ObjDelete
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|Line Operators")
+   aqUtils.Delay 1000
+   Set Objsearchop = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   Objsearchop.Keys(flowData.Item("LineOperator"))
+   Objsearchop.Keys("[Enter]")
+   aqUtils.Delay 1000
+   Set  Objlineselect = Aliases.jp2launcher.FindChild("AWTComponentName","ARG088",20, True)
+   Objlineselect.selectAll
+   aqUtils.Delay 500 
+   Set Objminus =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+   If Objminus.Enabled Then
+    Set action = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
+    action.click
+    action.SwingPopupMenu.Click("Purge")
+    Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh")
+    'Set ObjDelete =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    Log.Checkpoint  "Line operator Successfully Purged " 
+   Else
+    Log.Checkpoint "Line operator already Purged"
+   End If
+End Sub
+'To DeleteLineOperator
+'Input Parameters: By using Dictionary Object
+'Created: 05/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4DeleteLinoperator
+    Dim ObjSelectall,ObjDeleteButton,Objsearchop,Objplus,ObjRefrsh
+    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|Line Operators")
+    Set Objsearchop = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+    Objsearchop.Keys(flowData.Item("LineOperator"))
+    Objsearchop.Keys("[Enter]")
+    aqUtils.Delay 1000
+    Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","ARG088",20, True)
+    ObjSelectall.selectAll
+    aqUtils.Delay 500 
+    Set ObjDeleteButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    If ObjDeleteButton.Enabled Then
+     Set ObjDeleteButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+     Call CommonRoutines.ClickOperation(ObjDeleteButton,"Delete icon")
+     Set Objplus =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20, True)
+     Call CommonRoutines.ClickOperation(Objplus,"Yes button")
+     Set ObjRefrsh = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
+     aqUtils.Delay 1000
+     ObjRefrsh.Click
+     Log.Checkpoint  "Line operator Successfully Deleted " 
+    Else
+     Log.Checkpoint "Line operator already Deleted"
+    End If
+End Sub
+
