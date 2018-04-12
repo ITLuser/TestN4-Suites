@@ -246,7 +246,7 @@
 			<Child Name="n4AddEquipmentTypeWindow" Owner="{46F5C15C-B161-48F2-B474-20763C2D2E29}" />
 			<Child Name="n4VesselWindow" Owner="{0F4FDA50-049F-464E-8383-930C8B0475BD}" />
 			<Child Name="n4AddVesselVisitWindow" Owner="{0F2D55DD-2212-4CC0-B793-56A3215EC934}" />
-			<Child Name="ROD026_Truck" Owner="{6B72E315-9D50-4BD0-84D5-2B938279E724}" />
+			<Child Name="n4AddTruckWindow" Owner="{6B72E315-9D50-4BD0-84D5-2B938279E724}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
