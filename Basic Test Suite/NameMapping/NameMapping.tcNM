@@ -177,7 +177,6 @@
 								</Properties>
 							</Child>
 							<Child Name="n4AddEdiTradingPartnerWindow" Key="{108B0D94-0700-4EA8-8F92-57FCD2CB3AEC}" ParallelWalk="True">
-								<Image FileName="-983723526" Left="2" Top="2" Right="697" Bottom="258" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
@@ -186,7 +185,6 @@
 								</Properties>
 							</Child>
 							<Child Name="n4AddEquipmentTypeWindow" Key="{46F5C15C-B161-48F2-B474-20763C2D2E29}" ParallelWalk="True">
-								<Image FileName="1741734298" Left="2" Top="2" Right="440" Bottom="453" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
@@ -207,6 +205,15 @@
 								<Properties>
 									<Property Name="AWTComponentName">
 										<Value PropertyType="0" Value="VSL014.VesselVisitDetails" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="ROD026_Truck" Key="{6B72E315-9D50-4BD0-84D5-2B938279E724}" ParallelWalk="True">
+								<Image FileName="1249440697" Left="2" Top="2" Right="272" Bottom="370" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ROD026.Truck" Type="5" />
 									</Property>
 								</Properties>
 							</Child>
@@ -239,6 +246,7 @@
 			<Child Name="n4AddEquipmentTypeWindow" Owner="{46F5C15C-B161-48F2-B474-20763C2D2E29}" />
 			<Child Name="n4VesselWindow" Owner="{0F4FDA50-049F-464E-8383-930C8B0475BD}" />
 			<Child Name="n4AddVesselVisitWindow" Owner="{0F2D55DD-2212-4CC0-B793-56A3215EC934}" />
+			<Child Name="ROD026_Truck" Owner="{6B72E315-9D50-4BD0-84D5-2B938279E724}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
