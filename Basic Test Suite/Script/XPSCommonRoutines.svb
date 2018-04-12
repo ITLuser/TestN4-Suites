@@ -93,11 +93,39 @@ Sub xpsCloseApplication
  AppProcess.Close
 End Sub 
 
+'Replacing String in playscript file
+'Created: 12/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub ReplaceStringInPlayScript(PlayScriptPath,Stringkey,Stringval) 
+  Set FSO = CreateObject("scripting.filesystemobject")
+Set file = fso.OpenTextFile (PlayScriptPath, 1)
+Dim Contentintxtfile
+Contentintxtfile = file.ReadAll
+Arraykey = Split(Stringkey , "~")
+Arrayval = Split(Stringval , "~")
+Lengthkey = UBound(Arraykey)
+Lengthval = UBound(Arrayval)
+Log.Message Lengthval
+If Lengthkey = Lengthval Then 
+For i = LBound(Arraykey) to UBound(Arraykey)
+Contentintxtfile = Replace(Contentintxtfile,Arraykey(i),Arrayval(i))
+Next
+Else
+Log.Error "Key length and value length are not matching"    
+End If
+Set NewFile=FSO.CreateTextFile("C:\Sparcs Script\Temp\Scr_playScript.txt",2,true)
+NewFile.WriteLine (Contentintxtfile)
+End Sub
+
 Sub play
-  Call CommonRoutines.fetchData("xps")
+  Call CommonRoutines.fetchData("VesselToYardToRail")
+  Call ReplaceStringInPlayScript("C:\Sparcs Script\scr_TestXPS.txt","CONTAINERNBR~VESSELVISIT~VESSELNAME",flowData.Item("UnitNbr")+"~"+flowData.Item("Vessel_Visit")+"~"+flowData.Item("Vessel_Name"))
   Call OpenXPS
   Call xpsLogIn
   call xpsSelectPlayScript
-  Call xpsPlayScriptWindowClose
+  'Call xpsPlayScriptWindowClose
 End Sub
+
 

@@ -72,6 +72,11 @@ End Sub
 'Reviewed by:
 Sub xpsPlayScriptWindowClose
   Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Close
+  If Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Exists Then
+    Log.Error "ScriptPlayer Window is not closed"
+  Else
+    Log.Checkpoint "ScriptPlayer Window is closed"
+  End If
 End Sub
 
 
@@ -88,10 +93,38 @@ Sub xpsCloseApplication
  AppProcess.Close
 End Sub 
 
+Sub ReplaceStringInPlayScript(PlayScriptPath,Stringkey,Stringval) 
+  Set FSO = CreateObject("scripting.filesystemobject")
+Set file = fso.OpenTextFile (PlayScriptPath, 1)
+Dim Contentintxtfile
+Contentintxtfile = file.ReadAll
+Arraykey = Split(Stringkey , "~")
+Arrayval = Split(Stringval , "~")
+Lengthkey = UBound(Arraykey)
+'Log.Message Lengthkey
+Lengthval = UBound(Arrayval)
+Log.Message Lengthval
+If Lengthkey = Lengthval Then 
+For i = LBound(Arraykey) to UBound(Arraykey)
+Contentintxtfile = Replace(Contentintxtfile,Arraykey(i),Arrayval(i))
+'    Log.Message TestArraykey(i) 
+'    Log.Message TestArrayval(i) 
+Next
+Else
+Log.Error "Key length and value length are not matching"    
+
+End If
+'Set objFSO=CreateObject("Scripting.FileSystemObject")
+Set NewFile=FSO.CreateTextFile("C:\Sparcs Script\Temp\Scr_playScript.txt",2,true)
+NewFile.WriteLine (Contentintxtfile)
+End Sub
+
 Sub play
-  Call CommonRoutines.fetchData("xps")
-'  Call OpenXPS
-'  Call xpsLogIn
-call xpsSelectPlayScript
+  Call CommonRoutines.fetchData("VesselToYardToRail")
+  Call ReplaceStringInPlayScript("C:\Sparcs Script\scr_TestXPS.txt","CONTAINERNBR~VESSELVISIT~VESSELNAME",flowData.Item("UnitNbr")+"~"+flowData.Item("Vessel_Visit")+"~"+flowData.Item("Vessel_Name"))
+  Call OpenXPS
+  Call xpsLogIn
+  call xpsSelectPlayScript
+  'Call xpsPlayScriptWindowClose
 End Sub
 
