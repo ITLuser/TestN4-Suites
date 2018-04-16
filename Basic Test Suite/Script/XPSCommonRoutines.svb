@@ -52,9 +52,9 @@ Sub xpsSelectPlayScript
   If sparcs_N4_Client.xpsPlayScriptSelectWindow.Exists Then 
     Log.Checkpoint "Choose Play Script window is available"
     Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile(flowData.Item("PlayScript"), "Text Files (*.txt)")
-    If wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Exists Then 
+    If wndProToolsMainWndClass.MDIClient.PlayScriptWindow2.Exists Then 
       Log.Checkpoint "ScriptPlayer Window is available"
-      Call wndProToolsMainWndClass.MDIClient.PlayScriptWindow.Click(274, 67)
+      Call Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow2.Click(270, 74)
     Else
       Log.Error "ScriptPlayer Window is not available"  
     End If
@@ -71,8 +71,8 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub xpsPlayScriptWindowClose
-  Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Close
-  If Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow.Exists Then
+  Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow2.Close
+  If Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.PlayScriptWindow2.Exists Then
     Log.Error "ScriptPlayer Window is not closed"
   Else
     Log.Checkpoint "ScriptPlayer Window is closed"
@@ -94,38 +94,31 @@ Sub xpsCloseApplication
 End Sub 
 
 'Replacing String in playscript file
+'Input parameters : Playscrpt file along with path,Key in Playscript, Value which need to replace the Kap in playscript
 'Created: 12/04/2018
 'Created by: Anantha Narayanan
 'Reviewed: 
 'Reviewed by:
 Sub ReplaceStringInPlayScript(PlayScriptPath,Stringkey,Stringval) 
+  Dim Contentintxtfile
   Set FSO = CreateObject("scripting.filesystemobject")
-Set file = fso.OpenTextFile (PlayScriptPath, 1)
-Dim Contentintxtfile
-Contentintxtfile = file.ReadAll
-Arraykey = Split(Stringkey , "~")
-Arrayval = Split(Stringval , "~")
-Lengthkey = UBound(Arraykey)
-Lengthval = UBound(Arrayval)
-Log.Message Lengthval
-If Lengthkey = Lengthval Then 
-For i = LBound(Arraykey) to UBound(Arraykey)
-Contentintxtfile = Replace(Contentintxtfile,Arraykey(i),Arrayval(i))
-Next
-Else
-Log.Error "Key length and value length are not matching"    
-End If
-Set NewFile=FSO.CreateTextFile("C:\Sparcs Script\Temp\Scr_playScript.txt",2,true)
-NewFile.WriteLine (Contentintxtfile)
+  Set file = fso.OpenTextFile (PlayScriptPath, 1)
+  Contentintxtfile = file.ReadAll
+  Arraykey = Split(Stringkey , "~")
+  Arrayval = Split(Stringval , "~")
+  Lengthkey = UBound(Arraykey)
+  Lengthval = UBound(Arrayval)
+  If Lengthkey = Lengthval Then 
+    For i = LBound(Arraykey) to UBound(Arraykey)
+      Contentintxtfile = Replace(Contentintxtfile,Arraykey(i),Arrayval(i))
+    Next
+  Else
+  Log.Error "Key length and value length are not matching"    
+  End If
+  If FSO.FileExists("C:\Sparcs Script\Temp\Scr_playScript.txt") Then 
+    FSO.DeleteFile("C:\Sparcs Script\Temp\Scr_playScript.txt")
+  End If
+  Set NewFile=FSO.CreateTextFile("C:\Sparcs Script\Temp\scr_TestXPS.txt",2,true)
+  NewFile.WriteLine (Contentintxtfile)
 End Sub
-
-Sub play
-  Call CommonRoutines.fetchData("VesselToYardToRail")
-  Call ReplaceStringInPlayScript("C:\Sparcs Script\scr_TestXPS.txt","CONTAINERNBR~VESSELVISIT~VESSELNAME",flowData.Item("UnitNbr")+"~"+flowData.Item("Vessel_Visit")+"~"+flowData.Item("Vessel_Name"))
-  Call OpenXPS
-  Call xpsLogIn
-  call xpsSelectPlayScript
-  'Call xpsPlayScriptWindowClose
-End Sub
-
 
