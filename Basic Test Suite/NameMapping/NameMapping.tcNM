@@ -217,6 +217,33 @@
 									</Property>
 								</Properties>
 							</Child>
+							<Child Name="n4AddDriverWindow" Key="{6686FFD0-9FFE-4F21-8231-B21B1D7339F5}" ParallelWalk="True">
+								<Image FileName="1810510695" Left="2" Top="2" Right="858" Bottom="599" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ROD030.TruckDriver" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddTruckingCompanyInDriverWindow" Key="{861B001F-0809-4A05-BA00-F0945F029F6E}" ParallelWalk="True">
+								<Image FileName="-1599772837" Left="2" Top="2" Right="260" Bottom="125" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ROD041.TruckCompanyDriver" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddTruckingCompanyWindow" Key="{E3FDE404-6D89-4D2B-9DAA-208E6D87619C}" ParallelWalk="True">
+								<Image FileName="-338447470" Left="2" Top="2" Right="836" Bottom="744" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ROD022.TruckingCompany" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
 						</Children>
 					</Child>
 				</Children>
@@ -247,6 +274,9 @@
 			<Child Name="n4VesselWindow" Owner="{0F4FDA50-049F-464E-8383-930C8B0475BD}" />
 			<Child Name="n4AddVesselVisitWindow" Owner="{0F2D55DD-2212-4CC0-B793-56A3215EC934}" />
 			<Child Name="n4AddTruckWindow" Owner="{6B72E315-9D50-4BD0-84D5-2B938279E724}" />
+			<Child Name="n4AddDriverWindow" Owner="{6686FFD0-9FFE-4F21-8231-B21B1D7339F5}" />
+			<Child Name="n4AddTruckingCompanyInDriverWindow" Owner="{861B001F-0809-4A05-BA00-F0945F029F6E}" />
+			<Child Name="n4AddTruckingCompanyWindow" Owner="{E3FDE404-6D89-4D2B-9DAA-208E6D87619C}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
