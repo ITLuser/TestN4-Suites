@@ -87,12 +87,14 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub ClickOperation(Object,ButtonName)
-  If Object.WaitProperty("Exists", True,5000) And Object.WaitProperty("Visible", True,5000) Then
+  If Object.WaitProperty("Exists", True,50000) Then
+  If Object.WaitProperty("Visible", True,50000) Then
     Object.Click
     aqUtils.Delay 500
     Log.Message("The "+ButtonName+ " is clicked successfully")
   Else
     Log.Error("The "+Object+" does not exists")
+  End If
   End If
 End Sub
 
@@ -102,53 +104,14 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub EnterOperation(Object,Value,FieldName)
-  If Object.WaitProperty("Exists", True,5000) And Object.WaitProperty("Visible", True,5000)Then
+  If Object.WaitProperty("Exists", True,5000) Then
+  If Object.WaitProperty("Visible", True,5000)Then
     Object.Keys(Value)
     aqUtils.Delay 500
     Log.Message("The value "+Value+" is entered in "+FieldName+" field")
   Else
     Log.Error("The "+Object+"does not exists")
   End If
-End Sub
-
-'To Perform Enter key Operation
-'Created: 09/04/2018
-'Created by: Aswini Uthayakumar
-'Reviewed: 
-'Reviewed by:
-Sub EnterKey(Object)
-  If Object.WaitProperty("Exists", True,5000) And Object.WaitProperty("Visible", True,5000)Then
-    Object.Keys("[Enter]")
-    Log.Message("The Enter key is entered")
-  Else
-    Log.Error("The "+Object+"does not exists")
   End If
 End Sub
 
-'To Perform Esc key Operation
-'Created: 09/04/2018
-'Created by: Aswini Uthayakumar
-'Reviewed: 
-'Reviewed by:
-Sub EscapeKey(Object)
-  If Object.WaitProperty("Exists", True,5000) And Object.WaitProperty("Visible", True,5000)Then
-    Object.Keys("[Esc]")
-    Log.Message("The Escape key is entered.")
-  Else
-    Log.Error("The "+Object+"does not exists")
-  End If
-End Sub
-
-'To Perform Tab key Operation
-'Created: 09/04/2018
-'Created by: Aswini Uthayakumar
-'Reviewed: 
-'Reviewed by:
-Sub TabKey(Object)
-  If Object.Exists Then
-    Object.Keys("[Tab]")
-    Log.Message("The Tab key is entered.")
-  Else
-    Log.Error("The "+Object+"does not exists")
-  End If
-End Sub
