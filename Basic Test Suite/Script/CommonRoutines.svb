@@ -61,30 +61,6 @@ Public Sub ClusterDetails
   objExcel.Quit
 End Sub
 
-'Opening N4 through jnlp
-'Created: 04/04/2018
-'Created by: Anantha Narayanan
-'Reviewed: 
-'Reviewed by:
-Sub OpenN4
-
-  Call ClusterDetails
- 
-  ' Add a Java Web Start application to the project
-  ind = TestedApps.AddJavaWebStartApp
-  Set app = TestedApps.Items(ind)
-
-  ' Specify Web Start application's launch parameters
-  app.JWSLauncher = "C:\\Program Files\\Java\\jre1.8.0_60\\bin\\javaws.exe"
-  app.Location = (flowData.Item("N4HOST"))+":8280/apex/apex.jnlp"
-  ' Launches the Web Start application
-  app.Run
-  TestedApps.Clear
-  ' Test the application
-  'Call Securitywarning
-  'app.Close
-End Sub
-
 'To Perform Click Operation
 'Created: 06/04/2018
 'Created by: Aswini Uthayakumar
@@ -118,5 +94,6 @@ Sub EnterOperation(Object,Value,FieldName)
   End If
   End If
 End Sub
+
 
 

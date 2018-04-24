@@ -122,11 +122,3 @@ Sub ReplaceStringInPlayScript(PlayScriptPath,Stringkey,Stringval)
   NewFile.WriteLine (Contentintxtfile)
 End Sub
 
-Sub play
-  Call CommonRoutines.fetchData("VesselToYardToRail")
-  Call ReplaceStringInPlayScript("C:\Sparcs Script\scr_TestXPS.txt","VESSELVISIT",flowData.Item("Vessel_Visit"))
-  Call OpenXPS
-  Call xpsLogIn
-  call xpsSelectPlayScript
-  'Call xpsPlayScriptWindowClose
-End Sub

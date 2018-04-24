@@ -90,7 +90,7 @@ Sub xpsCloseApplication
  ' Obtains the N4 process
  Set AppProcess = Sys.Process("Sparcs N4 Client")
  ' Closes the process
- AppProcess.Close
+ AppProcess.Terminate
 End Sub 
 
 'Replacing String in playscript file
