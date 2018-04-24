@@ -119,7 +119,4 @@ Sub EnterOperation(Object,Value,FieldName)
   End If
 End Sub
 
-Sub play
-  Call fetchData("SparcsN4CommonRoutines")
-End Sub
 

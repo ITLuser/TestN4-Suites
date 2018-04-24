@@ -28,10 +28,10 @@ Sub fetchData(fname)
           sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
           If Len(sCellValue) Then
             If flowData.Exists(sCellName) Then
-            Log.Error "Column name already exist '" + sCellName + "' in sheet '" + objDriverSheet.Name +"'"
+              Log.Error "Column name already exist '" + sCellName + "' in sheet '" + objDriverSheet.Name +"'"
             Else
               flowData.Add sCellName, sCellValue
-              End If
+            End If
           End If
         Next
     Next
