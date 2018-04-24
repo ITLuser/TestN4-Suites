@@ -10,7 +10,7 @@ ReDim fieldvalueChar(1)
 Set flowData = CreateObject("Scripting.Dictionary")
 Sub fetchData(fname)
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITLAdmin\Desktop\Test N4\TestData.xlsx")
+  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\TestData\TestData.xlsx")
   WorkSheetCount = objExcel.ActiveWorkbook.Worksheets.count
     For i = 1 to WorkSheetCount
       Set objDriverSheet = objExcel.ActiveWorkbook.Sheets(i)
@@ -27,7 +27,11 @@ Sub fetchData(fname)
           sCellName = Trim(objDriverSheet.Cells(1,col))
           sCellValue = Trim(objDriverSheet.Cells(TargetRow,Col))
           If Len(sCellValue) Then
+            If flowData.Exists(sCellName) Then
+            Log.Error "Column name already exist '" + sCellName + "' in sheet '" + objDriverSheet.Name +"'"
+            Else
               flowData.Add sCellName, sCellValue
+              End If
           End If
         Next
     Next
@@ -90,7 +94,7 @@ Sub ClickOperation(Object,ButtonName)
   If Object.WaitProperty("Exists", True,50000) Then
   If Object.WaitProperty("Visible", True,50000) Then
     Object.Click
-    aqUtils.Delay 500
+    aqUtils.Delay 1000
     Log.Message("The "+ButtonName+ " is clicked successfully")
   Else
     Log.Error("The "+Object+" does not exists")
@@ -107,11 +111,15 @@ Sub EnterOperation(Object,Value,FieldName)
   If Object.WaitProperty("Exists", True,5000) Then
   If Object.WaitProperty("Visible", True,5000)Then
     Object.Keys(Value)
-    aqUtils.Delay 500
+    aqUtils.Delay 1000
     Log.Message("The value "+Value+" is entered in "+FieldName+" field")
   Else
     Log.Error("The "+Object+"does not exists")
   End If
   End If
+End Sub
+
+Sub play
+  Call fetchData("SparcsN4CommonRoutines")
 End Sub
 
