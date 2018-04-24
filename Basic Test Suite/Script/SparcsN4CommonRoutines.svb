@@ -435,16 +435,37 @@ Sub n4ImportSnxFile
 End Sub
 
 
-Sub Play
-''  
-''Call CommonRoutines.fetchData("n4LineOperator")
-''Call SparcsN4CommonRoutines.n4SelectWorkMode
-''Call n4CreateLineoperator
-''Call n4PurgeLineoperator
+'Opening N4 through jnlp
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub n4Open
 
-Call CommonRoutines.fetchData("n4LineOperator")
-Call SparcsN4CommonRoutines.n4SelectWorkMode
-Call n4DeleteLinoperator
+  Call CommonRoutines.ClusterDetails
+ 
+  ' Add a Java Web Start application to the project
+  ind = TestedApps.AddJavaWebStartApp
+  Set app = TestedApps.Items(ind)
 
+  ' Specify Web Start application's launch parameters
+  app.JWSLauncher = "C:\\Program Files\\Java\\jre1.8.0_60\\bin\\javaws.exe"
+  app.Location = (flowData.Item("N4HOST"))+":8280/apex/apex.jnlp"
+  ' Launches the Web Start application
+  app.Run
+  TestedApps.Clear
 End Sub
+
+'Closing N4
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub n4Close
+  Dim AppProcess
+ ' Obtains the N4 process
+ Set AppProcess = Sys.Process("jp2launcher")
+ ' Closes the process
+ AppProcess.Close
+End Sub 
 
