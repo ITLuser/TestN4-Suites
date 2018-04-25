@@ -456,6 +456,11 @@ Sub n4Open
   TestedApps.Clear
 End Sub
 
+'Closing N4
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
 Sub n4Close
   Dim AppProcess
  ' Obtains the N4 process

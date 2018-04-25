@@ -1,5 +1,7 @@
 ﻿'USEUNIT CommonRoutines
 'USEUNIT SparcsN4CommonRoutines
+' To reference one unit
+
 
 'To Add Routing Point
 'Input Parameters: By using Dictionary Object
@@ -87,9 +89,7 @@ Sub n4PurgeRoutingPoint
     End if
 End Sub
 
-' To reference one unit
-'USEUNIT CommonRoutines
-'USEUNIT SparcsN4CommonRoutines
+
 
 'To Create Vessel Basedata
 'Input Parameters: By using Dictionary Object

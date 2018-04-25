@@ -467,10 +467,3 @@ Sub n4DeleteTruckingCompany
       Log.Checkpoint "Failed to delete TruckingCompany"  
     End if 
 End Sub
-Sub Main 
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
-  Call SparcsN4CommonRoutines.n4LogIn
-  Call n4CreateTruck
-  Call n4PurgeDriver
-
-End Sub

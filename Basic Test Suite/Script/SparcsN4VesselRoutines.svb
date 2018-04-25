@@ -213,7 +213,7 @@ End Sub
 'Created by: Dinesh RameshKumar
 'Reviewed:
 'Reviewed by:
-Sub n4VesselVisit
+Sub n4VesselVisitCreate
    Dim ObjVesselReferences,ObjCreateButton,ObjVessel,ObjInboundVoyage,ObjOutBoundVoyage,ObjClassification,ObjService,ObjClassifications,ObjSaveVesselVisit,ObjRefresh,ObjSelectall
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Vessel|Vessel Visits") 

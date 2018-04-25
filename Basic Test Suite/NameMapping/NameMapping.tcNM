@@ -244,6 +244,113 @@
 									</Property>
 								</Properties>
 							</Child>
+							<Child Name="n4AddTruckingCompanyLineWindow" Key="{54B692EF-17A1-4B8B-86FA-53C5DFA87E17}" ParallelWalk="True">
+								<Image FileName="1205044098" Left="2" Top="2" Right="836" Bottom="442" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ROD024.TruckingCompanyLine" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddEquipmentReceiveOrderWindow" Key="{9892BD40-1712-4345-B23B-AC0D6B58C1DE}" ParallelWalk="True">
+								<Image FileName="-68644645" Left="2" Top="2" Right="826" Bottom="542" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ORD006.EquipmentReceiveOrder" Type="5" />
+									</Property>
+									<Property Name="AWTComponentAccessibleName">
+										<Value PropertyType="0" Value="Add Equipment Receive Order" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddEquipmentDeliveryOrderWindow" Key="{168CAB0F-941A-414B-8B7D-EADDCB32FD96}" ParallelWalk="True">
+								<Image FileName="565638141" Left="2" Top="2" Right="839" Bottom="592" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ORD004.EquipmentDeliveryOrder" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddOrderItemInEDOWindow" Key="{57AE3D91-4AD2-4C50-BF6E-6BA3B5EBE005}" ParallelWalk="True">
+								<Image FileName="947228558" Left="2" Top="2" Right="847" Bottom="597" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="FORM_EDO_ITEMS.EquipmentOrderItem" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4EditEquipmentReceiveOrderWindow" Key="{DE58EAF2-7087-4456-9C84-647F0DEE687D}" ParallelWalk="True">
+								<Image FileName="672370277" Left="2" Top="2" Right="826" Bottom="542" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ORD006.EquipmentReceiveOrder" Type="5" />
+									</Property>
+									<Property Name="WndCaption">
+										<Value PropertyType="0" Value="Edit Equipment Receive Order" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddOrderItemInEROWindow" Key="{453BDB15-075E-42B6-B737-27DB54716582}" ParallelWalk="True">
+								<Image FileName="106338101" Left="2" Top="2" Right="829" Bottom="447" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="FORM_ERO_ITEMS.EquipmentOrderItem" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddImportDeliveryOrderWindow" Key="{0C91CF8E-09D2-4C74-8C16-0E1C54942012}" ParallelWalk="True">
+								<Image FileName="470948962" Left="2" Top="2" Right="821" Bottom="536" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="INV095.ImportDeliveryOrder" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4AddImportDeliveryOrderUnitWindow" Key="{1D2E9132-C220-4071-8A89-B9DFBEC920AE}" ParallelWalk="True">
+								<Image FileName="1486438386" Left="2" Top="2" Right="282" Bottom="175" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="INV097.UnitFacilityVisit" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4ApplicationErrorWindow" Key="{9DAD129C-41D4-43D6-9202-EE416445BE2D}" ParallelWalk="True">
+								<Image FileName="335751483" Left="2" Top="2" Right="634" Bottom="256" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ERROR__APPLICATION_ERROR" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="n4SnxImporterWindow" Key="{9BEB4F71-E80A-4611-BD47-E55B250DFDE6}" ParallelWalk="True">
+								<Image FileName="-430604773" Left="2" Top="2" Right="698" Bottom="498" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="ARG119" Type="5" />
+									</Property>
+									<Property Name="WndCaption">
+										<Value PropertyType="0" Value="SNX Importer" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="RAL009_Railroad" Key="{B6A6F2E6-7529-4E8D-890A-AE2C159586C8}" ParallelWalk="True">
+								<TypeInfo Item0="{E5798357-5E31-409B-AC8F-459B9514F6A1}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="RAL009.Railroad" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
 						</Children>
 					</Child>
 				</Children>
@@ -277,6 +384,17 @@
 			<Child Name="n4AddDriverWindow" Owner="{6686FFD0-9FFE-4F21-8231-B21B1D7339F5}" />
 			<Child Name="n4AddTruckingCompanyInDriverWindow" Owner="{861B001F-0809-4A05-BA00-F0945F029F6E}" />
 			<Child Name="n4AddTruckingCompanyWindow" Owner="{E3FDE404-6D89-4D2B-9DAA-208E6D87619C}" />
+			<Child Name="n4AddTruckingCompanyLineWindow" Owner="{54B692EF-17A1-4B8B-86FA-53C5DFA87E17}" />
+			<Child Name="n4AddEquipmentReceiveOrderWindow" Owner="{9892BD40-1712-4345-B23B-AC0D6B58C1DE}" />
+			<Child Name="n4AddEquipmentDeliveryOrderWindow" Owner="{168CAB0F-941A-414B-8B7D-EADDCB32FD96}" />
+			<Child Name="n4AddOrderItemInEDOWindow" Owner="{57AE3D91-4AD2-4C50-BF6E-6BA3B5EBE005}" />
+			<Child Name="n4EditEquipmentReceiveOrderWindow" Owner="{DE58EAF2-7087-4456-9C84-647F0DEE687D}" />
+			<Child Name="n4AddOrderItemInEROWindow" Owner="{453BDB15-075E-42B6-B737-27DB54716582}" />
+			<Child Name="n4AddImportDeliveryOrderWindow" Owner="{0C91CF8E-09D2-4C74-8C16-0E1C54942012}" />
+			<Child Name="n4AddImportDeliveryOrderUnitWindow" Owner="{1D2E9132-C220-4071-8A89-B9DFBEC920AE}" />
+			<Child Name="n4ApplicationErrorWindow" Owner="{9DAD129C-41D4-43D6-9202-EE416445BE2D}" />
+			<Child Name="n4SnxImporterWindow" Owner="{9BEB4F71-E80A-4611-BD47-E55B250DFDE6}" />
+			<Child Name="n4AddRailRoadOperatorWindow" Owner="{B6A6F2E6-7529-4E8D-890A-AE2C159586C8}" />
 		</Child>
 	</LogicalNodes>
 	<TypeInfo StoreCodeCompletion="1">
