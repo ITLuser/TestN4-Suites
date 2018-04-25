@@ -466,8 +466,4 @@ Sub n4ImportSnxFile
   End If
 End Sub
 
-Sub Main
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
-  Call n4ImportSnxFile
-End Sub
 
