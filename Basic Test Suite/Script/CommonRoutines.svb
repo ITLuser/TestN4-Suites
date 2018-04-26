@@ -35,6 +35,7 @@ Sub fetchData(fname)
           End If
         Next
     Next
+    objexcel.Quit
 End Sub
 
 'Readind N4 IP path currentcluster.csv
