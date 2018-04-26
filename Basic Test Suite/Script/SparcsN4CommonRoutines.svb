@@ -219,77 +219,6 @@ Sub n4PurgeCarrierService
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
 End Sub
 
-'To Create EDI Trading Partner
-'Input Parameters: By using Dictionary Object
-'Created: 11/04/2018 
-'Created by: Aswini Uthayakumar
-'Reviewed:
-'Reviewed by:
-Sub n4CreateEdiTradingPartner
-  Dim ObjHomeView,ObjCreateTradingPartner,ObjPartnerName,ObjPartnerBusinessUnit,ObjSave,ObjRefresh,ObjSearch,ObjTable,ObjEdit
-  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
-  ObjHomeView.Click("Windows|Close All Tabs")
-  Call n4SelectWorkMode
-  ObjHomeView.Click("EDI|Trading Partners")
-  Set ObjCreateTradingPartner = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20,True)
-  Call CommonRoutines.ClickOperation(ObjCreateTradingPartner,"Add Button")
-  Set ObjPartnerName = Aliases.jp2launcher.n4AddEdiTradingPartnerWindow.FindChild("AWTComponentName","ediptnrName",20,True)
-  Call CommonRoutines.EnterOperation(ObjPartnerName,(flowData.Item("EDIPartnerName")),"EDIPartnerName")
-  Set ObjPartnerBusinessUnit = Aliases.jp2launcher.n4AddEdiTradingPartnerWindow.FindChild("AWTComponentName","ediptnrBusinessUnit",20,True)
-  Call CommonRoutines.EnterOperation(ObjPartnerBusinessUnit,(flowData.Item("EDIPartnerBusinessUnit")),"EDIPartnerBusinessUnit")
-  Call CommonRoutines.EnterOperation(ObjPartnerBusinessUnit,(flowData.Item("EnterKey")),"Enter Key")
-  Set ObjSave = Aliases.jp2launcher.n4AddEdiTradingPartnerWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20,True)
-  Call CommonRoutines.ClickOperation(ObjSave,"Save Button")
-  Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
-  Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
-  Set ObjSearch = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
-  Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("EDIPartnerName")),"EDIPartnerName")
-  Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("EnterKey")),"Enter Key")
-  Set ObjTable = Aliases.jp2launcher.FindChild("AWTComponentName", "EDI001", 20, True)
-  ObjTable.selectAll
-    Set ObjEdit = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True)
-    If ObjEdit.Enabled Then
-      Log.Checkpoint "EDI Trading Partner Created Successfully"
-    Else
-      Log.Checkpoint "Failed to create EDI Trading Partner"
-    End If
-End Sub
-
-'To Purge EDI Trading Partner
-'Input Parameters: By using Dictionary Object
-'Created: 11/04/2018 
-'Created by: Aswini Uthayakumar
-'Reviewed:
-'Reviewed by:
-Sub n4PurgeTradingPartner
-  Dim ObjHomeView, ObjSearch, ObjTable, ObjEdit,ObjActionsButton,ObjRefresh
-  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
-  ObjHomeView.Click("Windows|Close All Tabs")
-  Call n4SelectWorkMode
-  ObjHomeView.Click("EDI|Trading Partners")
-  Set ObjSearch = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
-  Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("EDIPartnerName")),"EDIPartnerName")
-  Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("EnterKey")),"Enter Key")
-  Set ObjTable = Aliases.jp2launcher.FindChild("AWTComponentName", "EDI001", 20, True)
-  ObjTable.selectAll
-    Set ObjEdit = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_EDIT", 20, True)
-    If ObjEdit.Enabled Then
-      Log.Checkpoint "EDI Trading Partner is found"
-    Else
-      Log.Checkpoint "EDI Trading Partner is not found"
-    End If
-  Set ObjActionsButton = Aliases.jp2launcher.FindChild("AWTComponentName", "MENU__ACTIONS", 20, True)
-  Call CommonRoutines.ClickOperation(ObjActionsButton,"Actions Button")
-  ObjActionsButton.SwingPopupMenu.Click("Purge")
-  Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
-  Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
-    If not ObjEdit.Enabled Then
-      Log.Checkpoint "EDI Trading Partner is purged successfully"
-    Else
-      Log.Checkpoint "Failed to purge EDI Trading Partner"  
-    End if 
-End Sub
-
 'ToCreate Basedata for LineOperator
 'Input Parameters: By using Dictionary Object
 'Created: 05/04/2018 
@@ -434,4 +363,36 @@ Sub n4Close
  ' Closes the process
  AppProcess.Close
 End Sub 
+
+'To import snx file
+'Input Parameters: By using Dictionary Object
+'Created: 25/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4ImportSnxFile
+  Dim ObjHomeView,ObjImportXmlFile,ObjProcessFile
+  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  ObjHomeView.Click("Windows|Close All Tabs")
+  Call n4SelectWorkMode
+  ObjHomeView.Click("DBA|Import SNX File")
+  If Aliases.jp2launcher.n4SnxImporterWindow.WaitProperty("Exists", True,50000)Then
+    Set ObjImportXmlFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "LABEL__XML_LOADER_IMPORT", 20, True)
+    Call CommonRoutines.ClickOperation(ObjImportXmlFile,"Import XML File Button")
+      If Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Open", 20, True).WaitProperty("Exists", True,50000)Then
+        Set ObjFileName = Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "File Name:", 20, True)
+        Call CommonRoutines.EnterOperation(ObjFileName,(flowData.Item("FileName")),"xml file to be posted")
+        Call CommonRoutines.EnterOperation(ObjFileName,"[Enter]","Enter the file")
+        Set ObjMessage = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "messageField", 20, True)
+        Set Message = ObjMessage.getText
+          If Message.contains("import SUCCESSFUL")Then
+            Log.Checkpoint("Snx imported Successfully")
+            Aliases.jp2launcher.n4SnxImporterWindow.Close
+          Else
+            Log.Checkpoint("Snx import failed")
+          End If         
+      End If
+  End If
+End Sub
+
 

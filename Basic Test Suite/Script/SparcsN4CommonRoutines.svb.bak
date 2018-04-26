@@ -401,40 +401,6 @@ Sub n4DeleteLinoperator
     End If
 End Sub
 
-'To import snx file
-'Input Parameters: By using Dictionary Object
-'Created: 19/04/2018 
-'Created by: Aswini Uthayakumar
-'Reviewed:
-'Reviewed by:
-Sub n4ImportSnxFile
-  Dim ObjHomeView,ObjImportXmlFile,ObjProcessFile
-  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
-  ObjHomeView.Click("Windows|Close All Tabs")
-  Call n4SelectWorkMode
-  ObjHomeView.Click("DBA|Import SNX File")
-  If Aliases.jp2launcher.n4SnxImporterWindow.WaitProperty("Exists", True,50000)Then
-    'NoOfSnx = (flowData.Item("NoOfSnx"))
-    NoOfSnx = "multiple"
-    Set ObjImportXmlFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "LABEL__XML_LOADER_IMPORT", 20, True)
-      If NoOfSnx = "single" Then
-        Call CommonRoutines.ClickOperation(ObjImportXmlFile,"Import XML File Button")
-          If Aliases.jp2launcher.FindChild("AWTComponentName", "dialog1", 20, True).WaitProperty("Exists", True,50000)Then
-            Set ObjFileName = Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "File Name:", 20, True)
-            Call CommonRoutines.ClickOperation(ObjProcessFile,"Process File Button")
-          End If
-      ElseIf NoOfSnx = "multiple" Then
-        Set ObjProcessFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentAccessibleName", "Process File (Multiple Threads / Elements Not Processed in Order)", 20, True)
-        Call CommonRoutines.ClickOperation(ObjProcessFile,"Process File Button")
-        Call CommonRoutines.ClickOperation(ObjImportXmlFile,"Import XML File Button")
-          If Aliases.jp2launcher.FindChild("AWTComponentName", "dialog1", 20, True).WaitProperty("Exists", True,50000)Then
-          
-          End If
-      End If
-  End If 
-End Sub
-
-
 'Opening N4 through jnlp
 'Created: 04/04/2018
 'Created by: Anantha Narayanan
@@ -468,4 +434,36 @@ Sub n4Close
  ' Closes the process
  AppProcess.Close
 End Sub 
+
+'To import snx file
+'Input Parameters: By using Dictionary Object
+'Created: 25/04/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4ImportSnxFile
+  Dim ObjHomeView,ObjImportXmlFile,ObjProcessFile
+  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  ObjHomeView.Click("Windows|Close All Tabs")
+  Call n4SelectWorkMode
+  ObjHomeView.Click("DBA|Import SNX File")
+  If Aliases.jp2launcher.n4SnxImporterWindow.WaitProperty("Exists", True,50000)Then
+    Set ObjImportXmlFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "LABEL__XML_LOADER_IMPORT", 20, True)
+    Call CommonRoutines.ClickOperation(ObjImportXmlFile,"Import XML File Button")
+      If Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Open", 20, True).WaitProperty("Exists", True,50000)Then
+        Set ObjFileName = Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "File Name:", 20, True)
+        Call CommonRoutines.EnterOperation(ObjFileName,(flowData.Item("FileName")),"xml file to be posted")
+        Call CommonRoutines.EnterOperation(ObjFileName,"[Enter]","Enter the file")
+        Set ObjMessage = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "messageField", 20, True)
+        Set Message = ObjMessage.getText
+          If Message.contains("import SUCCESSFUL")Then
+            Log.Checkpoint("Snx imported Successfully")
+            Aliases.jp2launcher.n4SnxImporterWindow.Close
+          Else
+            Log.Checkpoint("Snx import failed")
+          End If         
+      End If
+  End If
+End Sub
+
 
