@@ -107,16 +107,16 @@ Sub n4Vesselcreate
     Call CommonRoutines.ClickOperation(ObjCreateButton,"Create Vessel")
     aqUtils.Delay 2000
     Set ObjVesselidentity =Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesId",20, True)
-    Call CommonRoutines.EnterOperation(ObjVesselidentity,(flowData.Item("Vessel_Identity")),"VesselIdentity")
+    Call CommonRoutines.EnterOperation(ObjVesselidentity,(flowData.Item("VesselIdentity")),"VesselIdentity")
     Set ObjLyloids = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesLloydsId",20, True)
-    Call CommonRoutines.EnterOperation(ObjLyloids,(flowData.Item("Llyords_Identity")),"Llyords")
+    Call CommonRoutines.EnterOperation(ObjLyloids,(flowData.Item("LlyordsIdentity")),"Llyords")
     Call CommonRoutines.EnterOperation(ObjLyloids,"[Tab]","Tab")
     Set Objvesselname = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesName",20, True)
-    Call CommonRoutines.EnterOperation(Objvesselname,(flowData.Item("Vessel_Name")),"VesselName")
+    Call CommonRoutines.EnterOperation(Objvesselname,(flowData.Item("VesselName")),"VesselName")
     Set ObjVesselclass = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesVesselClass",20, True)
     Call CommonRoutines.ClickOperation(ObjVesselclass,"Create VesselClass")
     aqUtils.Delay 1000
-    Call CommonRoutines.EnterOperation(ObjVesselclass,(flowData.Item("Vessel_Class")),"VesselClass")
+    Call CommonRoutines.EnterOperation(ObjVesselclass,(flowData.Item("VesselClass")),"VesselClass")
     Set ObjlineOperatorowner = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesOwner",20, True)
     Call CommonRoutines.ClickOperation(ObjlineOperatorowner,"Create Lineowner")
     Call CommonRoutines.EnterOperation(ObjlineOperatorowner,(flowData.Item("LineOperator")),"LineOperator")
@@ -124,7 +124,7 @@ Sub n4Vesselcreate
     Set ObjCountry = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesCountry",20, True)
     Call CommonRoutines.EnterOperation(ObjCountry,(flowData.Item("Country")),"Country")
     Set ObjStowage = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesStowageScheme",20, True)
-    Call CommonRoutines.EnterOperation(ObjStowage,(flowData.Item("Stowage_Scheme")),"StowageScheme")
+    Call CommonRoutines.EnterOperation(ObjStowage,(flowData.Item("StowageScheme")),"StowageScheme")
     Set Objvesmesure = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesUnitSystem",20, True)
     Call CommonRoutines.EnterOperation(Objvesmesure,(flowData.Item("Measurements")),"Measurements") 
     Set Objvestemp = Aliases.jp2launcher.n4VesselWindow.FindChild("AWTComponentName","vesTemperatureUnits",20, True)
@@ -135,7 +135,7 @@ Sub n4Vesselcreate
     Set Objrefresh = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
     Call CommonRoutines.ClickOperation(Objrefresh,"Objrefresh vessel icon")
     Set ObjSearch = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
-    Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("Vessel_Identity")),"VesselIdentity")
+    Call CommonRoutines.EnterOperation(ObjSearch,(flowData.Item("VesselIdentity")),"VesselIdentity")
     Call CommonRoutines.EnterOperation(ObjSearch,"[Enter]","Object")
     Set Objall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL003",20, True)
     Objall.selectAll
@@ -148,6 +148,7 @@ Sub n4Vesselcreate
     End if 
    End If 
 End Sub
+
 'To Purge Vessel data
 'Input Parameters: By using Dictionary Object
 'Created: 05/04/2018 
@@ -159,7 +160,7 @@ Sub n4Vesselpurge
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Carriers|Vessels")
    Set ObjSearchVessel = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
-   Call CommonRoutines.EnterOperation(ObjSearchVessel,(flowData.Item("Vessel_Identity")),"Vessel IDentity")
+   Call CommonRoutines.EnterOperation(ObjSearchVessel,(flowData.Item("VesselIdentity")),"Vessel IDentity")
    Call CommonRoutines.EnterOperation(ObjSearchVessel,"[Enter]","Object")
    Set ObjSeleectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL003",20, True)
    ObjSeleectall.selectAll
@@ -176,6 +177,7 @@ Sub n4Vesselpurge
     Log.Checkpoint "Vessel already Purged"
    End If
 End Sub
+
 'To Delete Vessel data
 'Input Parameters: By using Dictionary Object
 'Created: 10/04/2018 
@@ -188,7 +190,7 @@ Sub n4VesselDelete
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Carriers|Vessels")
    aqUtils.Delay 1000
    Set ObjSrchVessel = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
-   Call CommonRoutines.EnterOperation(ObjSrchVessel,(flowData.Item("Vessel_Identity")),"Vessel")
+   Call CommonRoutines.EnterOperation(ObjSrchVessel,(flowData.Item("VesselIdentity")),"Vessel")
    Call CommonRoutines.EnterOperation(ObjSrchVessel,"[Enter]","Object")
    aqUtils.Delay 500
    Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL003",20, True)
@@ -207,25 +209,26 @@ Sub n4VesselDelete
      Log.Checkpoint "Vessel already Deleted"
    End If
 End Sub 
+
 'To Create VesselVisit
 'Input Parameters: By using Dictionary Object
 'Created: 10/04/2018 
 'Created by: Dinesh RameshKumar
 'Reviewed:
 'Reviewed by:
-Sub n4VesselVisit
+Sub n4VesselVisitCreate
    Dim ObjVesselReferences,ObjCreateButton,ObjVessel,ObjInboundVoyage,ObjOutBoundVoyage,ObjClassification,ObjService,ObjClassifications,ObjSaveVesselVisit,ObjRefresh,ObjSelectall
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Vessel|Vessel Visits") 
    Set ObjCreateButton = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
-   If ObjCreateButton.WaitProperty("Exists", True,50000) And ObjCreateButton.WaitProperty("Visible", True,50000) Then 
+   If ObjCreateButton.WaitProperty("Exists", True,10000) And ObjCreateButton.WaitProperty("Visible", True,10000) Then 
     Call CommonRoutines.ClickOperation(ObjCreateButton,"Create Vessel")
     aqUtils.Delay 500 
     Set ObjVesselReferences = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","cvdCv.cvId",20, True)
-    Call CommonRoutines.EnterOperation(ObjVesselReferences,(flowData.Item("Vessel_Visit")),"VesselVisit") 
+    Call CommonRoutines.EnterOperation(ObjVesselReferences,(flowData.Item("VesselVisit")),"VesselVisit") 
     aqUtils.Delay 500 
     Set ObjVessel = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","vvdVessel",20, True) 
-    Call CommonRoutines.EnterOperation(ObjVessel,(flowData.Item("Vessel_Name")),"Vessel Name")
+    Call CommonRoutines.EnterOperation(ObjVessel,(flowData.Item("VesselName")),"Vessel Name")
     Call CommonRoutines.EnterOperation(ObjVessel,"[Tab]","Tab") 
     aqUtils.Delay 1000
     Set ObjInboundVoyage = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","vvdIbVygNbr",20, True) 
@@ -235,7 +238,7 @@ Sub n4VesselVisit
     Call CommonRoutines.EnterOperation(ObjOutBoundVoyage,(flowData.Item("OutBoundVoyage")),"OutBoundVoyage")
     aqUtils.Delay 500
     Set ObjService = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","vesselCvdService",20, True)  
-    Call CommonRoutines.EnterOperation(ObjService,(flowData.Item("Vessel_Service")),"VesselService")
+    Call CommonRoutines.EnterOperation(ObjService,(flowData.Item("VesselService")),"VesselService")
     Call CommonRoutines.ClickOperation(ObjService,"Vessel Service")
     aqUtils.Delay 1000
     Call CommonRoutines.EnterOperation(ObjService,"[Tab]","Tab") 
@@ -243,36 +246,29 @@ Sub n4VesselVisit
     aqUtils.Delay 1000
     Call CommonRoutines.EnterOperation(ObjLineOperator,(flowData.Item("LineOperator")),"LineOperator")
     Call CommonRoutines.ClickOperation(ObjLineOperator,"Created Line Operator")
+    aqUtils.Delay 500  
     Set ObjClassification = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","vvdClassification",20, True) 
     aqUtils.Delay 500
-    ObjClassifications = (flowData.Item("Classifications"))
-    If ObjClassifications = "Deepsea" Then
-     ObjClassification.Keys("Deepsea")
-    ElseIf ObjClassifications = "Feeder" Then
-     ObjClassification.Keys("Feeder")
-    ElseIf ObjClassifications = "Barge" Then
-     ObjClassification.Keys("Barge")
-    End If
-   Set ObjSaveVesselVisit = Aliases.jp2launcher.n4AddVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True) 
-   Call CommonRoutines.ClickOperation(ObjSaveVesselVisit,"Save Vessel Visit")
-   Set ObjRefresh = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)   
-   Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")  
-   Set ObjSearchVesselVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
-   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("Vessel_Visit")),"VesseVisit")
-   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,"[Enter]","LineOperator")
-   aqUtils.Delay 500
-   Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL005",20, True)
-   ObjSelectall.selectAll
-   Set ObjVeselVisitVisible = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
-   If ObjVeselVisitVisible.enable Then
+    Call CommonRoutines.EnterOperation(ObjClassification,(flowData.Item("Classifications")),"VesselClassification")
+    Call CommonRoutines.EnterOperation(ObjClassification,"[Enter]","Classification")
+    Set ObjRefresh = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)   
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")  
+    Set ObjSearchVesselVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+    Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("VesselVisit")),"VesseVisit")
+    Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,"[Enter]","LineOperator")
     aqUtils.Delay 500
-    Log.Error "Failed to create Vessel Visit" 
-   Else
-    Log.Checkpoint "Vessel Visit Created Successfully"
-   End if 
-  End If
-  
+    Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL005",20, True)
+    ObjSelectall.selectAll
+    Set ObjVeselVisitVisible = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    If ObjVeselVisitVisible.Enabled Then
+     aqUtils.Delay 500
+     Log.Checkpoint "Vessel Visit Created Successfully"
+    Else
+     Log.Error "Failed to create Vessel Visit" 
+    End if 
+   End If
 End Sub
+
 'To Delete VesselVisit
 'Input Parameters: By using Dictionary Object
 'Created: 11/04/2018 
@@ -284,7 +280,7 @@ Sub n4VesselVisitDelete
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Vessel|Vessel Visits") 
    Set ObjSearchVesselVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True) 
-   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("Vessel_Visit")),"VesselVisit")
+   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("VesselVisit")),"VesselVisit")
    Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,"[Enter]","VesselVisit")
    aqUtils.Delay 500
    Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL005",20, True)
@@ -303,6 +299,7 @@ Sub n4VesselVisitDelete
      Log.Checkpoint "Vessel Visit already Deleted"
     End If
 End Sub
+
 'To Edit Advance  VesselVisit
 'Input Parameters: By using Dictionary Object
 'Created: 11/04/2018 
@@ -315,7 +312,7 @@ Sub n4EditAdvanceVesselVisit(phase)
    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Vessel|Vessel Visits") 
    Set ObjSearchVesselVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
    aqUtils.Delay 2000
-   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("Vessel_Visit")),"VesselVisits")
+   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("VesselVisit")),"VesselVisits")
    Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,"[Enter]","VesselVisit")
    Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","VSL005",20, True)
    ObjSelectall.selectAll
@@ -333,18 +330,18 @@ Sub n4EditAdvanceVesselVisit(phase)
     Call CommonRoutines.EnterOperation(ObjVisitPhases,("Inbound"),"Inbound")
     Set ObjEstDateofArrival =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdETA.date",20, True)
     aqUtils.Delay 2000
-    Call CommonRoutines.EnterOperation(ObjEstDateofArrival,(flowData.Item("Est_Dateof_arrival")),"Estimated Date")
-    Call CommonRoutines.ClickOperation(ObjEstDateofArrival,"Est_Dateof_arrival")
+    Call CommonRoutines.EnterOperation(ObjEstDateofArrival,(flowData.Item("EstDateofarrival")),"Estimated Date")
+    Call CommonRoutines.ClickOperation(ObjEstDateofArrival,"EstDateofarrival")
     aqUtils.Delay 2000
     Set ObjEstTimeofArrivalTime =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdETA.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjEstTimeofArrivalTime,(flowData.Item("Est_Timeof_arrivalTime")),"Estimated Time")
-    Call CommonRoutines.ClickOperation(ObjEstTimeofArrivalTime,"Est_Timeof_arrivalTime")
+    Call CommonRoutines.EnterOperation(ObjEstTimeofArrivalTime,(flowData.Item("EstTimeofarrivalTime")),"Estimated Time")
+    Call CommonRoutines.ClickOperation(ObjEstTimeofArrivalTime,"EstTimeofarrivalTime")
     aqUtils.Delay 2000
     Set ObjEstDateofDepart =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdETD.date",20, True)
-    Call CommonRoutines.EnterOperation(ObjEstDateofDepart,(flowData.Item("Est_Dateof_Depart")),"Estimated Date Of Departed")
+    Call CommonRoutines.EnterOperation(ObjEstDateofDepart,(flowData.Item("EstDateofDepart")),"Estimated Date Of Departed")
     aqUtils.Delay 2000
     Set ObjEstTimeofDepartTime =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdETD.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjEstTimeofDepartTime,(flowData.Item("Est_Timeof_DepartTime")),"Estimated Tme Of Departed")
+    Call CommonRoutines.EnterOperation(ObjEstTimeofDepartTime,(flowData.Item("EstTimeofDepartTime")),"Estimated Tme Of Departed")
     Call CommonRoutines.EnterOperation(ObjEstTimeofDepartTime,"[Tab]","Tab")
     Set SaveAdvanceVesselVisit = Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
     Call CommonRoutines.ClickOperation(SaveAdvanceVesselVisit,"Save")
@@ -353,9 +350,9 @@ Sub n4EditAdvanceVesselVisit(phase)
     Call CommonRoutines.EnterOperation(ObjVisitPhases,("Arrived"),"Arrived")
     Set ObjActDateofArrival =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdCv.cvATA.date",20, True)
     aqUtils.Delay 2000
-    Call CommonRoutines.EnterOperation(ObjActDateofArrival,(flowData.Item("Act_Dateof_Arrival")),"Actual DateOF Arrival")
+    Call CommonRoutines.EnterOperation(ObjActDateofArrival,(flowData.Item("ActDateofArrival")),"Actual DateOF Arrival")
     Set ObjActTimeofArrivalTime =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdCv.cvATA.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjActTimeofArrivalTime,(flowData.Item("Act_Timeof_ArrivalTime")),"Act Timeof Arrival")
+    Call CommonRoutines.EnterOperation(ObjActTimeofArrivalTime,(flowData.Item("ActTimeofArrivalTime")),"Act Timeof Arrival")
     aqUtils.Delay 2000
     Call CommonRoutines.EnterOperation(ObjActTimeofArrivalTime,"[Tab]","Tab")
     Set SaveAdvanceVesselVisit = Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
@@ -364,10 +361,10 @@ Sub n4EditAdvanceVesselVisit(phase)
    ElseIf phase = "Working" and ExistingPhase = "Arrived" Then
     Call CommonRoutines.EnterOperation(ObjVisitPhases,("Working"),"Working")
     Set ObjDateofStartWork =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","vvdTimeStartWork.date",20, True)
-    Call CommonRoutines.EnterOperation(ObjDateofStartWork,(flowData.Item("Date_StartWork")),"Date Of start Work")
+    Call CommonRoutines.EnterOperation(ObjDateofStartWork,(flowData.Item("DateStartWork")),"Date Of start Work")
     aqUtils.Delay 2000 
     Set ObjTimeStartWorkTime =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","vvdTimeStartWork.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjTimeStartWorkTime,(flowData.Item("Time_StartWorkTime")),"Time StartWorks")
+    Call CommonRoutines.EnterOperation(ObjTimeStartWorkTime,(flowData.Item("TimeStartWorkTime")),"Time StartWorks")
     Set SaveAdvanceVesselVisit = Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
     aqUtils.Delay 1000
     Call CommonRoutines.ClickOperation(SaveAdvanceVesselVisit,"Save")
@@ -376,10 +373,10 @@ Sub n4EditAdvanceVesselVisit(phase)
     Call CommonRoutines.EnterOperation(ObjVisitPhases,("Complete"),"Complete")
     Set ObjEndWork =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","vvdTimeEndWork.date",20, True)
     aqUtils.Delay 1000
-    Call CommonRoutines.EnterOperation(ObjEndWork,(flowData.Item("Date_EndWork")),"Date End Works")
+    Call CommonRoutines.EnterOperation(ObjEndWork,(flowData.Item("DateEndWork")),"Date End Works")
     aqUtils.Delay 2000
     Set ObjEndWorkTime =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","vvdTimeEndWork.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjEndWorkTime,(flowData.Item("Time_EndWork")),"Time End Works")
+    Call CommonRoutines.EnterOperation(ObjEndWorkTime,(flowData.Item("TimeEndWork")),"Time End Works")
     aqUtils.Delay 500
     Set SaveAdvanceVesselVisit = Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
     aqUtils.Delay 1000
@@ -389,10 +386,10 @@ Sub n4EditAdvanceVesselVisit(phase)
     Call CommonRoutines.EnterOperation(ObjVisitPhases,("Departed"),"Departed")
     Set ObjActDateOfDepart =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdCv.cvATD.date",20, True)
     aqUtils.Delay 2000
-    Call CommonRoutines.EnterOperation(ObjActDateOfDepart,(flowData.Item("Act_DateofDepart")),"Act Date of Departed")
+    Call CommonRoutines.EnterOperation(ObjActDateOfDepart,(flowData.Item("ActDateofDepart")),"Act Date of Departed")
     aqUtils.Delay 2000
     Set ObjActTimeOfDepart =  Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","cvdCv.cvATD.time",20, True)
-    Call CommonRoutines.EnterOperation(ObjActTimeOfDepart,(flowData.Item("Act_TimeofDepart")),"Act Time of Departed")
+    Call CommonRoutines.EnterOperation(ObjActTimeOfDepart,(flowData.Item("ActTimeofDepart")),"Act Time of Departed")
     aqUtils.Delay 2000
     Set SaveAdvanceVesselVisit = Aliases.jp2launcher.n4AddAdvanceVesselVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
     Call CommonRoutines.ClickOperation(SaveAdvanceVesselVisit,"Save")
@@ -416,6 +413,29 @@ Sub n4EditAdvanceVesselVisit(phase)
     Call CommonRoutines.ClickOperation(SaveAdvanceVesselVisit,"Cancel")
     Log.Checkpoint  "Vessel Visit Successfully Canceled"   
    End If  
+End Sub
+
+Sub Play
+
+ 
+' Call CommonRoutines.fetchData("n4VesselVisit")
+'' Call SparcsN4CommonRoutines.n4SelectWorkMode
+'' Call n4VesselVisit
+'  Call n4VesselVisitDelete
+   
+ Call CommonRoutines.fetchData("n4AdvanceVesselVisit")
+ Call SparcsN4CommonRoutines.n4SelectWorkMode
+ Call n4EditAdvanceVesselVisit("Inbound")
+ Call n4EditAdvanceVesselVisit("Arrived")
+ Call n4EditAdvanceVesselVisit("Working")
+ Call n4EditAdvanceVesselVisit("Complete")
+
+ Call n4EditAdvanceVesselVisit("Departed")
+ Call n4EditAdvanceVesselVisit("Closed")
+Call n4EditAdvanceVesselVisit("Archived")
+ Call n4EditAdvanceVesselVisit("Canceled")
+
+
 End Sub
 
 
