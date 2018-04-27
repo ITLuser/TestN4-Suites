@@ -109,13 +109,13 @@ Sub ReplaceStringInPlayScript(PlayScriptFile,Stringkey,Stringval)
   Set FSO = CreateObject("scripting.filesystemobject")
   Set readfile = fso.OpenTextFile (DestinationFile, 1) 
   Contentintxtfile = readfile.ReadAll
-  Arraykey = Split(Stringkey , "~")
+'  Arraykey = Split(Stringkey , "~")
   Arrayval = Split(Stringval , "~")
-  Lengthkey = UBound(Arraykey)
+  Lengthkey = UBound(Stringkey)
   Lengthval = UBound(Arrayval)
   If Lengthkey = Lengthval Then 
-    For i = LBound(Arraykey) to UBound(Arraykey)
-      Contentintxtfile = Replace(Contentintxtfile,Arraykey(i),Arrayval(i))
+    For i = LBound(Stringkey) to UBound(Stringkey)
+      Contentintxtfile = Replace(Contentintxtfile,Stringkey(i),Arrayval(i))
     Next
   Else
     Log.Error "Key length and value length are not matching"    
@@ -162,9 +162,11 @@ Sub RunXpsScript
   Call CommonRoutines.fetchData("XpsOpenVessel")
   Call OpenXPS
   Call xpsLogIn
-  Call ReplaceStringInPlayScript(flowData.Item("PlayScriptFileName"),flowData.Item("KeyInPlayScript"),flowData.Item("ValueInPlayScript"))
+  Dim ValInScript
+  ValInScript = Array("VESSELVISIT","GCRANETWIN")
+  Call ReplaceStringInPlayScript(flowData.Item("PlayScriptFileName"),ValInScript,flowData.Item("ValueInPlayScript"))
   Call xpsSelectPlayScript
   aqUtils.Delay 4000
   Call xpsPlayScriptWindowClose
-  Call xpsCloseApplication
+  'Call xpsCloseApplication
 End Sub
