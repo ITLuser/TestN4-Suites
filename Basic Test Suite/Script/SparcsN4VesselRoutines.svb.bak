@@ -415,27 +415,6 @@ Sub n4EditAdvanceVesselVisit(phase)
    End If  
 End Sub
 
-Sub Play
 
- 
-' Call CommonRoutines.fetchData("n4VesselVisit")
-'' Call SparcsN4CommonRoutines.n4SelectWorkMode
-'' Call n4VesselVisit
-'  Call n4VesselVisitDelete
-   
- Call CommonRoutines.fetchData("n4AdvanceVesselVisit")
- Call SparcsN4CommonRoutines.n4SelectWorkMode
- Call n4EditAdvanceVesselVisit("Inbound")
- Call n4EditAdvanceVesselVisit("Arrived")
- Call n4EditAdvanceVesselVisit("Working")
- Call n4EditAdvanceVesselVisit("Complete")
-
- Call n4EditAdvanceVesselVisit("Departed")
- Call n4EditAdvanceVesselVisit("Closed")
-Call n4EditAdvanceVesselVisit("Archived")
- Call n4EditAdvanceVesselVisit("Canceled")
-
-
-End Sub
 
 
