@@ -1,0 +1,64 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+'USEUNIT N4MobileYardInventoryCommonRoutines
+
+
+'To Check whether N4 mobile displays Unit information when Clerk queries the container.
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID = YINV.101
+'TC Description = N4 mobile displays Unit information when Clerk queries the container.
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on Right arrow
+'Expected Result:
+'1.	The information about the particular unit will be displayed.
+Sub YINV_101
+  Call CommonRoutines.fetchData("YINV_101")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Set ObjId = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+  dim ID 
+  ID = ObjId.innerText
+  Log.Checkpoint("Unit ID is "+ID)
+  Set ObjDep = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitDep_outputText", 20, True)
+  dim Departure
+  Departure = ObjDep.innerText
+  Log.Checkpoint("Departure is "+Departure)
+  Set ObjClass = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitClass_outputText", 20, True)
+  Dim UnitClass
+  UnitClass = ObjClass.innerText
+  Log.Checkpoint("Unit Class is "+UnitClass)
+  Set ObjLine = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvLineOperator_outputText", 20, True)
+  Dim Line
+  Line = ObjLine.innerText
+  Log.Checkpoint("Unit Line is "+Line)
+  Set ObjISO = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitISO_outputText", 20, True)
+  Dim ISO
+  ISO = ObjISO.innerText
+  Log.Checkpoint("ISO type is "+ISO)
+  Set ObjPOD = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvPortOfDischarge_outputText", 20, True)
+  Dim POD
+  POD = ObjPOD.innerText
+  Log.Checkpoint("Port of Discharge is "+POD)
+  Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
+  Dim Status
+  Status = ObjStatus.innerText
+  Log.Checkpoint("Freight kind of unit is "+Status)
+  
+  
+  
+  
+  
+End Sub
