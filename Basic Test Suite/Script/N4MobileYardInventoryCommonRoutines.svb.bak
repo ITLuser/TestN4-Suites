@@ -1,0 +1,275 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+'To Select Program in YardInventoryOperations in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileSelectYardInvOp
+  Dim ObjQuery, ObjWheeled, ObjGrounded
+  Set ObjQuery = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvQueryButton_input",20,True)
+    If ObjQuery.WaitProperty("Exists", True,50000) Then
+      SelYardInventoryOperation = (flowData.Item("n4MobileYardInventoryOperation"))
+      'SelYardInventoryOperation = "Query"
+        If SelYardInventoryOperation = "Query" Then
+          Call CommonRoutines.ClickOperation(ObjQuery,"Query Button")
+          aqUtils.Delay 2000
+            If Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvContainer_input",20,True).Visible Then
+              Log.Checkpoint("Container Query selected successfully")
+            Else
+              Log.Error("Container Query selection failed")
+            End If
+        End If
+        If SelYardInventoryOperation = "Wheeled" Then
+          Set ObjWheeled = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvWheeledButton_input",20,True)
+          Call CommonRoutines.ClickOperation(ObjWheeled,"Wheeled Button")
+            If Aliases.browser.FindChild("idStr","program:YINVWheeledPosition-yinvPos_input",20,True).Visible Then
+              Log.Checkpoint("Wheeled selected successfully")
+            Else
+              Log.Error("Wheeled selection failed")
+            End If
+        End If
+        If SelYardInventoryOperation = "Grounded" Then
+          Set ObjGrounded = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvGroundedButton_input",20,True)
+          Call CommonRoutines.ClickOperation(ObjGrounded,"Grounded Button")
+            If Aliases.browser.FindChild("idStr","program:YINVGroundedPosition-yinvPos_input",20,True).Visible Then
+              Log.Checkpoint("Grounded selected successfully")
+            Else
+              Log.Error("Grounded selection failed")
+            End If
+        End If
+    End If
+End Sub
+
+'To Query Container Yard Inventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileQueryContainerYardInventory
+  Set ObjContainer = Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvContainer_input",20,True)
+    If ObjContainer.Visible Then
+      Call CommonRoutines.EnterOperation(ObjContainer,flowData.Item("n4YinvQueryContainer"),"Yard Inventory Query Container")
+      Set ObjSend = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
+      Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+      aqUtils.Delay 2000
+        'Set Mouse = Aliases.browser.FindChild("ObjectType","BrowserWindow",20,True)
+        If Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True).Visible Then
+          Log.Checkpoint("Container Query is successful")
+        Else
+          Log.Error("Container Query failed")
+        End If
+    End If
+End Sub
+
+'To Query Container Yard Inventory and Click inspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryQueryClickInspection
+  If Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True).Visible Then
+    Set ObjInspection = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True)
+    ObjInspection.scrollIntoViewIfNeeded
+    Call CommonRoutines.ClickOperation(ObjInspection,"Inspection button")
+  End If
+End Sub
+
+'To Enter seal to a container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterSeal
+  aqUtils.Delay 2000
+  If Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True).Visible Then
+    Set ObjSeal = Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjSeal,"Seal Button")
+    aqUtils.Delay 2000
+      If Aliases.browser.FindChild("idStr", "program:MYI008-mySeal1_input", 20, True).Visible Then
+        Set ObjSeal1 = Aliases.browser.FindChild("idStr", "program:MYI008-mySeal1_input", 20, True)
+        ObjSeal1.SetText(flowData.Item("n4YinvQueryContainerSeal1"))
+        Set ObjSeal2 = Aliases.browser.FindChild("idStr", "program:MYI008-mySeal2_input", 20, True)
+        ObjSeal2.SetText(flowData.Item("n4YinvQueryContainerSeal2"))
+        Set ObjSeal3 = Aliases.browser.FindChild("idStr", "program:MYI008-mySeal3_input", 20, True)
+        ObjSeal3.SetText(flowData.Item("n4YinvQueryContainerSeal3"))
+        Set ObjSeal4 = Aliases.browser.FindChild("idStr", "program:MYI008-mySeal4_input", 20, True)
+        ObjSeal4.SetText(flowData.Item("n4YinvQueryContainerSeal4"))
+        Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+        Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
+            Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+            Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+            Log.Checkpoint("Seal Values are entered")
+          Else
+            Log.Error("Failed to enter Seal values")
+          End If
+      End If
+  End If  
+End Sub
+
+'To Enter Damage to a container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterDamage
+  aqUtils.Delay 2000
+  If Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True).Visible Then
+    Set ObjDamage  = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjDamage,"Damage Button")
+    aqUtils.Delay 2000
+      If Aliases.browser.FindChild("idStr", "program:MYI003-myDamageL1_input", 20, True).Visible Then
+        Set ObjDamageComponent = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageL1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageComponent,flowData.Item("n4YinvQueryContainerDamageComponent1"),"Damage Component1")
+        Set ObjDamageType = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageT1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageType,flowData.Item("n4YinvQueryContainerDamageType1"),"Damage Type1")
+        Set ObjDamageSeverity = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageS1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageSeverity,flowData.Item("n4YinvQueryContainerDamageSeverity1"),"Damage Severity")
+        Set ObjDamageLocation = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageLocation1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageLocation,flowData.Item("n4YinvQueryContainerDamageLocation1"),"Damage Location")
+        Set ObjDamageQuantity = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageQ1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageQuantity,flowData.Item("n4YinvQueryContainerDamageQuantity1"),"Damage Quantity")
+        Set ObjDamageWidth = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageW1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageWidth,flowData.Item("n4YinvQueryContainerDamageWidth1"),"Damage Width")
+        Set ObjDamageLength = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageLN1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageLength,flowData.Item("n4YinvQueryContainerDamageLength1"),"Damage Length")
+        Set ObjDamageDeep = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageD1_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjDamageDeep,flowData.Item("n4YinvQueryContainerDamageDeep1"),"Damage Deep")
+        Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+        Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
+            aqUtils.Delay 2000
+            Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+            Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+            Log.Checkpoint("Damage Added Successfully")
+          Else
+            Log.Checkpoint("Failed to add Damage")
+          End If 
+      End If
+  End If  
+End Sub
+
+'To Enter Weight to a container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterWeight
+  If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True).Visible Then
+    Set ObjWeight = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjWeight,"Weight")
+      If Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True).Visible Then
+        Set ObjSafeWeight = Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True)
+        ObjSafeWeight.SetText(flowData.Item("n4YinvQueryContainerSafeWeight"))
+        Set ObjTareWeight = Aliases.browser.FindChild("idStr", "program:MYI010-myTareWeight_input", 20, True)
+        ObjTareWeight.SetText(flowData.Item("n4YinvQueryContainerTareWeight"))
+        Set ObjCSCDate = Aliases.browser.FindChild("idStr", "program:MYI011-myCscDate_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjCSCDate,flowData.Item("n4YinvQueryContainerCSCDate"),"CSC Date") 
+        Set ObjMNF = Aliases.browser.FindChild("idStr", "program:MYI011-myCscMnfDate_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjMNF,flowData.Item("n4YinvQueryContainerMNF"),"MNF")
+        Set ObjMNRStatus = Aliases.browser.FindChild("idStr", "program:MYI011-myCscMnfDate_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjMNRStatus,flowData.Item("n4YinvQueryContainerMNRStatus"),"MNRStatus")
+        Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+        Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 2000
+          If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
+            aqUtils.Delay 2000
+            Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+            Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+            Log.Checkpoint("Safe weight and Tare Weight Added Successfully")
+          Else
+            Log.Checkpoint("Failed to add Safe Weight and Tare Weight")
+          End If 
+      End If
+  End If
+End Sub
+
+'To Enter OOG value to a container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterOOG
+  If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True).Visible Then
+    Set ObjOOG =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjOOG,"OOG Button")
+      If Aliases.browser.FindChild("idStr", "program:MYI006-myOverHeight_input", 20, True).Visible Then
+        Set ObjOverHeight = Aliases.browser.FindChild("idStr", "program:MYI006-myOverHeight_input", 20, True)
+        ObjOverHeight.SetText(flowData.Item("n4YinvQueryContainerOverHeight"))
+        Set ObjOverLeft = Aliases.browser.FindChild("idStr", "program:MYI006-myOverLeft_input", 20, True)
+        ObjOverLeft.SetText(flowData.Item("n4YinvQueryContainerOverLeft"))
+        Set ObjOverRight = Aliases.browser.FindChild("idStr", "program:MYI006-myOverRight_input", 20, True)
+        ObjOverRight.SetText(flowData.Item("n4YinvQueryContainerOverRight"))
+        Set ObjOverFore = Aliases.browser.FindChild("idStr", "program:MYI006-myOverFwd_input", 20, True)
+        ObjOverFore.SetText(flowData.Item("n4YinvQueryContainerOverFore"))
+        Set ObjOverAft = Aliases.browser.FindChild("idStr", "program:MYI006-myOverAft_input", 20, True)
+        ObjOverAft.SetText(flowData.Item("n4YinvQueryContainerOverAft"))
+        Set ObjOverUnits = Aliases.browser.FindChild("idStr", "program:MYI006-myOverSizeUnits_input", 20, True)
+        ObjOverUnits.SetText(flowData.Item("n4YinvQueryContainerUnits"))
+        Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+        Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 2000
+          If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
+            aqUtils.Delay 2000
+            Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+            Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+            Log.Checkpoint("OOG Values Added Successfully")
+          Else
+            Log.Checkpoint("Failed to add OOG Values")
+          End If 
+      End If 
+  End If
+End Sub
+
+'To Enter Grade value to a container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterGrade
+  If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True).Visible Then
+    Set ObjGrade =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjGrade,"Add Button") 
+      If Aliases.browser.FindChild("idStr", "program:MYI012-myContainerGrade_input", 20, True).Visible Then
+        Set ObjGradeValue =  Aliases.browser.FindChild("idStr", "program:MYI012-myContainerGrade_input", 20, True)
+        Call CommonRoutines.EnterOperation(ObjGradeValue,flowData.Item("n4YinvQueryContainerGradeValue"),"Grade Value")
+        Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+        Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 2000
+          If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
+            aqUtils.Delay 2000
+            Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+            Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+            Log.Checkpoint("Grade Added Successfully")
+          Else
+            Log.Checkpoint("Failed to add Grade Value")
+          End If
+      End If
+  End If
+
+End Sub
+Sub Main
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call n4mobileSelectYardInvOp
+  Call n4mobileQueryContainerYardInventory
+  Call n4mobileYardInventoryQueryClickInspection
+  'Call n4mobileYardInventoryEnterSeal
+  'Call n4mobileYardInventoryEnterDamage
+  'Call n4mobileYardInventoryEnterWeight
+  'Call n4mobileYardInventoryEnterOOG
+  'Call n4mobileYardInventoryEnterGrade
+  'Call N4MobileCommonRoutines.CloseN4Mobile
+End Sub
