@@ -12,7 +12,7 @@ Sub n4LogIn
     Log.Checkpoint("N4 is already launched")
     Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Else
-    Call CommonRoutines.OpenN4
+    Call n4Open
     If Aliases.jp2launcher.n4Loginview.WaitProperty("Exists", True,50000) And Aliases.jp2launcher.n4Loginview.WaitProperty("Visible", True,50000) Then 
       Set ObjUserName = Aliases.jp2launcher.FindChild("AWTComponentName", "username", "20", "true")
       Call CommonRoutines.EnterOperation(ObjUserName,(flowData.Item("User Name")),"UserName")
@@ -124,8 +124,8 @@ Sub n4CreateCarrierService
   Dim ObjCreateService,ObjServiceID,ObjServiceName,ObjMode,CarrierMode,ObjAddPoint,ObjPoint,Port(4),ObjSaveService,ObjRefresh,ObjSearch,ObjEdit,ObjTable
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Call n4SelectWorkMode
-  aqUtils.Delay 2000
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Carriers|Carrier Services")
+  aqUtils.Delay 2000
   Set ObjCreateService = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20,True)
   Call CommonRoutines.ClickOperation(ObjCreateService,"Add Button")
   Set ObjServiceID = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName","srvcId",20,True)

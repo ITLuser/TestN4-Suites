@@ -12,7 +12,7 @@ Sub n4LogIn
     Log.Checkpoint("N4 is already launched")
     Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Else
-    Call CommonRoutines.OpenN4
+    Call n4Open
     If Aliases.jp2launcher.n4Loginview.WaitProperty("Exists", True,50000) And Aliases.jp2launcher.n4Loginview.WaitProperty("Visible", True,50000) Then 
       Set ObjUserName = Aliases.jp2launcher.FindChild("AWTComponentName", "username", "20", "true")
       Call CommonRoutines.EnterOperation(ObjUserName,(flowData.Item("User Name")),"UserName")
@@ -124,8 +124,8 @@ Sub n4CreateCarrierService
   Dim ObjCreateService,ObjServiceID,ObjServiceName,ObjMode,CarrierMode,ObjAddPoint,ObjPoint,Port(4),ObjSaveService,ObjRefresh,ObjSearch,ObjEdit,ObjTable
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Call n4SelectWorkMode
-  aqUtils.Delay 2000
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Carriers|Carrier Services")
+  aqUtils.Delay 2000
   Set ObjCreateService = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20,True)
   Call CommonRoutines.ClickOperation(ObjCreateService,"Add Button")
   Set ObjServiceID = Aliases.jp2launcher.n4AddCarrierServiceWindow.FindChild("AWTComponentName","srvcId",20,True)
@@ -241,15 +241,15 @@ Sub n4CreateLineoperator
      Call CommonRoutines.EnterOperation(ObjLinename,"[Tab]","Tab") 
      Set Objname = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuName",20, True)
      Call CommonRoutines.ClickOperation(Objname,"LineOperatorName")
-     Call CommonRoutines.EnterOperation(Objname,(flowData.Item("LineOperator_Name")),"LineOperatorName") 
+     Call CommonRoutines.EnterOperation(Objname,(flowData.Item("LineOperatorName")),"LineOperatorName") 
      Call CommonRoutines.EnterOperation(Objname,"[Tab]","Tab") 
      Set ObjScac = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuScac",20, True)
      Call CommonRoutines.ClickOperation(ObjScac,"ScacCode")
-     Call CommonRoutines.EnterOperation(ObjScac,(flowData.Item("Scac_Code")),"ScacCode") 
+     Call CommonRoutines.EnterOperation(ObjScac,(flowData.Item("ScacCode")),"ScacCode") 
      Call CommonRoutines.EnterOperation(ObjScac,"[Tab]","Tab")
      aqUtils.Delay 1000
      Set ObjBIC = Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","bzuBic",20, True)
-     Call CommonRoutines.EnterOperation(ObjBIC,(flowData.Item("Bic_Code")),"BicCode")
+     Call CommonRoutines.EnterOperation(ObjBIC,(flowData.Item("BicCode")),"BicCode")
      Set Save =  Aliases.jp2launcher.n4AddLineOperatorWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
      Call CommonRoutines.ClickOperation(Save,"Savelineoperator")
     End If
@@ -269,6 +269,7 @@ Sub n4CreateLineoperator
    End If
   End If
 End Sub
+
 'To Purge Lineoperator 
 'Input Parameters: By using Dictionary Object
 'Created: 05/04/2018 
@@ -300,6 +301,7 @@ Sub n4PurgeLineoperator
     Log.Checkpoint "Line operator already Purged"
    End If
 End Sub
+
 'To DeleteLineOperator
 'Input Parameters: By using Dictionary Object
 'Created: 05/04/2018 
@@ -395,4 +397,11 @@ Sub n4ImportSnxFile
   End If
 End Sub
 
+Sub Main
+  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  'Call n4LogIn
+  Call n4CreateCarrierService
+  Call n4PurgeCarrierService
+  Call n4Close
+End Sub
 
