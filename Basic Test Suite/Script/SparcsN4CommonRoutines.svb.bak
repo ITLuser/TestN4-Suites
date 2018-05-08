@@ -397,11 +397,15 @@ Sub n4ImportSnxFile
   End If
 End Sub
 
-Sub Main
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
-  'Call n4LogIn
-  Call n4CreateCarrierService
-  Call n4PurgeCarrierService
-  Call n4Close
+
+Sub n4SearchUnit
+   Dim ObjHomeView,ObjSearchUnit,ObjProcessFile
+  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  ObjHomeView.Click("Windows|Close All Tabs")
+  ObjHomeView.Click("Unit|Units")
+  Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   Call CommonRoutines.EnterOperation(ObjSearchUnit,(flowData.Item("UnitId")),"Container Number")
+    Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
 End Sub
+
 
