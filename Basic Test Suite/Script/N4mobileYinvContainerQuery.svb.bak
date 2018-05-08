@@ -1,7 +1,6 @@
 ﻿'USEUNIT CommonRoutines
 'USEUNIT N4MobileCommonRoutines
 'USEUNIT N4MobileYardInventoryCommonRoutines
-'USEUNIT SparcsN4CommonRoutines
 
 
 'To Check whether N4 mobile displays Unit information when Clerk queries the container.
@@ -23,6 +22,7 @@
 'Expected Result:
 '1.	The information about the particular unit will be displayed.
 Sub YINV_101
+  Dim ObjId,ObjDep,ObjClass,ObjLine,ObjISO,ObjPOD,ObjStatus
   Call CommonRoutines.fetchData("YINV_101")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -46,52 +46,30 @@ Sub YINV_101
   Call N4MobileCommonRoutines.n4MobileLogout
   
   
-  
-  
-  
 End Sub
-<<<<<<< HEAD
 
-'To update seal values to unit using yard inventory form in n4 mobile 
-'Input Parameters: By using Dictionary Object
-'Created: 08/05/2018 
-'Created by: Aswini Uthayakumar
-'Reviewed:
-'Reviewed by:
-
-'TCID = YINV.103
-'TC Description = To update seal values to unit using yard inventory form in n4 mobile.
+'TCID: YINV.102
+'TC Description: N4 mobile prepopulates the chassis number if the carriage equipment is known.
 'Test Steps: 
-'1.	Login N4 Mobile using valid credentials
-'2.	Select scope 
-'3.	Click on Yard inventory button
-'4.	Click on Query button
-'5.	Enter the Unit which is in yard in the ID field 
-'6.	Click on the Right arrow
-'7.	Click on Inspection button
-'8.	Click on S button
-'9.	Enter the Seal values
-'10.	Click on the Right arrow
-'11.	Login N4
-'12.	Select Scope
-'13.	Go to Units tab
-'14.	Search for the Unit
-'15.	Click on Update>Seals
+'1.    Login N4 Mobile using valid credentials
+'2.    Select scope 
+'3.    Click on Yard inventory button
+'4.    Click on Query button
+'5.    Enter the Unit which is mounted on a chassis and located in yard in the ID field
+'6.    Click on the Right arrow
 'Expected Result:
-'1.	Seal value will be updated to the unit
-Sub YINV_103
-  Call CommonRoutines.fetchData("YINV_103")
+'1.    The Carriage equipment attached to the container will be displayed in the Chassis field.
+
+Sub YINV_102
+  Dim ObjChs
+  Call CommonRoutines.fetchData("YINV_101")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
   Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
   Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
-  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
-  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterSeal
-  Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4ScopeSelection
-  Call SparcsN4CommonRoutines.n4SelectWorkMode
+  Set ObjChs = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitCHS_input", 20, True)
+  Call aqObject.CheckProperty(ObjChs, "text", cmpEqual, "SBS04")
+    
+  
 End Sub
-
-=======
->>>>>>> adcea8a0ab2980b3a9462e53197e3663c4c2ece8
