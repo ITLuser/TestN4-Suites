@@ -50,7 +50,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileQueryContainerYardInventory
-  Dim ObjContainer, ObjSend
   Set ObjContainer = Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvContainer_input",20,True)
     If ObjContainer.Visible Then
       Call CommonRoutines.EnterOperation(ObjContainer,flowData.Item("n4YinvQueryContainer"),"Yard Inventory Query Container")
@@ -73,7 +72,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryQueryClickInspection
-  Dim ObjInspection
   If Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True).Visible Then
     Set ObjInspection = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True)
     ObjInspection.scrollIntoViewIfNeeded
@@ -88,7 +86,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterSeal
-  Dim ObjSeal,ObjSeal1,ObjSeal2,ObjSeal3,ObjSeal4, ObjSend, ObjCommit
   aqUtils.Delay 2000
   If Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True).Visible Then
     Set ObjSeal = Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True)
@@ -123,7 +120,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterDamage
-  Dim ObjDamage, ObjCommit, ObjDamageComponent, ObjDamageDeep, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
   aqUtils.Delay 2000
   If Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True).Visible Then
     Set ObjDamage  = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True)
@@ -167,7 +163,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterWeight
-  Dim ObjCommit, ObjCSCDate, ObjMNF, ObjMNRStatus, ObjSafeWeight, ObjSend, ObjTareWeight, ObjWeight
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True).Visible Then
     Set ObjWeight = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjWeight,"Weight")
@@ -204,7 +199,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterOOG
-  Dim ObjCommit, ObjOOG, ObjOverAft, ObjOverFore, ObjOverHeight, ObjOverLeft, ObjOverRight, ObjOverUnits, ObjSend
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True).Visible Then
     Set ObjOOG =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjOOG,"OOG Button")
@@ -243,7 +237,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterGrade
-  Dim ObjCommit, ObjGrade, ObjGradeValue, ObjSend
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True).Visible Then
     Set ObjGrade =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjGrade,"Add Button") 
@@ -264,4 +257,19 @@ Sub n4mobileYardInventoryEnterGrade
       End If
   End If
 
+End Sub
+Sub Main
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call n4mobileSelectYardInvOp
+  Call n4mobileQueryContainerYardInventory
+  Call n4mobileYardInventoryQueryClickInspection
+  'Call n4mobileYardInventoryEnterSeal
+  'Call n4mobileYardInventoryEnterDamage
+  'Call n4mobileYardInventoryEnterWeight
+  'Call n4mobileYardInventoryEnterOOG
+  'Call n4mobileYardInventoryEnterGrade
+  'Call N4MobileCommonRoutines.CloseN4Mobile
 End Sub

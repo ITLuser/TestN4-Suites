@@ -29,60 +29,23 @@ Sub YINV_101
   Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
   Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
   Set ObjId = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
-  dim ID 
-  ID = ObjId.innerText
-  Log.Checkpoint("Unit ID is "+ID)
+  Call aqObject.CheckProperty(ObjId, "contentText", cmpEqual, "SBSU1234570")
   Set ObjDep = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitDep_outputText", 20, True)
-  dim Departure
-  Departure = ObjDep.innerText
-  Log.Checkpoint("Departure is "+Departure)
+  Call aqObject.CheckProperty(ObjDep, "contentText", cmpEqual, "V-SBS03 (SB)")
   Set ObjClass = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitClass_outputText", 20, True)
-  Dim UnitClass
-  UnitClass = ObjClass.innerText
-  Log.Checkpoint("Unit Class is "+UnitClass)
+  Call aqObject.CheckProperty(ObjClass, "contentText", cmpEqual, "CONTAINER")
   Set ObjLine = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvLineOperator_outputText", 20, True)
-  Dim Line
-  Line = ObjLine.innerText
-  Log.Checkpoint("Unit Line is "+Line)
+  Call aqObject.CheckProperty(ObjLine, "contentText", cmpEqual, "SB")
   Set ObjISO = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitISO_outputText", 20, True)
-  Dim ISO
-  ISO = ObjISO.innerText
-  Log.Checkpoint("ISO type is "+ISO)
+  Call aqObject.CheckProperty(ObjISO, "contentText", cmpEqual, "2200")
   Set ObjPOD = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvPortOfDischarge_outputText", 20, True)
-  Dim POD
-  POD = ObjPOD.innerText
-  Log.Checkpoint("Port of Discharge is "+POD)
+  Call aqObject.CheckProperty(ObjPOD, "contentText", cmpEqual, "BAY")
   Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
-  Dim Status
-  Status = ObjStatus.innerText
-  Log.Checkpoint("Freight kind of unit is "+Status)
+  Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "FCL")
+  Call N4MobileCommonRoutines.n4MobileLogout
+  
+  
+  
+  
+  
 End Sub
-
-'To update seal values to unit using yard inventory form in n4 mobile 
-'Input Parameters: By using Dictionary Object
-'Created: 08/05/2018 
-'Created by: Aswini Uthayakumar
-'Reviewed:
-'Reviewed by:
-
-'TCID = YINV.103
-'TC Description = To update seal values to unit using yard inventory form in n4 mobile.
-'Test Steps: 
-'1.	Login N4 Mobile using valid credentials
-'2.	Select scope 
-'3.	Click on Yard inventory button
-'4.	Click on Query button
-'5.	Enter the Unit which is in yard in the ID field 
-'6.	Click on the Right arrow
-'7.	Click on Inspection button
-'8.	Click on S button
-'9.	Enter the Seal values
-'10.	Click on the Right arrow
-'11.	Login N4
-'12.	Select Scope
-'13.	Go to Units tab
-'14.	Search for the Unit
-'15.	Click on Update>Seals
-'Expected Result:
-'1.	Seal value will be updated to the unit
-
