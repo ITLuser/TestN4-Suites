@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="CommonRoutines" key="{0F437420-9C3A-4013-9118-D93A58732F54}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CommonRoutines.svb" />
+		</child>
+		<child name="ECN4CommonRoutines" key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ECN4CommonRoutines.svb" />
+		</child>
+		<child name="N4MobileCommonRoutines" key="{60726032-F55A-4038-AAC0-A8F4C4364402}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileCommonRoutines.svb" />
+		</child>
+		<child name="SparcsN4CommonRoutines" key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4CommonRoutines.svb" />
+		</child>
+		<child name="XPSCommonRoutines" key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="XPSCommonRoutines.svb" />
+		</child>
+		<child name="SparcsN4GateRoutines" key="{077E1B46-685F-4BD9-A97E-1DF95DE0DBE0}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4GateRoutines.svb" />
+		</child>
+		<child name="SparcsN4InventoryRoutines" key="{232F861E-1E36-4373-83B7-05AFB5F86298}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4InventoryRoutines.svb" />
+		</child>
+		<child name="SparcsN4OrdersRoutines" key="{247BFE4E-ECB0-43A7-AB6B-8631F41DDA14}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4OrdersRoutines.svb" />
+		</child>
+		<child name="SparcsN4RailRoutines" key="{489910FE-B816-4F0D-A72E-07F98571A874}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4RailRoutines.svb" />
+		</child>
+		<child name="SparcsN4VesselRoutines" key="{844A7F93-C9AD-42AD-8314-F40C0AC44D89}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4VesselRoutines.svb" />
+		</child>
+		<child name="N4MobileYardInventoryCommonRoutines" key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInventoryCommonRoutines.svb" />
+		</child>
+		<child name="N4mobileYinvContainerQuery" key="{5D8376C1-22E4-4BE0-B5F7-05B839A52B57}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4mobileYinvContainerQuery.svb" />
+		</child>
+	</children>
+	<folders>
+		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" />
+				<ref key="{077E1B46-685F-4BD9-A97E-1DF95DE0DBE0}" />
+				<ref key="{232F861E-1E36-4373-83B7-05AFB5F86298}" />
+				<ref key="{247BFE4E-ECB0-43A7-AB6B-8631F41DDA14}" />
+				<ref key="{489910FE-B816-4F0D-A72E-07F98571A874}" />
+				<ref key="{844A7F93-C9AD-42AD-8314-F40C0AC44D89}" />
+			</references>
+		</folder>
+		<folder caption="XPS" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" />
+			</references>
+		</folder>
+		<folder caption="N4 Mobile" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{60726032-F55A-4038-AAC0-A8F4C4364402}" />
+				<ref key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" />
+				<ref key="{5D8376C1-22E4-4BE0-B5F7-05B839A52B57}" />
+			</references>
+		</folder>
+		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" />
+			</references>
+		</folder>
+	</folders>
+</Root>
