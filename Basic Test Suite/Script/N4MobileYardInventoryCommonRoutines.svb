@@ -105,6 +105,7 @@ Sub n4mobileYardInventoryEnterSeal
         ObjSeal4.SetText(flowData.Item("n4YinvQueryContainerSeal4"))
         Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).Visible Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")

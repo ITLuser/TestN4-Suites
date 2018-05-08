@@ -243,6 +243,7 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterGrade
+  Dim ObjCommit, ObjGrade, ObjGradeValue, ObjSend
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True).Visible Then
     Set ObjGrade =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjGrade,"Add Button") 
