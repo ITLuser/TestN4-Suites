@@ -1,6 +1,7 @@
 ﻿'USEUNIT CommonRoutines
 'USEUNIT N4MobileCommonRoutines
 'USEUNIT N4MobileYardInventoryCommonRoutines
+'USEUNIT SparcsN4CommonRoutines
 
 
 'To Check whether N4 mobile displays Unit information when Clerk queries the container.
@@ -85,4 +86,17 @@ End Sub
 '15.	Click on Update>Seals
 'Expected Result:
 '1.	Seal value will be updated to the unit
+Sub YINV_103
+  Call CommonRoutines.fetchData("YINV_103")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterSeal
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4ScopeSelection
+  Call SparcsN4CommonRoutines.n4SelectWorkMode
+End Sub
 
