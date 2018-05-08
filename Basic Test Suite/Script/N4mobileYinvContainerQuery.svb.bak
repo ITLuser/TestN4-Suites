@@ -31,34 +31,29 @@ Sub YINV_101
   Set ObjId = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
   dim ID 
   ID = ObjId.innerText
-  Log.Checkpoint(ID)
+  Log.Checkpoint("Unit ID is "+ID)
   Set ObjDep = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitDep_outputText", 20, True)
   dim Departure
   Departure = ObjDep.innerText
-  Log.Checkpoint(Departure)
+  Log.Checkpoint("Departure is "+Departure)
   Set ObjClass = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitClass_outputText", 20, True)
   Dim UnitClass
   UnitClass = ObjClass.innerText
-  Log.Checkpoint(UnitClass)
+  Log.Checkpoint("Unit Class is "+UnitClass)
   Set ObjLine = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvLineOperator_outputText", 20, True)
   Dim Line
   Line = ObjLine.innerText
-  Log.Checkpoint(Line)
+  Log.Checkpoint("Unit Line is "+Line)
   Set ObjISO = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitISO_outputText", 20, True)
   Dim ISO
   ISO = ObjISO.innerText
-  Log.Checkpoint(ISO)
+  Log.Checkpoint("ISO type is "+ISO)
   Set ObjPOD = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvPortOfDischarge_outputText", 20, True)
   Dim POD
   POD = ObjPOD.innerText
-  Log.Checkpoint(POD)
+  Log.Checkpoint("Port of Discharge is "+POD)
   Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
   Dim Status
   Status = ObjStatus.innerText
-  Log.Checkpoint(Status)
-  
-  
-  
-  
-  
+  Log.Checkpoint("Freight kind of unit is "+Status)
 End Sub

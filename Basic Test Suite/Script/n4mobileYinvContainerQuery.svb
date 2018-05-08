@@ -56,9 +56,33 @@ Sub YINV_101
   Dim Status
   Status = ObjStatus.innerText
   Log.Checkpoint("Freight kind of unit is "+Status)
-  
-  
-  
-  
-  
 End Sub
+
+'To update seal values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID = YINV.103
+'TC Description = To update seal values to unit using yard inventory form in n4 mobile.
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on S button
+'9.	Enter the Seal values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units tab
+'14.	Search for the Unit
+'15.	Click on Update>Seals
+'Expected Result:
+'1.	Seal value will be updated to the unit
+
