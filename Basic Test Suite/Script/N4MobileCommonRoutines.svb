@@ -18,6 +18,7 @@ End Sub
 'Reviewed by:
 Sub n4MobileLogout
    Dim ObjLogoutButton
+   aqUtils.Delay 1500
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
    ObjLogoutButton.Click
    aqUtils.Delay 2000

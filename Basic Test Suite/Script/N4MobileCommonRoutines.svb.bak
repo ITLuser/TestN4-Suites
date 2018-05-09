@@ -10,6 +10,20 @@ Sub CloseN4Mobile
   Aliases.browser.Close
 End Sub
 
+'To Logout N4Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Anantha Narayanan
+'Reviewed:
+'Reviewed by:
+Sub n4MobileLogout
+   Dim ObjLogoutButton
+   Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
+   ObjLogoutButton.Click
+   aqUtils.Delay 2000
+End Sub
+
+
 'To Login N4Mobile
 'Input Parameters: By using Dictionary Object
 'Created: 03/05/2018 
