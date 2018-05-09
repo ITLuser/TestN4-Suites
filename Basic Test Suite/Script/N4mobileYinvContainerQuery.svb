@@ -138,3 +138,177 @@ Dim win, listbox, dropdown, seal1, seal2, seal3, seal4 , Issealed
   Call aqObject.CheckProperty(Issealed, "text", cmpEqual, "Yes")
   Call N4MobileCommonRoutines.n4MobileLogout
 End Sub
+
+'To update Damage values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.104
+'TC Description: To update damage values to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on D button
+'9.	Enter the Damage values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units tab
+'14.	Search for the Unit
+'15.	Click on Update > Damages
+'Expected Result:
+'1.	Damage value will be updated to the unit
+Sub YINV_104
+  Call CommonRoutines.fetchData("YINV_104")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterDamage
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4ScopeSelection
+  Call SparcsN4CommonRoutines.n4SelectWorkMode
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+End Sub
+
+'To update Weight values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.105
+'TC Description: To update weight details to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on W button
+'9.	Enter the Safe Weight and Tare Weight values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Container
+'14.	Search for the container
+'Expected Result:
+'1.	Safe weight and Tare weight will be updated to the unit
+Sub YINV_105
+  Call CommonRoutines.fetchData("YINV_105")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterWeight
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4ScopeSelection
+  Call SparcsN4CommonRoutines.n4SelectWorkMode
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+End Sub
+
+'To update OOG values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 09/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.106
+'TC Description: To update OOG details to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on O  button
+'9.	Enter the OOG values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units
+'14.	Search for the Unit>Update>Overdimensions
+'Expected Result:
+'1.	OOG will be updated to the unit
+Sub YINV_106
+  Call CommonRoutines.fetchData("YINV_106")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterOOG
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4ScopeSelection
+  Call SparcsN4CommonRoutines.n4SelectWorkMode
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+End Sub
+
+'To update Grade value to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 09/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.107
+'TC Description: To update Grade to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on A  button
+'9.	Enter the Grade value
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units
+'14.	Search for the Unit>Update>Physical status
+'Expected Result:
+'1.	Grade will be updated to the unit.
+
+Sub YINV_107
+  Call CommonRoutines.fetchData("YINV_107")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInvOp
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterGrade
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4ScopeSelection
+  Call SparcsN4CommonRoutines.n4SelectWorkMode
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+End Sub
