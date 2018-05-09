@@ -1,7 +1,7 @@
 ﻿'USEUNIT CommonRoutines
 'USEUNIT N4MobileCommonRoutines
 'USEUNIT N4MobileYardInventoryCommonRoutines
-
+'USEUNIT SparcsN4CommonRoutines
 
 'To Check whether N4 mobile displays Unit information when Clerk queries the container.
 'Input Parameters: By using Dictionary Object
@@ -115,7 +115,26 @@ Sub YINV_103
   Call SparcsN4CommonRoutines.n4SearchUnit
   Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
   ObjSelectall.selectAll
-  Set ObjAction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
-  Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
-  ObjAction.SwingPopupMenu.Click("Update|Seals")
+  ObjSelectall.Keys("[Enter]")
+'  Set ObjAction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
+'  Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
+'  ObjAction.SwingPopupMenu.Click("Update|Seals")
+Dim win, listbox, dropdown, seal1, seal2, seal3, seal4 , Issealed
+  Set win = Aliases.jp2launcher.FindChild("AWTComponentName","INSPECTOR_UNIT.UnitFacilityVisit",20, True)
+  Call win.Position(0, 0, 600, 400)
+  Set dropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call dropdown.Click
+  Set listbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Call listbox.ClickItem("Primary Equip.")
+  set seal1 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr1",20, True)
+  Call aqObject.CheckProperty(seal1, "text", cmpEqual, "S1")
+  set seal2 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr2",20, True)
+  Call aqObject.CheckProperty(seal2, "text", cmpEqual, "S2")
+  set seal3 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr3",20, True)
+  Call aqObject.CheckProperty(seal3, "text", cmpEqual, "S3")
+  set seal4 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr4",20, True)
+  Call aqObject.CheckProperty(seal4, "text", cmpEqual, "S4")
+  set Issealed = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitIsCtrSealed",20, True)
+  Call aqObject.CheckProperty(Issealed, "text", cmpEqual, "Yes")
+  Call N4MobileCommonRoutines.n4MobileLogout
 End Sub

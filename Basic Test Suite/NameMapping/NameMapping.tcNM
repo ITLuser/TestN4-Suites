@@ -341,6 +341,15 @@
 									</Property>
 								</Properties>
 							</Child>
+							<Child Name="INSPECTOR_UNIT_UnitFacilityVisit" Key="{3496AF13-4CCC-4A5B-84E6-CB149B5A1029}" ParallelWalk="True">
+								<Image FileName="1469041581" Left="2" Top="2" Right="924" Bottom="778" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="INSPECTOR_UNIT.UnitFacilityVisit" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
 						</Children>
 					</Child>
 					<Child Name="browser" Key="{5F007DB2-2C5E-4427-8E7B-6C8D07B7DBC6}" ParallelWalk="True">
@@ -393,6 +402,7 @@
 			<Child Name="n4ApplicationErrorWindow" Owner="{9DAD129C-41D4-43D6-9202-EE416445BE2D}" />
 			<Child Name="n4SnxImporterWindow" Owner="{9BEB4F71-E80A-4611-BD47-E55B250DFDE6}" />
 			<Child Name="n4AddRailRoadOperatorWindow" Owner="{B6A6F2E6-7529-4E8D-890A-AE2C159586C8}" />
+			<Child Name="n4UnitInspectorWindow" Owner="{3496AF13-4CCC-4A5B-84E6-CB149B5A1029}" />
 		</Child>
 		<Child Name="browser" Owner="{5F007DB2-2C5E-4427-8E7B-6C8D07B7DBC6}" />
 	</LogicalNodes>
