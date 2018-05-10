@@ -44,9 +44,14 @@ Sub YINV_101
   Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
   Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "FCL")
   Call N4MobileCommonRoutines.n4MobileLogout
-  
-  
 End Sub
+
+'To Check whether N4 mobile prepopulates the chassis number if the carriage equipment is known.
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Anantha Narayanan
+'Reviewed:
+'Reviewed by:
 
 'TCID: YINV.102
 'TC Description: N4 mobile prepopulates the chassis number if the carriage equipment is known.
@@ -102,7 +107,7 @@ End Sub
 'Expected Result:
 '1.	Seal value will be updated to the unit
 Sub YINV_103
-  Dim Objwin, Objlistbox, Objdropdown, Objseal1, Objseal2, Objseal3,Objseal4 , ObjIssealed
+  Dim Objwin, Objlistbox, Objdropdown, Objseal1, Objseal2, Objseal3,Objseal4 , ObjIssealed, ObjSelectall
   Call CommonRoutines.fetchData("YINV_103")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -184,7 +189,7 @@ End Sub
 
 'To update Weight values to unit using yard inventory form in n4 mobile 
 'Input Parameters: By using Dictionary Object
-'Created: 08/05/2018 
+'Created: 10/05/2018 
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
@@ -219,12 +224,24 @@ Sub YINV_105
   Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterWeight
+  Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4ScopeSelection
   Call SparcsN4CommonRoutines.n4SelectWorkMode
   Call SparcsN4CommonRoutines.n4SearchUnit
   Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
   ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Primary Equip.")
+  set ObjTareWeight = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipment.eqTareWeightKg",20, True)
+  Call aqObject.CheckProperty(ObjTareWeight, "text", cmpEqual, "2,000 ")
+  set ObjSafeWeight = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipment.eqSafeWeightKg",20, True)
+  Call aqObject.CheckProperty(ObjSafeWeight, "text", cmpEqual, "26,000 ")
 End Sub
 
 'To update OOG values to unit using yard inventory form in n4 mobile 

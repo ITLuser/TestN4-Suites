@@ -169,10 +169,12 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterWeight
   Dim ObjCommit, ObjCSCDate, ObjMNF, ObjMNRStatus, ObjSafeWeight, ObjSend, ObjTareWeight, ObjWeight
-  If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True).Visible Then
+  aqUtils.Delay 1500
+  If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True).WaitProperty("Visible", True,50000) Then
     Set ObjWeight = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjWeight,"Weight")
-      If Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True).Visible Then
+    aqUtils.Delay 1500
+      If Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True).WaitProperty("Visible", True,50000) Then
         Set ObjSafeWeight = Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True)
         ObjSafeWeight.SetText(flowData.Item("n4YinvQueryContainerSafeWeight"))
         Set ObjTareWeight = Aliases.browser.FindChild("idStr", "program:MYI010-myTareWeight_input", 20, True)

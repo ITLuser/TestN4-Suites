@@ -11,7 +11,7 @@ Set flowData = CreateObject("Scripting.Dictionary")
 Sub fetchData(fname)
   Call ClusterDetails
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
+  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITL-USER\Desktop\Test N4\TestData.xlsx")
   WorkSheetCount = objExcel.ActiveWorkbook.Worksheets.count
     For i = 1 to WorkSheetCount
       Set objDriverSheet = objExcel.ActiveWorkbook.Sheets(i)
@@ -49,7 +49,7 @@ Set flowData = CreateObject("Scripting.Dictionary")
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
   Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
+   ("C:\Users\ITL-USER\Desktop\Test N4\currentcluster.csv")
   Set objDriverSheet = objWorkbook.Worksheets("currentcluster")
   columncount = objDriverSheet.usedrange.columns.count
   rowcount = objDriverSheet.usedrange.rows.count
