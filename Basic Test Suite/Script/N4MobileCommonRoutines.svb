@@ -1,29 +1,16 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
 Sub OpenN4Mobile 
-
+  While Sys.WaitBrowser().Exists 
+    Call Sys.WaitBrowser().Close()
+  Wend
   Browsers.Item(btChrome).Run("http://192.168.1.144:8280/apex/entry.faces")
-  
+    
 End Sub
-'Method to close N4 Mobile
-Sub CloseN4Mobile
+'Method to close Browser
+Sub CloseBrowser
   Aliases.browser.Close
 End Sub
-
-'To Logout N4Mobile
-'Input Parameters: By using Dictionary Object
-'Created: 08/05/2018 
-'Created by: Anantha Narayanan
-'Reviewed:
-'Reviewed by:
-Sub n4MobileLogout
-   Dim ObjLogoutButton
-   aqUtils.Delay 1500
-   Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
-   ObjLogoutButton.Click
-   aqUtils.Delay 2000
-End Sub
-
 
 'To Login N4Mobile
 'Input Parameters: By using Dictionary Object
@@ -176,3 +163,15 @@ Sub n4mobileSelectProgram
     End If
 End Sub
 
+'To Logout N4Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Anantha Narayanan
+'Reviewed:
+'Reviewed by:
+Sub n4MobileLogout
+   Dim ObjLogoutButton
+   Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
+   ObjLogoutButton.Click
+   aqUtils.Delay 2000
+End Sub
