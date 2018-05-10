@@ -338,8 +338,6 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub n4Open
-
-  Call CommonRoutines.ClusterDetails
  
   ' Add a Java Web Start application to the project
   ind = TestedApps.AddJavaWebStartApp
