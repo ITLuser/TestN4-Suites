@@ -57,7 +57,11 @@ Public Sub ClusterDetails
     sCellName = Trim(objDriverSheet.Cells(1,col))
     sCellValue = Trim(objDriverSheet.Cells(2,Col))
     If Len(sCellValue) Then
+     If flowData.Exists(sCellName) Then
+      Log.Error "Column name already exist '" + sCellName + "' in sheet '" + objDriverSheet.Name +"'"
+     Else
       flowData.Add sCellName, sCellValue
+     End If
     End If   
   Next
   objExcel.Quit
