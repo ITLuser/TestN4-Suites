@@ -9,9 +9,10 @@ ReDim fieldvalueChar(1)
 'Reviewed by:
 Set flowData = CreateObject("Scripting.Dictionary")
 Sub fetchData(fname)
+flowData.RemoveAll
   Call ClusterDetails
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITL-USER\Desktop\Test N4\TestData.xlsx")
+  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\itluser\Desktop\Test N4\TestData.xlsx")
   WorkSheetCount = objExcel.ActiveWorkbook.Worksheets.count
     For i = 1 to WorkSheetCount
       Set objDriverSheet = objExcel.ActiveWorkbook.Sheets(i)
@@ -49,7 +50,7 @@ Set flowData = CreateObject("Scripting.Dictionary")
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
   Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\ITL-USER\Desktop\Test N4\currentcluster.csv")
+   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
   Set objDriverSheet = objWorkbook.Worksheets("currentcluster")
   columncount = objDriverSheet.usedrange.columns.count
   rowcount = objDriverSheet.usedrange.rows.count
@@ -57,7 +58,11 @@ Public Sub ClusterDetails
     sCellName = Trim(objDriverSheet.Cells(1,col))
     sCellValue = Trim(objDriverSheet.Cells(2,Col))
     If Len(sCellValue) Then
+     If flowData.Exists(sCellName) Then
+      Log.Error "Column name already exist '" + sCellName + "' in sheet '" + objDriverSheet.Name +"'"
+     Else
       flowData.Add sCellName, sCellValue
+     End If
     End If   
   Next
   objExcel.Quit
