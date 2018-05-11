@@ -28,6 +28,7 @@ End Sub
 Sub n4mobileLogin
   Dim ObjUserName,ObjPassword,ObjSend,ObjOperator
   Call OpenN4Mobile
+  aqUtils.Delay 1500
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
     If ObjUserName.WaitProperty("Exists", True,5000) Then
       Call CommonRoutines.EnterOperation(ObjUserName,flowData.Item("n4MobileUserName"),"Username")
@@ -35,7 +36,7 @@ Sub n4mobileLogin
       Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send")
-      aqUtils.Delay 1000
+      aqUtils.Delay 1500
         If Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_APPS_MANAGEMENT-resetButton_input",20,True).WaitProperty("Enabled",True,5000) Then
           Log.Checkpoint("User Logged in successfully")
         Else
@@ -52,6 +53,7 @@ End Sub
 'Reviewed by:
 Sub n4mobileScopeSelection
   Dim ObjOperator,ObjComplex, ObjFacility, ObjYard,ObjSend, ObjCheckElement
+  aqUtils.Delay 1500
   Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
     If ObjOperator.WaitProperty("Exists", True,5000) Then 
       ObjOperator.SetText(flowData.Item("n4MobileOperator"))
@@ -63,7 +65,7 @@ Sub n4mobileScopeSelection
       ObjYard.SetText(flowData.Item("n4MobileYard"))
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:site_2_SITE_SELECT",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-      aqUtils.Delay 1000
+      aqUtils.Delay 1500
         If Aliases.browser.FindChild("ObjectIdentifier","Yard Inventory(i)",20,True).WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Scope selected successfully")
         Else
@@ -79,7 +81,8 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileSelectProgram
-  Dim ObjCheckElement,ObjYardInspection, ObjReeferMonitor, ObjYardInventory,ObjCargoInventory, ObjGateInspection,ObjRailOperations,ObjDepothatchClerk, ObjRailInventory, ObjHatchClerk 
+  Dim ObjCheckElement,ObjYardInspection, ObjReeferMonitor, ObjYardInventory,ObjCargoInventory, ObjGateInspection,ObjRailOperations,ObjDepothatchClerk, ObjRailInventory, ObjHatchClerk
+  aqUtils.Delay 1500 
   Set ObjCheckElement = Aliases.browser.FindChild("idStr","framework:_id0",20,True)
     If ObjCheckElement.WaitProperty("Visible", True,5000) Then
       SelProgram = (flowData.Item("n4MobileProgram"))

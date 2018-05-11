@@ -9,6 +9,7 @@
 'Reviewed by:
 Sub n4mobileSelectYardInvOp
   Dim ObjQuery, ObjWheeled, ObjGrounded
+  aqUtils.Delay 1500
   Set ObjQuery = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvQueryButton_input",20,True)
     If ObjQuery.WaitProperty("Exists", True,5000) Then
       SelYardInventoryOperation = (flowData.Item("n4MobileYardInventoryOperation"))
@@ -23,6 +24,7 @@ Sub n4mobileSelectYardInvOp
         If SelYardInventoryOperation = "Wheeled" Then
           Set ObjWheeled = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvWheeledButton_input",20,True)
           Call CommonRoutines.ClickOperation(ObjWheeled,"Wheeled Button")
+          aqUtils.Delay 1500
             If Aliases.browser.FindChild("idStr","program:YINVWheeledPosition-yinvPos_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Wheeled selected successfully")
             Else
@@ -32,6 +34,7 @@ Sub n4mobileSelectYardInvOp
         If SelYardInventoryOperation = "Grounded" Then
           Set ObjGrounded = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvGroundedButton_input",20,True)
           Call CommonRoutines.ClickOperation(ObjGrounded,"Grounded Button")
+          aqUtils.Delay 1500
             If Aliases.browser.FindChild("idStr","program:YINVGroundedPosition-yinvPos_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Grounded selected successfully")
             Else
@@ -49,12 +52,14 @@ End Sub
 'Reviewed by:
 Sub n4mobileQueryContainerYardInventory
   Dim ObjContainer, ObjSend
+  aqUtils.Delay 1500
   Set ObjContainer = Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvContainer_input",20,True)
     If ObjContainer.WaitProperty("Exists", True,5000) Then
       Call CommonRoutines.EnterOperation(ObjContainer,flowData.Item("n4YinvQueryContainer"),"Yard Inventory Query Container")
       Set ObjSend = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-        If Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+      aqUtils.Delay 1500
+        If Aliases.browser.FindChild("ObjectIdentifier", "YINVUnit_yinvUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Container Query is successful")
         Else
           Log.Error("Container Query failed")
@@ -70,6 +75,7 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryQueryClickInspection
   Dim ObjInspection
+  aqUtils.Delay 1500
   If Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True).WaitProperty("Visible", True,5000) Then
     Set ObjInspection = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitInspectionButton_input", 20, True)
     ObjInspection.scrollIntoViewIfNeeded
@@ -85,9 +91,11 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterSeal
   Dim ObjSeal,ObjSeal1,ObjSeal2,ObjSeal3,ObjSeal4, ObjSend, ObjCommit
+  aqUtils.Delay 1500
   If Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True).WaitProperty("Visible", True,5000) Then
     Set ObjSeal = Aliases.browser.FindChild("idStr", "program:MYInspButtons-mySELButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjSeal,"Seal Button")
+    aqUtils.Delay 1500
       If Aliases.browser.FindChild("idStr", "program:MYI008-mySeal1_input", 20, True).WaitProperty("Visible", True,5000) Then
         Set ObjSeal1 = Aliases.browser.FindChild("idStr", "program:MYI008-mySeal1_input", 20, True)
         ObjSeal1.SetText(flowData.Item("n4YinvQueryContainerSeal1"))
@@ -99,6 +107,7 @@ Sub n4mobileYardInventoryEnterSeal
         ObjSeal4.SetText(flowData.Item("n4YinvQueryContainerSeal4"))
         Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).WaitProperty("Visible", True,5000) Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
@@ -118,9 +127,11 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterDamage
   Dim ObjDamage, ObjCommit, ObjDamageComponent, ObjDamageDeep, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
+  aqUtils.Delay 1500
   If Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True).WaitProperty("Visible", True,5000) Then
     Set ObjDamage  = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myDMGButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjDamage,"Damage Button")
+    aqUtils.Delay 1500
       If Aliases.browser.FindChild("idStr", "program:MYI003-myDamageL1_input", 20, True).WaitProperty("Visible", True,5000) Then
         Set ObjDamageComponent = Aliases.browser.FindChild("idStr", "program:MYI003-myDamageL1_input", 20, True)
         Call CommonRoutines.EnterOperation(ObjDamageComponent,flowData.Item("n4YinvQueryContainerDamageComponent1"),"Damage Component1")
@@ -140,6 +151,7 @@ Sub n4mobileYardInventoryEnterDamage
         Call CommonRoutines.EnterOperation(ObjDamageDeep,flowData.Item("n4YinvQueryContainerDamageDeep1"),"Damage Deep")
         Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).WaitProperty("Visible", True,5000) Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
@@ -159,9 +171,11 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterWeight
   Dim ObjCommit, ObjCSCDate, ObjMNF, ObjMNRStatus, ObjSafeWeight, ObjSend, ObjTareWeight, ObjWeight
+  aqUtils.Delay 1500
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True).WaitProperty("Enabled", True,50000) Then
     Set ObjWeight = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myWTButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjWeight,"Weight")
+    aqUtils.Delay 1500
       If Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True).WaitProperty("Visible", True,50000) Then
         Set ObjSafeWeight = Aliases.browser.FindChild("idStr", "program:MYI010-mySafeWeight_input", 20, True)
         ObjSafeWeight.SetText(flowData.Item("n4YinvQueryContainerSafeWeight"))
@@ -175,6 +189,7 @@ Sub n4mobileYardInventoryEnterWeight
         Call CommonRoutines.EnterOperation(ObjMNRStatus,flowData.Item("n4YinvQueryContainerMNRStatus"),"MNRStatus")
         Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).WaitProperty("Enabled", True,5000) Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
@@ -194,9 +209,11 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterOOG
   Dim ObjCommit, ObjOOG, ObjOverAft, ObjOverFore, ObjOverHeight, ObjOverLeft, ObjOverRight, ObjOverUnits, ObjSend
+  aqUtils.Delay 1500
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True).WaitProperty("Enabled", True,50000) Then
     Set ObjOOG =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myOOGButton_input", 20, True)
     Call CommonRoutines.ClickOperation(ObjOOG,"OOG Button")
+    aqUtils.Delay 1500
       If Aliases.browser.FindChild("idStr", "program:MYI006-myOverHeight_input", 20, True).WaitProperty("Visible", True,50000) Then
         Set ObjOverHeight = Aliases.browser.FindChild("idStr", "program:MYI006-myOverHeight_input", 20, True)
         ObjOverHeight.SetText(flowData.Item("n4YinvQueryContainerOverHeight"))
@@ -212,6 +229,7 @@ Sub n4mobileYardInventoryEnterOOG
         ObjOverUnits.SetText(flowData.Item("n4YinvQueryContainerUnits"))
         Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).WaitProperty("Visible", True,50000) Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
