@@ -1,7 +1,8 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
 Sub OpenN4Mobile 
- 
+
+  Call KillBrowser
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
     
 End Sub
@@ -28,20 +29,20 @@ Sub n4mobileLogin
   Dim ObjUserName,ObjPassword,ObjSend,ObjOperator
   Call OpenN4Mobile
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
-  If ObjUserName.Exists Then
-    Call CommonRoutines.EnterOperation(ObjUserName,flowData.Item("n4MobileUserName"),"Username")
-    Set ObjPassword = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserPassword_input",20,True)
-    Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
-    Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
-    Call CommonRoutines.ClickOperation(ObjSend,"Send")
-    aqUtils.Delay 2000
-    Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
-    If ObjOperator.Exists Then
-      Log.Checkpoint("User Logged in successfully")
-    Else
-      Log.Checkpoint("User not logged in")
+    If ObjUserName.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjUserName,flowData.Item("n4MobileUserName"),"Username")
+      Set ObjPassword = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserPassword_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
+      Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
+      Call CommonRoutines.ClickOperation(ObjSend,"Send")
+      aqUtils.Delay 2000
+      Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
+        If ObjOperator.WaitProperty("Exists", True,5000) Then
+          Log.Checkpoint("User Logged in successfully")
+        Else
+          Log.Checkpoint("User not logged in")
+        End If
     End If
-  End If
 End Sub
 
 'To Select scope in N4 Mobile
@@ -53,7 +54,7 @@ End Sub
 Sub n4mobileScopeSelection
   Dim ObjOperator,ObjComplex, ObjFacility, ObjYard,ObjSend, ObjCheckElement
   Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
-    If ObjOperator.Exists Then 
+    If ObjOperator.WaitProperty("Exists", True,5000) Then 
       ObjOperator.SetText(flowData.Item("n4MobileOperator"))
       Set ObjComplex = Aliases.browser.FindChild("idStr","framework:MAPX001-lastComplex_input",20,True)
       ObjComplex.SetText(flowData.Item("n4MobileComplex"))
@@ -63,9 +64,9 @@ Sub n4mobileScopeSelection
       ObjYard.SetText(flowData.Item("n4MobileYard"))
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:site_2_SITE_SELECT",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-      aqUtils.Delay(2000)
+      aqUtils.Delay 1500
       Set ObjCheckElement = Aliases.browser.FindChild("idStr","framework:_id0",20,True)
-        If ObjCheckElement.WaitProperty("Visible", True,50000) Then
+        If ObjCheckElement.WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Scope selected successfully")
         Else
           Log.Error ("Scope selection failed")
@@ -178,6 +179,8 @@ End Sub
 Sub n4MobileLogout
    Dim ObjLogoutButton
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
+   If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
    ObjLogoutButton.Click
    aqUtils.Delay 2000
+   End If
 End Sub
