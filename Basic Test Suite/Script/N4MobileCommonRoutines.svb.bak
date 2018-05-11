@@ -1,16 +1,21 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
 Sub OpenN4Mobile 
-  Call CommonRoutines.ClusterDetails
-  While Sys.WaitBrowser().Exists 
-    Call Sys.WaitBrowser().Close()
-  Wend
+ 
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
     
 End Sub
+
 'Method to close Browser
 Sub CloseBrowser
   Aliases.browser.Close
+End Sub
+
+'To kill existing session of browser
+Sub KillBrowser
+  While Sys.WaitBrowser().Exists 
+    Call Sys.WaitBrowser().Close()
+  Wend
 End Sub
 
 'To Login N4Mobile
