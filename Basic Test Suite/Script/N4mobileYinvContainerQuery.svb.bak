@@ -140,6 +140,7 @@ Sub YINV_103
   Call aqObject.CheckProperty(Objseal4, "text", cmpEqual, "S4")
   set ObjIssealed = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitIsCtrSealed",20, True)
   Call aqObject.CheckProperty(ObjIssealed, "text", cmpEqual, "Yes")
+  Objwin.Close
 End Sub
 
 'To update Damage values to unit using yard inventory form in n4 mobile 
@@ -242,6 +243,7 @@ Sub YINV_105
   Call aqObject.CheckProperty(ObjTareWeight, "text", cmpEqual, "2,000 ")
   set ObjSafeWeight = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipment.eqSafeWeightKg",20, True)
   Call aqObject.CheckProperty(ObjSafeWeight, "text", cmpEqual, "26,000 ")
+  Objwin.Close
 End Sub
 
 'To update OOG values to unit using yard inventory form in n4 mobile 
@@ -281,12 +283,33 @@ Sub YINV_106
   Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterOOG
+  Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4ScopeSelection
   Call SparcsN4CommonRoutines.n4SelectWorkMode
   Call SparcsN4CommonRoutines.n4SearchUnit
   Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
   ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Contents")
+  set ObjOOGB = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogBackCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGB, "text", cmpEqual, "10.0 ")
+  set ObjOOGF = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogFrontCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGF, "text", cmpEqual, "13.0 ")
+  set ObjOOGL = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogLeftCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGL, "text", cmpEqual, "11.0 ")
+  set ObjOOGR = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogRightCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGR, "text", cmpEqual, "12.0 ")
+  set ObjOOGH = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogTopCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGH, "text", cmpEqual, "10.0 ")
+  set ObjIsOOG = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitIsOog",20, True)
+  Call aqObject.CheckProperty(ObjIsOOG, "text", cmpEqual, "Yes")
+  Objwin.Close
 End Sub
 
 'To update Grade value to unit using yard inventory form in n4 mobile 
@@ -327,10 +350,22 @@ Sub YINV_107
   Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
   Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterGrade
+  Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4ScopeSelection
   Call SparcsN4CommonRoutines.n4SelectWorkMode
   Call SparcsN4CommonRoutines.n4SearchUnit
   Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
   ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Primary Equip.")
+  set ObjGrade = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipmentState.eqsGradeID.eqgrdId",20, True)
+  Call aqObject.CheckProperty(ObjGrade, "text", cmpEqual, "FOOD")
+  Objwin.Close
 End Sub
+

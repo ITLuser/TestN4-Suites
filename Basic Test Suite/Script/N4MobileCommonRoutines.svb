@@ -35,9 +35,7 @@ Sub n4mobileLogin
       Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send")
-      aqUtils.Delay 2000
-      Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
-        If ObjOperator.WaitProperty("Exists", True,5000) Then
+        If Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_APPS_MANAGEMENT-resetButton_input",20,True).WaitProperty("Enabled",True,5000) Then
           Log.Checkpoint("User Logged in successfully")
         Else
           Log.Checkpoint("User not logged in")
@@ -64,9 +62,8 @@ Sub n4mobileScopeSelection
       ObjYard.SetText(flowData.Item("n4MobileYard"))
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:site_2_SITE_SELECT",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-      aqUtils.Delay 1500
-      Set ObjCheckElement = Aliases.browser.FindChild("idStr","framework:_id0",20,True)
-        If ObjCheckElement.WaitProperty("Visible", True,5000) Then
+      aqUtils.Delay 1000
+        If Aliases.browser.FindChild("ObjectIdentifier","Yard Inventory(i)",20,True).WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Scope selected successfully")
         Else
           Log.Error ("Scope selection failed")
@@ -88,7 +85,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Yard Inspection" Then
           Set ObjYardInspection = Aliases.browser.FindChild("ObjectLabel","Yard Inspection(y)",20,True)
           Call CommonRoutines.ClickOperation(ObjYardInspection,"Yard Inspection")
-            If Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Yard Inspection selected successfully")
             Else
               Log.Error("Yard Inspection selection failed")
@@ -97,7 +94,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Reefer Monitor" Then
           Set ObjReeferMonitor = Aliases.browser.FindChild("ObjectLabel","Reefer Monitor(m)",20,True)
           Call CommonRoutines.ClickOperation(ObjReeferMonitor,"Reefer Monitor")
-            If Aliases.browser.FindChild("idStr","program:RM03-rmReeferID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:RM03-rmReeferID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Reefer Monitor selected successfully")
             Else
               Log.Error("Reefer Monitor selection failed")
@@ -106,8 +103,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Yard Inventory" Then
           Set ObjYardInventory = Aliases.browser.FindChild("ObjectLabel","Yard Inventory(i)",20,True)
           Call CommonRoutines.ClickOperation(ObjYardInventory,"Yard Inventory")
-          aqUtils.Delay 2000
-            If Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvQueryButton_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvQueryButton_input",20,True).WaitProperty("Enabled",True,5000) Then
               Log.Checkpoint("Yard Inventory selected successfully")
             Else
               Log.Error("Yard Inventory selection failed")
@@ -116,7 +112,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Cargo Inventory" Then
           Set ObjCargoInventory = Aliases.browser.FindChild("ObjectLabel","Cargo Inventory(c)",20,True)
           Call CommonRoutines.ClickOperation(ObjCargoInventory,"Cargo Inventory")
-            If Aliases.browser.FindChild("idStr","program:MCRG001-mcStuffCargoButton_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MCRG001-mcStuffCargoButton_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Cargo Inventory selected successfully")
             Else
               Log.Error("Cargo Inventory selection failed")
@@ -125,7 +121,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Gate Inspection" Then
           Set ObjGateInspection = Aliases.browser.FindChild("ObjectLabel","Gate Inspection(g)",20,True)
           Call CommonRoutines.ClickOperation(ObjGateInspection,"Gate Inspection")
-            If Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Gate Inspection selected successfully")
             Else
               Log.Error("Gate Inspection selection failed")
@@ -134,7 +130,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Rail Operations" Then
           Set ObjRailOperations = Aliases.browser.FindChild("ObjectLabel","Rail Operations(r)",20,True)
           Call CommonRoutines.ClickOperation(ObjRailOperations,"Rail Operations")
-            If Aliases.browser.FindChild("idStr","program:MRI017-mrCraneID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MRI017-mrCraneID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Rail Operations selected successfully")
             Else
               Log.Error("Rail Operations selection failed")
@@ -143,7 +139,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Rail Inventory" Then
           Set ObjRailInventory = Aliases.browser.FindChild("ObjectLabel","Rail Inventory(x)",20,True)
           Call CommonRoutines.ClickOperation(ObjRailInventory,"Rail Inventory")
-            If Aliases.browser.FindChild("idStr","program:MRIV001-mrivRailcarID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MRIV001-mrivRailcarID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Rail Inventory selected successfully")
             Else
               Log.Error("Rail Inventory selection failed")
@@ -152,7 +148,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Depot Hatch Clerk" Then
           Set ObjDepothatchClerk = Aliases.browser.FindChild("ObjectLabel","Depot Hatch Clerk(d)",20,True)
           Call CommonRoutines.ClickOperation(ObjDepothatchClerk,"Depot Hatch Clerk")
-            If Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Depot Hatch Clerk selected successfully")
             Else
               Log.Error("Depot Hatch Clerk selection failed")
@@ -161,7 +157,7 @@ Sub n4mobileSelectProgram
         If SelProgram = "Hatch Clerk" Then
           Set ObjHatchClerk = Aliases.browser.FindChild("ObjectLabel","Depot Hatch Clerk(d)",20,True)
           Call CommonRoutines.ClickOperation(ObjHatchClerk,"Hatch Clerk")
-            If Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True).Visible Then
+            If Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True).WaitProperty("Visible", True,5000) Then
               Log.Checkpoint("Hatch Clerk selected successfully")
             Else
               Log.Error("Hatch Clerk selection failed")
@@ -181,6 +177,5 @@ Sub n4MobileLogout
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
    If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
    ObjLogoutButton.Click
-   aqUtils.Delay 2000
    End If
 End Sub
