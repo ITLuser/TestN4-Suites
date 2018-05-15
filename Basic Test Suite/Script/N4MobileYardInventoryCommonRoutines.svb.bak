@@ -15,7 +15,7 @@ Sub n4mobileSelectYardInvOp
       SelYardInventoryOperation = (flowData.Item("n4MobileYardInventoryOperation"))
         If SelYardInventoryOperation = "Query" Then
           Call CommonRoutines.ClickOperation(ObjQuery,"Query Button")
-            If Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvContainer_input",20,True).WaitProperty("VisibleOnScreen", True,5000) Then
+            If Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvHomeButton_input",20,True).WaitProperty("VisibleOnScreen", True,5000) Then
               Log.Checkpoint("Container Query selected successfully")
             Else
               Log.Error("Container Query selection failed")
@@ -59,7 +59,7 @@ Sub n4mobileQueryContainerYardInventory
       Set ObjSend = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
       aqUtils.Delay 1500
-        If Aliases.browser.FindChild("ObjectIdentifier", "YINVUnit_yinvUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+        If Aliases.browser.FindChild("ObjectIdentifier", "program:YINVUnit-yinvUnitPos_input", 20, True).WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Container Query is successful")
         Else
           Log.Error("Container Query failed")
@@ -249,14 +249,17 @@ End Sub
 'Reviewed by:
 Sub n4mobileYardInventoryEnterGrade
   Dim ObjCommit, ObjGrade, ObjGradeValue, ObjSend
+  aqUtils.Delay 1500
   If  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True).WaitProperty("Enabled", True,5000) Then
     Set ObjGrade =  Aliases.browser.FindChild("idStr", "program:MYInspButtons-myADDButton_input", 20, True)
-    Call CommonRoutines.ClickOperation(ObjGrade,"Add Button") 
+    Call CommonRoutines.ClickOperation(ObjGrade,"Add Button")
+    aqUtils.Delay 1500
       If Aliases.browser.FindChild("idStr", "program:MYI012-myContainerGrade_input", 20, True).WaitProperty("Visible", True,5000) Then
         Set ObjGradeValue =  Aliases.browser.FindChild("idStr", "program:MYI012-myContainerGrade_input", 20, True)
         Call CommonRoutines.EnterOperation(ObjGradeValue,flowData.Item("n4YinvQueryContainerGradeValue"),"Grade Value")
         Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1500
           If Aliases.browser.FindChild("idStr", "program:MYI002-mySeal1_input", 20, True).WaitProperty("Visible", True,5000) Then
             Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
