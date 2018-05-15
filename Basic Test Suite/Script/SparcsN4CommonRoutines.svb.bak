@@ -78,11 +78,11 @@ End Sub
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4SelectWorkMode
+Sub n4SelectWorkMode(WorkMode)
   Dim SelWorkMode,ObjMenu,ObjOperationsMenu,ObjAdministrationMenu,ObjConfigurationMenu
   Set ObjMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "topLevelMenu", 20, True)
   Call CommonRoutines.ClickOperation(ObjMenu,"Menu Button")
-  SelWorkMode = (flowData.Item("WorkMode"))
+  SelWorkMode = WorkMode
       If SelWorkMode = "Operations" Then
         Set ObjOperationsMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_OPERATIONS]", 20, True)
           If ObjOperationsMenu.Enabled Then
@@ -338,8 +338,6 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub n4Open
-
-  'Call CommonRoutines.ClusterDetails
  
   ' Add a Java Web Start application to the project
   ind = TestedApps.AddJavaWebStartApp
@@ -374,9 +372,10 @@ End Sub
 'Reviewed by:
 Sub n4ImportSnxFile
   Dim ObjHomeView,ObjImportXmlFile,ObjProcessFile
+  Call CommonRoutines.fetchData("ImportSNXFile")
   Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
   ObjHomeView.Click("Windows|Close All Tabs")
-  Call n4SelectWorkMode
+  Call n4SelectWorkMode("Administration")
   ObjHomeView.Click("DBA|Import SNX File")
   If Aliases.jp2launcher.n4SnxImporterWindow.WaitProperty("Exists", True,50000)Then
     Set ObjImportXmlFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "LABEL__XML_LOADER_IMPORT", 20, True)
@@ -406,11 +405,42 @@ End Sub
 Sub n4SearchUnit
    Dim ObjHomeView,ObjSearchUnit,ObjProcessFile
   Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  Call n4SelectWorkMode("Operations")
   ObjHomeView.Click("Windows|Close All Tabs")
   ObjHomeView.Click("Unit|Units")
   Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
-   Call CommonRoutines.EnterOperation(ObjSearchUnit,(flowData.Item("UnitId")),"Container Number")
-    Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,(flowData.Item("UnitId")),"Container Number")
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
 End Sub
 
-
+'To Delete Unit
+'Input Parameters: By using Dictionary Object
+'Created: 15/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4DeleteUnit
+  Call n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  Set ObjAction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
+  Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
+  ObjAction.SwingPopupMenu.Click("Administration|Delete Unit")
+  Set objDeleteDialogBox= Aliases.jp2launcher.FindChild("AWTComponentName","optionDialog",20,True)
+   If ObjDeleteDialogBox.Enabled Then
+      Log.Checkpoint("Delete dialog box found")
+    Else
+      Log.Checkpoint ("Delete dialog box not found")
+    End If
+  Set ObjDeleteYes = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20,True)
+  Call CommonRoutines.ClickOperation(ObjDeleteYes,"Delete- yes button")
+  Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+  Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
+  Call n4SearchUnit
+  Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
+    If not Aliases.jp2launcher.FindChild("AWTComponentName", "List Selected", 20, True).Enabled Then
+      Log.Checkpoint("Unit deleted Successfully")
+    Else
+      Log.Checkpoint("Failed to delete Unit")
+    End If
+End Sub
