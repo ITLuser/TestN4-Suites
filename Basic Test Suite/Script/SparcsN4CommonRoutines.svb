@@ -370,7 +370,7 @@ End Sub
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4ImportSnxFile
+Sub n4ImportSnxFile(FileName)
   Dim ObjHomeView,ObjImportXmlFile,ObjProcessFile
   Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
   ObjHomeView.Click("Windows|Close All Tabs")
@@ -381,7 +381,7 @@ Sub n4ImportSnxFile
     Call CommonRoutines.ClickOperation(ObjImportXmlFile,"Import XML File Button")
       If Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "Open", 20, True).WaitProperty("Exists", True,50000)Then
         Set ObjFileName = Aliases.jp2launcher.FindChild("AWTComponentAccessibleName", "File Name:", 20, True)
-        Call CommonRoutines.EnterOperation(ObjFileName,(flowData.Item("FileName")),"xml file to be posted")
+        Call CommonRoutines.EnterOperation(ObjFileName,FileName,"xml file to be posted")
         Call CommonRoutines.EnterOperation(ObjFileName,"[Enter]","Enter the file")
         Set ObjMessage = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "messageField", 20, True)
         Set Message = ObjMessage.getText
@@ -418,8 +418,15 @@ End Sub
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4DeleteUnit
-  Call n4SearchUnit
+Sub n4DeleteUnit(UnitId)
+  Dim ObjHomeView,ObjSearchUnit,ObjProcessFile
+  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  Call n4SelectWorkMode("Operations")
+  ObjHomeView.Click("Windows|Close All Tabs")
+  ObjHomeView.Click("Unit|Units")
+  Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,UnitId,"Container Number")
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
   Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
   ObjSelectall.selectAll
   Set ObjAction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
@@ -442,4 +449,42 @@ Sub n4DeleteUnit
     Else
       Log.Checkpoint("Failed to delete Unit")
     End If
+End Sub
+
+'To Attach Unit
+'Input Parameters: By using Dictionary Object
+'Created: 21/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4AttachUnit
+  Call n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set ObjAdd = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+  Call CommonRoutines.ClickOperation(ObjAdd,"Add button")
+  Set ObjEquipmentNumber = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitEquipment.eqIdFull",20, True)
+  Call CommonRoutines.EnterOperation(ObjEquipmentNumber,flowData.Item("EquipmentToBeAttached"),"Equipment Number")
+  Set ObjEquipmentRole = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","ueGeneratedRole",20, True)
+  Call CommonRoutines.EnterOperation(ObjEquipmentRole,flowData.Item("EquipmentRole"),"Equipment Role")
+  Set ObjAllowSwipe = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitAllowSwipe",20, True)
+  Call CommonRoutines.ClickOperation(ObjAllowSwipe,"Uncheck Allow swipe")
+  Set ObjSave = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+  Call CommonRoutines.ClickOperation(ObjSave,"Save Button")
+  Set ObjSearch = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearch,flowData.Item("EquipmentToBeAttached"),"Search")
+  Call CommonRoutines.EnterOperation(ObjSearch,"[Enter]","Search")
+  Set  ObjSelectallEquipment = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INV041",20, True)
+  ObjSelectallEquipment.selectAll
+    If Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName", "LABEL_ACTION_DELETE", 20, True).Enabled Then
+      Log.Checkpoint("Equipment Attached to unit successfully")
+    Else
+      Log.Checkpoint("Failed to Attach Equipment")
+    End If
+      Aliases.jp2launcher.n4UnitInspectorWindow.Close
 End Sub
