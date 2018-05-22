@@ -25,6 +25,7 @@ Sub YINV_101
   Dim ObjClass, ObjDep, ObjId, ObjISO, ObjLine, ObjStatus
   Call CommonRoutines.fetchData("YINV_101")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -71,6 +72,8 @@ Sub YINV_102
   Dim ObjChs
   Call CommonRoutines.fetchData("YINV_102")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ChassisUnit.xml")
   Call SparcsN4CommonRoutines.n4AttachUnit
@@ -119,6 +122,7 @@ Sub YINV_103
   Dim Objwin, Objlistbox, Objdropdown, Objseal1, Objseal2, Objseal3,Objseal4 , ObjIssealed, ObjSelectall
   Call CommonRoutines.fetchData("YINV_103")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -185,6 +189,7 @@ Sub YINV_104
   Dim ObjClose, ObjDamage, ObjHomeView, ObjSearchUnit, ObjSelectall
   Call CommonRoutines.fetchData("YINV_104")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -244,6 +249,7 @@ End Sub
 Sub YINV_105
   Call CommonRoutines.fetchData("YINV_105")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -303,6 +309,7 @@ End Sub
 Sub YINV_106
   Call CommonRoutines.fetchData("YINV_106")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -371,6 +378,7 @@ End Sub
 Sub YINV_107
   Call CommonRoutines.fetchData("YINV_107")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4ImportSnxFile("ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -401,6 +409,7 @@ Sub Main
   Call YINV_101
   Call YINV_102
   Call YINV_103
+  Call YINV_104
   Call YINV_105
   Call YINV_106
   Call YINV_107
