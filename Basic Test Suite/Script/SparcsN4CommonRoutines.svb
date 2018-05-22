@@ -431,23 +431,28 @@ Sub n4DeleteUnit(UnitId)
   ObjSelectall.selectAll
   Set ObjAction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
   Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
-  ObjAction.SwingPopupMenu.Click("Administration|Delete Unit")
-  Set objDeleteDialogBox= Aliases.jp2launcher.FindChild("AWTComponentName","optionDialog",20,True)
-   If ObjDeleteDialogBox.Enabled Then
-      Log.Checkpoint("Delete dialog box found")
+    If  Aliases.jp2launcher.FindChild("AWTComponentName", "List Selected", 20, True).Enabled Then
+      ObjAction.SwingPopupMenu.Click("Administration|Delete Unit")
+      Set objDeleteDialogBox= Aliases.jp2launcher.FindChild("AWTComponentName","optionDialog",20,True)
+        If ObjDeleteDialogBox.Enabled Then
+          Log.Checkpoint("Delete dialog box found")
+        Else
+          Log.Checkpoint ("Delete dialog box not found")
+        End If
+      Set ObjDeleteYes = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20,True)
+      Call CommonRoutines.ClickOperation(ObjDeleteYes,"Delete- yes button")
+      Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
+      Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
+      Call CommonRoutines.EnterOperation(ObjSearchUnit,UnitId,"Container Number")
+      Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
+      Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
+        If not Aliases.jp2launcher.FindChild("AWTComponentName", "List Selected", 20, True).Enabled Then
+          Log.Checkpoint("Unit deleted Successfully")
+        Else
+          Log.Checkpoint("Failed to delete Unit")
+        End If
     Else
-      Log.Checkpoint ("Delete dialog box not found")
-    End If
-  Set ObjDeleteYes = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20,True)
-  Call CommonRoutines.ClickOperation(ObjDeleteYes,"Delete- yes button")
-  Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
-  Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
-  Call n4SearchUnit
-  Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
-    If not Aliases.jp2launcher.FindChild("AWTComponentName", "List Selected", 20, True).Enabled Then
-      Log.Checkpoint("Unit deleted Successfully")
-    Else
-      Log.Checkpoint("Failed to delete Unit")
+      Log.Checkpoint("Unit Not found")
     End If
 End Sub
 
