@@ -1,0 +1,46 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.06.03
+*@Description Yard Allocation for a specific Line Operator
+*************************************************************************************************
+* Purpose :
+*
+* This script Allocate Specific Yard range for a specific Line Operator
+*
+* Date Written : 3.06.2009
+* Author: Krishna
+*
+*************************************************************************************************
+
+#Menu(Yard,Allocation Filters...)
+#TellWindow FirstMatchingText "Allocation Filters" "Action>New Filter"
+#TellWindow FirstMatchingText "Allocation Filter Edit" EnterText "Line Operator" "GLINEOPERATOR"
+#TellWindow FirstMatchingText "Allocation Filter Edit" EnterText "Category""M"
+#TellWindow FirstMatchingText "Allocation Filter Edit" EnterText "Filter Name" "GFILTERNAME"
+#TellWindow FirstMatchingText "Allocation Filter Edit" EnterText "Equip. Type" "GEQUIPMENTTYPE"
+#TellWindow FirstMatchingText "Allocation Filter Edit" Pick "Is Full" "No"
+#TellWindow FirstMatchingText "Allocation Filter Edit" Click "Save"
+#TellWindow FirstMatchingText "Allocation Filter Edit" Close
+#TellWindow FirstMatchingText "Allocation Filters" Close
+#CreateWindow	YardAllocationsList
+	ColorBy = "Port"	* Category, Visit, or Port
+	DischargePort = "Any"	* All, Any, or Port Name
+	Location = "104, 616, 364, 1260"	* Top, Left, Bottom, Right
+	Show = "STORAGE"	* All, Any, or Category Name
+	ShowOnlyKind = "N"	* Y or N
+	TextStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Title = "Yard Allocations"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Vessel = "All"	* All, Any, or Vessel Name
+	Visit = "Line"	* Group, Line, POW, Vessel, Service, or Train
+#TellWindow FirstMatchingText "Yard Allocations" Pick "show all" "GLINEOPERATOR"
+#TellWindow FirstMatchingText "Yard Allocations" Pick "show all" "Any %"
+#TellWindow FirstMatchingText "Yard Allocations" Pick "New Allocation" "GFILTERNAME"
+#AGAction("GFILTERNAME",Activate)
+#StackRange(Clear)
+#StackRange(Set,GYARDRANGE0101.1,GYARDRANGE2727.1)
+#ARAction(add,"GFILTERNAME",GYARDRANGE 01>>27 01>>27)
+#StackRange(Clear)
+#TellWindow FirstMatchingText "Yard Allocations" Close

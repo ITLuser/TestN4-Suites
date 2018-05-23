@@ -1,0 +1,25 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style
+*@Auto_Manual Auto
+*@Create_Date 2009.02.10
+*@Description Update an existing allocation filter with specified line operator
+*************************************************************************************************
+* Purpose :
+*
+* This script updates an existing allocation filter with specified line operator
+*
+* Date Written : 14.05.2009
+* Author: Ram
+*
+*************************************************************************************************
+#TellWindow All All Close
+#Menu(Yard,Allocation Filters...)
+#DBUpdate(ALLOC.FILTERS,ALL,SELECT,N)
+#DBUpdate(ALLOC.FILTERS,GFILTER,SELECT,Y)
+#TellWindow FirstMatchingText "Allocation Filters" "Action>Edit Filter"
+#TellWindow FirstMatchingText "Allocation Filter Edit" EnterText "Line Operator" "GLINEOPERATOR"
+#TellWindow FirstMatchingText "Allocation Filter Edit" Click "Save"
+#TellWindow FirstMatchingText "Allocation Filter Edit" Close
+#TellWindow FirstMatchingText "Allocation Filters" Close
+*************************************************************************************************

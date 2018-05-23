@@ -1,0 +1,23 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.07.10
+*@Description To Modify a Container Details.
+*************************************************************************************************
+* Purpose :
+*
+*This script is modify a container details. 
+*
+* Date Written : 10-07-2009
+* Author: Nathan
+*
+*************************************************************************************************
+#ContainerSelect()
+#ContainerSelect(CONTAINERNBR)
+#Menu(Container,Modify)
+#TellWindow FirstMatchingText "Container Modify" Set "Field to Change" "FIELDTOCHANGE"
+#TellWindow FirstMatchingText "Container Modify" EnterText "Change to" "FIELDVALUE"
+#TellWindow FirstMatchingText "Container Modify" Click "Change"
+#ContainerSelect()
+*************************************************************************************************

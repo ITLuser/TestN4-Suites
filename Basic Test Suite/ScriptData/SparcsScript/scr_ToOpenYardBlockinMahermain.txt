@@ -1,0 +1,28 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 8thFeb2010
+*@Description To open a particular Yard slot in maher main with Mode as Stack Status
+*************************************************************************************************
+* Purpose :
+*
+* This script will open a particular Yard slot in mahermain with Mode as Stack Status
+* Date Written : 8thFeb2010
+* Author: Dinesh
+*************************************************************************************************
+#TellWindow All All Close
+#CreateWindow	YardPlanScan
+	Location = "108, 10, 467, 633"	* Top, Left, Bottom, Right
+	Title = "Plan - Maher Terminals"	* Title of Window
+#CreateWindow	YardBlockScan
+	Block = "YARDSLOT"	* Name of yard block
+	ColorBy = "DPRT"	* Attribute name
+	File = ""	* Name of yard file
+	FilterBy = ""	* Name of presaved filter
+	Location = "181, 689, 516, 1150"	* Top, Left, Bottom, Right
+	Mode = "Stack Status"	* Containers, Yard Allocations, Stack Status, CHE range, Hazardous, or Set-up
+	Scale = "Normal"	* Micro or Normal
+	TimeFrame = "Imminent"	* Current, Future, Composite, Preplan, Imminent, or Stow
+	Title = "YARDSLOT"	* Title of Window
+*************************************************************************************************

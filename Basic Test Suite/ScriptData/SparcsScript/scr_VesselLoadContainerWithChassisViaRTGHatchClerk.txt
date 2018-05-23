@@ -1,0 +1,20 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2008.02.10
+*@Description Load the container which is in chassis to vesse via RDT Hatch Clerk
+*************************************************************************************************
+* Purpose :
+*
+* This script will Load the container which is in chassis to vesse via RDT Hatch Clerk
+*
+* Date Written : 17.06.2010
+* Author: Krishna
+* Example: FnPlaySparcsScript *"scr_VesselLoadContainerWithChassisViaRTGHatchClerk.txt,VCLERK~OPERATOR~PASSWORD~CRANECHE~GVESSELVISIT~VCONTAINER~VESPOSITION,CLERK2~4~1234~CRN2~"& *gVESSELVISIT & "~" & vFourthContainer & "~53.16.88"
+*************************************************************************************************
+#RDTEmulation (VCLERK,"OPERATOR PASSWORD")
+#RDTEmulation (VCLERK,"CRANECHE GVESSELVISIT")
+#RDTEmulation (VCLERK,"VCONTAINER")
+#RDTEmulation (VCLERK,"VESPOSITION")
+*************************************************************************************************

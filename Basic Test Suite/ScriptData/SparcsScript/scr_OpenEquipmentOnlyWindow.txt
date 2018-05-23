@@ -1,0 +1,19 @@
+*************************************************************************************************
+#TellWindow All All Close
+#Menu(Control,Pools & Equipment)
+#CreateWindow	CHEList
+	CellStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	ColorCHEByAge = "Y"	* Y or N
+	Location = "326, 363, 803, 1260"	* Top, Left, Bottom, Right
+	Mode = "ChesOnly"	* Pools, MTS, RMG, ChesOnly, SpecificChes, SpecificPool, IttChesOnly
+	Pool = ""	* Name of Pool
+	ShowInactive = "Y"	* Y or N
+	ShowOnlyMTSs = "N"	* Y or N
+	SpecificChes = ""	* Specific Ches
+	TextStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	TimeFrame = "Current"	* Current or Future
+	Title = "Equipment Only"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "CHID, CICN, LAST, DSTA, EQID, NEXT, DOOR, SWTU"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)
+*#TellWindow FirstMatchingText "Pools & Equipment" "Action>Launch Equipment Only Window"
+*************************************************************************************************

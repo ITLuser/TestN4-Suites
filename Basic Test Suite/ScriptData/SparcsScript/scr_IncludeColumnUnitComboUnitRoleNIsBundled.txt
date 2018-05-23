@@ -1,0 +1,24 @@
+*@Product N4
+*@Area ContainerFind
+*@Test_Style QTP
+*@Auto_Manual Auto
+*@Create_Date 2015.02.17
+*@Description This script query for a container after including Is Bundle, Unit Combo and Unit Role column
+*************************************************************************************************
+* Purpose :
+*
+* This script query for a container after including Is Bundled,Unit Combo and Unit Role column
+*
+* Date Written : 17.02.2015
+* Author: Senthil Vadivu
+*
+*************************************************************************************************
+#CreateWindow	ContainerFindList
+	CellStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	FilterBy = ""	* Name of presaved filter
+	Location = "414, 43, 533, 1248"	* Top, Left, Bottom, Right
+	TextStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	TimeFrame = ""	* Current, Future, Composite, Preplan, Imminent, or Stow
+	Title = "Untitled"	* Title of Window
+	TitleStyle = "Medium"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "EQID, EQTP, CPOS, PPOS, CHSS, ISBD, POSC, GRAD, CMBO, NWMT, TRWT, LTON, QWGT, UROL, FALC"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)

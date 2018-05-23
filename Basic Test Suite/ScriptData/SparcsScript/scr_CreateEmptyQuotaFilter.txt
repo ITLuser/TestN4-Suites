@@ -1,0 +1,29 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.06.03
+*@Description Creating Empty quota filter for a specific Line Operator
+*************************************************************************************************
+* Purpose :
+*
+* This script Create the Empty quota filter
+*
+* Date Written : 3.06.2009
+* Author: Krishna
+*
+*************************************************************************************************
+
+#Menu(Container,Empty Quota Filters)
+#TellWindow FirstMatchingText "Empty Quota Filters" "Action>New Filter"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Equip. Type" "GEQUIPMENTTYPE"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Line Operator" "GLINEOPERATOR"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Category""M"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" Pick "Is Full" "NO"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Yard Quota" "GYARDQUOTA"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Yard Block" "GYARDBLOCK"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" EnterText "Filter Name" "GFILTERNAME"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" Click "Save"
+#TellWindow FirstMatchingText "Empty Quota Filter Edit" Close
+#TellWindow FirstMatchingText "Empty Quota Filters" Close
+

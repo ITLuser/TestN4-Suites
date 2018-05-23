@@ -1,0 +1,31 @@
+*@Product N4
+*@Area Twin Discharge
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.04.07
+*@Description Prime Route Setting
+*************************************************************************************************
+* Purpose :
+*
+* This script will Create Prime Route Setting
+*
+* Date Written : 07.04.2009
+* Author: Senthil Vadivu
+*
+*************************************************************************************************
+*Points of Work
+#Menu(Control,"Points of Work")
+#DBUpdate(ec.POWS,GCRANETWIN,POOL,"ASC")
+#PowSetDispatchMode(GCRANETWIN,PR-SC)
+#TellWindow FirstMatchingText "Points of Work" Close
+*************************************************************************************************
+*Pools & Equipment
+#Menu(Control,"Pools & Equipment")
+#DBUpdate(ec.ches,ALL,SELECT,N)
+#DBUpdate(ec.ches,GSTRADDLECARRIER,SELECT,Y)
+#DBUpdate(ec.ches,GSTRADDLECARRIER,POOL,"ASC")
+#DBUpdate(ec.ches,GSTRADDLECARRIER,SELECT,Y)
+#TellWindow FirstMatchingText "Pools & Equipment" "Action>Assign To POW>GCRANETWIN"
+#MakeDispatcher(ME,"ASC")
+#TellWindow FirstMatchingText "Pools & Equipment" Close
+*************************************************************************************************

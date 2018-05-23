@@ -1,0 +1,28 @@
+*@Product N4
+*@Area Reset Handler
+*@Auto_Manual Auto
+*@Description Reset Handler
+*************************************************************************************************
+* Purpose :
+*
+* This script will Reset Handler
+*
+* Date Written : 26.09.2009
+* Author: Ram
+*
+*************************************************************************************************
+#TellWindow All All Close
+#Menu(Control,"Pools&Equipment")
+#Wait(3)
+#DBUpdate(EC.POOLS,ALL,SELECT,N)
+#Wait(2)
+#DBUpdate(EC.CHES,ALL,SELECT,N)
+#Wait(3)
+#TellWindow FirstMatchingText "Pools & Equipment" "Display>Reveal All CHE"
+#Wait(2)
+#DBUpdate(EC.CHES,STR98,SELECT,Y)
+#Wait(2)
+#TellWindow FirstMatchingText "Pools & Equipment" "Action>Reset Handler"
+#Wait(3)
+#TellWindow All All Close
+*************************************************************************************************

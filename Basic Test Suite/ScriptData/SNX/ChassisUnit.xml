@@ -1,0 +1,52 @@
+
+<argo:snx xmlns:argo="http://www.navis.com/argo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.navis.com/argo snx.xsd">
+<chassis eqid="CHSASW" type="CH20" created-by="admin" created-date="2018-05-15T04:21:15" modified-by="admin" modified-date="2018-05-15T04:21:15" class="CHS" fits-20="Y" fits-24="N" fits-30="N" fits-40="Y" fits-45="N" fits-48="N" fits-53="N" is-chassis-triaxle="N" life-cycle-state="ACT">
+  <physical has-wheels="N" height-mm="2591" is-insulated="N" is-permanently-out-of-service="N" iso-group="CH" length-mm="12192" material="UNKNOWN" tare-weight-kg="3084.0" width-mm="2438" />
+  <ownership owner="ASW" operator="ASW" />
+  <restrictions is-open="N" is-unsealable="N" no-top_stow-if-empty="N" no-top-stow-if-full="N" out-of-gauge-ok="N" safe-weight-kg="0.0" stow-above-deck="N" stow-below-deck="N" uses-accessories="N" />
+  <transponder />
+</chassis>
+<unit id="CHSASW" category="STORAGE" restow="NONE" transit-state="YARD" freight-kind="FCL" unique-key="CHSASW" line="ASW" is-verified-yard-pos="N" is-stowplan-posted="N">
+  <equipment eqid="CHSASW" type="CH20" created-by="admin" created-date="2018-05-15T04:21:15" modified-by="admin" modified-date="2018-05-15T04:21:15" class="CHS" fits-20="Y" fits-24="N" fits-30="N" fits-40="Y" fits-45="N" fits-48="N" fits-53="N" is-chassis-triaxle="N" life-cycle-state="ACT" role="PRIMARY">
+    <physical has-wheels="N" height-mm="2591" is-insulated="N" is-permanently-out-of-service="N" iso-group="CH" length-mm="12192" material="UNKNOWN" tare-weight-kg="3084.0" width-mm="2438" />
+    <ownership owner="ASW" operator="ASW" />
+    <restrictions is-open="N" is-unsealable="N" no-top_stow-if-empty="N" no-top-stow-if-full="N" out-of-gauge-ok="N" safe-weight-kg="0.0" stow-above-deck="N" stow-below-deck="N" uses-accessories="N" />
+    <transponder />
+    <damages />
+  </equipment>
+  <position loc-type="YARD" location="YRD1111" slot="D" />
+  <routing>
+    <carrier direction="IB" qualifier="DECLARED" mode="TRUCK" facility="FCY111" />
+    <carrier direction="IB" qualifier="ACTUAL" mode="TRUCK" facility="FCY111" />
+    <carrier direction="OB" qualifier="DECLARED" mode="TRUCK" facility="FCY111" />
+    <carrier direction="OB" qualifier="ACTUAL" mode="TRUCK" facility="FCY111" />
+  </routing>
+  <contents weight-kg="0.0" />
+  <unit-etc category="STORAGE" line="ASW" />
+  <timestamps time-in="2018-04-06T03:21:29" time-last-move="2018-04-06T03:21:29" />
+  <move-history>
+    <move move-kind="RECV" timestamp="2018-04-06T03:21:29" user-id="snx:admin">
+      <from-position loc-type="TRUCK" location="150216160553650" />
+      <to-position loc-type="YARD" location="YRD1111" />
+      <move-details time-discharge="2018-04-06T03:21:29" time-put="2018-04-06T03:21:29" />
+    </move>
+    <move move-kind="YARD" timestamp="2018-04-06T03:21:29" user-id="snx:admin">
+      <from-position loc-type="YARD" location="YRD1111" />
+      <to-position loc-type="YARD" location="YRD1111" slot="@Slot" />
+      <move-details time-put="2018-04-06T03:21:29" />
+    </move>
+  </move-history>
+  <non-move-history>
+    <event id="UNIT_CREATE" note="snx" time-event-applied="2018-04-06T03:21:29" user-id="snx:admin" is-billable="N" />
+    <event id="UNIT_ACTIVATE" time-event-applied="2018-05-15T04:22:05" user-id="snx:admin" is-billable="N" />
+    <event id="UNIT_ACTIVATE" time-event-applied="2018-04-06T03:21:29" user-id="user:lpcqa" is-billable="N" />
+    <event id="UNIT_IN_GATE" time-event-applied="2018-04-06T03:21:29" user-id="user:lpcqa" is-billable="Y" />
+    <event id="UNIT_PROPERTY_UPDATE" note="Sparcs Details Updated" time-event-applied="2018-04-06T03:21:29" user-id="user:lpcqa" is-billable="N">
+      <field-changes>
+        <field-change id="ufvTimeIn" new-value="20150216160553IST" />
+      </field-changes>
+    </event>
+  </non-move-history>
+</unit>
+</argo:snx>
+
