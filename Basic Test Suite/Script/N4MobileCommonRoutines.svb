@@ -26,7 +26,7 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileLogin
-  Dim ObjUserName,ObjPassword,ObjSend,ObjOperator
+  Dim ObjPassword, ObjSend, ObjUserName
   Call OpenN4Mobile
   aqUtils.Delay 1500
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
@@ -52,7 +52,7 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileScopeSelection
-  Dim ObjOperator,ObjComplex, ObjFacility, ObjYard,ObjSend, ObjCheckElement
+  Dim ObjComplex, ObjFacility, ObjOperator, ObjSend, ObjYard
   aqUtils.Delay 1500
   Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
     If ObjOperator.WaitProperty("Exists", True,5000) Then 
@@ -81,7 +81,7 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileSelectProgram
-  Dim ObjCheckElement,ObjYardInspection, ObjReeferMonitor, ObjYardInventory,ObjCargoInventory, ObjGateInspection,ObjRailOperations,ObjDepothatchClerk, ObjRailInventory, ObjHatchClerk
+  Dim ObjCargoInventory, ObjCheckElement, ObjDepothatchClerk, ObjGateInspection, ObjHatchClerk, ObjRailInventory, ObjRailOperations, ObjReeferMonitor, ObjYardInspection, ObjYardInventory
   aqUtils.Delay 1500 
   Set ObjCheckElement = Aliases.browser.FindChild("idStr","framework:_id0",20,True)
     If ObjCheckElement.WaitProperty("Visible", True,5000) Then
@@ -189,7 +189,7 @@ Sub n4MobileLogout
    Dim ObjLogoutButton
    aqUtils.Delay 1500
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
-   If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
-   ObjLogoutButton.Click
-   End If
+    If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
+      ObjLogoutButton.Click
+    End If
 End Sub
