@@ -46,7 +46,7 @@ Sub YINV_101
   Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "MTY")
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To Check whether N4 mobile prepopulates the chassis number if the carriage equipment is known.
@@ -87,7 +87,7 @@ Sub YINV_102
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To update seal values to unit using yard inventory form in n4 mobile 
@@ -119,7 +119,7 @@ End Sub
 'Expected Result:
 '1.	Seal value will be updated to the unit
 Sub YINV_103
-  Dim Objwin, Objlistbox, Objdropdown, Objseal1, Objseal2, Objseal3,Objseal4 , ObjIssealed, ObjSelectall
+  Dim Objdropdown, ObjIssealed, Objlistbox, Objseal1, Objseal2, Objseal3, Objseal4, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_103")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
@@ -154,7 +154,7 @@ Sub YINV_103
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To update Damage values to unit using yard inventory form in n4 mobile 
@@ -179,9 +179,9 @@ End Sub
 '10.	Click on the Right arrow
 '11.	Login N4
 '12.	Select Scope
-'13.	Go to Units tab
+'13.	Go to Equipment Status
 '14.	Search for the Unit
-'15.	Open Unit Inspector
+'15.	Open Equipment Inspector
 '16.  Go to Damages
 'Expected Result:
 '1.	Damage value will be updated to the unit
@@ -215,7 +215,7 @@ Sub YINV_104
   ObjClose.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To update Weight values to unit using yard inventory form in n4 mobile 
@@ -247,6 +247,7 @@ End Sub
 'Expected Result:
 '1.	Safe weight and Tare weight will be updated to the unit
 Sub YINV_105
+  Dim Objdropdown, Objlistbox, ObjSafeWeight, ObjSelectall, ObjTareWeight
   Call CommonRoutines.fetchData("YINV_105")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
@@ -275,7 +276,7 @@ Sub YINV_105
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To update OOG values to unit using yard inventory form in n4 mobile 
@@ -307,6 +308,7 @@ End Sub
 'Expected Result:
 '1.	OOG will be updated to the unit
 Sub YINV_106
+  Dim Objdropdown, ObjIsOOG, Objlistbox, ObjOOGB, ObjOOGF, ObjOOGH, ObjOOGL, ObjOOGR, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_106")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
@@ -343,7 +345,7 @@ Sub YINV_106
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
 End Sub
 
 'To update Grade value to unit using yard inventory form in n4 mobile 
@@ -376,6 +378,7 @@ End Sub
 '1.	Grade will be updated to the unit.
 
 Sub YINV_107
+  Dim Objdropdown, ObjGrade, Objlistbox, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_107")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
