@@ -1,19 +1,19 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
-Sub n4MobileOpen 
+Sub n4mobileOpen 
 
-  Call n4MobileKillBrowser
+  Call n4mobileKillBrowser
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
     
 End Sub
 
 'Method to close Browser
-Sub n4MobileCloseBrowser
+Sub n4mobileCloseBrowser
   Aliases.browser.Close
 End Sub
 
 'To kill existing session of browser
-Sub n4MobileKillBrowser
+Sub n4mobileKillBrowser
   While Sys.WaitBrowser().Exists 
     Call Sys.WaitBrowser().Close()
   Wend
@@ -27,8 +27,8 @@ End Sub
 'Reviewed by:
 Sub n4mobileLogin
   Dim ObjPassword, ObjSend, ObjUserName
-  Call n4MobileOpen
-  aqUtils.Delay 1500
+  Call n4mobileOpen
+  aqUtils.Delay 1000
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
     If ObjUserName.WaitProperty("Exists", True,5000) Then
       Call CommonRoutines.EnterOperation(ObjUserName,flowData.Item("n4MobileUserName"),"Username")
@@ -36,7 +36,7 @@ Sub n4mobileLogin
       Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send")
-      aqUtils.Delay 1500
+      aqUtils.Delay 1000
         If Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_APPS_MANAGEMENT-resetButton_input",20,True).WaitProperty("Enabled",True,5000) Then
           Log.Checkpoint("User Logged in successfully")
         Else
@@ -53,7 +53,7 @@ End Sub
 'Reviewed by:
 Sub n4mobileScopeSelection
   Dim ObjComplex, ObjFacility, ObjOperator, ObjSend, ObjYard
-  aqUtils.Delay 1500
+  aqUtils.Delay 1000
   Set ObjOperator = Aliases.browser.FindChild("idStr","framework:MAPX001-lastOperator_input",20,True)
     If ObjOperator.WaitProperty("Exists", True,5000) Then 
       ObjOperator.SetText(flowData.Item("n4MobileOperator"))
@@ -65,7 +65,7 @@ Sub n4mobileScopeSelection
       ObjYard.SetText(flowData.Item("n4MobileYard"))
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:site_2_SITE_SELECT",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-      aqUtils.Delay 1500
+      aqUtils.Delay 1000
         If Aliases.browser.FindChild("ObjectIdentifier","Yard Inventory(i)",20,True).WaitProperty("Visible", True,5000) Then
           Log.Checkpoint("Scope selected successfully")
         Else
