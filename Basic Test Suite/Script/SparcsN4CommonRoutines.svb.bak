@@ -92,7 +92,7 @@ Sub n4SelectWorkMode(WorkMode)
             Log.Checkpoint"Operations is already selected"
           End If
       ElseIf SelWorkMode = "Administration" Then
-        aqUtils.Delay 2000
+        aqUtils.Delay 1000
         Set ObjAdministrationMenu = Aliases.jp2launcher.FindChild("AWTComponentName", "NavigationId[TOP1_ADMINISTRATION]", 20, True)
           If ObjAdministrationMenu.Enabled Then
             Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click(" |Administration")
@@ -375,6 +375,7 @@ Sub n4ImportSnxFile(FileName)
   Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
   ObjHomeView.Click("Windows|Close All Tabs")
   Call n4SelectWorkMode("Administration")
+  aqUtils.Delay 1000
   ObjHomeView.Click("DBA|Import SNX File")
   If Aliases.jp2launcher.n4SnxImporterWindow.WaitProperty("Exists", True,50000)Then
     Set ObjImportXmlFile = Aliases.jp2launcher.n4SnxImporterWindow.FindChild("AWTComponentName", "LABEL__XML_LOADER_IMPORT", 20, True)
@@ -387,10 +388,10 @@ Sub n4ImportSnxFile(FileName)
         Set Message = ObjMessage.getText
           If Message.contains("import SUCCESSFUL")Then
             Log.Checkpoint("Snx imported Successfully")
-            Aliases.jp2launcher.n4SnxImporterWindow.Close
           Else
             Log.Checkpoint("Snx import failed")
-          End If         
+          End If   
+        Aliases.jp2launcher.n4SnxImporterWindow.Close      
       End If
   End If
 End Sub
@@ -424,6 +425,7 @@ Sub n4DeleteUnit(UnitId)
   Call n4SelectWorkMode("Operations")
   ObjHomeView.Click("Windows|Close All Tabs")
   ObjHomeView.Click("Unit|Units")
+  aqUtils.Delay 1000
   Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
   Call CommonRoutines.EnterOperation(ObjSearchUnit,UnitId,"Container Number")
   Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
@@ -443,8 +445,10 @@ Sub n4DeleteUnit(UnitId)
       Call CommonRoutines.ClickOperation(ObjDeleteYes,"Delete- yes button")
       Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_REFRESH", 20, True)
       Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")
-      Call n4SearchUnit
+      Call CommonRoutines.EnterOperation(ObjSearchUnit,UnitId,"Container Number")
+      Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
       Call CommonRoutines.ClickOperation(ObjAction,"Action Button")
+      aqUtils.Delay 1000
         If not Aliases.jp2launcher.FindChild("AWTComponentName", "List Selected", 20, True).Enabled Then
           Log.Checkpoint("Unit deleted Successfully")
         Else
