@@ -1,19 +1,19 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
-Sub OpenN4Mobile 
+Sub n4mobileOpen 
 
-  Call KillBrowser
+  Call n4mobileKillBrowser
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
     
 End Sub
 
 'Method to close Browser
-Sub CloseBrowser
+Sub n4mobileCloseBrowser
   Aliases.browser.Close
 End Sub
 
 'To kill existing session of browser
-Sub KillBrowser
+Sub n4mobileKillBrowser
   While Sys.WaitBrowser().Exists 
     Call Sys.WaitBrowser().Close()
   Wend
@@ -27,7 +27,7 @@ End Sub
 'Reviewed by:
 Sub n4mobileLogin
   Dim ObjPassword, ObjSend, ObjUserName
-  Call OpenN4Mobile
+  Call n4mobileOpen
   aqUtils.Delay 1500
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
     If ObjUserName.WaitProperty("Exists", True,5000) Then
