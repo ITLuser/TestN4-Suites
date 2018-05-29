@@ -7,7 +7,7 @@
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
-Sub n4mobileSelectYardInvOp
+Sub n4mobileSelectYardInventoryOperations
   Dim ObjQuery, ObjWheeled, ObjGrounded
   aqUtils.Delay 1500
   Set ObjQuery = Aliases.browser.FindChild("idStr","program:YINVOpSelection-yinvQueryButton_input",20,True)
@@ -15,6 +15,7 @@ Sub n4mobileSelectYardInvOp
       SelYardInventoryOperation = (flowData.Item("n4MobileYardInventoryOperation"))
         If SelYardInventoryOperation = "Query" Then
           Call CommonRoutines.ClickOperation(ObjQuery,"Query Button")
+          aqUtils.Delay 1000
             If Aliases.browser.FindChild("idStr","program:YINVContainerPrompt-yinvHomeButton_input",20,True).WaitProperty("VisibleOnScreen", True,5000) Then
               Log.Checkpoint("Container Query selected successfully")
             Else
