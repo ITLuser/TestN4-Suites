@@ -409,11 +409,11 @@ Sub YINV_107
 End Sub
 
 Sub Main
-  Call YINV_101
-  Call YINV_102
-  Call YINV_103
   Call YINV_104
   Call YINV_105
   Call YINV_106
   Call YINV_107
+  Call YINV_101
+  Call YINV_102
+  Call YINV_103
 End Sub

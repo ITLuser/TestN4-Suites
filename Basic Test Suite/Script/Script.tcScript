@@ -34,8 +34,8 @@
 		<child name="N4MobileYardInventoryCommonRoutines" key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="N4MobileYardInventoryCommonRoutines.svb" />
 		</child>
-		<child name="N4mobileYinvContainerQuery" key="{5D8376C1-22E4-4BE0-B5F7-05B839A52B57}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
-			<data path="N4mobileYinvContainerQuery.svb" />
+		<child name="N4mobileYardInventoryContainerQuery_Script" key="{A518298B-9D88-4974-864F-87E56209E3F6}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4mobileYardInventoryContainerQuery_Script.svb" />
 		</child>
 	</children>
 	<folders>
@@ -58,7 +58,7 @@
 			<references>
 				<ref key="{60726032-F55A-4038-AAC0-A8F4C4364402}" />
 				<ref key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" />
-				<ref key="{5D8376C1-22E4-4BE0-B5F7-05B839A52B57}" />
+				<ref key="{A518298B-9D88-4974-864F-87E56209E3F6}" />
 			</references>
 		</folder>
 		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">
