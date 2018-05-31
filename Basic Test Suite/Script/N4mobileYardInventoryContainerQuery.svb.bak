@@ -26,7 +26,7 @@ Sub YINV_101
   Call CommonRoutines.fetchData("YINV_101")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -46,7 +46,8 @@ Sub YINV_101
   Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "MTY")
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To Check whether N4 mobile prepopulates the chassis number if the carriage equipment is known.
@@ -74,8 +75,8 @@ Sub YINV_102
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ChassisUnit.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ChassisUnit.xml")
   Call SparcsN4CommonRoutines.n4AttachUnit
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -87,7 +88,8 @@ Sub YINV_102
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To update seal values to unit using yard inventory form in n4 mobile 
@@ -123,7 +125,7 @@ Sub YINV_103
   Call CommonRoutines.fetchData("YINV_103")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -155,6 +157,7 @@ Sub YINV_103
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To update Damage values to unit using yard inventory form in n4 mobile 
@@ -190,7 +193,7 @@ Sub YINV_104
   Call CommonRoutines.fetchData("YINV_104")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -215,7 +218,8 @@ Sub YINV_104
   ObjClose.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To update Weight values to unit using yard inventory form in n4 mobile 
@@ -251,7 +255,7 @@ Sub YINV_105
   Call CommonRoutines.fetchData("YINV_105")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -276,7 +280,8 @@ Sub YINV_105
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To update OOG values to unit using yard inventory form in n4 mobile 
@@ -312,7 +317,7 @@ Sub YINV_106
   Call CommonRoutines.fetchData("YINV_106")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -345,7 +350,8 @@ Sub YINV_106
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 'To update Grade value to unit using yard inventory form in n4 mobile 
@@ -382,7 +388,7 @@ Sub YINV_107
   Call CommonRoutines.fetchData("YINV_107")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete18-5-18\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -405,15 +411,16 @@ Sub YINV_107
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4Close
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
 
 Sub Main
-  Call YINV_101
-  Call YINV_102
-  Call YINV_103
   Call YINV_104
   Call YINV_105
   Call YINV_106
   Call YINV_107
+  Call YINV_101
+  Call YINV_102
+  Call YINV_103
 End Sub
