@@ -30,7 +30,7 @@
 				<Prp name="relpath" type="S" value="N4Mobile\N4Mobile.mds.tcLS"/>
 			</Node>
 			<Node name="{980d75fc-05b1-45e1-bcf8-ecde41b6ca2a}">
-				<Prp name="relpath" type="S" value="Basic Test Suite\Basic Test Suite.mds.tcLS"/>
+				<Prp name="relpath" type="S" value="Basic Test Suite\Basic_TestSuite.mds.tcLS"/>
 			</Node>
 			<Node name="{a1af6d1a-a42b-4e6b-8d58-aff6182857d0}">
 				<Prp name="relpath" type="S" value="XPS\XPS.mds.tcLS"/>

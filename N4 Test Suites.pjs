@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Root signature="{24B6FA0B-0143-461A-9758-AEB9E9A9428B}" version="12.0" key="{FBA8427A-89FE-4783-943D-5E54A3A315E3}">
 	<children>
-		<child name="Basic Test Suite" key="{980D75FC-05B1-45E1-BCF8-ECDE41B6CA2A}" type="Project" typeId="{362A8EE5-675E-43A9-869D-06ECE80B0CB4}" pluginName="">
-			<data path="Basic Test Suite\Basic Test Suite.mds" />
+		<child name="Basic_TestSuite" key="{980D75FC-05B1-45E1-BCF8-ECDE41B6CA2A}" type="Project" typeId="{362A8EE5-675E-43A9-869D-06ECE80B0CB4}" pluginName="">
+			<data path="Basic Test Suite\Basic_TestSuite.mds" />
 		</child>
 	</children>
 	<folders />
