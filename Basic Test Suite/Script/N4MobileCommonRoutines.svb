@@ -1,10 +1,11 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
 Sub n4mobileOpen 
-
+  Dim ObjBrowserWindow
   Call n4mobileKillBrowser
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
-    
+  Set ObjBrowserWindow = Aliases.browser.FindChild("ObjectType","BrowserWindow",20,True)
+  ObjBrowserWindow.Maximize
 End Sub
 
 'Method to close Browser
