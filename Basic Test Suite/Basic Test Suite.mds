@@ -23,7 +23,9 @@
 				<ref key="{EDCEEF48-551C-4C6C-B0A1-1B6234FF27F5}" />
 			</references>
 		</folder>
-		<folder caption="NewFolder1" description="A logical folder that is used to organize project items and elements." moniker="" />
+		<folder caption="NewFolder1" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references />
+		</folder>
 	</folders>
 	<config language="{897793E3-73F3-4895-A956-3D41D3A24A45}" />
 	<testItems key="{6FEE70F5-9D08-476B-9A07-33EB39D47CC0}">
@@ -33,7 +35,7 @@
 		<data Version="3" />
 	</variables>
 	<settings key="{3EF91EAD-C838-461D-A615-61BD86F789D7}">
-		<settingsVersion value="12.50" />
+		<settingsVersion value="12.42" />
 		<setting name="JavaFXOpenApp_NodeByClassNameFilters" type="6" rowIndex="8" colIndex="2">
 			<columns>
 				<column type="1" enabled="True" />
