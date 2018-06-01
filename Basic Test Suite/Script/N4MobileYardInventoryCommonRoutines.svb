@@ -280,7 +280,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryBundleContainer
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjBundle1, ObjBundleButton, ObjCheckElement, ObjCommit, ObjDamageButton1, ObjSend
   Set ObjBundleButton = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myBDLButton_input", 20, True)
     If  ObjBundleButton.WaitProperty("Enabled", True,5000) Then
@@ -340,7 +339,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryEnterHazard
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjCheckElement, ObjCommit, ObjHasPlacards, ObjHazardButton, ObjPlacardValue, ObjSend
   Set ObjHazardButton = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myHAZButton_input", 20, True)
     If  ObjHazardButton.WaitProperty("Enabled", True,5000) Then 
@@ -363,4 +361,197 @@ Call CommonRoutines.fetchData("N4MobileCommonRoutines")
             End If
         End If
     End If
+End Sub
+
+'To Update Door direction to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 31/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateDoorDirection
+  Dim ObjCheckElement, ObjCommit, ObjDoorDirection
+  Set ObjDoorDirection = Aliases.browser.FindChild("idStr", "program:MYI002-myDoorDirection_input", 20, True)
+  If ObjDoorDirection.WaitProperty("Enabled", True,5000) Then
+    Call CommonRoutines.EnterOperation(ObjDoorDirection,flowData.Item("n4YinvQueryContainerDoorDirection"),"Door Direction")
+    Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+    Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+    aqUtils.Delay 1000
+    Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+      If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+        Log.Checkpoint("Door Direction Updated Successfully")
+        Set ObjCheckDoorDirection = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitPosOrient_input", 20, True)
+        Call aqObject.CheckProperty(ObjCheckDoorDirection,"wText", cmpEqual, "Aft")
+      Else
+        Log.Error("Failed to Update Door Direction")
+      End If
+  End If
+End Sub
+
+'To Update Event Type to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateEventType
+  Dim ObjCheckElement, ObjCommit, ObjEventType
+  Set ObjEventType = Aliases.browser.FindChild("idStr", "program:MYI002-myServiceEvent_input", 20, True)
+    If ObjEventType.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjEventType,flowData.Item("n4YinvQueryContainerEvent"),"Event Type")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Event Type Updated Successfully")
+        Else
+          Log.Error("Failed to Update Event Type")
+        End If
+    End If 
+End Sub
+
+'To Update Line Operator to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateLineOperator
+  Dim ObjCheckElement, ObjCheckLineOperator, ObjCommit, ObjLineOperator
+  Set ObjLineOperator = Aliases.browser.FindChild("idStr","program:MYI002-myLineOperator_input", 20, True)
+    If ObjLineOperator.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjLineOperator,flowData.Item("n4YinvQueryContainerLineOperator"),"Line Operator")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Line Operator Updated Successfully")
+          Set ObjCheckLineOperator = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvLineOperator_outputText", 20, True)
+          Call aqObject.CheckProperty(ObjCheckLineOperator,"contentText", cmpEqual, "ASW")
+        Else
+          Log.Error("Failed to Update Line Operator")
+        End If
+    End If 
+End Sub 
+
+'To Update Equipment type to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateEquipmentType
+  Dim ObjCheckElement, ObjCheckEquipmentType, ObjCommit, ObjEquipmentType
+  Set ObjEquipmentType = Aliases.browser.FindChild("idStr","program:MYI002-myISOCode_input", 20, True)
+    If ObjEquipmentType.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjEquipmentType,flowData.Item("n4YinvQueryContainerEqType"),"Equipment Type")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("EquipmentType Updated Successfully")
+          Set ObjCheckEquipmentType = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitISO_outputText", 20, True)
+          Call aqObject.CheckProperty(ObjCheckEquipmentType,"contentText", cmpEqual, "2200")
+        Else
+          Log.Error("Failed to Update EquipmentType")
+        End If
+    End If 
+End Sub 
+
+'To Update Tank Rails to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateTankRails
+  Dim ObjCheckElement, ObjCommit, ObjTankRails
+  Set ObjTankRails = Aliases.browser.FindChild("idStr","program:MYI002-myTankRails_input", 20, True)
+    If ObjTankRails.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjTankRails,flowData.Item("n4YinvQueryContainerTankRails"),"Tank Rails")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Tank Rails Updated Successfully")
+        Else
+          Log.Error("Failed to Update Tank Rails")
+        End If
+    End If 
+End Sub 
+
+'To Attach Chassis to Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryAttachChassis
+  Dim ObjChassis, ObjCheckElement, ObjCommit
+  Set ObjChassis = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitCHS_input", 20, True)
+    If ObjChassis.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjChassis,flowData.Item("n4YinvQueryContainerChassis"),"Chassis")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVContainerPrompt-yinvHomeButton_input", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Chassis Attached to Unit Successfully")
+        Else
+          Log.Error("Failed to Attach Chassis to Unit")
+        End If
+    End If  
+End Sub
+
+'To Detach Chassis From Container using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryDetachChassis
+  Dim ObjChassis, ObjCheckElement, ObjCommit
+  Set ObjChassis = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitCHS_input", 20, True)
+    If ObjChassis.WaitProperty("Enabled", True,5000) Then
+      ObjChassis.settext("")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVContainerPrompt-yinvHomeButton_input", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Chassis Detached from Unit Successfully")
+        Else
+          Log.Error("Failed to Detach Chassis from Unit")
+        End If
+    End If  
+End Sub
+
+'To Update Notes to Unit using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 01/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateNotes
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCheckElement, ObjCheckNotes, ObjCommit, ObjNotes
+    Set ObjNotes = Aliases.browser.FindChild("idStr", "program:MYI002-myNotes_input", 20, True)
+    If ObjNotes.WaitProperty("Enabled", True,5000) Then
+      ObjNotes.settext(flowData.Item("n4YinvQueryContainerNotes"))
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Notes Updated Successfully")
+          Set ObjCheckNotes = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitNotes_input", 20, True)
+          Call aqObject.CheckProperty(ObjCheckNotes,"Text", cmpEqual, "DAS") 
+        Else
+          Log.Error("Failed to Update Notes")
+        End If
+    End If 
 End Sub
