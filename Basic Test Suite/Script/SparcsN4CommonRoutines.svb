@@ -497,3 +497,61 @@ Sub n4AttachUnit
     End If
       Aliases.jp2launcher.n4UnitInspectorWindow.Close
 End Sub
+
+
+'To Process WebRequest in ArgoServiceTester
+'Input Parameters: By using Dictionary Object
+'Created: 18/05/2018
+'Created by: Dinesh RameshKumar
+'Reviewed: 
+'Reviewed by:
+Sub n4ProcessWebRequest
+  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  Dim ObjPassword,ObjBasicRequest,writefile,fso,strFilewrite,objFileToWrite,Objmessagefields,Objgetvalue
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+  Call n4SelectWorkMode("Administration")
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Debug|argoservice Tester")
+  aqUtils.Delay 1000
+  Set ObjPassword = Aliases.jp2launcher.FindChild("AWTComponentName", "argoserviceTesterPassword", 20, True)
+  Call CommonRoutines.ClickOperation(ObjPassword,"Password clicked")
+  Call CommonRoutines.EnterOperation(ObjPassword,(flowData.Item("Password")),"Password Entered")
+  Set ObjBasicRequest = Aliases.jp2launcher.FindChild("AWTComponentName", "SEND_BASIC_REQUEST", 20, True)
+  Call CommonRoutines.EnterOperation(ObjBasicRequest,"[Enter]","Send basic request")
+  Set ObjMessagefields = Aliases.jp2launcher.FindChild("AWTComponentName", "requestMessageField", 20, True)
+  Call CommonRoutines.ClickOperation(ObjMessagefields,"MessageField clicked")
+  ObjMessagefields.selectAll
+  Call n4ReadWebServiceRequest
+  ObjMessagefields.Keys(strFileText) 
+  Set ObjBasicRequest = Aliases.jp2launcher.FindChild("AWTComponentName", "SEND_BASIC_REQUEST", 20, True)
+  Call CommonRoutines.ClickOperation(ObjBasicRequest,"Send basic request clicked") 
+  Set Objmessagefields = Aliases.jp2launcher.FindChild("AWTComponentName", "responseMessageField", 20, True)
+  aqUtils.Delay 1000 
+  set Objgetvalue = Objmessagefields.getText
+  Log.Message(Objgetvalue)
+  If Objgetvalue.contains("Successful") Then
+   Log.Message "WebRequest Successfully processed in ArgoServiceTester"
+  Else
+   Log.Message "Failed to Process WebRequest in ArgoServiceTester"
+  End If
+End Sub
+
+
+'To Read WebRequest from Text file
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018
+'Created by: Aswini UthayaKumar
+'Reviewed: 
+'Reviewed by:
+Dim strFileText
+Sub n4ReadWebServiceRequest
+  Set objFSO = CreateObject("Scripting.FileSystemObject")
+  Const ForReading = 1 
+  Call CommonRoutines.GetCurrentDirectory
+  Dim StrRequest 
+  StrRequest = flowData.Item("WebRequest")
+  Directory = CurrentDirectory+"\ScriptData\WebServiceRequest"+StrRequest
+  Set objTextFile = objFSO.OpenTextFile(Directory, ForReading)
+  strFileText = objTextFile.ReadAll
+  objTextFile.Close 
+End Sub
+
