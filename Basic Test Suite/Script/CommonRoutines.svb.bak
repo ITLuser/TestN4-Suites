@@ -12,7 +12,8 @@ Sub fetchData(fname)
   flowData.RemoveAll
   Call ClusterDetails
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITL-USER\Desktop\Test N4\TestData.xlsx")
+  Call GetCurrentDirectory
+  Set objWorkbook = objExcel.WorkBooks.Open(CurrentDirectory+"\TestData\TestData.xlsx")
   WorkSheetCount = objExcel.ActiveWorkbook.Worksheets.count
     For i = 1 to WorkSheetCount
       Set objDriverSheet = objExcel.ActiveWorkbook.Sheets(i)
@@ -75,13 +76,13 @@ End Sub
 'Reviewed by:
 Sub ClickOperation(Object,ButtonName)
   If Object.WaitProperty("Exists", True,50000) Then
-  If Object.WaitProperty("Visible", True,50000) Then
-    Object.Click
-    aqUtils.Delay 1000
-    Log.Message("The "+ButtonName+ " is clicked successfully")
-  Else
-    Log.Error("The "+Object+" does not exists")
-  End If
+    If Object.WaitProperty("Visible", True,50000) Then
+      Object.Click
+      aqUtils.Delay 1000
+      Log.Message("The "+ButtonName+ " is clicked successfully")
+    Else
+      Log.Error("The "+Object+" does not exists")
+    End If
   End If
 End Sub
 
@@ -104,3 +105,9 @@ End Sub
 
 
 
+Dim CurrentDirectory
+Sub GetCurrentDirectory
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+CurrentDirectory = objFSO.GetAbsolutePathName(".")
+Log.Message(CurrentDirectory)
+End Sub

@@ -12,7 +12,8 @@ Sub fetchData(fname)
   flowData.RemoveAll
   Call ClusterDetails
   set objexcel = Createobject("Excel.Application")
-  Set objWorkbook = objExcel.WorkBooks.Open("C:\Users\ITL-USER\Desktop\Test N4\TestData.xlsx")
+  Call GetCurrentDirectory
+  Set objWorkbook = objExcel.WorkBooks.Open(CurrentDirectory+"\TestData\TestData.xlsx")
   WorkSheetCount = objExcel.ActiveWorkbook.Worksheets.count
     For i = 1 to WorkSheetCount
       Set objDriverSheet = objExcel.ActiveWorkbook.Sheets(i)
@@ -104,3 +105,8 @@ End Sub
 
 
 
+Dim CurrentDirectory
+Sub GetCurrentDirectory
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+CurrentDirectory = objFSO.GetAbsolutePathName(".")
+End Sub
