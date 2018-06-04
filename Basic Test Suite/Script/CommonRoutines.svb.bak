@@ -109,5 +109,4 @@ Dim CurrentDirectory
 Sub GetCurrentDirectory
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 CurrentDirectory = objFSO.GetAbsolutePathName(".")
-Log.Message(CurrentDirectory)
 End Sub
