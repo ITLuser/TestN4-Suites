@@ -390,7 +390,7 @@ Sub YINV_107
   Call CommonRoutines.fetchData("YINV_107")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
