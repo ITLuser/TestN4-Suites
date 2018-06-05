@@ -26,7 +26,8 @@ Sub YINV_101
   Call CommonRoutines.fetchData("YINV_101")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("\SNX\ReceiveEmptyUnit2200.xml")
+  Call CommonRoutines.GetCurrentDirectory
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -73,10 +74,11 @@ Sub YINV_102
   Dim ObjChs
   Call CommonRoutines.fetchData("YINV_102")
   Call SparcsN4CommonRoutines.n4LogIn
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ChassisUnit.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ChassisUnit.xml")
   Call SparcsN4CommonRoutines.n4AttachUnit
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -125,7 +127,7 @@ Sub YINV_103
   Call CommonRoutines.fetchData("YINV_103")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -193,7 +195,7 @@ Sub YINV_104
   Call CommonRoutines.fetchData("YINV_104")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -255,7 +257,7 @@ Sub YINV_105
   Call CommonRoutines.fetchData("YINV_105")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -317,7 +319,7 @@ Sub YINV_106
   Call CommonRoutines.fetchData("YINV_106")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -388,7 +390,7 @@ Sub YINV_107
   Call CommonRoutines.fetchData("YINV_107")
   Call SparcsN4CommonRoutines.n4LogIn
   Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
