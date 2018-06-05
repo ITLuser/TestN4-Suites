@@ -1,0 +1,105 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+
+'To Reefer Monitor
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileContainerReeferMonitor
+  Dim Objunit,ObjClick
+  Set Objunit = Aliases.browser.FindChild("idStr", "program:RM03-rmReeferID_input", 20, True) 
+   If Objunit.WaitProperty("Exists", True,5000) Then 
+    Call CommonRoutines.EnterOperation(Objunit,flowData.Item("n4Wheeled Unit"),"Wheeled Unit Entered")
+    Set ObjClick = Aliases.browser.FindChild("idStr", "program:duplicates_2_SEND", 20, True) 
+    Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
+    Delay 1000
+    If Aliases.browser.FindChild("idStr", "program:RM04-rmReefer_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+     Log.Checkpoint("Container RefeerMonitor is  successful")
+    Else
+     Log.Checkpoint("Container RefeerMonitor is  unsuccessful") 
+    End If
+   End If  
+End Sub 
+
+'To Reefer Monitor
+'Input Parameters: By using Dictionary Object
+'Created: 06/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub  n4mobileReeferMonitorDetails
+  Dim Objalarm,ObjOnbutton,ObjReturnTemp,ObjSupplyTemp,ObjNotes,ObjFaultCode,ObjventSetting
+  Set Objalarm = Aliases.browser.FindChild("idStr", "program:RM04-rmIsAlarmOn_input", 20, True)
+   If Aliases.browser.FindChild("idStr", "program:RM04-rmIsAlarmOn_input", 20, True).Enabled Then
+    Log.Message "Already Clicked"
+   Else 
+    Call CommonRoutines.ClickOperation(Objalarm,"Alarmon")
+    Delay 1000
+   End If
+   Set ObjOnbutton = Aliases.browser.FindChild("idStr", "program:RM04-rmOnPower_input", 20, True)
+    If ObjOnbutton.Enabled Then
+     Log.Message "Already Clicked"
+    Else
+     Call CommonRoutines.ClickOperation(ObjOnbutton,"OnButtonClicked") 
+    End If
+    Set ObjReturnTemp = Aliases.browser.FindChild("idStr", "program:RM04-rmReturnTemp_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjReturnTemp,flowData.Item("n4ReturnTemp"), "ReturnTemp Entered")
+    Set ObjSupplyTemp =  Aliases.browser.FindChild("idStr", "program:RM04-rmSupplyTemp_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjSupplyTemp,flowData.Item("n4SupplyTemp"), "n4SupplyTemp Entered")
+    Set ObjNotes = Aliases.browser.FindChild("idStr", "program:RM04-rmNotes_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjNotes,flowData.Item("n4notes"), "Notes Entered")
+    Set ObjFaultCode = Aliases.browser.FindChild("idStr", "program:RM04-rmFaultCode_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjFaultCode,flowData.Item("n4FaultCode"), "FaultCode Entered")
+    Set ObjventSetting =  Aliases.browser.FindChild("idStr", "program:RM07-rmVentilationSetting_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjventSetting,flowData.Item("n4Vent"), "Vent Entered") 
+    Set ObjValutUnit = Aliases.browser.FindChild("idStr", "program:RM07-rmVentilationUnit_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjValutUnit,flowData.Item("n4VentUnit"), "VentUnit Entered") 
+    Set ObjHumidity =  Aliases.browser.FindChild("idStr", "program:RM08-rmHumidity_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjHumidity,flowData.Item("n4Humidity"), "Humidity Entered") 
+    Set ObjCarbondioxide = Aliases.browser.FindChild("idStr", "program:RM09-rmCO2_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjCarbondioxide,flowData.Item("n4Co2"), "Co2 Entered") 
+    Set ObjOxygen = Aliases.browser.FindChild("idStr", "program:RM10-rmO2_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjOxygen,flowData.Item("n4Oxygen"), "Oxygen Entered") 
+    Set ObjTemperPoint = Aliases.browser.FindChild("idStr", "program:RM11-rmTempSetPort_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjTemperPoint,flowData.Item("n4TemperatureSetPoint"), "Temperaturepoint Entered") 
+    Set ObjTempDefrost  = Aliases.browser.FindChild("idStr", "program:RM11-rmTempDefrost_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjTempDefrost,flowData.Item("n4TempDefrostpoint"), "Temper Defrostpoint Entered") 
+    Set ObjGenset = Aliases.browser.FindChild("idStr", "program:RM13-rmGensetID_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjGenset,flowData.Item("n4GenSetid"), "Temper Defrostpoint Entered") 
+    Set ObjFuelevel =  Aliases.browser.FindChild("idStr", "program:RM13-rmFuelLevel_input", 20, True)
+    call CommonRoutines.EnterOperation(ObjFuelevel,flowData.Item("n4Fuelevel"), "Fuelevel Entered")  
+    Set ObjDrain =  Aliases.browser.FindChild("idStr", "program:RM16-rmDrains_input", 20, True)
+     If ObjDrain.Enabled Then
+      Log.Message "Already Clicked"
+     Else 
+      Call CommonRoutines.ClickOperation(ObjDrain,"DrainClicked")
+     End If
+     Set ObjBulb =  Aliases.browser.FindChild("idStr", "program:RM16-rmBulbOn_input", 20, True)
+     If ObjBulb.Enabled Then
+      Log.Message "Already Clicked"
+     Else 
+      Call CommonRoutines.ClickOperation(ObjBulb,"BulbClicked")
+     End If
+     Set ObjClick = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+     Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
+     Delay 1000
+      If Aliases.browser.FindChild("idStr", "program:RM03-rmReeferID_input", 20, True).WaitProperty("Visible", True,5000) Then    
+       Log.Message "RefeerMonitor Details Entered"
+      Else 
+       Log.Message "RefeerMonitor Details not enteted Entered"
+      End If
+End Sub
+
+
+Sub play
+  
+
+  Call CommonRoutines.fetchData("N4MobileReeferMonitor")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram 
+  Call n4mobileContainerReeferMonitor
+  Call n4mobileReeferMonitorDetails
+End Sub
