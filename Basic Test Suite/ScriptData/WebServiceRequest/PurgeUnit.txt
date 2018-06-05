@@ -1,0 +1,12 @@
+
+<groovy class-location="classpath" class-directory="test/extension/groovy" class-name="TestCommand">
+<parameters>
+<parameter id="command" value="PurgeUnit" />
+<parameter id="unitId" value="APLU8362946" />
+</parameters>
+</groovy>
+
+
+
+
+
