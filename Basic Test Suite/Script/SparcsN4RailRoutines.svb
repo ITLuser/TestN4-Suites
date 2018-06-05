@@ -97,7 +97,7 @@ Sub n4RailRoadOperatorDelete
     Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh")
     Log.Checkpoint  "Rail Road Operator Successfully Deleted " 
    Else
-    Log.Checkpoint "4Rail Road Operator already Deleted"
+    Log.Checkpoint "Rail Road Operator already Deleted"
    End If
 End Sub
  
@@ -130,11 +130,6 @@ Sub n4CreateTrainVisit
     call CommonRoutines.EnterOperation(ObService,(flowData.Item("Service")),"Services")
     Call CommonRoutines.ClickOperation(ObService,"Service")  
     Call CommonRoutines.EnterOperation(ObService,"[Tab]","Tab")  
-'    Set ObjEstDate = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","cvdETA.date",20, True)
-'    call CommonRoutines.EnterOperation(ObjEstDate,(flowData.Item("EstimatedTimeArrival")),"EstimateDate")
-'    aqUtils.Delay 1000
-'    Set ObjEstTime = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","cvdETA.time",20, True)
-'    call CommonRoutines.EnterOperation(ObjEstTime,(flowData.Item("EstimatedTime")),"EstimateTime")
     Set ObjSave = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True) 
     Call CommonRoutines.ClickOperation(ObjSave,"Save") 
     Set ObjRefresh = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)   
@@ -178,7 +173,7 @@ Sub n4TrainVisitDelete
     Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh button")
     Log.Checkpoint  "Rail Visit Deleted " 
    Else
-    Log.Checkpoint "Vessel already Deleted"
+    Log.Checkpoint "Rail already Deleted"
    End If
 End Sub
 'To  n4AdvanceEditTrain Visit
