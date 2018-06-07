@@ -245,7 +245,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInspectionEnterGradeNMaterial
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjAddButton, ObjCheckElement, ObjCommit, ObjGrade, ObjMaterial, ObjSend
   aqUtils.Delay 1000
   Set ObjAddButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myADDButton_input",20,True)
@@ -389,7 +388,7 @@ Sub n4mobileYardInventoryUpdateTankRails
   Dim ObjCheckElement, ObjCommit, ObjTankRails
   Set ObjTankRails = Aliases.browser.FindChild("idStr","program:MYI002-myTankRails_input", 20, True)
     If ObjTankRails.WaitProperty("Enabled", True,5000) Then
-      Call CommonRoutines.EnterOperation(ObjTankRails,flowData.Item("n4YinvQueryContainerTankRails"),"Tank Rails")
+      Call CommonRoutines.EnterOperation(ObjTankRails,flowData.Item("n4YInspTankRails"),"Tank Rails")
       Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
       Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
       aqUtils.Delay 1000
@@ -401,3 +400,5 @@ Sub n4mobileYardInventoryUpdateTankRails
         End If
     End If 
 End Sub 
+
+

@@ -245,7 +245,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInspectionEnterGradeNMaterial
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjAddButton, ObjCheckElement, ObjCommit, ObjGrade, ObjMaterial, ObjSend
   aqUtils.Delay 1000
   Set ObjAddButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myADDButton_input",20,True)
@@ -279,7 +278,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInspectionEnterReeferDetails
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
 Dim ObjCheckElement, ObjCommit, ObjGenSetID, ObjGenSetType, ObjOnPower, ObjReeferButton, ObjSend, ObjTemp, ObjTempUnit
   Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
     If ObjReeferButton.WaitProperty("Enabled", True,5000) Then
@@ -401,3 +399,5 @@ Sub n4mobileYardInventoryUpdateTankRails
         End If
     End If 
 End Sub 
+
+
