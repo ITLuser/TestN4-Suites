@@ -190,7 +190,9 @@ Sub n4MobileLogout
    Dim ObjLogoutButton
    aqUtils.Delay 1000
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
-    If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
+    If ObjLogoutButton.Exists Then
       ObjLogoutButton.Click
+    ElseIf Aliases.browser.FindChild("idStr","program:one_1_EXIT",20,True).Exists Then
+      Aliases.browser.FindChild("idStr","program:one_1_EXIT",20,True).Click
     End If
 End Sub

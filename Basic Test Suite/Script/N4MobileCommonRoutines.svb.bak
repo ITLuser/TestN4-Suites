@@ -1,6 +1,7 @@
 ﻿'USEUNIT CommonRoutines
 'Method to Open N4 mobile
 Sub n4mobileOpen 
+  Dim ObjBrowserWindow
   Call n4mobileKillBrowser
   Browsers.Item(btChrome).Run((flowData.Item("N4MOBILE"))+":8280/apex/entry.faces")
   Set ObjBrowserWindow = Aliases.browser.FindChild("ObjectType","BrowserWindow",20,True)
@@ -191,5 +192,7 @@ Sub n4MobileLogout
    Set ObjLogoutButton = Aliases.browser.FindChild("idStr","program:two_1_EXIT",20,True)
     If ObjLogoutButton.WaitProperty("Enabled", True,5000) Then
       ObjLogoutButton.Click
+    ElseIf Aliases.browser.FindChild("idStr","program:one_1_EXIT",20,True).Exists Then
+      Aliases.browser.FindChild("idStr","program:one_1_EXIT",20,True).Click
     End If
 End Sub

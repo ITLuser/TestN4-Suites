@@ -236,7 +236,7 @@ Sub n4mobileYardInventoryEnterOOG
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
             Log.Checkpoint("OOG Values Added Successfully")
           Else
-            Log.Checkpoint("Failed to add OOG Values")
+            Log.Error("Failed to add OOG Values")
           End If 
       End If 
   End If
@@ -266,7 +266,7 @@ Sub n4mobileYardInventoryEnterGrade
             Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
             Log.Checkpoint("Grade Added Successfully")
           Else
-            Log.Checkpoint("Failed to add Grade Value")
+            Log.Error("Failed to add Grade Value")
           End If
       End If
   End If
@@ -537,7 +537,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryUpdateNotes
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjCheckElement, ObjCheckNotes, ObjCommit, ObjNotes
     Set ObjNotes = Aliases.browser.FindChild("idStr", "program:MYI002-myNotes_input", 20, True)
     If ObjNotes.WaitProperty("Enabled", True,5000) Then
@@ -548,10 +547,50 @@ Call CommonRoutines.fetchData("N4MobileCommonRoutines")
       Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
         If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
           Log.Checkpoint("Notes Updated Successfully")
-          Set ObjCheckNotes = Aliases.browser.FindChild("idStr", "program:MYI002-myNotes_input", 20, True)
+          Set ObjCheckNotes = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitNotes_input", 20, True)
           Call aqObject.CheckProperty(ObjCheckNotes,"Text", cmpEqual, "DAS") 
         Else
           Log.Error("Failed to Update Notes")
         End If
     End If 
+End Sub
+
+'To Enter Reefer Details to Unit using N4 Mobile in Yard Inventory
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryEnterReeferDetails
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCheckElement, ObjCommit, ObjGensetID, ObjGensetType, ObjOnPower, ObjReefer, ObjSend, ObjTemperature, ObjTempUnit
+  aqUtils.Delay 1000
+  Set ObjReefer = Aliases.browser.FindChild("idStr", "program:MYInspButtons-myTMPButton_input", 20, True)
+    If ObjReefer.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjReefer,"Reefer Button")
+      aqUtils.Delay 1000
+      Set ObjOnPower = Aliases.browser.FindChild("idStr", "program:MYI004-myUnitIsPowered_input", 20, True)
+        If ObjOnPower.WaitProperty("Enabled", True,5000) Then
+          Call CommonRoutines.ClickOperation(ObjOnPower,"On Power")
+          Set ObjTemperature = Aliases.browser.FindChild("idStr", "program:MYI004-myReeferTemperature_input", 20, True)
+          ObjTemperature.SetText(flowData.Item("n4YinvQueryContainerTemperature"))
+          Set ObjTempUnit = Aliases.browser.FindChild("idStr", "program:MYI004-myTemperatureUnit_input", 20, True)
+          ObjTempUnit.SetText(flowData.Item("n4YinvQueryContainerTemperatureUnit"))
+          Set ObjGensetID = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetId_input", 20, True)
+          ObjGensetID.SetText(flowData.Item("n4YinvQueryContainerGensetID"))
+          Set ObjGensetType = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetType_input", 20, True)
+          Call CommonRoutines.EnterOperation(ObjGensetType,flowData.Item("n4YinvQueryContainerGenSetType"),"Genset Type")
+          Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send")
+          Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Reefer Details Updated Successfully")
+            Else
+              Log.Error("Failed to Update Reefer Details")
+            End If
+        End If
+    End If
 End Sub
