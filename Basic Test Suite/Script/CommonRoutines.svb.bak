@@ -104,7 +104,11 @@ Sub EnterOperation(Object,Value,FieldName)
 End Sub
 
 
-
+'To Get the Current Directory
+'Created: 06/04/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
 Dim CurrentDirectory
 Sub GetCurrentDirectory
 Set objFSO = CreateObject("Scripting.FileSystemObject")
