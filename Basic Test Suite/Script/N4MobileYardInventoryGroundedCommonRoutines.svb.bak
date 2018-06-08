@@ -1,0 +1,132 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+'To Enter Grounded Position in YardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundEnterPosition
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Set ObjPosition = Aliases.browser.FindChild("idStr","program:YINVGroundedPosition-yinvPos_input",20,True)
+    If  ObjPosition.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjPosition,flowData.Item("n4YinvGroundPosition"),"Position")
+      SelReverseDirection = flowData.Item("n4YinvGroundReverseDirection")
+      Set ObjReverseDirection = Aliases.browser.FindChild("idStr","program:YINVGroundedPosition-yinvIsPosReversed_input",20,True)
+        If SelReverseDirection = "Yes" Then
+          Call CommonRoutines.ClickOperation(ObjReverseDirection,"Is Reverse Direction")
+        End If
+        SelMenWorking  = flowData.Item("n4YinvGroundMenWorking")
+        Set ObjMenWorking = Aliases.browser.FindChild("idStr","program:YINVGroundedPosition-yinvMenWorking_input",20,True)
+          If SelMenWorking = "Yes" Then
+            Call CommonRoutines.ClickOperation(ObjMenWorking,"Is Men Working")
+          End If
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr3_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Ground position entered Successfully")
+            Else
+              Log.Error("Failed to enter ground position")
+            End If 
+    End If 
+End Sub
+
+'To SelectContainer in Grounded Position and click Q button in YardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickQButton
+Dim ObjCheckElement, ObjContainer, ObjQButton
+aqUtils.Delay 1000
+  Set ObjContainer = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
+  If  ObjContainer.WaitProperty("Enabled", True,5000) Then
+    Set ObjQButton = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvQueryButton1_input",20,True)
+    Call CommonRoutines.ClickOperation(ObjQButton,"Query Button")
+    aqUtils.Delay 1000
+    Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitPos_input",20,True)
+      If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+        Log.Checkpoint("Query Button Clicked Successfully")
+      Else
+        Log.Error("Failed to click Query Button")
+      End If
+  End If
+End Sub
+
+'To Click Next row button in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickNextRowButton
+Dim ObjCurrentRow, ObjNextRow, ObjNextRowButton
+  Set ObjNextRowButton = Aliases.browser.FindChild("idStr","program:two_2_yinvNextRowButton",20,True)
+    If  ObjNextRowButton.WaitProperty("Enabled", True,5000) Then
+      Set ObjCurrentRow = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrCurrentRow = ObjCurrentRow.contentText
+      Log.Message(StrCurrentRow)
+      Call CommonRoutines.ClickOperation(ObjNextRowButton,"Next Row Button")
+      Set ObjNextRow = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrNextRow = ObjNextRow.contentText
+      Log.Message(StrNextRow)
+        If not StrCurrentRow = StrNextRow Then
+          Log.Checkpoint("Next Row Button Clicked Successfully")
+        Else
+          Log.Error("Failed to click next row button")
+        End If
+    End If
+End Sub
+
+'To Click Previous row button in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickPreviousRowButton
+Dim ObjCurrentRow, ObjPreviousRow, ObjPreviousRowButton
+  Set ObjPreviousRowButton = Aliases.browser.FindChild("idStr","program:two_2_yinvPrevRowButton",20,True)
+    If ObjPreviousRowButton.WaitProperty("Enabled", True,5000) Then
+      Set ObjCurrentRow = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrCurrentRow = ObjCurrentRow.contentText
+      Log.Message(StrCurrentRow)
+      Call CommonRoutines.ClickOperation(ObjPreviousRowButton,"Previous Row Button")
+      Set ObjPreviousRow = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrPreviousRow = ObjPreviousRow.contentText
+      Log.Message(StrPreviousRow)
+        If not StrCurrentRow = StrPreviousRow Then
+          Log.Checkpoint("Previous Row Button Clicked Successfully")
+        Else
+          Log.Error("Failed to click Previous row button")
+        End If
+    End If
+End Sub
+
+'To Click Previous Stack button in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickPreviousStackButton
+Dim ObjCurrentStack, ObjPreviousStack, ObjPreviousStackButton
+  Set ObjPreviousStackButton = Aliases.browser.FindChild("idStr","program:two_2_yinvPrevButton",20,True)
+    If ObjPreviousStackButton.WaitProperty("Enabled", True,5000) Then
+      Set ObjCurrentStack = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrCurrentStack = ObjCurrentStack.contentText
+      Log.Message(StrCurrentStack)
+      Call CommonRoutines.ClickOperation(ObjPreviousStackButton,"PreviousStack Button")
+      Set ObjPreviousStack = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrPreviousStack = ObjPreviousStack.contentText
+      Log.Message(StrPreviousStack)
+        If not StrCurrentStack = StrPreviousStack Then
+          Log.Checkpoint("PreviousStack Button Clicked Successfully")
+        Else
+          Log.Error("Failed to click PreviousStack button")
+        End If
+    End If
+End Sub
