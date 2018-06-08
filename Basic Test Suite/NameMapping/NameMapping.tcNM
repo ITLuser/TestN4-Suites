@@ -351,7 +351,6 @@
 								</Properties>
 							</Child>
 							<Child Name="n4AttachEquipmentWindow" Key="{83E8F62D-C224-4165-A7BB-2F53E09AECEE}" ParallelWalk="True">
-								<Image FileName="-1918136054" Left="2" Top="2" Right="273" Bottom="170" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
@@ -359,6 +358,33 @@
 									</Property>
 									<Property Name="WndCaption">
 										<Value PropertyType="0" Value="Attach Equipment" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="RAL007_TrainVisitDetails" Key="{6C091640-DB76-4CA5-8B80-3BAE2A2C7B96}" ParallelWalk="True">
+								<Image FileName="-68635816" Left="2" Top="2" Right="316" Bottom="225" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="RAL007.TrainVisitDetails" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="FORM_ADVANCE_TRAIN_VISIT_TrainVisitDetails" Key="{2C77053E-F0CE-434A-824D-E76E2B3015B2}" ParallelWalk="True">
+								<Image FileName="-191879002" Left="2" Top="2" Right="319" Bottom="294" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="FORM_ADVANCE_TRAIN_VISIT.TrainVisitDetails" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="FORM_VSL_ADVANCE_VESSEL_VISIT_VesselVisitDetails" Key="{5C7B5C62-1A19-448A-85B9-0B234CB152E0}" ParallelWalk="True">
+								<Image FileName="-513627582" Left="2" Top="2" Right="319" Bottom="269" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="FORM_VSL_ADVANCE_VESSEL_VISIT.VesselVisitDetails" Type="5" />
 									</Property>
 								</Properties>
 							</Child>
@@ -416,6 +442,9 @@
 			<Child Name="n4AddRailRoadOperatorWindow" Owner="{B6A6F2E6-7529-4E8D-890A-AE2C159586C8}" />
 			<Child Name="n4UnitInspectorWindow" Owner="{3496AF13-4CCC-4A5B-84E6-CB149B5A1029}" />
 			<Child Name="n4AttachEquipmentWindow" Owner="{83E8F62D-C224-4165-A7BB-2F53E09AECEE}" />
+			<Child Name="n4AddTrainVisitWindow" Owner="{6C091640-DB76-4CA5-8B80-3BAE2A2C7B96}" />
+			<Child Name="n4AddAdvanceTrainVisitWindow" Owner="{2C77053E-F0CE-434A-824D-E76E2B3015B2}" />
+			<Child Name="FORM_VSL_ADVANCE_VESSEL_VISIT_VesselVisitDetails" Owner="{5C7B5C62-1A19-448A-85B9-0B234CB152E0}" />
 		</Child>
 		<Child Name="browser" Owner="{5F007DB2-2C5E-4427-8E7B-6C8D07B7DBC6}" />
 	</LogicalNodes>
