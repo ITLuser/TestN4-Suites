@@ -14,7 +14,7 @@
     <transponder />
     <damages />
   </equipment>
-  <position loc-type="YARD" location="YRD1111" slot="F08I.1" />
+  <position loc-type="YARD" location="YRD1111" slot="F10L.1" />
   <routing>
     <carrier direction="IB" qualifier="DECLARED" mode="TRUCK" facility="LCT" />
     <carrier direction="IB" qualifier="ACTUAL" mode="TRUCK" facility="LCT" />
