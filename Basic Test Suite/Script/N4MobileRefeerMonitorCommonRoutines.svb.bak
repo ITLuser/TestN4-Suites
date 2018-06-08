@@ -2,14 +2,13 @@
 'USEUNIT N4MobileCommonRoutines
 
 
-'To Reefer Monitor
+'To Enter Container Reefer Monitor
 'Input Parameters: By using Dictionary Object
 'Created: 04/06/2018 
 'Created by: Dinesh RameshKumar
 'Reviewed:
 'Reviewed by:
 Sub n4mobileContainerReeferMonitor
-  'Call CommonRoutines.fetchData("N4MobileReeferMonitor")
   Dim Objunit,ObjClick
   Set Objunit = Aliases.browser.FindChild("idStr", "program:RM03-rmReeferID_input", 20, True) 
    If Objunit.WaitProperty("Exists", True,5000) Then 
@@ -18,14 +17,14 @@ Sub n4mobileContainerReeferMonitor
     Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
     Delay 1000
     If Aliases.browser.FindChild("idStr", "program:RM04-rmReefer_outputText", 20, True).WaitProperty("Visible", True,5000) Then
-     Log.Checkpoint("Container RefeerMonitor is  successful")
+     Log.Checkpoint("Container Entered  for RefeerMonitor is  successful")
     Else
-     Log.Checkpoint("Container RefeerMonitor is  unsuccessful") 
+     Log.Checkpoint("Container Entered for  RefeerMonitor is  unsuccessful") 
     End If
    End If  
 End Sub 
 
-'To Reefer Monitor
+'To Create Reefer Monitor Details
 'Input Parameters: By using Dictionary Object
 'Created: 06/06/2018 
 'Created by: Dinesh RameshKumar
@@ -89,7 +88,7 @@ Sub  n4mobileReeferMonitorDetails
       If Aliases.browser.FindChild("idStr", "program:RM03-rmReeferID_input", 20, True).WaitProperty("Visible", True,5000) Then    
        Log.Message "RefeerMonitor Details Entered"
       Else 
-       Log.Message "RefeerMonitor Details not enteted Entered"
+       Log.Message "RefeerMonitor Details not entered Entered"
       End If
 End Sub
 

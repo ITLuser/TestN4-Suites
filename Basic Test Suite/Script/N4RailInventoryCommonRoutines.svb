@@ -1,0 +1,117 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+'To Enter raicarid in  RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 06/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+
+Sub  n4mobileRailcaridRailInventory
+  Dim Objunit,ObjClick
+  Set ObjRailcarid = Aliases.browser.FindChild("idStr", "program:MRIV001-mrivRailcarID_input", 20, True) 
+   If ObjRailcarid.WaitProperty("Exists", True,5000) Then 
+    Call CommonRoutines.EnterOperation(ObjRailcarid,flowData.Item("n4RailInventoryRailCarId"),"RailCarIDEntered")
+    Set ObjClick = Aliases.browser.FindChild("idStr", "program:one_2_SEND", 20, True) 
+    Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
+    Delay 1000
+    If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True).WaitProperty("Visible", True,5000) Then
+     Log.Checkpoint("RailCarID Entered for RailInventory is  successful")
+    Else
+     Log.Checkpoint("RailCarID Entered for RailInventory is  unsuccessful") 
+    End If
+   End If  
+End Sub
+
+'To Add Damage RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 06/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+ 
+Sub n4MobileAddDamageRailInventory
+  Dim ObjEdit,ObjCarType,ObjDamage
+  Set ObjEdit = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjEdit,"ClickedEditButton") 
+  Set ObjCarType = Aliases.browser.FindChild("idStr", "program:MRIV006-mrivEditRailcarType_input", 20, True)
+  Call CommonRoutines.EnterOperation(ObjCarType,flowData.Item("n4MobileCartype"),"RailCarTypeEntered")
+  Delay 2000
+  Set ObjDamage = Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsDamaged_input",20,True)
+  Call CommonRoutines.ClickOperation(ObjDamage,"DamageClicked")
+  Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+  Call CommonRoutines.ClickOperation(ObjSend,"Entered")
+   If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarIDLabel_outputText", 20, True).WaitProperty("Visible", True,5000) Then    
+    Log.Message"Damaged Successfully Clicked"
+   Else
+    Log.Message"Damaged Clicked Unsucessfully"
+   End If 
+End Sub
+
+'To Add Inspected in  RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 06/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub  n4MobileAddInspctorRailInventory  
+  Dim ObjEdit,ObjCarType,ObjDamage
+  Set ObjEdit = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)
+  Delay 1000
+  Call CommonRoutines.ClickOperation(ObjEdit,"ClickedEditButton") 
+  Set ObjCarType = Aliases.browser.FindChild("idStr", "program:MRIV006-mrivEditRailcarType_input", 20, True)
+  Call CommonRoutines.EnterOperation(ObjCarType,flowData.Item("n4MobileCartype"),"RailCarTypeEntered")
+   Delay 2000
+   Set ObjInspected = Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsInspected_input",20,True)
+   Call CommonRoutines.ClickOperation(ObjInspected,"Inspected Clicked")
+   Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+   Call CommonRoutines.ClickOperation(ObjSend,"EnteredClicked")
+   If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarIDLabel_outputText", 20, True).WaitProperty("Visible", True,5000) Then    
+    Log.Message"Inspector Successfully Clicked"
+   Else
+    Log.Message"Inspector Clicked Unsucessfully"
+   End If 
+End sub
+
+
+'To Add Flipped in  RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 06/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub  n4MobileAddFlippedRailInventory  
+  Dim ObjEdit,ObjCarType,ObjDamage
+  Set ObjEdit = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjEdit,"ClickedEditButton") 
+ Set ObjCarType = Aliases.browser.FindChild("idStr", "program:MRIV006-mrivEditRailcarType_input", 20, True)
+  Call CommonRoutines.EnterOperation(ObjCarType,flowData.Item("n4MobileCartype"),"RailCarTypeEntered")
+   Delay 2000
+   Set ObjFlipped= Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsFlip_input",20,True)
+   Call CommonRoutines.ClickOperation(ObjFlipped,"Flipped Clicked")
+   Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+   Call CommonRoutines.ClickOperation(ObjSend,"EnteredClicked")
+   If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarIDLabel_outputText", 20, True).WaitProperty("Visible", True,5000) Then                                    
+    Log.Message "Flipped Successfully Clicked"
+   Else
+    Log.Message "Flipped Clicked Unsucessfully"
+   
+  End If 
+End sub
+
+
+
+Sub play
+   Call CommonRoutines.fetchData("N4MobileRailInventory")
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call n4mobileRailcaridRailInventory
+  Call  n4MobileAddDamageRailInventory
+  Call n4MobileAddInspctorRailInventory
+  Call  n4MobileAddFlippedRailInventory  
+
+End Sub
+
+ 
+ 
+ 
+ 
+ 
