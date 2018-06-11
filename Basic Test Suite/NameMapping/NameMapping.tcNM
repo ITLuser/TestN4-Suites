@@ -444,7 +444,7 @@
 			<Child Name="n4AttachEquipmentWindow" Owner="{83E8F62D-C224-4165-A7BB-2F53E09AECEE}" />
 			<Child Name="n4AddTrainVisitWindow" Owner="{6C091640-DB76-4CA5-8B80-3BAE2A2C7B96}" />
 			<Child Name="n4AddAdvanceTrainVisitWindow" Owner="{2C77053E-F0CE-434A-824D-E76E2B3015B2}" />
-			<Child Name="FORM_VSL_ADVANCE_VESSEL_VISIT_VesselVisitDetails" Owner="{5C7B5C62-1A19-448A-85B9-0B234CB152E0}" />
+			<Child Name="n4AddAdvanceVesselVisitWindow" Owner="{5C7B5C62-1A19-448A-85B9-0B234CB152E0}" />
 		</Child>
 		<Child Name="browser" Owner="{5F007DB2-2C5E-4427-8E7B-6C8D07B7DBC6}" />
 	</LogicalNodes>
