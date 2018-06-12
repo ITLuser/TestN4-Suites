@@ -40,20 +40,52 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileYardInventoryGroundedClickQButton
-Dim ObjCheckElement, ObjContainer, ObjQButton
-aqUtils.Delay 1000
-  Set ObjContainer = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
-  If  ObjContainer.WaitProperty("Enabled", True,5000) Then
-    Set ObjQButton = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvQueryButton1_input",20,True)
-    Call CommonRoutines.ClickOperation(ObjQButton,"Query Button")
-    aqUtils.Delay 1000
-    Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitPos_input",20,True)
-      If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
-        Log.Checkpoint("Query Button Clicked Successfully")
-      Else
-        Log.Error("Failed to click Query Button")
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCheckElement, ObjContainer1, ObjContainer2, ObjContainer3, ObjQButton1, ObjQButton2, ObjQButton3
+  aqUtils.Delay 1000
+  Set ObjContainer3 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr3_input",20,True)
+  Set ObjContainer2 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr2_input",20,True)
+  Set ObjContainer1 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
+    If ObjContainer3.Exists Then
+      StrContainerNumber3 = ObjContainer3.GetAttribute("Value", Text)
+        If StrContainerNumber3 = flowData.Item("n4YinvGroundContainer") Then
+          Set ObjQButton3 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvQueryButton3_input",20,True)
+          Call CommonRoutines.ClickOperation(ObjQButton3,"Query Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitPos_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Query Button Clicked Successfully")
+            Else
+              Log.Error("Failed to click Query Button")
+            End If
+        End If
+    ElseIf ObjContainer2.Exists Then   
+      StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
+      If StrContainerNumber2 = flowData.Item("n4YinvGroundContainer") Then
+        Set ObjQButton2 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvQueryButton2_input",20,True)
+        Call CommonRoutines.ClickOperation(ObjQButton2,"Query Button")
+        aqUtils.Delay 1000
+        Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitPos_input",20,True)
+          If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+            Log.Checkpoint("Query Button Clicked Successfully")
+          Else
+            Log.Error("Failed to click Query Button")
+          End If
+      End If          
+    ElseIf ObjContainer1.Exists Then
+      StrContainerNumber1 = ObjContainer1.GetAttribute("Value", Text)
+      If StrContainerNumber1 = flowData.Item("n4YinvGroundContainer") Then
+      Set ObjQButton1 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvQueryButton1_input",20,True)
+      Call CommonRoutines.ClickOperation(ObjQButton1,"Query Button")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVUnit-yinvUnitPos_input",20,True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Query Button Clicked Successfully")
+        Else
+          Log.Error("Failed to click Query Button")
+        End If   
       End If
-  End If
+    End If 
 End Sub
 
 'To Click Next row button in GroundedYardInventory in N4 Mobile
@@ -129,4 +161,121 @@ Dim ObjCurrentStack, ObjPreviousStack, ObjPreviousStackButton
           Log.Error("Failed to click PreviousStack button")
         End If
     End If
+End Sub
+
+'To Click Next Stack button in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 08/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickNextStackButton
+Dim ObjCurrentStack, ObjNextStack, ObjNextStackButton
+  Set ObjNextStackButton = Aliases.browser.FindChild("idStr","program:two_2_yinvNextButton",20,True)
+    If ObjNextStackButton.WaitProperty("Enabled", True,5000) Then
+      Set ObjCurrentStack = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrCurrentStack = ObjCurrentStack.contentText
+      Log.Message(StrCurrentStack)
+      Call CommonRoutines.ClickOperation(ObjNextStackButton,"NextStack Button")
+      Set ObjNextStack = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+      StrNextStack = ObjNextStack.contentText
+      Log.Message(StrNextStack)
+        If not StrCurrentStack = StrNextStack Then
+          Log.Checkpoint("NextStack Button Clicked Successfully")
+        Else
+          Log.Error("Failed to click NextStack button")
+        End If
+    End If
+End Sub
+
+'To Place a container in grounded position in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 12/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedPlaceContainer
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCommit, ObjContainer1, ObjContainer2, ObjContainer3, ObjContainerTier1, ObjContainerTier2, ObjContainerTier3
+  Set ObjContainerTier1 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
+  Set ObjContainerTier2 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr2_input",20,True)
+  Set ObjContainerTier3 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr3_input",20,True)
+  'SelTier = flowData.Item("n4YinvGroundTier")
+  SelTier = "2"
+    If SelTier  = "1" Then
+      ObjContainerTier1.SetText(flowData.Item("n4YinvGroundTier1Container"))
+      Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+      Set ObjContainer1 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
+      StrContainerNumber1 = ObjContainer1.GetAttribute("defaultValue", Text)
+      If StrContainerNumber1 = flowData.Item("n4YinvGroundTier1Container") Then
+        Log.Checkpoint("Unit Placed successfully in Tier 1")
+      Else
+        Log.Error("Failed to place Unit")
+      End If
+    ElseIf SelTier = "2" Then
+      ObjContainerTier2.SetText(flowData.Item("n4YinvGroundTier2Container"))
+      Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+      Set ObjContainer2 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr2_input",20,True)
+      Set StrContainerNumber2 = ObjContainer2.GetAttribute("defaultValue", Text)
+        If StrContainerNumber2 = flowData.Item("n4YinvGroundTier2Container") Then
+          Log.Checkpoint("Unit Placed successfully in Tier 2")
+        Else
+          Log.Error("Failed to place Unit")
+        End If
+    ElseIf SelTier = "3" Then
+      ObjContainerTier3.SetText(flowData.Item("n4YinvGroundTier3Container")) 
+      Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+      aqUtils.Delay 1000
+      Set ObjContainer3 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr3_input",20,True)
+      StrContainerNumber3 = ObjContainer3.GetAttribute("defaultValue", Text)
+        If StrContainerNumber3 = flowData.Item("n4YinvGroundTier3Container") Then
+          Log.Checkpoint("Unit Placed successfully in Tier 3")
+        Else
+          Log.Error("Failed to place Unit")
+        End If 
+    End If 
+End Sub
+
+'To Click Back Button in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 12/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedClickBackButton
+  Set ObjBackButton = Aliases.browser.FindChild("idStr","program:two_2_BACK",20,True)
+  Call CommonRoutines.ClickOperation(ObjBackButton,"Back Button")
+End Sub
+
+'To Remove a container in grounded position in GroundedYardInventory in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 12/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryGroundedRemoveContainer
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCheckElement, ObjCommit, ObjContainerTier1, ObjContainerTier2, ObjContainerTier3
+  Set ObjContainerTier1 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr1_input",20,True)
+  Set ObjContainerTier2 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr2_input",20,True)
+  Set ObjContainerTier3 = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvCtrNbr3_input",20,True)
+  SelTier = flowData.Item("n4YinvGroundTier")
+    If SelTier  = "1" Then
+      ObjContainerTier1.SetText(flowData.Item("n4YinvGroundTier1RemoveContainer"))
+    ElseIf SelTier = "2" Then
+      ObjContainerTier2.SetText(flowData.Item("n4YinvGroundTier2RemoveContainer"))
+    ElseIf SelTier = "3" Then
+      ObjContainerTier3.SetText(flowData.Item("n4YinvGroundTier3RemoveContainer"))  
+    End If 
+  Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+  Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+  Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:YINVGroundedPos-yinvStackName_outputText",20,True)
+    If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+      Log.Checkpoint("Container Removed from Corresponding Tier Successfully")
+    Else
+      Log.Error("Failed to RemoveContainer")
+    End If 
 End Sub
