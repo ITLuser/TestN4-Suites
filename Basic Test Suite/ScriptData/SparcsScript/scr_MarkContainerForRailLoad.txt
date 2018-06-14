@@ -1,0 +1,33 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2008.02.10
+*@Description Mark the specific container in Rail Load Queue for ECN4 fetch operation
+*************************************************************************************************
+* Purpose :
+*
+* This script to Mark the specific container in Rail Load Queue for ECN4 fetch operation
+*
+* Date Written : 10.02.2008
+* Author: Preetha
+*
+*************************************************************************************************
+#TellWindow All All Close
+#Menu(Planning,Maintain Queues)
+#TellWindow MaintainQueuesList "Maintain Queues" "Display>All Rail Queues"
+#WQAssignToPow("RAILQUEUENAME-LOAD",RAIL)
+#WQActivate("RAILQUEUENAME-LOAD")
+#CreateWindow	POWView
+	CellStyle = "Large"
+	Location = "328, 649, 441, 1142"
+	Show = "WQMoves"
+	ShowInactive = "N"
+	Showing = "RAILQUEUENAME-LOAD"
+	TextStyle = "Large"	
+	TimeFrame = ""
+	Title = "WQ RAILQUEUENAME-LOAD"
+	TitleStyle = "Small"
+	Titles = "EQID, WIMK, MVKD, PLFF, PLTF, EQTP"
+#MarkWI(FETCH,CONTAINERNBR)
+*************************************************************************************************

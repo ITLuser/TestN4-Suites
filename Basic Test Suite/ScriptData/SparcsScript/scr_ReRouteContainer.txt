@@ -1,0 +1,26 @@
+*@Product N4
+*@Area Re-route 
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 100625
+*@Description Re-route the containers
+*************************************************************************************************
+* Purpose :
+* This script will Re-route the containers
+* Date Written : 100625
+* Author: Deepak
+*
+*************************************************************************************************
+
+#Menu(Container,Re-route Containers)
+#TellWindow FirstMatchingText "Re-route Containers" EnterText "Outbound Carrier" "gVesselVisit"
+#TellWindow FirstMatchingText "Re-route Containers" EnterText "Discharge Port" "ADL"
+#TellWindow FirstMatchingText "Re-route Containers" Click "Assign"
+#TellWindow FirstMatchingText "Re-route Containers" Close
+
+*************************************************************************************************
+
+
+
+
+

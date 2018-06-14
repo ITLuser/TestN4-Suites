@@ -1,0 +1,295 @@
+﻿' To reference one unit
+'USEUNIT CommonRoutines
+'USEUNIT SparcsN4CommonRoutines
+
+'To Create n4Rail Road Operator
+'Input Parameters: By using Dictionary Object
+'Created: 17/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4RailRoadOperatorCreate
+   Dim ObjCreateButton,ObjId,ObjName,ObjNameSelect,ObjsearchRail,ObjSelectRail,PropArray, ValuesArray
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|RailRoad Operators") 
+   Set ObjCreateButton = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+   If ObjCreateButton.WaitProperty("Exists", True,10000) And ObjCreateButton.WaitProperty("Visible", True,10000) Then 
+    Call CommonRoutines.ClickOperation(ObjCreateButton,"RailRoadOperator")
+    Set ObjId = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","bzuId",20, True)
+    Call CommonRoutines.EnterOperation(ObjId,(flowData.Item("RailId")),"RailID")
+    Set ObjName = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","bzuName",20, True)
+    Call CommonRoutines.EnterOperation(ObjName,(flowData.Item("RailName")),"RailName")
+    Set ObjCredit = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","bzuCreditStatus",20, True)
+    Call CommonRoutines.EnterOperation(ObjCredit,(flowData.Item("Creditstatus")),"Status") 
+    Set ObjScac = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","bzuScac",20, True) 
+    Call CommonRoutines.EnterOperation(ObjScac,(flowData.Item("ScacCode")),"ScacCode")  
+    Set ObjBic = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","bzuBic",20, True) 
+    Call CommonRoutines.EnterOperation(ObjBic,(flowData.Item("BicCode")),"BicCode")
+    Set ObjSave = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True) 
+    Call CommonRoutines.ClickOperation(ObjSave,"Save")  
+    Set Objcancel = Aliases.jp2launcher.n4AddRailRoadOperatorWindow.FindChild("AWTComponentName","LABEL_ACTION_CANCEL",20, True) 
+    Call CommonRoutines.ClickOperation(Objcancel,"Save")
+    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+    Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|RailRoad Operators") 
+    Set ObjsearchRail = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+    call CommonRoutines.EnterOperation(ObjsearchRail,(flowData.Item("RailId")),"Railoperator")
+    Call CommonRoutines.EnterOperation(ObjsearchRail,"[Enter]","RailValue")
+    Set ObjSelectRail = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL008",20, True)
+    ObjSelectRail.selectAll
+    Set ObjDeleteButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    If ObjDeleteButton.Enabled Then
+     Log.Checkpoint ("Rail Road Operator Successfully Created")
+    Else 
+     Log.Checkpoint ("Failed to Create Rail Road Operator")
+    End If
+   End If 
+End Sub
+'To Purge n4Rail Road Operator
+'Input Parameters: By using Dictionary Object
+'Created: 17/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4RailRoadOperatorPurge
+Dim Objsearch,Objaction,ObjRefresh,ObjDeleteButton
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   aqUtils.Delay 500 
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|RailRoad Operators") 
+   Set Objsearch = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   call CommonRoutines.EnterOperation(Objsearch,(flowData.Item("RailId")),"Railoperator")
+   Call CommonRoutines.EnterOperation(Objsearch,"[Enter]","RailValue")
+   Set ObjSelect = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL008",20, True)
+   ObjSelect.selectAll
+   Set ObjDeleteButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+   If ObjDeleteButton.Enabled Then
+    Set Objaction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
+    Call CommonRoutines.ClickOperation(Objaction,"Action")
+    Objaction.SwingPopupMenu.Click("Purge")
+    Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh")
+    Log.Checkpoint  "RailRoad Operator Successfully Purged " 
+   Else
+    Log.Checkpoint "RailRoad Operator already Purged"
+   End If
+End Sub
+'To Delete n4Rail Road Operator
+'Input Parameters: By using Dictionary Object
+'Created: 18/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4RailRoadOperatorDelete
+   Dim ObjSearchVesselVisit,ObjSelectall,ObjDelButtonObjDeleteButton,ObjRfresh,ObjDelButton,ObjLabel
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Organizations|RailRoad Operators") 
+   Set ObjSearchVesselVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   call CommonRoutines.EnterOperation(ObjSearchVesselVisit,(flowData.Item("RailId")),"Railoperator")
+   Call CommonRoutines.EnterOperation(ObjSearchVesselVisit,"[Enter]","RailValue")
+   Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL008",20, True)
+   ObjSelectall.selectAll
+   Set ObjDelButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+   If ObjDelButton.Enabled Then
+    Set ObjDelButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    Call CommonRoutines.ClickOperation(ObjDelButton,"Delete icon")
+    Set ObjLabel =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20, True)
+    Call CommonRoutines.ClickOperation(ObjLabel,"Yes button")
+    Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh")
+    Log.Checkpoint  "Rail Road Operator Successfully Deleted " 
+   Else
+    Log.Checkpoint "Rail Road Operator already Deleted"
+   End If
+End Sub
+ 
+'To Create n4Train Visit
+'Input Parameters: By using Dictionary Object
+'Created: 18/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4CreateTrainVisit
+   Dim ObjCreateButton,ObjTrainId,ObjRailRoad,ObjTrain
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Rail|Train Visits") 
+   Set ObjCreateButton = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+   If ObjCreateButton.WaitProperty("Exists", True,50000) And ObjCreateButton.WaitProperty("Visible", True,50000) Then 
+    Call CommonRoutines.ClickOperation(ObjCreateButton,"Create Button")
+    Set ObjTrainId = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","rvdtlsId",20, True)
+    call CommonRoutines.EnterOperation(ObjTrainId,(flowData.Item("RailId")),"RailId")
+    Set ObjRailRoad = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","rvdtlsRR",20, True)
+    Call CommonRoutines.ClickOperation(ObjRailRoad,"Click")
+    call CommonRoutines.EnterOperation(ObjRailRoad,(flowData.Item("RailName")),"RailName")
+    Call CommonRoutines.ClickOperation(ObjRailRoad,"RailName")
+    Call CommonRoutines.EnterOperation(ObjRailRoad,"[Tab]","Tab")
+    Set ObjDirections = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","rvdtlsdDirection",20, True)
+    Call CommonRoutines.ClickOperation(ObjDirections,"Click")
+    call CommonRoutines.EnterOperation(ObjDirections,(flowData.Item("TrainDirection")),"RailDirection")
+    Call CommonRoutines.ClickOperation(ObjDirections,"Click")
+    Set ObService = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","cvdTrainService",20, True)
+    Call CommonRoutines.ClickOperation(ObService,"Service") 
+    call CommonRoutines.EnterOperation(ObService,(flowData.Item("Service")),"Services")
+    Call CommonRoutines.ClickOperation(ObService,"Service")  
+    Call CommonRoutines.EnterOperation(ObService,"[Tab]","Tab")  
+    Set ObjSave = Aliases.jp2launcher.n4AddTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True) 
+    Call CommonRoutines.ClickOperation(ObjSave,"Save") 
+    Set ObjRefresh = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)   
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh Button")  
+    Set ObjSearchRailVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+    Call CommonRoutines.EnterOperation(ObjSearchRailVisit,(flowData.Item("RailId")),"Rail id")
+    Call CommonRoutines.EnterOperation(ObjSearchRailVisit,"[Enter]","Rail id") 
+    Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL005",20, True)
+    ObjSelectall.selectAll
+    Set ObjVeselVisitVisible = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+    If ObjVeselVisitVisible.Enabled Then
+     aqUtils.Delay 2000
+     Log.Checkpoint "Rail Visit Created Successfully"
+    Else
+     Log.Error "Failed to create Rail Visit" 
+    End if 
+   End If 
+End Sub
+'To Delete n4Train Visit
+'Input Parameters: By using Dictionary Object
+'Created: 26/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4TrainVisitDelete
+   Dim ObjSelectall,ObjSearchRailVisit,ObjLabel,ObjRefresh,ObjDelButton
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Rail|Train Visits") 
+   Set ObjSearchRailVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   Call CommonRoutines.EnterOperation(ObjSearchRailVisit,(flowData.Item("RailId")),"Rail id")
+   Call CommonRoutines.EnterOperation(ObjSearchRailVisit,"[Enter]","Rail id") 
+   Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL005",20, True)
+   ObjSelectall.selectAll
+   Set ObjDelButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+   If ObjDelButton.Enabled Then
+    Call CommonRoutines.ClickOperation(ObjDelButton,"Delete icon")
+    Set ObjLabel =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES",20, True)
+    Call CommonRoutines.ClickOperation(ObjLabel,"Yes button")
+    Set ObjRefresh = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_REFRESH",20, True)
+    aqUtils.Delay 500
+    Call CommonRoutines.ClickOperation(ObjRefresh,"Refresh button")
+    Log.Checkpoint  "Rail Visit Deleted " 
+   Else
+    Log.Checkpoint "Rail already Deleted"
+   End If
+End Sub
+'To  n4AdvanceEditTrain Visit
+'Input Parameters: By using Dictionary Object
+'Created: 26/04/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+'Reviewed by:
+Sub n4EditAdvanceTrainVisit(phase)
+   Dim ObjRailVisit,ObjSelectall,ObjDeleteButton,Objaction,ObjEstDateofArrival,ObjEstTimeofArrivalTime,ObjEstDateofDepart,ObjActDateofArrival,ObjDateofStartWork,ObjActTimeOfDepart,Objactions,ObjVisitPhases,Objphase
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Rail|Train Visits")  
+   Set ObjRailVisit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+   aqUtils.Delay 2000
+   Call CommonRoutines.EnterOperation(ObjRailVisit,(flowData.Item("TrainVisit")),"VesselVisits")
+   Call CommonRoutines.EnterOperation(ObjRailVisit,"[Enter]","VesselVisit")
+   Set ObjSelectall = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","RAL005",20, True)
+   ObjSelectall.selectAll
+   Set ObjDeleteButton =  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_ACTION_DELETE",20, True)
+   If ObjDeleteButton.Enabled Then
+    Set Objaction = Aliases.jp2launcher.FindChild("AWTComponentName","MENU__ACTIONS",20, True)
+    Call CommonRoutines.ClickOperation(Objaction,"Action")
+    Objaction.SwingPopupMenu.Click("Advance Train Visit")
+    Set ObjVisitPhases =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName", "cvdCv.cvVisitPhase", 20, True)
+   Else
+    Log.Checkpoint "Vessel visit not found"
+   End If
+   ExistingPhase = ObjVisitPhases.getSelectedItem
+   If phase = "Inbound" and ExistingPhase = "Created" Then 
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Inbound"),"Inbound")
+    Set ObjEstDateofArrival =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdETA.date",20, True)
+    aqUtils.Delay 2000                          
+    Call CommonRoutines.EnterOperation(ObjEstDateofArrival,(flowData.Item("EstDateofarrival")),"Estimated Date")
+    Call CommonRoutines.ClickOperation(ObjEstDateofArrival,"EstDateofarrival")
+    aqUtils.Delay 2000
+    Set ObjEstTimeofArrivalTime =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdETA.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjEstTimeofArrivalTime,(flowData.Item("EstTimeofarrivalTime")),"Estimated Time")
+    Call CommonRoutines.ClickOperation(ObjEstTimeofArrivalTime,"EstTimeofarrivalTime")
+    aqUtils.Delay 2000
+    Set ObjEstDateofDepart =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdETD.date",20, True)
+    Call CommonRoutines.EnterOperation(ObjEstDateofDepart,(flowData.Item("EstDateofDepart")),"Estimated Date Of Departed")
+    aqUtils.Delay 2000
+    Set ObjEstTimeofDepartTime =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdETD.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjEstTimeofDepartTime,(flowData.Item("EstTimeofDepartTime")),"Estimated Tme Of Departed")
+    Call CommonRoutines.EnterOperation(ObjEstTimeofDepartTime,"[Tab]","Tab")
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint"Inbound Phase Successfully Created" 
+   ElseIf phase = "Arrived" and ExistingPhase = "Inbound"  Then
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Arrived"),"Arrived")
+    Set ObjActDateofArrival =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdCv.cvATA.date",20, True)
+    aqUtils.Delay 2000
+    Call CommonRoutines.EnterOperation(ObjActDateofArrival,(flowData.Item("ActDateofArrival")),"Actual DateOF Arrival")
+    Set ObjActTimeofArrivalTime =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdCv.cvATA.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjActTimeofArrivalTime,(flowData.Item("ActTimeofArrivalTime")),"Act Timeof Arrival")
+    aqUtils.Delay 2000
+    Call CommonRoutines.EnterOperation(ObjActTimeofArrivalTime,"[Tab]","Tab")
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint "Arrived Phase successfully Created"    
+   ElseIf phase = "Working" and ExistingPhase = "Arrived" Then
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Working"),"Working")
+    Set ObjDateofStartWork =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","rvdtlsTimeStartWork.date",20, True)
+    Call CommonRoutines.EnterOperation(ObjDateofStartWork,(flowData.Item("DateStartWork")),"Date Of start Work")
+    aqUtils.Delay 2000 
+    Set ObjTimeStartWorkTime =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","rvdtlsTimeStartWork.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjTimeStartWorkTime,(flowData.Item("TimeStartWorkTime")),"Time StartWorks")
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint "Working Phase successfully Created"
+   ElseIf  phase = "Complete" and ExistingPhase = "Working" Then 
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Complete"),"Complete")
+    Set ObjEndWork =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","rvdtlsTimeEndWork.date",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.EnterOperation(ObjEndWork,(flowData.Item("DateEndWork")),"Date End Works")
+    aqUtils.Delay 2000
+    Set ObjEndWorkTime =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","rvdtlsTimeEndWork.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjEndWorkTime,(flowData.Item("TimeEndWork")),"Time End Works")
+    aqUtils.Delay 500
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint  "Complete Phase Successfully Created"   
+   ElseIf  phase = "Departed" and ExistingPhase = "Complete" Then
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Departed"),"Departed")
+    Set ObjActDateOfDepart =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdCv.cvATD.date",20, True)
+    aqUtils.Delay 2000
+    Call CommonRoutines.EnterOperation(ObjActDateOfDepart,(flowData.Item("ActDateofDepart")),"Act Date of Departed")
+    aqUtils.Delay 2000
+    Set ObjActTimeOfDepart =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","cvdCv.cvATD.time",20, True)
+    Call CommonRoutines.EnterOperation(ObjActTimeOfDepart,(flowData.Item("ActTimeofDepart")),"Act Time of Departed")
+    aqUtils.Delay 2000
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint  "Departed Phase Successfully Created"  
+   ElseIf  phase = "Closed" and ExistingPhase = "Departed" or ExistingPhase = "Archived" Then 
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Closed"),"Closed")
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint  "Closed Phase Successfully Created" 
+   ElseIf  phase = "Archived" and ExistingPhase = "Closed" or ExistingPhase = "Canceled" Then 
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Archived"),"Archived")  
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Save")
+    Log.Checkpoint  "Archived Phase Successfully Created"       
+   ElseIf  phase = "Canceled" and ExistingPhase = "Inbound" Then 
+    Call CommonRoutines.EnterOperation(ObjVisitPhases,("Canceled"),"Canceled") 
+    Set SaveAdvanceTrainVisit = Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+    aqUtils.Delay 1000
+    Call CommonRoutines.ClickOperation(SaveAdvanceTrainVisit,"Cancel")
+    Log.Checkpoint  "Train Visit Cancelled Succcessfully"   
+   End If  
+End Sub
+
+
+

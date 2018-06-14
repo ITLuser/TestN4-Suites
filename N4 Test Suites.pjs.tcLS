@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="data">
+			<Node name="{141bb89f-63a8-4ee7-a770-0b639e573c46}">
+				<Prp name="relpath" type="S" value="TestProject1\TestProject1.mds.tcLS"/>
+			</Node>
+			<Node name="{24b6fa0b-0143-461a-9758-aeb9e9a9428b}">
+				<Prp name="default project" type="S" value="{980D75FC-05B1-45E1-BCF8-ECDE41B6CA2A}"/>
+			</Node>
+			<Node name="{7e9edf5e-e38b-4fa3-8ecf-f8b703ab9be5}">
+				<Prp name="relpath" type="S" value="N4Mobile\N4Mobile.mds.tcLS"/>
+			</Node>
+			<Node name="{980d75fc-05b1-45e1-bcf8-ecde41b6ca2a}">
+				<Prp name="relpath" type="S" value="Basic Test Suite\Basic_TestSuite.mds.tcLS"/>
+			</Node>
+			<Node name="{a1af6d1a-a42b-4e6b-8d58-aff6182857d0}">
+				<Prp name="relpath" type="S" value="XPS\XPS.mds.tcLS"/>
+			</Node>
+			<Node name="{ab3bff7f-cf71-490c-a83a-fb42bc271c0c}">
+				<Prp name="relpath" type="S" value="ECN4\ECN4.mds.tcLS"/>
+			</Node>
+			<Node name="{b24b6207-46bd-4bb7-bae3-ea090ade7bab}">
+				<Prp name="relpath" type="S" value="TestProject1\TestProject1.mds.tcLS"/>
+			</Node>
+			<Node name="{d6964489-3a69-479f-bf1d-8de6d69c8bbd}">
+				<Prp name="relpath" type="S" value="Sparcs N4\Sparcs N4.mds.tcLS"/>
+			</Node>
+			<Node name="envmngrlogs">
+				<Prp name="key" type="S" value="{2A32CA4B-FA6D-4770-878F-15C041AF6D06}"/>
+			</Node>
+			<Node name="logs">
+				<Prp name="key" type="S" value="{81CDEB16-90F1-440D-9223-8CD453DB07FE}"/>
+				<Prp name="relpath" type="S" value="Log"/>
+			</Node>
+			<Node name="variables"/>
+		</Node>
+		<Prp name="signature" type="S" value="{71078212-FAEB-4856-A901-B237C89E6B5C}"/>
+	</Node>
+</Nodes>

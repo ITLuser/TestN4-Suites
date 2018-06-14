@@ -1,0 +1,23 @@
+*@Product N4
+*@Area Twin Discharge
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.04.14
+*@Description Delete Work Shift
+*************************************************************************************************
+* Purpose :
+*
+* This script will Delete Work Shift
+*
+* Date Written : 14.04.2009
+* Author: Senthil Vadivu
+*
+*************************************************************************************************
+*Maintain Work shift
+#Menu(Planning,"Maintain Work Shifts")
+#DBUpdate(ec.ches,ALL,SELECT,N)
+#TellWindow FirstMatchingText "Work shifts" SelectAllCells
+#TellWindow FirstMatchingText "Work shifts" "Action>Delete Selected Shift(s)"
+#wait(3)
+#TellWindow AnyMatchingText "Reset refs and delete shift" Click "Yes"
+*************************************************************************************************

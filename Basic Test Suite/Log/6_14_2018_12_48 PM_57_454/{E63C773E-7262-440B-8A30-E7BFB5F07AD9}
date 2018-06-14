@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="message 21">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The Commit Button is clicked successfully"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="date" type="D" value="43265.5352378819"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="21"/>
+		</Node>
+		<Node name="message 18">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object bottom" type="I" value="114"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Table(0).Cell(1, 0).Table(0).Cell(0, 0).ImageButton(&quot;mobileButtonSend&quot;)"/>
+					<Prp name="datetime" type="D" value="43265.305926412"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage9.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="16"/>
+					<Prp name="click point y" type="I" value="102"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="32"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object top" type="I" value="91"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="date" type="D" value="43265.5350952199"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (16, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Table(0).Cell(1, 0).Table(0).Cell(0, 0).ImageButton(&quot;mobileButtonSend&quot;)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="18"/>
+		</Node>
+		<Node name="message 5">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value Top is entered in Damage Location field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5346356713"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="5"/>
+		</Node>
+		<Node name="message 0">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object bottom" type="I" value="538"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/program.faces&quot;).Form(&quot;program&quot;).Table(1).Cell(0, 0).Table(0).Cell(0, 0).SubmitButton(&quot;D&quot;)"/>
+					<Prp name="datetime" type="D" value="43265.3052577083"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage0.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="18"/>
+					<Prp name="click point y" type="I" value="528"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="32"/>
+					<Prp name="object left" type="I" value="4"/>
+					<Prp name="object top" type="I" value="518"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="date" type="D" value="43265.5344250463"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (14, 10) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/program.faces&quot;).Form(&quot;program&quot;).Table(1).Cell(0, 0).Table(0).Cell(0, 0).SubmitButton(&quot;D&quot;)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="0"/>
+		</Node>
+		<Node name="units">
+			<Prp name="unit 0" type="S" value="{0F437420-9C3A-4013-9118-D93A58732F54}"/>
+			<Prp name="unit 1" type="S" value="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}"/>
+		</Node>
+		<Node name="message 12">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="268"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(1, 0).Table(0).Cell(0, 1).Textbox(0)"/>
+					<Prp name="datetime" type="D" value="43265.3056831829"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage6.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="221"/>
+					<Prp name="object left" type="I" value="169"/>
+					<Prp name="object top" type="I" value="248"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5348561574"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'5' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(1, 0).Table(0).Cell(0, 1).Textbox(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="12"/>
+		</Node>
+		<Node name="message 8">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="240"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(3, 0).Select(0)"/>
+					<Prp name="datetime" type="D" value="43265.3055922569"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage4.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="152"/>
+					<Prp name="object left" type="I" value="92"/>
+					<Prp name="object top" type="I" value="220"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5347606944"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'Major' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(3, 0).Select(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="8"/>
+		</Node>
+		<Node name="message 16">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="296"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(2, 0).Table(0).Cell(0, 1).Textbox(0)"/>
+					<Prp name="datetime" type="D" value="43265.3058235417"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage8.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="209"/>
+					<Prp name="object left" type="I" value="157"/>
+					<Prp name="object top" type="I" value="276"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5349915625"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'3' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(2, 0).Table(0).Cell(0, 1).Textbox(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="16"/>
+		</Node>
+		<Node name="message 14">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="296"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(2, 0).Table(0).Cell(0, 0).Textbox(0)"/>
+					<Prp name="datetime" type="D" value="43265.3057689699"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage7.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="107"/>
+					<Prp name="object left" type="I" value="55"/>
+					<Prp name="object top" type="I" value="276"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5349383912"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'4' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(2, 0).Table(0).Cell(0, 0).Textbox(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="14"/>
+		</Node>
+		<Node name="message 19">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The Send Button is clicked successfully"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="date" type="D" value="43265.5351080208"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="19"/>
+		</Node>
+		<Node name="message 4">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="196"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(1, 0).Textbox(0)"/>
+					<Prp name="datetime" type="D" value="43265.3054497222"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage2.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="164"/>
+					<Prp name="object left" type="I" value="98"/>
+					<Prp name="object top" type="I" value="176"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5346217708"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'Top' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(1, 0).Textbox(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="4"/>
+		</Node>
+		<Node name="message 15">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value 4 is entered in Damage Length field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5349521759"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="15"/>
+		</Node>
+		<Node name="message 22">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Damage Updated Successfully"/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="date" type="D" value="43265.5352519444"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="22"/>
+		</Node>
+		<Node name="message 3">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value FRONT is entered in Damage Component field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.534575625"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="3"/>
+		</Node>
+		<Node name="message 1">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The Damage Button  is clicked successfully"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="date" type="D" value="43265.5344378009"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="1"/>
+		</Node>
+		<Node name="message 20">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object bottom" type="I" value="114"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/subEntry.faces&quot;).Form(&quot;program&quot;).Table(0).Cell(1, 0).Table(0).Cell(0, 0).ImageButton(&quot;mobileButtonCommit&quot;)"/>
+					<Prp name="datetime" type="D" value="43265.3060508912"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage10.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="16"/>
+					<Prp name="click point y" type="I" value="102"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="32"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object top" type="I" value="91"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="date" type="D" value="43265.5352248148"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="A click at point (16, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/subEntry.faces&quot;).Form(&quot;program&quot;).Table(0).Cell(1, 0).Table(0).Cell(0, 0).ImageButton(&quot;mobileButtonCommit&quot;)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="20"/>
+		</Node>
+		<Node name="stack"/>
+		<Node name="message 6">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="218"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(2, 0).Select(0)"/>
+					<Prp name="datetime" type="D" value="43265.3055423843"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage3.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="149"/>
+					<Prp name="object left" type="I" value="53"/>
+					<Prp name="object top" type="I" value="198"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5347151157"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'DAT' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(2, 0).Select(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="6"/>
+		</Node>
+		<Node name="message 2">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="174"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(0, 0).Select(0)"/>
+					<Prp name="datetime" type="D" value="43265.30539375"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage1.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="313"/>
+					<Prp name="object left" type="I" value="116"/>
+					<Prp name="object top" type="I" value="154"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5345629861"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'FRONT' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(0, 0).Table(0).Cell(0, 0).Select(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="2"/>
+		</Node>
+		<Node name="message 9">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value Major is entered in Damage Severity field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5347734954"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="9"/>
+		</Node>
+		<Node name="message 13">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value 5 is entered in Damage Width field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5348698611"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="13"/>
+		</Node>
+		<Node name="message 10">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object bottom" type="I" value="268"/>
+					<Prp name="object name" type="S" value="Aliases.browser.Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(1, 0).Table(0).Cell(0, 0).Textbox(0)"/>
+					<Prp name="datetime" type="D" value="43265.3056392824"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="image file name" type="S" value="visImage5.png"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="object right" type="I" value="110"/>
+					<Prp name="object left" type="I" value="58"/>
+					<Prp name="object top" type="I" value="248"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="date" type="D" value="43265.5348140972"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value="'10' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Browser(&quot;chrome&quot;).Page(&quot;http://192.168.1.136:8280/apex/entry.faces&quot;).Form(&quot;program&quot;).Fieldset(0).Table(0).Cell(1, 0).Table(0).Cell(0, 0).Textbox(0)"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="10"/>
+		</Node>
+		<Node name="child data"/>
+		<Node name="message 11">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value 10 is entered in Damage Quantity field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5348268056"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="11"/>
+		</Node>
+		<Node name="message 17">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value 3 is entered in Damage Depth field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5350048843"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="17"/>
+		</Node>
+		<Node name="message 7">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value DAT is entered in Damage Type field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="date" type="D" value="43265.5347280093"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="id" type="I" value="7"/>
+		</Node>
+		<Prp name="status" type="I" value="0"/>
+	</Node>
+</Nodes>

@@ -1,0 +1,24 @@
+*@Product N4
+*@Area Open Load Vessel Queue
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 07.10.2010
+*@Description Open Load Vessel Queue
+*************************************************************************************************
+* Purpose :
+*
+* This script will open Vessel Load queue
+* This takes four arguments Vessel visit, WI Row number, Vessel name
+* FnPlaySparcsScript "scr_OpenVesselLoadQueue.txt,VESSELVISIT~ROWSELECT~GVESSEL," & gVVDEEPSEA & "~" & vCellIndex & "~" & gVESSEL
+* Date Written : 07.10.2010
+* Author: Aravindan
+*************************************************************************************************
+#TellWindow All All Close
+#Vessel(Open,VESSELVISIT)
+#Wait(25)
+#TellWindow AnyMatchingText "THE SHIP LENGTH" Click "OK"
+#TellWindow AnyMatchingText "Schedule Error" Click "OK"
+#Wait(5)
+#Menu(Planning,Maintain Queues)
+#TellWindow FirstMatchingText "Maintain Queues" SelectCellIndex ROWSELECT
+*************************************************************************************************

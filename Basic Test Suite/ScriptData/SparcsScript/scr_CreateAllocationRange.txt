@@ -1,0 +1,43 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2008.12.02
+*@Description Creating yard allocation range for for Recieve Export done in N4
+*********************************************************************
+* Purpose :
+*
+* Creating yard allocation range for for Recieve Export done in N4
+*
+* Conditions: Allocation group "ANY%" should be there otherwise script won't work.
+* Date Written : 2008.12.02
+* Author: Nathans      
+*
+*@@UseCaseOutline
+*
+* Test Cases Summary
+*
+*  Open allocation groups window
+*  Activate AG "ANY%"
+*  Add particular range into AG "ANY%"
+*  
+*************************************************************************************************
+#TellWindow All All Close
+#CreateWindow	YardAllocationsList
+	ColorBy = "Port"	* Category, Visit, or Port
+	DischargePort = "Any"	* All, Any, or Port Name
+	Location = "108, 612, 368, 1256"	* Top, Left, Bottom, Right
+	Show = "Any"	* All, Any, or Category Name
+	ShowOnlyKind = "N"	* Y or N
+	TextStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Title = "Yard Allocations"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Vessel = "Any"	* All, Any, or Vessel Name
+	Visit = "Vessel"	* Group, Line, POW, Vessel, Service, or Train
+#AGAction("ANY%",Activate)
+#StackRange(Clear)
+#StackRange(Set,300A01.A,304A16.A)
+#ARAction(add,"ANY%")
+#StackRange(Clear)
+#TellWindow All All Close
+* End of script

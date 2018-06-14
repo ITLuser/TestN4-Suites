@@ -1,0 +1,4 @@
+Booking	Line	Container No.	POL	POD	Wt Tns	Cmdy	Type	Stop	Low BL Number	Current Position	!!!	Reefer temp C	
+	RBI	RBIU3657465		HKG	 4.5	MT	D45H	VG		yard   	   E		
+
+12/27/2011	12:26:43 PM

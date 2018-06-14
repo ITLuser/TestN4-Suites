@@ -1,0 +1,47 @@
+*@Product N4
+*@Area Yard Allocation
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2008.02.10
+*@Description Plan the specific container to Vessel Slot and Mark it in Vessel Load Queue for ECN4 fetch operation
+*************************************************************************************************
+* Purpose :
+*
+* This script will Plan the specific container to Vessel Slot and Mark it in Vessel Load Queue for ECN4 fetch operation
+*
+* Date Written : 10.02.2008
+* Author: Preetha
+*
+*************************************************************************************************
+#TellWindow All All Close
+#Vessel(Open,VESSELVISIT)
+#Wait(10)
+#TellWindow AnyMatchingText "THE SHIP LENGTH" Click "OK"
+#TellWindow AnyMatchingText "Schedule Error" Click "OK"
+#ContainerPlan(CONTAINERNBR,V,VESSELVISIT,01.03.82)
+#CreateWindow	MaintainQueuesList
+	CellStyle = "Small"
+	Location = "265, 190, 378, 601"
+	Queues = "VESSELVISIT"
+	ShowEmpty = "Y"
+	TextStyle = "Small"	
+	TimeFrame = ""
+	Title = "Maintain Queues"
+	TitleStyle = "Small"
+	Titles = "QUEU, QPOW, QTYP, QLEF, QPRT"
+#WQAssignToPow("VESSELNAME-load-VESSELVISIT",ROAD)
+#WQActivate("VESSELNAME-load-VESSELVISIT")
+#TellWindow AnyMatchingText "Activate the Work Queue?" Click "OK"
+#CreateWindow	POWView
+	CellStyle = "Large"
+	Location = "351, 248, 464, 741"
+	Show = "WQMoves"
+	ShowInactive = "N"	
+	Showing = "VESSELNAME-load-VESSELVISIT"
+	TextStyle = "Large"	
+	TimeFrame = ""
+	Title = "WQ VESSELVISIT Load"
+	TitleStyle = "Small"
+	Titles = "EQID, MVKD, WIMK, PLFF, PLTF, EQTP"
+#MarkWI(FETCH,CONTAINERNBR)
+*************************************************************************************************

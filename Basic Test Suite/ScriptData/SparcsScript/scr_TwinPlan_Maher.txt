@@ -1,0 +1,27 @@
+*@Product N4
+*@Area Twin Discharge
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.04.07
+*@Description Create Twin Plan
+*************************************************************************************************
+* Purpose :
+*
+* This script will Create Twin Plan
+*
+* Date Written : 07.04.2009
+* Author: Krishna
+*
+*************************************************************************************************
+#WQDeactivate(GVESSEL-load-VFIRSTBAYB)
+#WQDeactivate(GVESSEL-load-VSECONDBAYB)
+#TellWindow FirstMatchingText "WQ VSECONDBAYB Load" SelectCellIndex 1
+#TellWindow FirstMatchingText "WQ VFIRSTBAYB Load" add>Selected
+#TellWindow FirstMatchingText "WQ VSECONDBAYB Load" Close
+#TellWindow FirstMatchingText "WQ VFIRSTBAYB Load" SelectCellIndex 1
+#TellWindow FirstMatchingText "WQ VFIRSTBAYB Load" SelectCellIndex 2
+#Menu(Planning,"Resequence")
+#TellWindow FirstMatchingText "Resequence" Click "Resequence"
+#WQActivate(GVESSEL-load-VFIRSTBAYB)
+#WQActivate(GVESSEL-load-VSECONDBAYB)
+**************************************************************************************************

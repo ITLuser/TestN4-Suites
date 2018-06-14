@@ -1,0 +1,24 @@
+*@Product N4
+*@Unit Power ON
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.05.11
+*@Description Unit Power ON
+*************************************************************************************************
+* Purpose :
+*
+* This script will Power ON and OFF for a reefer container
+*
+* Date Written : 11.05.2009
+* Author: SenthilSubramanian
+*
+*************************************************************************************************
+#ContainerSelect()
+#ContainerSelect(CONTAINERID)
+#Menu(Container,Modify)
+#Tellwindow FirstmatchingText "Container Modify" Set "Field to Change" "Reefer On Power"
+#Tellwindow FirstmatchingText "Container Modify" Set "Field to Change" "On Power"
+#Tellwindow FirstmatchingText "Container Modify" EnterText "Change to" "NOT ON POWER"
+#Tellwindow FirstmatchingText "Container Modify" Click "Change"
+#Tellwindow FirstmatchingText "Container Modify" Close
+***************************************************************************************************

@@ -1,0 +1,33 @@
+
+<argo:snx xmlns:argo="http://www.navis.com/argo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.navis.com/argo snx.xsd">
+<container eqid="ASWU2705190" type="2200" created-by="admin" created-date="2017-12-05T15:22:17" class="CTR" tank-rails="UNKNOWN" life-cycle-state="ACT">
+  <physical has-wheels="N" height-mm="2591" is-insulated="N" is-permanently-out-of-service="N" iso-group="GP" length-mm="6068" material="UNKNOWN" strength-code="TB" tare-weight-kg="1900.0" width-mm="2438" />
+  <ownership owner="ASW" operator="ASW" />
+  <restrictions is-open="N" is-unsealable="N" no-top_stow-if-empty="N" no-top-stow-if-full="N" out-of-gauge-ok="N" safe-weight-kg="0.0" stow-above-deck="N" stow-below-deck="N" uses-accessories="N" />
+  <transponder />
+</container>
+<unit id="ASWU2705190" category="STORAGE" restow="NONE" transit-state="YARD" freight-kind="MTY" line="ASW" unique-key="ASWU2705190" is-verified-yard-pos="N" is-stowplan-posted="N">
+  <equipment eqid="ASWU2705190" type="2200" created-by="admin" created-date="2017-12-05T15:22:17" class="CTR" tank-rails="UNKNOWN" life-cycle-state="ACT" role="PRIMARY">
+    <physical has-wheels="N" height-mm="2591" is-insulated="N" is-permanently-out-of-service="N" iso-group="GP" length-mm="6068" material="UNKNOWN" strength-code="TB" tare-weight-kg="1900.0" width-mm="2438" />
+    <ownership owner="ASW" operator="ASW" />
+    <restrictions is-open="N" is-unsealable="N" no-top_stow-if-empty="N" no-top-stow-if-full="N" out-of-gauge-ok="N" safe-weight-kg="0.0" stow-above-deck="N" stow-below-deck="N" uses-accessories="N" />
+    <transponder />
+    <damages />
+  </equipment>
+  <position loc-type="YARD" location="YRD1111" slot="F10L.1" />
+  <routing>
+    <carrier direction="IB" qualifier="DECLARED" mode="TRUCK" facility="LCT" />
+    <carrier direction="IB" qualifier="ACTUAL" mode="TRUCK" facility="LCT" />
+    <carrier direction="OB" qualifier="DECLARED" mode="UNKNOWN" facility="LCT" />
+    <carrier direction="OB" qualifier="ACTUAL" mode="UNKNOWN" facility="LCT" />
+  </routing>
+  <contents weight-kg="1900.0" />
+  <unit-etc category="STORAGE" line="ASW" />
+  <timestamps time-in="2017-12-05T15:22:17" time-last-move="2017-12-05T15:22:17" appointment-time="2017-12-05T15:31:00" />
+  <non-move-history>
+    <event id="UNIT_CREATE" time-event-applied="2017-12-05T15:22:17" user-id="user:admin" is-billable="Y" />
+    <event id="UNIT_ACTIVATE" time-event-applied="2017-12-05T15:22:17" user-id="user:admin" is-billable="N" />
+  </non-move-history>
+</unit>
+</argo:snx>
+

@@ -1,0 +1,9 @@
+#CreateWindow	ContainerFindList
+	CellStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	FilterBy = ""	* Name of presaved filter
+	Location = "477, 406, 590, 899"	* Top, Left, Bottom, Right
+	TextStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	TimeFrame = ""	* Current, Future, Composite, Preplan, Imminent, or Stow
+	Title = "Untitled"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "EQID, EQTP, CPOS, RLSE, PPOS, FALC"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)

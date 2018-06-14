@@ -1,0 +1,172 @@
+﻿' To reference one unit
+'USEUNIT CommonRoutines
+Dim DestinationFile,SourceFile,PlayScriptFileName,windowname,playscriptwindow 
+
+'Opening XPS through Batch file
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+sub OpenXPS
+  Set shell = CreateObject("WScript.Shell")
+  shell.CurrentDirectory = "C:\XPS_Batch"
+  shell.Run "xps.bat"
+  If Aliases.Sparcs_N4_Client.xpsLoginWindow.Exists then 
+   Log.Checkpoint "XPS Opened successfully"
+  Else
+   Log.Error "Unable to open XPS"
+  End If
+End Sub
+
+'Xps Login
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsLogIn
+  Dim wndASITHREED
+  Set wndASITHREED = Aliases.Sparcs_N4_Client.xpsLoginWindow
+  Call wndASITHREED.Click(163, 14)
+  Call wndASITHREED.Keys("[Down]")
+  Call wndASITHREED.Click(148, 97)
+  Call wndASITHREED.Keys("[BS][BS][BS][BS][BS][BS]"+flowData.Item("XPSUserName")+"[Tab]"+flowData.Item("XPSPassword")+"[Enter]")
+  aqUtils.Delay 2000
+  If Aliases.Sparcs_N4_Client.xpsLoginWindow.Exists then 
+   Log.Error "XPS Login Failed"
+  Else
+  Log.Checkpoint "XPS Login successful"
+   Aliases.Sparcs_N4_Client.xpsMainWinodw2.Maximize
+  End If
+  
+End Sub
+
+'Loading playscript
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsSelectPlayScript
+  Dim sparcs_N4_Client,wndProToolsMainWndClass
+  Set sparcs_N4_Client = Aliases.Sparcs_N4_Client
+  Set wndProToolsMainWndClass = sparcs_N4_Client.xpsMainWinodw2
+  Call wndProToolsMainWndClass.MainMenu.Click("File|Play Script...")
+  If sparcs_N4_Client.xpsPlayScriptSelectWindow.Exists Then 
+    Log.Checkpoint "Choose Play Script window is available"
+    Call sparcs_N4_Client.xpsPlayScriptSelectWindow.OpenFile(DestinationFile, "Text Files (*.txt)")
+    windowname = "Script Player: "+PlayScriptFileName
+    Set playscriptwindow = Aliases.Sparcs_N4_Client.xpsMainWinodw2.MDIClient.FindChild("WndCaption", windowname, 20, True)
+    If playscriptwindow.Exists Then 
+      Log.Checkpoint "ScriptPlayer Window is available"
+      Call playscriptwindow.Click(270, 74)
+    Else
+      Log.Error "ScriptPlayer Window is not available"  
+    End If
+  Else
+    Log.Error "Choose Play Script window is not available"
+  End If
+  
+  
+End Sub
+
+'Closing playscript window
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsPlayScriptWindowClose
+  playscriptwindow.Close
+  If playscriptwindow.Exists Then
+    Log.Error "ScriptPlayer Window is not closed"
+  Else
+    Log.Checkpoint "ScriptPlayer Window is closed"
+  End If
+End Sub
+
+
+'Closing XPS application
+'Created: 04/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsCloseApplication
+  Dim AppProcess
+ ' Obtains the N4 process
+ Set AppProcess = Sys.Process("Sparcs N4 Client")
+ ' Closes the process
+ AppProcess.Terminate
+End Sub 
+
+'Replacing String in playscript file
+'Input parameters : Playscrpt file along with path,Key in Playscript, Value which need to replace the Kap in playscript
+'Created: 12/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub ReplaceStringInPlayScript(PlayScriptFile,Stringkey,Stringval)
+  Dim Contentintxtfile,readfile,writefile
+  PlayScriptFileName = PlayScriptFile
+  Call xpsPlayScriptFileCopy(PlayScriptFileName)
+  Set FSO = CreateObject("scripting.filesystemobject")
+  Set readfile = fso.OpenTextFile (DestinationFile, 1) 
+  Contentintxtfile = readfile.ReadAll
+'  Arraykey = Split(Stringkey , "~")
+  Arrayval = Split(Stringval , "~")
+  Lengthkey = UBound(Stringkey)
+  Lengthval = UBound(Arrayval)
+  If Lengthkey = Lengthval Then 
+    For i = LBound(Stringkey) to UBound(Stringkey)
+      Contentintxtfile = Replace(Contentintxtfile,Stringkey(i),Arrayval(i))
+    Next
+  Else
+    Log.Error "Key length and value length are not matching"    
+  End If
+  Set writefile = fso.OpenTextFile(DestinationFile, 2)
+  writefile.WriteLine(Contentintxtfile)
+  readfile.Close
+  writefile.Close                                                               
+  Set FSO=Nothing
+End Sub
+
+'Copying playscript file from one path to another path
+'Input parameters : playscript file name
+'Created: 26/04/2018
+'Created by: Anantha Narayanan
+'Reviewed: 
+'Reviewed by:
+Sub xpsPlayScriptFileCopy(filename)
+  DestinationFile = "C:\Sparcs Script\Temp\"+filename
+  SourceFile = "C:\Sparcs Script\"+filename
+  Set fso = CreateObject("Scripting.FileSystemObject")
+    'Check to see if the file already exists in the destination folder
+  If fso.FileExists(DestinationFile) Then
+    'Check to see if the file is read-only
+    If Not fso.GetFile(DestinationFile).Attributes And 1 Then 
+      'The file exists and is not read-only.  Safe to replace the file.
+      fso.CopyFile SourceFile, "C:\Sparcs Script\Temp\", True
+    Else 
+      'The file exists and is read-only.
+      'Remove the read-only attribute
+      fso.GetFile(DestinationFile).Attributes = fso.GetFile(DestinationFile).Attributes - 1
+      'Replace the file
+      fso.CopyFile SourceFile, "C:\Sparcs Script\Temp\", True
+    End If
+  Else
+    'The file does not exist in the destination folder.  Safe to copy file to this folder.
+    fso.CopyFile SourceFile, "C:\Sparcs Script\Temp\", True
+  End If
+  Set fso = Nothing
+End Sub
+
+'MethodToRun XPS flow
+Sub RunXpsScript 
+  Call CommonRoutines.fetchData("XpsOpenVessel")
+  Call OpenXPS
+  Call xpsLogIn
+  Dim arr3
+arr3 = Array("VESSELVISIT","GCRANETWIN")
+  Call ReplaceStringInPlayScript(flowData.Item("PlayScriptFileName"),arr3,flowData.Item("ValueInPlayScript"))
+  Call xpsSelectPlayScript
+  aqUtils.Delay 4000
+  Call xpsPlayScriptWindowClose
+  'Call xpsCloseApplication
+End Sub

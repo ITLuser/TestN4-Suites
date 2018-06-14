@@ -1,0 +1,20 @@
+*@Product N4
+*@Area Pools & Equipment
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 10.06.2010
+*@Description Choose the dispatcher as admin
+*************************************************************************************************
+* Purpose :
+*
+* This script will choose the dispatcher as admin
+* Example : FnPlaySparcsScript "scr_ChooseDispatcherAdmin.txt,VCRANE~GUSER,CRN2~" & gUSERMAIN 
+* Date Written : 10.06.2010
+* Author: Krishna
+*
+*************************************************************************************************
+#Menu(Control,"Pools & Equipment")
+#DBUpdate(EC.POOLS,ALL,SELECT,N)
+#DBUpdate(EC.POOLS,VPOW,SELECT,Y)
+#TellWindow FristMatchingText "Pools & Equipment" "Action>Choose Dispatcher>GUSER"
+*************************************************************************************************

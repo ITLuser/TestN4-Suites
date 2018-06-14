@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Root signature="{9252F941-DB23-4FCA-AA50-858B33BB4A19}" version="11.40">
+	<children>
+		<child name="CommonRoutines" key="{0F437420-9C3A-4013-9118-D93A58732F54}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="CommonRoutines.svb" />
+		</child>
+		<child name="ECN4CommonRoutines" key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="ECN4CommonRoutines.svb" />
+		</child>
+		<child name="N4MobileCommonRoutines" key="{60726032-F55A-4038-AAC0-A8F4C4364402}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileCommonRoutines.svb" />
+		</child>
+		<child name="SparcsN4CommonRoutines" key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4CommonRoutines.svb" />
+		</child>
+		<child name="XPSCommonRoutines" key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="XPSCommonRoutines.svb" />
+		</child>
+		<child name="SparcsN4GateRoutines" key="{077E1B46-685F-4BD9-A97E-1DF95DE0DBE0}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4GateRoutines.svb" />
+		</child>
+		<child name="SparcsN4InventoryRoutines" key="{232F861E-1E36-4373-83B7-05AFB5F86298}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4InventoryRoutines.svb" />
+		</child>
+		<child name="SparcsN4OrdersRoutines" key="{247BFE4E-ECB0-43A7-AB6B-8631F41DDA14}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4OrdersRoutines.svb" />
+		</child>
+		<child name="SparcsN4RailRoutines" key="{489910FE-B816-4F0D-A72E-07F98571A874}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4RailRoutines.svb" />
+		</child>
+		<child name="SparcsN4VesselRoutines" key="{844A7F93-C9AD-42AD-8314-F40C0AC44D89}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="SparcsN4VesselRoutines.svb" />
+		</child>
+		<child name="N4MobileYardInventoryCommonRoutines" key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInventoryCommonRoutines.svb" />
+		</child>
+		<child name="N4mobileYardInventoryContainerQuery" key="{449DFC8A-6F26-461B-A195-BAA4D2FAE936}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4mobileYardInventoryContainerQuery.svb" />
+		</child>
+		<child name="N4MobileYardInspectionCommonRoutines" key="{B94288EA-FDEF-4AE1-A22B-7F70EE59750C}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInspectionCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileYardInventoryGroundedCommonRoutines" key="{2484AE7E-3E61-4C23-902E-7D9D9B78D37D}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInventoryGroundedCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileRefeerMonitorCommonRoutines" key="{041998D1-13F9-42AD-9B90-40B28B8430B5}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileRefeerMonitorCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileYardInventoryWheeledCommonRoutines" key="{00FD1C9C-9797-4429-9B4D-017C752A9BCA}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInventoryWheeledCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileGateInspectionCommonRoutines" key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileGateInspectionCommonRoutines.svb" />
+		</child>
+	</children>
+	<folders>
+		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}" />
+				<ref key="{077E1B46-685F-4BD9-A97E-1DF95DE0DBE0}" />
+				<ref key="{232F861E-1E36-4373-83B7-05AFB5F86298}" />
+				<ref key="{247BFE4E-ECB0-43A7-AB6B-8631F41DDA14}" />
+				<ref key="{489910FE-B816-4F0D-A72E-07F98571A874}" />
+				<ref key="{844A7F93-C9AD-42AD-8314-F40C0AC44D89}" />
+			</references>
+		</folder>
+		<folder caption="XPS" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{6D2E379E-2C44-4A07-8FC3-1D0648FC2FD4}" />
+			</references>
+		</folder>
+		<folder caption="N4 Mobile" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{60726032-F55A-4038-AAC0-A8F4C4364402}" />
+				<ref key="{282D7480-6F1E-48D3-823B-7D55E38714CB}" />
+				<ref key="{449DFC8A-6F26-461B-A195-BAA4D2FAE936}" />
+				<ref key="{B94288EA-FDEF-4AE1-A22B-7F70EE59750C}" />
+				<ref key="{2484AE7E-3E61-4C23-902E-7D9D9B78D37D}" />
+				<ref key="{041998D1-13F9-42AD-9B90-40B28B8430B5}" />
+				<ref key="{00FD1C9C-9797-4429-9B4D-017C752A9BCA}" />
+				<ref key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" />
+			</references>
+		</folder>
+		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">
+			<references>
+				<ref key="{72011840-0A71-4B7B-962D-D5D81BA42DD8}" />
+			</references>
+		</folder>
+	</folders>
+</Root>

@@ -1,0 +1,404 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+'To Enter Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterContainerNumber
+  Dim ObjCheckElement, ObjEnterContainer, ObjSend
+  Set ObjEnterContainer = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+  Call CommonRoutines.EnterOperation(ObjEnterContainer,flowData.Item("n4YInspEnterContainer"),"Container Number")
+  Set ObjSend = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
+  Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+  aqUtils.Delay 1000
+  Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI002-myContainerNumber_outputText",20,True)
+    If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+      Log.Checkpoint("Container Entered for Yard Inspection")
+    Else
+      Log.Error("Failed to enter container for Yard Inspection")
+    End If 
+End Sub
+
+'To Enter Damage Details to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterDamageDetails
+  Dim ObjCommit, ObjDamageButton, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth, ObjInputContainer, ObjSend
+  Set ObjDamageButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myDMGButton_input",20,True)
+    If ObjDamageButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjDamageButton,"Damage Button")
+      aqUtils.Delay 1000
+      Set ObjDamageComponent = Aliases.browser.FindChild("idStr","program:MYI003-myDamageL1_input",20,True)
+        If ObjDamageComponent.WaitProperty("Enabled", True,5000) Then
+          Call CommonRoutines.EnterOperation(ObjDamageComponent,flowData.Item("n4YInspDamageComponent"),"Damage Component")
+          Set ObjDamageType = Aliases.browser.FindChild("idStr","program:MYI003-myDamageT1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageType,flowData.Item("n4YInspDamageType"),"Damage Type")
+          Set ObjDamageSeverity = Aliases.browser.FindChild("idStr","program:MYI003-myDamageS1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageSeverity,flowData.Item("n4YInspDamageSeverity"),"Damage Severity")
+          Set ObjDamageLocation = Aliases.browser.FindChild("idStr","program:MYI003-myDamageLocation1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageLocation,flowData.Item("n4YInspDamageLocation"),"Damage Location")
+          Set ObjDamageQuantity = Aliases.browser.FindChild("idStr","program:MYI003-myDamageQ1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageQuantity,flowData.Item("n4YInspDamageQuantity"),"Damage Quantity")
+          Set ObjDamageWidth = Aliases.browser.FindChild("idStr","program:MYI003-myDamageW1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageWidth,flowData.Item("n4YInspDamageWidth"),"Damage Width")
+          Set ObjDamageLength = Aliases.browser.FindChild("idStr","program:MYI003-myDamageLN1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageLength,flowData.Item("n4YInspDamageLength"),"Damage Length")
+          Set ObjDamageDepth = Aliases.browser.FindChild("idStr","program:MYI003-myDamageLN1_input",20,True) 
+          Call CommonRoutines.EnterOperation(ObjDamageDepth,flowData.Item("n4YInspDamageDepth"),"Damage Depth")
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjInputContainer = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjInputContainer.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Damage Updated Successfully")
+            Else
+              Log.Error("Failed to update Damage")
+            End If
+        End If
+    End If 
+End Sub
+
+'To Enter OOG Details to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterOOGDetails
+  Dim ObjCheckElement, ObjCommit, ObjOOGAft, ObjOOGButton, ObjOOGFore, ObjOOGHeight, ObjOOGLeft, ObjOOGRight, ObjSend
+  Set ObjOOGButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myOOGButton_input",20,True)
+    If ObjOOGButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjOOGButton,"OOG Button")
+      aqUtils.Delay 1000
+      Set ObjOOGHeight = Aliases.browser.FindChild("idStr","program:MYI006-myOverHeight_input",20,True)
+        If ObjOOGHeight.WaitProperty("Enabled", True,5000) Then
+          ObjOOGHeight.SetText(flowData.Item("n4YInspOOGH"))
+          Set ObjOOGLeft = Aliases.browser.FindChild("idStr","program:MYI006-myOverLeft_input",20,True)
+          ObjOOGLeft.SetText(flowData.Item("n4YInspOOGL"))
+          Set ObjOOGRight = Aliases.browser.FindChild("idStr","program:MYI006-myOverRight_input",20,True)
+          ObjOOGRight.SetText(flowData.Item("n4YInspOOGR"))
+          Set ObjOOGFore = Aliases.browser.FindChild("idStr","program:MYI006-myOverFwd_input",20,True)
+          ObjOOGFore.SetText(flowData.Item("n4YInspOOGF"))
+          Set ObjOOGAft = Aliases.browser.FindChild("idStr","program:MYI006-myOverAft_input",20,True)
+          ObjOOGAft.SetText(flowData.Item("n4YInspOOGA"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("OOG Updated Successfully")
+            Else
+              Log.Error("Failed to Update OOG")
+            End If
+        End If 
+    End If 
+End Sub
+
+'To Enter Hazard Details to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterHazardDetails
+Dim ObjCheckElement, ObjCommit, ObjHasHazard, ObjHazardButton, ObjPlacard1, ObjPlacard2
+aqUtils.Delay 1000
+  Set ObjHazardButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myHAZButton_input",20,True)
+    If ObjHazardButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjHazardButton,"Hazard Button")
+      aqUtils.Delay 1000
+      Set ObjHasHazard = Aliases.browser.FindChild("idStr","program:MYI015-myIsPlacarded_input",20,True)
+        If ObjHasHazard.WaitProperty("Enabled", True,5000) Then
+          Call CommonRoutines.EnterOperation(ObjHasHazard,flowData.Item("n4YInspIsHazard"),"Has Hazard")
+          Set ObjPlacard1 = Aliases.browser.FindChild("idStr","program:MYI007-myHzPlacard1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjPlacard1,flowData.Item("n4YInspPlacard1"),"Input Placard")
+          Set ObjPlacard2 = Aliases.browser.FindChild("idStr","program:MYI007-myHzPlacard2_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjPlacard2,flowData.Item("n4YInspPlacard2"),"Input Placard")
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Hazard Updated Successfully")
+            Else
+              Log.Error("Failed to Update Hazard")
+            End If
+        End If 
+    End If  
+End Sub
+
+'To Update Seal to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterSeal
+Dim ObjCheckElement, ObjCommit, ObjSeal1, ObjSeal2, ObjSeal3, ObjSeal4, ObjSealButton, ObjSend
+  Set ObjSealButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-mySELButton_input",20,True)
+    If ObjSealButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjSealButton,"Seal Button")
+      Set ObjSeal1 = Aliases.browser.FindChild("idStr","program:MYI008-mySeal1_input",20,True)
+        If ObjSeal1.WaitProperty("Enabled", True,5000) Then
+          ObjSeal1.SetText(flowData.Item("n4YInspSeal1"))
+          Set ObjSeal2 = Aliases.browser.FindChild("idStr","program:MYI008-mySeal2_input",20,True)
+          ObjSeal2.SetText(flowData.Item("n4YInspSeal2"))
+          Set ObjSeal3 = Aliases.browser.FindChild("idStr","program:MYI008-mySeal3_input",20,True)
+          ObjSeal3.SetText(flowData.Item("n4YInspSeal3"))
+          Set ObjSeal4 = Aliases.browser.FindChild("idStr","program:MYI008-mySeal4_input",20,True)
+          ObjSeal4.SetText(flowData.Item("n4YInspSeal4"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Seal Updated Successfully")
+            Else
+              Log.Error("Failed to Update Seal")
+            End If
+        End If
+    End If 
+End Sub
+
+'To Bundle Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4MobileYardInspectionBundleContainer
+Dim ObjBundleButton, ObjCheckElement, ObjCommit, ObjSend, ObjSlave1
+  aqUtils.Delay 1000
+  Set ObjBundleButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myBDLButton_input",20,True)
+    If ObjBundleButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjBundleButton,"Bundle Button")
+      aqUtils.Delay 1000
+      Set ObjSlave1 = Aliases.browser.FindChild("idStr","program:MYI009-myBundleID1_input",20,True)
+        If ObjSlave1.WaitProperty("Enabled", True,5000) Then
+          ObjSlave1.SetText(flowData.Item("n4YInspSlave1"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Containers bundled Successfully")
+            Else
+              Log.Error("Failed to Bundle Containers")
+            End If
+        End If 
+    End If 
+End Sub
+
+'To Enter weight details to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4MobileYardInspectionEnterWeight
+  Dim ObjCheckElement, ObjCommit, ObjSafeWeight, ObjSend, ObjTareWeight, ObjWeightButton
+  aqUtils.Delay 1000
+  Set ObjWeightButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myWTButton_input",20,True)
+    If ObjWeightButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjWeightButton,"Weight Button")
+      aqUtils.Delay 1000
+      Set ObjSafeWeight = Aliases.browser.FindChild("idStr","program:MYI010-mySafeWeight_input",20,True)
+        If ObjSafeWeight.WaitProperty("Enabled", True,5000) Then
+          ObjSafeWeight.SetText(flowData.Item("n4YInspSafeWeight"))
+          Set ObjTareWeight = Aliases.browser.FindChild("idStr","program:MYI010-myTareWeight_input",20,True)
+          ObjTareWeight.SetText(flowData.Item("n4YInspTareWeight"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Weight Updated Successfully")
+            Else
+              Log.Error("Failed to Update Weight")
+            End If
+        End If 
+    End If 
+End Sub
+
+'To Enter Grade and Material to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterGradeNMaterial
+  Dim ObjAddButton, ObjCheckElement, ObjCommit, ObjGrade, ObjMaterial, ObjSend
+  aqUtils.Delay 1000
+  Set ObjAddButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myADDButton_input",20,True)
+    If ObjAddButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjAddButton,"Add Button")
+      aqUtils.Delay 1000
+      Set ObjGrade = Aliases.browser.FindChild("idStr","program:MYI012-myContainerGrade_input",20,True)
+        If ObjGrade.WaitProperty("Enabled", True,5000) Then
+          Call CommonRoutines.EnterOperation(ObjGrade,flowData.Item("n4YInspGrade"),"Grade")
+          Set ObjMaterial = Aliases.browser.FindChild("idStr","program:MYI012-myContainerMaterialMadeFrom_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjMaterial,flowData.Item("n4YInspMaterial"),"Material")
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Grade and Material Updated Successfully")
+            Else
+              Log.Error("Failed to Update Grade and Material")
+            End If
+        End If
+    End If
+End Sub
+
+'To Enter Reefer Details to Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionEnterReeferDetails
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+Dim ObjCheckElement, ObjCommit, ObjGenSetID, ObjGenSetType, ObjOnPower, ObjReeferButton, ObjSend, ObjTemp, ObjTempUnit
+  Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
+    If ObjReeferButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjReeferButton,"Reefer Button")
+      Set ObjTemp = Aliases.browser.FindChild("idStr","program:MYI004-myReeferTemperature_input",20,True)
+        If ObjTemp.WaitProperty("Enabled", True,5000) Then
+          Set ObjOnPower = Aliases.browser.FindChild("idStr","program:MYI004-myUnitIsPowered_input",20,True)
+          Call CommonRoutines.ClickOperation(ObjOnPower,"On Power")
+          ObjTemp.SetText(flowData.Item("n4YInspTemperature"))
+          Set ObjTempUnit = Aliases.browser.FindChild("idStr","program:MYI004-myTemperatureUnit_input",20,True)
+          ObjTempUnit.SetText(flowData.Item("n4YInspTemperatureUnit"))
+          Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
+          ObjTempUnit.SetText(flowData.Item("n4YInspGensetID"))
+          Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjGenSetType,flowData.Item("n4YInspGenSetType"),"Genset Type")
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI001-myContainerID_input",20,True)
+            If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+              Log.Checkpoint("Temperature Updated Successfully")
+            Else
+              Log.Error("Failed to Update Temperature")
+            End If
+        End If
+    End If
+End Sub
+
+'To Update Line Operator of a unit using N4 Mobile in Yard Inspection
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionUpdateLineOperator
+  Dim ObjCheckElement, ObjCheckLineOperator, ObjCommit, ObjLineOperator
+  Set ObjLineOperator = Aliases.browser.FindChild("idStr","program:MYI002-myLineOperator_input", 20, True)
+    If ObjLineOperator.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjLineOperator,flowData.Item("n4YInspLineOperator"),"Line Operator")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:MYI001-myContainerID_input", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Line Operator Updated Successfully")
+        Else
+          Log.Error("Failed to Update Line Operator")
+        End If
+    End If 
+End Sub 
+
+'To Update Door direction to Container using N4 Mobile in Yard Inspection
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionUpdateDoorDirection
+  Dim ObjCheckElement, ObjCommit, ObjDoorDirection
+  Set ObjDoorDirection = Aliases.browser.FindChild("idStr", "program:MYI002-myDoorDirection_input", 20, True)
+  If ObjDoorDirection.WaitProperty("Enabled", True,5000) Then
+    Call CommonRoutines.EnterOperation(ObjDoorDirection,flowData.Item("n4YInspDoorDirection"),"Door Direction")
+    Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+    Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+    aqUtils.Delay 1000
+    Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:MYI001-myContainerID_input", 20, True)
+      If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+        Log.Checkpoint("Door Direction Updated Successfully")
+      Else
+        Log.Error("Failed to Update Door Direction")
+      End If
+  End If
+End Sub
+
+'To Update Equipment type of Unit using N4 Mobile in Yard Inspection
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionUpdateEquipmentType
+  Dim ObjCheckElement, ObjCheckEquipmentType, ObjCommit, ObjEquipmentType
+  Set ObjEquipmentType = Aliases.browser.FindChild("idStr","program:MYI002-myISOCode_input", 20, True)
+    If ObjEquipmentType.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjEquipmentType,flowData.Item("n4YInspEqType"),"Equipment Type")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:MYI001-myContainerID_input", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("EquipmentType Updated Successfully")
+        Else
+          Log.Error("Failed to Update EquipmentType")
+        End If
+    End If 
+End Sub
+
+'To Update Tank Rails to unit using N4 Mobile in Yard Inspection
+'Input Parameters: By using Dictionary Object
+'Created: 07/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInventoryUpdateTankRails
+  Dim ObjCheckElement, ObjCommit, ObjTankRails
+  Set ObjTankRails = Aliases.browser.FindChild("idStr","program:MYI002-myTankRails_input", 20, True)
+    If ObjTankRails.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjTankRails,flowData.Item("n4YInspTankRails"),"Tank Rails")
+      Set ObjCommit = Aliases.browser.FindChild("idStr", "program:two_2_COMMIT", 20, True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr", "program:MYI001-myContainerID_input", 20, True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("Tank Rails Updated Successfully")
+        Else
+          Log.Error("Failed to Update Tank Rails")
+        End If
+    End If 
+End Sub 
+
+

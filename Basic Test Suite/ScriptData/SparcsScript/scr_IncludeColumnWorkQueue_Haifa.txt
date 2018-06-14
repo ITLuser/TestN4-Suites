@@ -1,0 +1,21 @@
+#CreateWindow	MaintainQueuesList
+	CellStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Location = "467, 455, 580, 811"	* Top, Left, Bottom, Right
+	Queues = "Yard"	* All, Rail, Yard, or Vessel Name
+	ShowEmpty = "Y"	* Y or N
+	TextStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	TimeFrame = ""	* Current, Future, Composite, Preplan, Imminent, or Stow
+	Title = "Maintain Queues"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "QUEU, QTYP, QLEF, QPRT"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)
+#CreateWindow	POWView
+	CellStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Location = "296, 360, 751, 999"	* Top, Left, Bottom, Right
+	Show = "WQMoves"	* POWMoves, WQMoves, or CntrHistory
+	ShowInactive = "N"	* Y or N
+	Showing = "Road Queue"	* Name of POW showing
+	TextStyle = "Large"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	TimeFrame = ""	* Current, Future, Composite, Preplan, Imminent, or Stow
+	Title = "WQ Road Queue"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "EQID, MVKD, MVTS, WIMK, PLFF, WSWP, PLTF, EQTP"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)

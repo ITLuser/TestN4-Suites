@@ -1,0 +1,4 @@
+#CreateWindow	ContainerFindList
+	Title = "Untitled"	* Title of Window
+	TitleStyle = "Small"	* XSmall, Small, Medium, Large, XLarge, XXLarge, or XXXLarge
+	Titles = "BKNG, LOPR, EQID, LPRT, DPRT, QWGT, COMD, EQTP, BLNO, CPOS, SBIC, TEMP"	* List of attribute names in left-to-right order (use -Name to indicate descending sort)

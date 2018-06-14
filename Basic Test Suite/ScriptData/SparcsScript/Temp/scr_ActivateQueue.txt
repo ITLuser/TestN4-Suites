@@ -1,0 +1,25 @@
+*@Product N4
+*@Area Twin Discharge
+*@Test_Style STAF
+*@Auto_Manual Auto
+*@Create_Date 2009.04.07
+*@Description Activate Work Queue
+*************************************************************************************************
+* Purpose :
+*
+* This script will Activate Work Queue
+*
+* Date Written : 08.04.2009
+* Author: Senthil Vadivu
+*
+*************************************************************************************************
+*Maintain Work shift
+#Vessel(Open,ACHI71)
+#Menu(Planning,"Maintain Queues")
+#TellWindow FirstMatchingText "Maintain Queues" SelectCellIndex 1
+#Wait(1)
+#TellWindow FirstMatchingText "Maintain Queues" "Action>Assign to POW>CR1"
+#TellWindow MaintainQueuesList "Maintain Queues" "Action>Activate Work Queue"
+#TellWindow FirstMatchingText "Maintain Queues" Close
+#TellWindow All All Close
+*************************************************************************************************
