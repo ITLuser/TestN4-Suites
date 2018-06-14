@@ -91,8 +91,7 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileGateInspectionUpdateContainerReefer
-Dim ObjCheckElement, ObjCommit, ObjDamage, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
-  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjCheckElement, ObjCommit, ObjDamage, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
   aqUtils.Delay 1000
   Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mReeferButton_input",20,True)
     If ObjReeferButton.WaitProperty("Exists", True,5000) Then
@@ -147,6 +146,7 @@ Dim ObjCheckElement, ObjCommit, ObjDamage, ObjDamageComponent, ObjDamageDepth, O
         aqUtils.Delay 1000
 				Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
 				Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+        aqUtils.Delay 1000
 				Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
 					If ObjCheckElement.WaitProperty("Exists", True,5000) Then
 						Log.Checkpoint("Reefer Updated Successfully")
@@ -154,5 +154,42 @@ Dim ObjCheckElement, ObjCommit, ObjDamage, ObjDamageComponent, ObjDamageDepth, O
 						Log.Error("Failed to update Reefer")
 					End If
 		 End If
+    End If
+End Sub
+
+'To Update OOG to Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionUpdateContainerOOG
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjAft, ObjCheckElement, ObjCommit, ObjFore, ObjLeft, ObjOOGButton, ObjRight, ObjSend, ObjTop
+  Set ObjOOGButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mOversizeButton_input",20,True)
+    If ObjOOGButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjOOGButton,"OOG Button") 
+      Set ObjTop = Aliases.browser.FindChild("idStr","program:MROD014-mOverHeight_input",20,True)
+        If ObjTop.WaitProperty("Exists", True,5000) Then 
+          ObjTop.SetText(flowData.Item("n4GInspOOGTop"))
+          Set ObjLeft = Aliases.browser.FindChild("idStr","program:MROD014-mOverLeft_input",20,True)  
+          ObjLeft.Settext(flowData.Item("n4GInspOOGLeft"))
+          Set ObjRight = Aliases.browser.FindChild("idStr","program:MROD014-mOverRight_input",20,True)  
+          ObjRight.Settext(flowData.Item("n4GInspOOGRight"))
+          Set ObjFore = Aliases.browser.FindChild("idStr","program:MROD014-mOverFore_input",20,True)  
+          ObjFore.Settext(flowData.Item("n4GInspOOGFore"))
+          Set ObjAft = Aliases.browser.FindChild("idStr","program:MROD014-mOverAft_input",20,True)  
+          ObjAft.Settext(flowData.Item("n4GInspOOGAft"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+            If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("OOG Updated successfully")
+            Else
+              Log.Error("Failed to update OOG")
+            End If
+        End If
     End If
 End Sub
