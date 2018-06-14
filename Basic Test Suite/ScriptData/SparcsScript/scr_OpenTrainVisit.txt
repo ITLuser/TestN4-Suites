@@ -1,9 +1,0 @@
-#CreateWindow	TrainCarList
-	CellStyle = "Large"
-	Location = "501, 322, 661, 938"
-	TextStyle = "Large"	
-	TimeFrame = ""
-	Title = "TRAINVISITNAME"
-	TitleStyle = "Small"
-	Titles = "CDMG, CRID, TRCK, CUID, SNGW, CTYP, CINS, CDIS, CTRN"
-	Train = "TRAINVISITNAME"

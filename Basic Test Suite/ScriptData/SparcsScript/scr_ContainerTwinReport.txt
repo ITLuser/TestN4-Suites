@@ -1,4 +1,0 @@
-#OutputToTextFile(open,"test")
-#ContainerReport(CONTAINERNBR1,CPOS,PPOS,MVKD,CPOS,PPOS,QUEU,DSTA,TLVS)
-#ContainerReport(CONTAINERNBR2,CPOS,PPOS,MVKD,CPOS,PPOS,QUEU,DSTA,TLVS)
-#OutputToTextFile(close)
