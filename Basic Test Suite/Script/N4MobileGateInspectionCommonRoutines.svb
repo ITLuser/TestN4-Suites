@@ -47,7 +47,6 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileGateInspectionUpdateContainerDamage
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
 Dim ObjCheckElement, ObjCommit, ObjDamageButton, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
 aqUtils.Delay 1000
   Set ObjDamageButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mCtrDamagesButton_input",20,True)
@@ -82,5 +81,79 @@ aqUtils.Delay 1000
               Log.Error("Failed to update damage")
             End If 
         End If
+    End If
+End Sub
+
+'To Update Reefer to Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionUpdateContainerReefer
+Dim ObjCheckElement, ObjCommit, ObjDamage, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  aqUtils.Delay 1000
+  Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mReeferButton_input",20,True)
+    If ObjReeferButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjReeferButton,"Reefer Button")
+      aqUtils.Delay 1000
+	  Set ObjTemperature = Aliases.browser.FindChild("idStr","program:MROD006-mReeferTemperature_input",20,True)
+		If ObjTemperature.WaitProperty("Exists", True,5000) Then
+          ObjTemperature.setText(flowData.Item("n4GInspTemperature"))
+          Set ObjTempUnit = Aliases.browser.FindChild("idStr","program:MROD006-mTempObvUnit_input",20,True)
+          ObjTempUnit.SetText(flowData.Item("n4GInspTempUnit"))
+		  SelGenset = flowData.Item("n4GInspIsGenset")
+			If SelGenset = "Yes" Then
+              Set ObjGensetID = Aliases.browser.FindChild("idStr","program:MROD007-mGensetId_input",20,True)
+              Call CommonRoutines.EnterOperation(ObjGensetID,flowData.Item("n4GInspGensetID"),"Genset ID")
+              Set ObjGensetType = Aliases.browser.FindChild("idStr","program:MROD007-mGensetType_input",20,True)
+              Call CommonRoutines.EnterOperation(ObjGensetType,flowData.Item("n4GInspGensetType"),"Genset Type")
+              SelGensetDamage = flowData.Item("n4GInspTemperature")
+				If SelGensetDamage  = "Yes" Then
+                  Set ObjDamage  = Aliases.browser.FindChild("idStr","program:MROD007-mGensetDamagesButton_input",20,True)
+                  Call CommonRoutines.ClickOperation(ObjDamage, "Damage Button")
+                  Set ObjDamageComponent = Aliases.browser.FindChild("idStr","program:MROD019-mGensetDamageC1_input",20,True)
+					If ObjDamageComponent.WaitProperty("Exists", True,5000) Then
+                      Call CommonRoutines.EnterOperation(ObjDamageComponent,flowData.Item("n4GInspGensetDamageComponent"),"Damage Component")
+                      Set ObjDamageLocation = Aliases.browser.FindChild("idStr","program:MROD019-mGensetDamageL1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageLocation,flowData.Item("n4GInspGensetDamageLocation"),"Damage Location")
+                      Set ObjDamageType = Aliases.browser.FindChild("idStr","program:MROD019-mGensetDamageT1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageType,flowData.Item("n4GInspGensetDamageType"),"Damage Type")
+                      Set ObjDamageSeverity = Aliases.browser.FindChild("idStr","program:MROD019-mDamageS1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageSeverity,flowData.Item("n4GInspGensetDamageSeverity"),"Damage Severity")
+                      Set ObjDamageQuantity = Aliases.browser.FindChild("idStr","program:MROD019-mDamageQ1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageQuantity,flowData.Item("n4GInspGensetDamageQuantity"),"Damage Quantity")
+                      Set ObjDamageWidth = Aliases.browser.FindChild("idStr","program:MROD019-mDamageW1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageWidth,flowData.Item("n4GInspGensetDamageWidth"),"Damage Width")
+                      Set ObjDamageLength = Aliases.browser.FindChild("idStr","program:MROD019-mDamageLN1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageLength,flowData.Item("n4GInspGensetDamageLength"),"Damage Length")
+                      Set ObjDamageDepth = Aliases.browser.FindChild("idStr","program:MROD019-mDamageD1_input",20,True)
+                      Call CommonRoutines.EnterOperation(ObjDamageDepth,flowData.Item("n4GInspGensetDamageDepth"),"Damage Depth")
+                      Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+                      Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+                      Set ObjTemp = Aliases.browser.FindChild("idStr","program:MROD006-mReeferTemperature_input",20,True)
+                        If ObjTemp.WaitProperty("Exists", True,5000) Then
+                          Log.Checkpoint("Damage Updated successfully")
+                        Else
+                          Log.Error("Failed to Update Damage")
+                        End If  
+                    End If
+				End If
+			 End If
+       aqUtils.Delay 1000
+			 Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+				Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+        aqUtils.Delay 1000
+				Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+				Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+        aqUtils.Delay 1000
+				Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+					If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+						Log.Checkpoint("Reefer Updated Successfully")
+					Else
+						Log.Error("Failed to update Reefer")
+					End If
+		 End If
     End If
 End Sub
