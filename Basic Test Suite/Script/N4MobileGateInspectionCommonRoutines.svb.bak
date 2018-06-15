@@ -164,11 +164,12 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileGateInspectionUpdateContainerOOG
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Dim ObjAft, ObjCheckElement, ObjCommit, ObjFore, ObjLeft, ObjOOGButton, ObjRight, ObjSend, ObjTop
+  aqUtils.Delay 1000
   Set ObjOOGButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mOversizeButton_input",20,True)
     If ObjOOGButton.WaitProperty("Exists", True,5000) Then
       Call CommonRoutines.ClickOperation(ObjOOGButton,"OOG Button") 
+      aqUtils.Delay 1000
       Set ObjTop = Aliases.browser.FindChild("idStr","program:MROD014-mOverHeight_input",20,True)
         If ObjTop.WaitProperty("Exists", True,5000) Then 
           ObjTop.SetText(flowData.Item("n4GInspOOGTop"))
@@ -184,6 +185,7 @@ Call CommonRoutines.fetchData("N4MobileCommonRoutines")
           Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
           Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
           Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
           Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
             If ObjCheckElement.WaitProperty("Exists", True,5000) Then
               Log.Checkpoint("OOG Updated successfully")
@@ -193,3 +195,89 @@ Call CommonRoutines.fetchData("N4MobileCommonRoutines")
         End If
     End If
 End Sub
+
+'To Update Hazard to Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionUpdateContainerHazard
+Dim ObjCheckElement, ObjCommit, ObjHasPlacard, ObjHazardButton, ObjPlacard1, ObjPlacard2, ObjPlacard3, ObjPlacard4, ObjPlacard5, ObjPlacard6, ObjSend
+  Set ObjHazardButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mPlacardsButton_input",20,True)
+    If ObjHazardButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjHazardButton,"Hazard Button")
+      SelHasPlacard = flowData.Item("n4GInspHasPlacard")
+        If SelHasPlacard = "Yes" Then
+          aqUtils.Delay 1000
+          Set ObjHasPlacard = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacardBox_input",20,True)
+          Call CommonRoutines.ClickOperation(ObjHasPlacard,"Has Placard CheckBox")
+        End If
+      Set ObjPlacard1 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard1_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard1,flowData.Item("n4GInspPlacard1"),"Placard")
+      Set ObjPlacard2 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard2_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard2,flowData.Item("n4GInspPlacard2"),"Placard")
+      Set ObjPlacard3 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard3_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard3,flowData.Item("n4GInspPlacard3"),"Placard")
+      Set ObjPlacard4 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard4_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard4,flowData.Item("n4GInspPlacard4"),"Placard")
+      Set ObjPlacard5 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard5_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard5,flowData.Item("n4GInspPlacard5"),"Placard")
+      Set ObjPlacard6 = Aliases.browser.FindChild("idStr","program:MROD011-mHzPlacard6_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjPlacard6,flowData.Item("n4GInspPlacard6"),"Placard")
+      Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+      Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+      Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+      Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+        If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+          Log.Checkpoint("Hazard Updated Successfully")
+        Else
+          Log.Error("Failed to update Hazard")
+        End If
+    End If
+End Sub
+
+'To Bundle Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionBundleContainer
+  Dim ObjBundleButton, ObjCheckElement, ObjCommit, ObjMasterContainer, ObjSend, ObjSlaveUnit1
+  aqUtils.Delay 1000
+  Set ObjBundleButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mBundleButton_input",20,True)
+    If ObjBundleButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjBundleButton,"Bundle Button")
+      aqUtils.Delay 1000
+      Set ObjMasterContainer = Aliases.browser.FindChild("idStr","program:MROD010-mBundleMaster_outputText",20,True)
+      StrMasterContainer = ObjMasterContainer.contentText
+        If StrMasterContainer = flowData.Item("n4GInspMasterContainer")Then
+          Set ObjSlaveUnit1 = Aliases.browser.FindChild("idStr","program:MROD010-mBundleID1_input",20,True)
+          ObjSlaveUnit1.settext(flowData.Item("n4GInspSlaveUnit"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+            If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("Unit Bundled Successfully")
+            Else
+              Log.Error("Failed to Bundle Unit")
+            End If
+        Else
+          Log.Error("Master Container Not found")
+        End If
+    End If
+End Sub
+
+'To Update weight to Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionBundleContainer
