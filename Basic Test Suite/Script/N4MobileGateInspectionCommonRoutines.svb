@@ -281,5 +281,76 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileGateInspectionUpdateContainerWeight
-  
+Dim ObjCheckElement, ObjCommit, ObjCSC, ObjDoorDirection, ObjMnf, ObjPositionOnTruck, ObjSafeWeight, ObjSend, ObjTareWeight, ObjWeightButton
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  aqUtils.Delay 1000
+  Set ObjWeightButton = Aliases.browser.FindChild("idStr","program:MROD002Buttons-mPositionButton_input",20,True)
+    If ObjWeightButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjWeightButton,"Weight Button")
+      aqUtils.Delay 1000
+      Set ObjPositionOnTruck = Aliases.browser.FindChild("idStr","program:MROD015-mPosOnTruck_input",20,True)
+        If ObjPositionOnTruck.WaitProperty("Exists", True,5000) Then
+          ObjPositionOnTruck.SetText(flowData.Item("n4GInspPositionOnTruck"))
+          Set ObjDoorDirection = Aliases.browser.FindChild("idStr","program:MROD015-mDoorDirection_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDoorDirection,flowData.Item("n4GInspDoorDirection"),"Door Direction")
+          Set ObjCSC = Aliases.browser.FindChild("idStr","program:MROD017-mCSCDate_input",20,True)
+          ObjCSC.SetText(flowData.Item("n4GInspCSC"))
+          Set ObjMnf = Aliases.browser.FindChild("idStr","program:MROD017-mCSCMnf_input",20,True)
+          ObjMnf.SetText(flowData.Item("n4GInspMnf"))
+          Set ObjSafeWeight = Aliases.browser.FindChild("idStr","program:MROD020-mSafeWt_input",20,True)
+          ObjSafeWeight.SetText(flowData.Item("n4GInspSafeWeight"))
+          Set ObjTareWeight = Aliases.browser.FindChild("idStr","program:MROD020-mTareWt_input",20,True)
+          ObjTareWeight.SetText(flowData.Item("n4GInspTareWeight"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+            If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("Hazard Updated Successfully")
+            Else
+                Log.Error("Failed to update Hazard")
+            End If
+        End If
+    End If
+End Sub
+
+'To Update Seals to Container through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionUpdateContainerSeal
+  Dim ObjCheckElement, ObjCommit, ObjSeal1, ObjSeal2, ObjSeal3, ObjSeal4, ObjSeal5, ObjSealButton, ObjSend
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  aqUtils.Delay 1000
+  Set ObjSealButton = Aliases.browser.FindChild("idStr","program:MROD002-mSealsButton_input",20,True)
+    If ObjSealButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjSealButton,"Seal Button")
+      Set ObjSeal1 = Aliases.browser.FindChild("idStr","program:MROD009-mSeal1_input",20,True)
+        If ObjSeal1.WaitProperty("Exists", True,5000) Then
+          ObjSeal1.SetText(flowData.Item("n4GInspSeal1"))
+          Set ObjSeal2 = Aliases.browser.FindChild("idStr","program:MROD009-mSeal2_input",20,True)
+          ObjSeal2.SetText(flowData.Item("n4GInspSeal2"))
+          Set ObjSeal3 = Aliases.browser.FindChild("idStr","program:MROD009-mSeal3_input",20,True)
+          ObjSeal3.SetText(flowData.Item("n4GInspSeal3"))
+          Set ObjSeal4 = Aliases.browser.FindChild("idStr","program:MROD009-mSeal4_input",20,True)
+          ObjSeal4.SetText(flowData.Item("n4GInspSeal4"))
+          Set ObjSeal5 = Aliases.browser.FindChild("idStr","program:MROD009-mSeal5_input",20,True)
+          ObjSeal5.SetText(flowData.Item("n4GInspSeal5"))
+          Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+            If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("Seal Updated Successfully")
+            Else
+                Log.Error("Failed to update Seal")
+            End If
+        End If
+    End If
 End Sub
