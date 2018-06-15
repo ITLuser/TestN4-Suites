@@ -1,0 +1,29 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+
+'To Enter Vessel and Crane DepotHatchClerk in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileDepotHatchClerkEnterVesselNCrane
+Dim ObjCheckElement, ObjCrane, ObjSend, ObjVessel
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+aqUtils.Delay 1000
+  Set ObjVessel = Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True)
+    If ObjVessel.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.EnterOperation(ObjVessel,flowData.Item("n4DepotHatchClerkVessel"),"Vessel")
+      Set ObjCrane = Aliases.browser.FindChild("idStr","program:MHC001-mhCraneID_input",20,True)
+      Call CommonRoutines.EnterOperation(ObjCrane,flowData.Item("n4DepotHatchClerkCrane"),"Crane")
+      Set ObjSend  = Aliases.browser.FindChild("idStr","program:one_2_SEND",20,True)
+      aqUtils.Delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MHC013-mhVesselID_outputText",20,True)
+      StrCheckElement = ObjCheckElement.contentText
+        If StrCheckElement = flowData.Item("n4DepotHatchClerkVessel")Then
+          Log.Checkpoint("Vessel and Crane are entered")
+        Else
+          Log.Error("Failed to enter Vessel and crane")
+        End If
+    End If
+End Sub
