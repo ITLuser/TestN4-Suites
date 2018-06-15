@@ -323,6 +323,8 @@ End Sub
 'Reviewed:
 'Reviewed by:
 Sub n4mobileGateInspectionUpdateContainerSeal
+  Dim ObjCheckElement, ObjCommit, ObjSeal1, ObjSeal2, ObjSeal3, ObjSeal4, ObjSeal5, ObjSealButton, ObjSend
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   aqUtils.Delay 1000
   Set ObjSealButton = Aliases.browser.FindChild("idStr","program:MROD002-mSealsButton_input",20,True)
     If ObjSealButton.WaitProperty("Exists", True,5000) Then
@@ -349,6 +351,50 @@ Sub n4mobileGateInspectionUpdateContainerSeal
             Else
                 Log.Error("Failed to update Seal")
             End If
+        End If
+    End If
+End Sub
+
+'To Update Damage to Chassis through GateInspection in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileGateInspectionUpdateChassisDamage
+Dim ObjCheckElement, ObjCommit, ObjDamageButton, ObjDamageComponent, ObjDamageDepth, ObjDamageLength, ObjDamageLocation, ObjDamageQuantity, ObjDamageSeverity, ObjDamageType, ObjDamageWidth
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Set ObjDamageButton = Aliases.browser.FindChild("idStr","program:MROD022-mChsDamagesButton_input",20,True)
+    If ObjDamageButton.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjDamageButton,"Damage Button")
+      Set ObjDamageComponent = Aliases.browser.FindChild("idStr","program:MROD012-mChassisDamageC1_input",20,True)
+        If ObjDamageComponent.WaitProperty("Exists", True,5000) Then
+          Call CommonRoutines.EnterOperation(ObjDamageComponent,flowData.Item("n4GInspChsDamageComponent"),"Damage Component")
+          Set ObjDamageLocation = Aliases.browser.FindChild("idStr","program:MROD012-mChassisDamageL1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageLocation,flowData.Item("n4GInspChsDamageLocation"),"Damage Location")
+          Set ObjDamageType = Aliases.browser.FindChild("idStr","program:MROD012-mChassisDamageT1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageType,flowData.Item("n4GInspChsDamageType"),"Damage Type")
+          Set ObjDamageSeverity = Aliases.browser.FindChild("idStr","program:MROD012-mDamageS1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageSeverity,flowData.Item("n4GInspChsDamageSeverity"),"Damage Severity")
+          Set ObjDamageQuantity = Aliases.browser.FindChild("idStr","program:MROD012-mDamageQ1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageQuantity,flowData.Item("n4GInspDamageQuantity"),"Damage Quantity")
+          Set ObjDamageWidth = Aliases.browser.FindChild("idStr","program:MROD012-mDamageW1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageWidth,flowData.Item("n4GInspDamageWidth"),"Damage Width")
+          Set ObjDamageLength = Aliases.browser.FindChild("idStr","program:MROD012-mDamageLN1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageLength,flowData.Item("n4GInspDamageLength"),"Damage Length")
+          Set ObjDamageDepth = Aliases.browser.FindChild("idStr","program:MROD012-mDamageD1_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDamageDepth,flowData.Item("n4GInspDamageDepth"),"Damage Depth")
+          Set ObjSend  = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend, "Send Button")
+          Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjCommit, "Commit Button")
+          aqUtils.Delay 1000
+          Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MROD001-mContainer_input",20,True)
+            If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("Damage Updated Successfully")
+            Else
+              Log.Error("Failed to update damage")
+            End If 
         End If
     End If
 End Sub
