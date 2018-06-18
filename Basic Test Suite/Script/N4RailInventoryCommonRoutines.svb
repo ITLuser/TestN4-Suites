@@ -10,7 +10,7 @@
 Sub  n4mobileRailcaridRailInventory
   Dim Objunit,ObjClick
   Set ObjRailcarid = Aliases.browser.FindChild("idStr", "program:MRIV001-mrivRailcarID_input", 20, True) 
-   If ObjRailcarid.WaitProperty("Exists", True,5000) Then 
+   If ObjRailcarid.WaitProperty("Visible", True,5000) Then 
     Call CommonRoutines.EnterOperation(ObjRailcarid,flowData.Item("n4RailInventoryRailCarId"),"RailCarIDEntered")
     Set ObjClick = Aliases.browser.FindChild("idStr", "program:one_2_SEND", 20, True) 
     Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
@@ -98,19 +98,19 @@ End Sub
 'Created by: Dinesh RameshKumar
 'Reviewed:
 Sub n4AddEditSegBreakRailInventory
-  Dim ObjEditSegBreak,ObjClickEditsegBreak,ObjSend
+  Dim ObjEditSegBreak,ObjClickEditsegBreak,ObjSend,ObjVerify
   Set ObjEditSegBreak  = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivEditSegBreakButton_input", 20, True)
-  Delay 1000
   Call CommonRoutines.ClickOperation(ObjEditSegBreak,"EditSegButtonClicked")
+  Delay 2000
   Set ObjClickEditsegBreak  = Aliases.browser.FindChild("idStr", "program:MRIV_EDIT_SEG_BREAK-mrivEditRailcarDisconnectedAtLow_input", 20, True)  
-  If ObjClickEditsegBreak.WaitProperty("Exists", True,5000) Then
+  If ObjClickEditsegBreak.WaitProperty("Visible", True,5000) Then
    SelectSegButton = flowData.Item("n4ClickEditSegBreak")    
    If SelectSegButton = "Yes" Then
     Call CommonRoutines.ClickOperation(ObjClickEditsegBreak,"EditSegButtonClicked")
     Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
     Call CommonRoutines.ClickOperation(ObjSend,"ClickedSendButton")
-    Set ObjVerify = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)
     Delay 1000
+    Set ObjVerify = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)                                          
     If ObjVerify.WaitProperty("Visible", True,5000) Then 
      Log.Message "EditSegButton Sucessfully Clicked"
     Else 
@@ -119,44 +119,433 @@ Sub n4AddEditSegBreakRailInventory
    End If 
   End If
 End Sub
- 
+
+'To   Create Orpan Container in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 11/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed: 
+Sub n4MobileCreateOrphanContainer
+  Dim ObjOrphan,ObjOrphanContainer,ObjIsoCode,ObjOrphanSlot
+  Set ObjOrphan  = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivCreateOrphanButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjOrphan,"OrphanClicked") 
+  Set ObjOrphanContainer  = Aliases.browser.FindChild("idStr", "program:MRIV007-mrivOrphanContainerID_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjOrphanContainer,flowData.Item("n4OrphanContainer"),"OrphanContainerEntered")
+  Set ObjIsoCode  = Aliases.browser.FindChild("idStr", "program:MRIV007-mrivOrphanISO_input", 20, True)
+  Call CommonRoutines.EnterOperation(ObjIsoCode,flowData.Item("n4OrphanIsocode"),"ISOEntered")
+  Set ObjOrphanSlot  = Aliases.browser.FindChild("idStr", "program:MRIV007-mrivOrphanLocation_input", 20, True)
+  Call CommonRoutines.EnterOperation(ObjOrphanSlot,flowData.Item("n4OrphanSlot"),"OrphanSlotEntered")
+  Set ObjCreate = Aliases.browser.FindChild("idStr", "program:MRIV007-mrivCreateOrphan_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjCreate,"OrphanCreated") 
+  Delay 1000
+  Set ObjVerify = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)                                          
+  If ObjVerify.WaitProperty("Visible", True,5000) Then 
+   Log.Message "OrphanContainer Sucessfully Created"
+  Else 
+   Log.Message "Failed to create Orphan Container"
+  End If  
+End Sub
+
+'To Add Inspection Details in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4AddInspectiondetails
+  Dim ObjInspection,ObjSeal,ObjYardLoc,ObjISO,ObjLineOperator,ObjFreightKind,ObjTankrails,ObjDirection
+  Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
+  Set ObjSeal =  Aliases.browser.FindChild("idStr", "program:MRI002-mrSeal1_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjSeal,flowData.Item("n4Seal"),"Seal")  
+  Set ObjYardLoc =  Aliases.browser.FindChild("idStr", "program:MRI002-mrDischargeLoc_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjYardLoc,flowData.Item("n4YardLoc"),"YardLoctaion")  
+  Set ObjISO =  Aliases.browser.FindChild("idStr", "program:MRI002-mrISOCode_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjISO,flowData.Item("n4OrphanIsocode"),"ISOType")    
+  Set ObjLineOperator =  Aliases.browser.FindChild("idStr", "program:MRI002-mrLineOperator_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjLineOperator,flowData.Item("n4Lineoperator"),"LineOperator")  
+  Set ObjFreightKind =  Aliases.browser.FindChild("idStr", "program:MRI002-mrUnitFreightKind_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjFreightKind,flowData.Item("n4railFreightKind"),"FreigthKind")  
+  Set ObjTankrails =  Aliases.browser.FindChild("idStr", "program:MRI002-mrTankRails_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjTankrails,flowData.Item("n4TankRails"),"Tankrails") 
+  Set ObjDirection =  Aliases.browser.FindChild("idStr", "program:MRI002-mrNotes_input", 20, True) 
+  Call CommonRoutines.EnterOperation(ObjDirection,flowData.Item("n4RailNotes"),"RailNotes") 
+End Sub
+
+'To Add Damage Details in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4MobileRailInventoryAddDamage
+  Dim ObjClickDamage,ObjComp,ObjrailType,ObjDamageSeverity,ObjDamageLocation
+  Set ObjClickDamage  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrDMGButton_input", 20, True)
+  If ObjClickDamage.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjClickDamage,"Damage")
+   Delay 2000
+   Set ObjComp  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageL1_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjComp,flowData.Item("ObjComp"),"Comp") 
+   Set ObjrailType  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageT1_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjrailType,flowData.Item("n4DamageType"),"Damagetype")  
+   Set ObjDamageSeverity  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageS1_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjDamageSeverity,flowData.Item("n4DamageSeverity"),"DamageSeverity")  
+   Set ObjDamageLocation  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageLocation1_input", 20, True)
+   ObjDamageLocation.SetText(flowData.Item("n4DamageLocation"))
+   Set ObjDamageQuantity  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageQ1_input", 20, True) 
+   ObjDamageQuantity.SetText(flowData.Item("n4DamageQuatity"))
+   Set ObjDamageWidth  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageW1_input", 20, True)
+   ObjDamageWidth.SetText(flowData.Item("n4DamageWidth")) 
+   Set ObjDamageLength  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageLN1_input", 20, True)
+   ObjDamageLength.SetText(flowData.Item("n4DamageLength"))
+   Set ObjDamageDeep  = Aliases.browser.FindChild("idStr", "program:MRI003-mrDamageD1_input", 20, True)
+   ObjDamageDeep.SetText(flowData.Item("n4DamageDeep"))
+   Set ObjSend = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+   aqUtils.Delay 1000
+   If Aliases.browser.FindChild("idStr", "program:MRI002-mrSeal1_input", 20, True).WaitProperty("Visible", True,5000) Then
+    Set ObjCommit = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+    Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+    Log.Checkpoint("Damage Added Successfully")
+   Else
+    Log.Error("Failed to add Damage")
+   End If 
+  End If 
+End Sub
+
+'To Add Refeerinfo Details in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4MobileInventoryAddRefeer
+  Dim ObjRefeer,ObjOnPower,ObjTemp,ObjCelcius,ObjType,ObjGensetiD
+  Set ObjRefeer  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrTMPButton_input", 20, True)
+  If ObjRefeer.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjRefeer,"Refeer") 
+   Delay 1000 
+   Set ObjOnPower  = Aliases.browser.FindChild("idStr", "program:MRI004-mrUnitIsPowered_input", 20, True)
+   If ObjOnPower.WaitProperty("Visible", True,5000) Then
+    SelectPoweron = flowData.Item("n4RailInventoryPowerON")
+    If SelectPoweron = "Yes"  Then
+     Call CommonRoutines.ClickOperation(ObjOnPower,"PowerON")
+     Log.Message "ON Power Clicked"
+    Else
+     Log.Message "On Power not clicked"
+    End If
+    Set ObjTemp  = Aliases.browser.FindChild("idStr", "program:MRI004-mrReeferTemperature_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjTemp,flowData.Item("n4RefeerTemp"),"Temperature")   
+    Set ObjCelcius  = Aliases.browser.FindChild("idStr", "program:MRI004-mrTemperatureUnit_input", 20, True)
+    ObjCelcius.SetText(flowData.Item("n4RailInventoryTemp"))
+    Set ObjGensetiD  = Aliases.browser.FindChild("idStr", "program:MRI005-mrGensetId_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjGensetiD,flowData.Item("n4Gensetid"),"Gensetid")
+    Set ObjType  = Aliases.browser.FindChild("idStr", "program:MRI005-mrGensetType_input", 20, True)
+    Call CommonRoutines.EnterOperation(ObjType,flowData.Item("n4railtype"),"Type")
+    Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+    Call CommonRoutines.ClickOperation(ObjSend,"Refeeradded")
+    End If
+   End If 
+End Sub
+
+'To Add OOGDetails in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 14/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4RailInventoryOOgDetails
+  Dim ObjOOgbutton,ObjOOGHeight,ObjOOGLeft,ObjOOGRight,ObjOOGFlore,ObjOOGAft,ObjOOGUnits,ObjSend
+  Delay 1000
+  Set ObjOOgbutton  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrOOGButton_input", 20, True)
+  If ObjOOgbutton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjOOgbutton,"OOGButton") 
+   Delay 2000   
+   Set ObjOOGHeight  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverHeight_input", 20, True)  
+   ObjOOGHeight.SetText(flowData.Item("n4OOGHeigth"))
+   Set ObjOOGLeft  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverLeft_input", 20, True)
+   ObjOOGLeft.SetText(flowData.Item("n4OOGLeft"))
+   Set ObjOOGRight  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverRight_input", 20, True) 
+   ObjOOGRight.SetText(flowData.Item("n4OOGRigth"))
+   Set ObjOOGFlore  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverFwd_input", 20, True)   
+   ObjOOGFlore.SetText(flowData.Item("n4OOGFlore"))
+   Set ObjOOGAft  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverAft_input", 20, True) 
+   ObjOOGAft.SetText(flowData.Item("n4OOGAft"))
+   Set ObjOOGUnits  = Aliases.browser.FindChild("idStr", "program:MRI006-mrOverSizeUnits_input", 20, True)
+   ObjOOGUnits.SetText(flowData.Item("n4OOGUnits"))
+   Delay 1000
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "OOG Succesfully Added"
+   Else
+    Log.Message "Failed to Add OOG "
+   End If
+  End If 
+End Sub
+
+'To Add HazardDetails in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4railInventoryAddHAzardDetails
+  Dim ObjHazardButton,ObjHasplacards,ObjPlacard1,ObjPlacard2,ObjPlacard3,ObjPlacard4,ObjPlacard5,ObjPlacard6,ObjGrd,ObjMat
+  Set ObjHazardButton = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrHAZButton_input", 20, True)
+  If ObjHazardButton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjHazardButton,"Hazard Button")
+   Delay 2000
+   Set ObjHasplacards  = Aliases.browser.FindChild("idStr", "program:MRI015-mrIsPlacarded_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjHasplacards,flowData.Item("n4RailInventoryPlacard"),"HasPlacard")  
+   Set ObjPlacard1  = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard1_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard1,flowData.Item("n4Placard1"),"Placard1")
+   Set ObjPlacard2 = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard2_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard2,flowData.Item("n4Placard2"),"Placard2")  
+   Set ObjPlacard3 = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard3_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard3,flowData.Item("n4Placard3"),"Placard3")  
+   Set ObjPlacard4 = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard4_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard4,flowData.Item("n4Placard4"),"Placard4")    
+   Set ObjPlacard5 = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard5_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard5,flowData.Item("n4Placard5"),"Placard5")    
+   Set ObjPlacard6 = Aliases.browser.FindChild("idStr", "program:MRI007-mrHzPlacard6_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjPlacard6,flowData.Item("n4Placard6"),"Placard6")   
+   Set ObjGrd = Aliases.browser.FindChild("idStr", "program:MRI012-mrContainerGrade_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjGrd,flowData.Item("n4RailInventoryGrd"),"GRD")  
+   Set ObjMat = Aliases.browser.FindChild("idStr", "program:MRI012-mrContainerMaterialMadeFrom_input", 20, True)
+   Call CommonRoutines.EnterOperation(ObjMat,flowData.Item("n4RailInventorymaterial"),"MaterialMade")  
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "Hazard Added Succesfully "
+   Else
+    Log.Message "Failed to Add Hazard "
+   End If
+  End If 
+End Sub
+  
+'To Add SealDetails in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:  
+Sub n4railInventoryAddSealDetails 
+  Dim ObjSealButton,ObjSeal1,ObjSeal2,ObjSeal3,ObjSeal4,ObjSend
+  Set ObjSealButton  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrSELButton_input", 20, True)
+  If ObjSealButton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjSealButton,"SealButton")  
+   Delay 2000  
+   Set ObjSeal1  = Aliases.browser.FindChild("idStr", "program:MRI008-mrSeal1_input", 20, True)  
+   ObjSeal1.SetText(flowData.Item("n4RailInventoryS1")) 
+   Set ObjSeal2  = Aliases.browser.FindChild("idStr", "program:MRI008-mrSeal2_input", 20, True)
+   ObjSeal2.SetText(flowData.Item("n4RailInventoryS2")) 
+   Set ObjSeal3  = Aliases.browser.FindChild("idStr", "program:MRI008-mrSeal3_input", 20, True) 
+   ObjSeal3.SetText(flowData.Item("n4RailInventoryS3"))
+   Set ObjSeal4  = Aliases.browser.FindChild("idStr", "program:MRI008-mrSeal4_input", 20, True)   
+   ObjSeal4.SetText(flowData.Item("n4RailInventoryS4")) 
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "N4MobileInventorySeal Added Succesfully "
+   Else                                    
+    Log.Message "Failed to Add N4MobileInventorySeal "
+   End If
+  End If 
+End Sub
+
+'To Add BundleDetails in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4RailInventoryAddBundleDetails
+  Dim ObjBundleButton,ObjBundle,ObjSend
+  Set ObjBundleButton  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrBDLButton_input", 20, True)
+  If ObjBundleButton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjBundleButton,"BundleButton") 
+   Delay 2000   
+   Set ObjBundle  = Aliases.browser.FindChild("idStr", "program:MRI009-mrBundleID1_input", 20, True)  
+   ObjBundle.SetText(flowData.Item("n4RailInventoryBundle")) 
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "n4RailInventoryAddBundle Added Succesfully "
+   Else                                    
+    Log.Message "Failed to Add n4RailInventoryAddBundle "
+   End If
+  End If 
+End Sub
+
+'To Add Weigth in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4RailInventoryAddWeightDetails
+  Dim ObjWeightButton,ObjSafeWeigth,ObjSend,ObjUnit,ObjTareWeight,ObjCscDate,ObjMnf,ObjmrStatus
+  Set ObjWeightButton  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrWTButton_input", 20, True)
+  If ObjWeightButton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjWeightButton,"WeightButton")   
+   Delay 2000 
+   Set ObjSafeWeigth = Aliases.browser.FindChild("idStr", "program:MRI010-mrSafeWeight_input", 20, True)  
+   ObjSafeWeigth.SetText(flowData.Item("n4RailInventoryWeight"))  
+   Set ObjUnit  = Aliases.browser.FindChild("idStr", "program:MRI010-mrSafeWeightUnit_input", 20, True)  
+   ObjUnit.SetText(flowData.Item("n4RailInventoryunit")) 
+   Set ObjTareWeight  = Aliases.browser.FindChild("idStr", "program:MRI010-mrTareWeight_input", 20, True)  
+   ObjTareWeight.SetText(flowData.Item("n4RailInventoryTareWeight")) 
+   Set ObjCscDate  = Aliases.browser.FindChild("idStr", "program:MRI011-mrCscDate_input", 20, True)  
+   ObjCscDate.SetText(flowData.Item("n4RailInventorycscDate")) 
+   Set ObjMnf  = Aliases.browser.FindChild("idStr", "program:MRI011-mrCscMnfDate_input", 20, True)  
+   ObjMnf.SetText(flowData.Item("n4RailInventoryMnf")) 
+   Set ObjmrStatus  = Aliases.browser.FindChild("idStr", "program:MRI014-mrMRStatus_input", 20, True)   
+   Call CommonRoutines.EnterOperation(ObjmrStatus,flowData.Item("n4RailInventorymrstatus"),"GRD")  
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "n4RailInventoryAddBundle Added Succesfully "
+   Else                                    
+    Log.Message "Failed to Add n4RailInventoryAddBundle "
+   End If
+  End If
+End Sub
+
+'To Add Button in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 15/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:
+Sub n4RailInventoryAddButton
+  Dim ObjAddButton,ObjGrdFood,ObjmrStatus,ObjSend
+  Set ObjAddButton  = Aliases.browser.FindChild("idStr", "program:MRInspButtons-mrADDButton_input", 20, True)
+  If ObjAddButton.WaitProperty("Visible", True,5000) Then
+   Call CommonRoutines.ClickOperation(ObjAddButton,"AddButton")    
+   Set ObjGrdFood  = Aliases.browser.FindChild("idStr", "program:MRI012-mrContainerGrade_input", 20, True)   
+   Call CommonRoutines.EnterOperation(ObjGrdFood,flowData.Item("n4RailInventoryGrdFood"),"GRDFood")  
+   Set ObjmrStatus  = Aliases.browser.FindChild("idStr", "program:MRI012-mrContainerMaterialMadeFrom_input", 20, True)   
+   Call CommonRoutines.EnterOperation(ObjmrStatus,flowData.Item("n4RailInventorymaterialMade"),"GRD") 
+   Set ObjSend  = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True)
+   Call CommonRoutines.ClickOperation(ObjSend,"SendButton") 
+   Delay 1000
+   If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "n4RailInventorymaterial Added Succesfully "
+   Else                                    
+    Log.Message "Failed to Add n4RailInventorymaterial "
+   End If
+  End If  
+End Sub
+
 'To Add QueryContainer in RailInventory
 'Input Parameters: By using Dictionary Object
 'Created: 11/06/2018 
 'Created by: Dinesh RameshKumar
 'Reviewed:
 Sub n4MobileAddContainerRailInventory
-  Dim ObjContainer1
-  Set ObjContainer1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:0:column_1", 20, True)
-  If ObjContainer1.WaitProperty("Visible", True,5000) Then  
-  Call CommonRoutines.EnterOperation(ObjContainer1,flowData.Item("n4AddContainer1"),"ContaineridEntered")
-  Set ObjSubmitContainer  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:0:column_2", 20, True)
-  Call CommonRoutines.ClickOperation(ObjSubmitContainer,"ContainerSubmitted")
-  Set ObjSubmitContainer  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True)
-  If ObjSubmitContainer.WaitProperty("Visible", True,5000) Then 
-   Log.Message "Container Entered Sucessfully"
-  Else 
-   Log.Message "Container Entered Unsucessfully" 
-  End If  
-  End If 
-  Set ObjContainer2  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:0:column_1", 20, True)
-  Call CommonRoutines.EnterOperation(ObjContainer1,flowData.Item("n4AddContainer"),"ContaineridEntered")
+  Dim ObjContainer1,Objverify,StrContainer,ObjQuery,ObjQuery1,ObjContainer2
+  Set ObjContainer1 = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:0:column_1", 20, True)  
+  Set ObjContainer2 = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_1", 20, True)
+  StrContainer =  ObjContainer1.getAttribute("Value", Text)
+  If StrContainer = (flowData.Item("n4OrphanUnit1")) Then
+   Set ObjQuery  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:0:column_2", 20, True)
+   Call CommonRoutines.ClickOperation(ObjQuery,"SendButton")
+   Delay 2000 
+    If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+     Log.Message "Unit1 entered for Inspection "
+    Else                                    
+     Log.Message "Failed to entered for Inspection "
+    End If 
+    ElseIf ObjContainer2.Exists Then
+     StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
+     If StrContainerNumber2 = (flowData.Item("n4OrphanUnit2")) Then
+      Set ObjQuery1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_2", 20, True)
+      Call CommonRoutines.ClickOperation(ObjQuery1,"SendButton")
+     Else
+      Log.Message "NO unit in slot2"
+     End If  
+     Delay 2000 
+     If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then 
+      Log.Message "Unit2 entered for Inspection "
+     Else                                    
+      Log.Message "Unit Failed for Inspection "
+     End If 
+    End If
+    Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
+    Delay 2000
+    If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+     Log.Message "Inspection Button Clicked Succesfully "
+    Else                                    
+     Log.Message "Failed to Click  Inspection Button "
+   End If 
+End Sub
+
+'To Press BackButton in RailInventory
+'Input Parameters: By using Dictionary Object
+'Created: 18/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:      
+Sub n4MobilePressBackButton
+  Dim ObjPressBack
+  Delay 2000
+  Set ObjPressBack = Aliases.browser.FindChild("idStr", "program:optional_2_BACK", 20, True)
+   If ObjPressBack.WaitProperty("Visible", True,5000) Then
+    Call CommonRoutines.ClickOperation(ObjPressBack,"PressButton")
+   End If 
 End Sub
 
 
+
 Sub play
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+   Set ObjContainer2 = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_1", 20, True)
+  StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
+  Delay 2000
+    If StrContainerNumber2 = (flowData.Item("n4OrphanUnit2")) Then
+    
+     Set ObjQuery1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_2", 20, True)
+     Call CommonRoutines.ClickOperation(ObjQuery1,"SendButton")
+      Delay 2000
+     If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+      Delay 2000  
+      Log.Message "Unit2 entered for Inspection "
+     Else                                    
+      Log.Message "Unit Failed for Inspection "
+     End If 
+     Else 
+     Log.Message "NO unit in slot2"
+     
+    End If
+ 
+  Delay 2000
+  Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
+  Delay 2000
+  If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+   Log.Message "Inspection Button Clicked Succesfully "
+  Else                                    
+   Log.Message "Failed to Click  Inspection Button "
+  End If 
+End Sub
+
+ Sub Tested
   Call CommonRoutines.fetchData("N4MobileCommonRoutines")
   Call N4MobileCommonRoutines.n4mobileLogin  
   Call N4MobileCommonRoutines.n4mobileScopeSelection  
   Call CommonRoutines.fetchData("N4MobileRailInventory") 
-  Call N4MobileCommonRoutines.n4mobileSelectProgram                             
+  Call N4MobileCommonRoutines.n4mobileSelectProgram 
   Call n4mobileRailcaridRailInventory
-  Call n4AddEditSegBreakRailInventory
-
-
-End Sub
-
- 
+   Call n4AddEditSegBreakRailInventory
+  Call n4MobileAddContainerRailInventory
+  
+  Call n4MobileInventoryAddRefeer
+  Call n4RailInventoryOOgDetails
+  Call n4railInventoryAddSealDetails
+  Call n4railInventoryAddHAzardDetails
+  Call n4RailInventoryAddBundleDetails
+  call n4RailInventoryAddButton
+  Call n4RailInventoryAddWeightDetails
+  Call n4MobileRailInventoryAddDamage
+  Call n4MobilePressBackButton
+ End Sub 
  
  
  

@@ -199,7 +199,7 @@ Sub n4EditAdvanceTrainVisit(phase)
     Objaction.SwingPopupMenu.Click("Advance Train Visit")
     Set ObjVisitPhases =  Aliases.jp2launcher.n4AddAdvanceTrainVisitWindow.FindChild("AWTComponentName", "cvdCv.cvVisitPhase", 20, True)
    Else
-    Log.Checkpoint "Vessel visit not found"
+    Log.Checkpoint "Rail visit not found"
    End If
    ExistingPhase = ObjVisitPhases.getSelectedItem
    If phase = "Inbound" and ExistingPhase = "Created" Then 
@@ -290,6 +290,8 @@ Sub n4EditAdvanceTrainVisit(phase)
     Log.Checkpoint  "Train Visit Cancelled Succcessfully"   
    End If  
 End Sub
+
+
 
 
 
