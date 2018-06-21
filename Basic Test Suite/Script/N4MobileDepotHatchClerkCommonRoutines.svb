@@ -8,8 +8,8 @@
 'Reviewed:
 'Reviewed by:
 Sub n4mobileDepotHatchClerkEnterVesselNCrane
+call CommonRoutines.fetchData("N4MobileCommonRoutines")
 Dim ObjCheckElement, ObjCrane, ObjSend, ObjVessel
-Call CommonRoutines.fetchData("N4MobileCommonRoutines")
 aqUtils.Delay 1000
   Set ObjVessel = Aliases.browser.FindChild("idStr","program:MHC001-mhVesselID_input",20,True)
     If ObjVessel.WaitProperty("Exists", True,5000) Then
@@ -28,3 +28,47 @@ aqUtils.Delay 1000
         End If
     End If
 End Sub
+
+'To Create Orphan using DepotHatchClerk in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 19/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileDepotHatchClerkOrphanContainer
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Dim ObjID, ObjOrphanButton,ObjIsoCode, ObjLocation, ObjSend, ObjCheckElement
+  aqutils.Delay 1000
+  Set ObjID =  Aliases.browser.FindChild("idStr","program:MHC013-mhContainerID_input",20,True)
+    If ObjID.WaitProperty("Exists", True,5000) Then
+      ObjID.SetText(flowData.Item("n4DepotOrphanContainerID"))
+      aqutils.Delay 500
+      Set ObjOrphanButton = Aliases.browser.FindChild("idStr","program:MHC013-mhDefineOrphanButton_input",20,True)
+        If ObjOrphanButton.WaitProperty("Exists", True,5000) Then
+          Call commonRoutines.ClickOperation(ObjOrphanButton,"Orphan Button")
+          aqutils.Delay 500
+          Set ObjIsoCode = Aliases.browser.FindChild("idStr","program:MHC018-mhOrphanISO_input",20,True)
+            If ObjIsoCode.WaitProperty("Exists", True,5000) Then
+              Call CommonRoutines.EnterOperation(ObjIsoCode,flowData.Item("n4DepotHatchClerkOrphanIsoType"),"IsoType")
+              Set ObjLocation = Aliases.browser.FindChild("idStr","program:MHC018-mhOrphanLocation_input",20,True)
+              ObjLocation.SetText(flowData.Item("n4DepotOrphanContainerLocation"))
+              Set ObjSend = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+              Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+              aqutils.Delay 500
+              Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MHC013-mhContainerID_input",20,True)
+                If ObjCheckElement.WaitProperty("Exists", True,5000) Then
+                  Log.Checkpoint("Orphan Container Created successfully")
+                Else
+                  Log.Error("Failed to create Orphan Container")
+                End If
+            End If
+        End If
+    End If
+End Sub 
+
+'To Load Orphan using DepotHatchClerk in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 19/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
