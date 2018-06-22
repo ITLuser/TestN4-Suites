@@ -7,6 +7,7 @@
 'Reviewed:
 'Reviewed by: 
 Sub n4LogIn
+  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
   Dim ObjUserName,ObjPassWord,ObjLoginButton,ObjAcceptSite
   If Aliases.jp2launcher.n4HomeView.Exists Then
     Log.Checkpoint("N4 is already launched")

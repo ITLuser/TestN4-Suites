@@ -66,9 +66,45 @@ Call CommonRoutines.fetchData("N4MobileCommonRoutines")
     End If
 End Sub 
 
-'To Load Orphan using DepotHatchClerk in N4 Mobile
+'To Discharge Orphan using DepotHatchClerk in N4 Mobile
 'Input Parameters: By using Dictionary Object
-'Created: 19/06/2018 
+'Created: 21/06/2018 
 'Created by: Aswini Uthayakumar
 'Reviewed:
 'Reviewed by:
+Sub n4mobileDepotHatchClerkDischargeOrphanContainer
+  Dim ObjChassisID, ObjChassisSlot, ObjContainerID, ObjDischarge, ObjDoorDirection, ObjID, ObjIsoCode, ObjLocation, ObjSend
+  aqUtils.Delay 500
+  Set ObjID = Aliases.browser.FindChild("idStr","program:MHC013-mhContainerID_input",20,True)
+    If ObjID.WaitProperty("Exists", True,5000) Then
+      ObjID.SetText(flowData.Item("n4DepotOrphanContainerID"))
+      Set ObjDischarge = Aliases.browser.FindChild("idStr","program:MHC013-mhDischargeButton_input",20,True)  
+      Call CommonRoutines.ClickOperation(ObjDischarge,"Discharge Button")   
+      Set ObjContainerID = Aliases.browser.FindChild("idStr","program:MHC003-mhDischargeContainerID_outputText",20,True)
+      StrContainerID = ObjContainerID.contentText
+        If StrContainerID = flowData.Item("n4DepotOrphanContainerID") Then
+          Set ObjIsoCode = Aliases.browser.FindChild("idStr","program:MHC016-mhDischargeISO_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjIsoCode,flowData.Item("n4DepotHatchClerkOrphanIsoType"),"IsoType")
+          Set ObjLocation = Aliases.browser.FindChild("idStr","program:MHC016-mhDischargeLocation_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjLocation,flowData.Item("n4DepotOrphanContainerLocation"),"Location")
+          Set ObjChassisID = Aliases.browser.FindChild("idStr","program:MHC016-mnhcChassisId_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjChassisID,flowData.Item("n4DepotHatchClerkOrphanChassisID"),"ChassisID")
+          Set ObjChassisSlot = Aliases.browser.FindChild("idStr","program:MHC016-mnhcSlotOnCarriage_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjChassisSlot,flowData.Item("n4DepotHatchClerkOrphanChassisSlot"),"ChassisSlot")
+          Set ObjDoorDirection = Aliases.browser.FindChild("idStr","program:MHC016-mnhcDoorDirection_input",20,True)
+          Call CommonRoutines.EnterOperation(ObjDoorDirection,flowData.Item("n4DepotHatchClerkOrphanContainerDoorDirection"),"ChassisSlot")
+          Set ObjSend  = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+          Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+          aqUtils.Delay 500
+          Set ObjID = Aliases.browser.FindChild("idStr","program:MHC013-mhContainerID_input",20,True)
+            If ObjID.WaitProperty("Exists", True,5000) Then
+              Log.Checkpoint("Unit Discharged Successfully")
+            Else
+              Log.Message("Unit discharge Failed")
+            End If
+        End If 
+    End If
+End Sub 
+
+
+

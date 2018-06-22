@@ -52,6 +52,12 @@
 		<child name="N4MobileGateInspectionCommonRoutines" key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="N4MobileGateInspectionCommonRoutines.svb" />
 		</child>
+		<child name="N4MobileDepotHatchClerkCommonRoutines" key="{5A69FE5B-8728-4CDE-8840-1809B2AA55F8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileDepotHatchClerkCommonRoutines.svb" />
+		</child>
+		<child name="N4mobileYardInventoryContainerQuery_Script" key="{B912B19A-A08D-4AE1-BBF6-5B65A74E3F09}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4mobileYardInventoryContainerQuery_Script.svb" />
+		</child>
 	</children>
 	<folders>
 		<folder caption="Sparcs N4" description="A logical folder that is used to organize project items and elements." moniker="">
@@ -79,6 +85,8 @@
 				<ref key="{041998D1-13F9-42AD-9B90-40B28B8430B5}" />
 				<ref key="{00FD1C9C-9797-4429-9B4D-017C752A9BCA}" />
 				<ref key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" />
+				<ref key="{5A69FE5B-8728-4CDE-8840-1809B2AA55F8}" />
+				<ref key="{B912B19A-A08D-4AE1-BBF6-5B65A74E3F09}" />
 			</references>
 		</folder>
 		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">

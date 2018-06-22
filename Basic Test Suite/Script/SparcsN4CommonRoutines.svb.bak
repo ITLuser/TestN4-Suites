@@ -535,6 +535,13 @@ Sub n4ProcessWebRequest
   End If
 End Sub
 
+
+'To Read WebRequest from Text file
+'Input Parameters: By using Dictionary Object
+'Created: 04/06/2018
+'Created by: Aswini UthayaKumar
+'Reviewed: 
+'Reviewed by:
 Dim strFileText
 Sub n4ReadWebServiceRequest
   Set objFSO = CreateObject("Scripting.FileSystemObject")
