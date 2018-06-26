@@ -1,0 +1,103 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT SparcsN4CommonRoutines
+
+
+'To Addn4MobileHatchClerkAddVesselCraneID
+'Input Parameters: By using Dictionary Object
+'Created: 18/06/2018 
+'Created by: Dinesh RameshKumar
+'Reviewed:  
+Sub  n4MobileHatchClerkAddVesselCraneID
+  Dim ObjVesselid,ObjCraneID,ObjManualJob,ObjJobList
+  Set ObjVesselid = Aliases.browser.FindChild("idStr","program:MNHCVesselCrane-mnhcVesselID_input",20,True)
+  ObjVesselid.SetText(flowData.Item("n4HatchClerkVessel"))
+  Set ObjCraneID = Aliases.browser.FindChild("idStr","program:MNHCVesselCrane-mnhcCraneID_input",20,True)
+  ObjCraneID.SetText(flowData.Item("n4HatchClerkCrane"))
+  JobSelection = flowData.Item("n4hatchclerkjob")
+	If JobSelection = "Manual" Then
+		Set ObjManualJob = Aliases.browser.FindChild("idStr","program:MNHCVesselCrane-mnhcVCNextButton_input",20,True)
+		Call CommonRoutines.ClickOperation(ObjManualJob,"manualJob")
+		Delay 2000 
+		Set ObjManualVerify = Aliases.browser.FindChild("idStr","program:MNHCModeSelection-mnhcSingleModeButton_input",20,True)
+			If ObjManualVerify.WaitProperty("Visible", True,5000) Then
+				Log.Message "Manual Selected Sucessfully"
+			Else
+				Log.Message "Failed to click manual"
+			End If
+	ElseIf JobSelection = "JobList"  Then
+		Delay 2000
+		Set ObjJobList = Aliases.browser.FindChild("idStr","program:MNHCVesselCrane-mnhcJobListButton_input",20,True)
+		Call CommonRoutines.ClickOperation(ObjJobList,"JobList ") 
+		Delay 2000
+    Set ObjJobVerify = Aliases.browser.FindChild("idStr","program:MHCSelection-mhcSeqContId_input",20,True)
+      If ObjJobVerify.WaitProperty("Visible", True,5000) Then 
+				Log.Message "Joblist Clicked Sucessfully"
+			Else
+				Log.Message "Joblist not selected"
+			End If
+  End If 
+End Sub    
+''To  Selectn4MobilehatchclerkMode
+''Input Parameters: By using Dictionary Object
+''Created: 22/06/2018 
+''Created by: Dinesh RameshKumar
+''Reviewed:         
+Sub n4MobileHatchClerkSelectMode
+  Dim  ObjSingleMode,ObjTandemMode,ObjQuadMode,ObjTwinMode,Seln4MobileWorkMode
+  Seln4MobileWorkMode = flowData.Item("n4MobileSelectMode")
+  If Seln4MobileWorkMode = "SingleMode" Then
+   Delay 2000
+   Set ObjSingleMode = Aliases.browser.FindChild("idStr","program:MNHCModeSelection-mnhcSingleModeButton_input",20, True)
+   Call CommonRoutines.ClickOperation(ObjSingleMode,"SingleMode") 
+   Set ObjVerify = Aliases.browser.FindChild("idStr","program:MNHCContainer-mnhcCntrID1_input",20, True)
+    If ObjVerify.WaitProperty("Visible", True,5000) Then 
+     Log.Checkpoint "SingleMode is selected successfully"
+    Else
+     Log.Checkpoint"Failed to Select Single Mode"
+    End If     
+   ElseIf Seln4MobileWorkMode = "TwinMode" Then 
+    aqUtils.Delay 1000
+    Set ObjTwinMode = Aliases.browser.FindChild("idStr", "program:MNHCModeSelection-mnhcTwinModeButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjTwinMode,"TwinMode") 
+    Set ObjVerify = Aliases.browser.FindChild("idStr","program:MNHCContainer-mnhcCntrID1_input",20, True)
+    If ObjVerify.WaitProperty("Visible", True,5000) Then 
+     Log.Checkpoint "TwinMode is selected successfully"
+    Else
+     Log.Checkpoint"Failed to Select TwinMode "    
+    End If                
+   ElseIf Seln4MobileWorkMode = "TandemMode" Then 
+    aqUtils.Delay 1000
+    Set ObjTandemMode = Aliases.browser.FindChild("idStr", "program:MNHCModeSelection-mnhcTandemModeButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjTandemMode,"TandemMode")         
+    Set ObjVerify = Aliases.browser.FindChild("idStr","program:MNHCContainer-mnhcCntrID1_input",20, True)
+    If ObjVerify.WaitProperty("Visible", True,5000) Then 
+     Log.Checkpoint "Tandem Mode is selected successfully"
+    Else
+     Log.Checkpoint"Failed to Select Tandem"
+    End If                
+   ElseIf Seln4MobileWorkMode = "QuadMode" Then 
+    aqUtils.Delay 1000       
+    Set ObjQuadMode = Aliases.browser.FindChild("idStr", "program:MNHCModeSelection-mnhcQuadModeButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjQuadMode,"QuadMode")    
+    Set ObjVerify = Aliases.browser.FindChild("idStr","program:MNHCContainer-mnhcCntrID1_input",20, True)
+    If ObjVerify.WaitProperty("Visible", True,5000) Then 
+     Log.Checkpoint "QuadMode is selected successfully"
+    Else
+     Log.Checkpoint"Failed to select QuadMode"
+    End If
+   End If            
+End Sub
+        
+        
+          
+
+
+
+
+
+
+
+
+
+
+         

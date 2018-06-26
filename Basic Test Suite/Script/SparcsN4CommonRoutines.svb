@@ -7,7 +7,6 @@
 'Reviewed:
 'Reviewed by: 
 Sub n4LogIn
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
   Dim ObjUserName,ObjPassWord,ObjLoginButton,ObjAcceptSite
   If Aliases.jp2launcher.n4HomeView.Exists Then
     Log.Checkpoint("N4 is already launched")
@@ -529,7 +528,9 @@ Sub n4ProcessWebRequest
   aqUtils.Delay 1000 
   set Objgetvalue = Objmessagefields.getText
   Log.Message(Objgetvalue)
-  If Objgetvalue.contains("Successful") Then
+'  If Objgetvalue.contains("Successful") Then
+  Delay 2000
+If Objgetvalue.contains(flowData.Item("n4ArgoServicevalue")) Then
    Log.Message "WebRequest Successfully processed in ArgoServiceTester"
   Else
    Log.Message "Failed to Process WebRequest in ArgoServiceTester"
@@ -555,4 +556,11 @@ Sub n4ReadWebServiceRequest
   strFileText = objTextFile.ReadAll
   objTextFile.Close 
 End Sub
+
+
+
+
+
+
+
 
