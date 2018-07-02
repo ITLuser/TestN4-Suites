@@ -1,0 +1,47 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+'USEUNIT N4MobileYardInventoryCommonRoutines
+'USEUNIT SparcsN4CommonRoutines
+'USEUNIT SparcsN4VesselRoutines
+
+'Yard Inspection program shows Genset ID and Genset Type.
+'Input Parameters: By using Dictionary Object
+'Created: 27/06/2018 
+'Created by: DineshRameshKumar
+'Reviewed:
+'Reviewed by:
+'#Test Setup:
+'#1. Go to Configuration > Equipment Accessories and add an accessory A1 with Equipment Type as Genset.
+'#2. Vessel Stow plan a reefer container C1 and discharge it to yard.
+'#3. Select the unit in Units table, open unit inspector, select All Equipment tab and add the accessory A1 to the Unit C1.
+'#Test Steps
+'#1. Login to N4 Mobile, select Yard Inspection, enter container number C1, enter seal and click R button.
+'#Expected:
+'#1. Genset ID A1 should be displayed and Genset Type GENSET should be displayed as Read only field.
+
+
+Sub J20591_1
+
+  Call CommonRoutines.fetchData("J20591_1")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU8889512")
+  Call CommonRoutines.GetCurrentDirectory
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4ScopeSelection("Configuration")
+  Call SparcsN4CommonRoutines.n4CreateAccessories
+  'Call SparcsN4VesselRoutines.
+  
+  
+  
+  
+  
+  Call N4MobileCommonRoutines.n4mobileLogin 
+  
+   
+  
+  
+  
+  
+ 
+End Sub
+

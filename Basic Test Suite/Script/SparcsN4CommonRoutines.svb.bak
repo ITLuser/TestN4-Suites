@@ -557,6 +557,125 @@ Sub n4ReadWebServiceRequest
   objTextFile.Close 
 End Sub
 
+'To Create n4Accessories
+'Input Parameters: By using Dictionary Object
+'Created: 27/06/2018
+'Created by: DineshRameshKumar
+'Reviewed: 
+'Reviewed by:
+Sub n4CreateAccessories
+  Dim ObjCreateAccessories,ObjAcccesoriesCreate,ObjEquipmentID,ObjEquipmentType,ObjEquipmentOperator,ObjEquipmentOwner,ObjAccessoriesverify,ObjTareWeigth,ObjAccessoriessave
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+  Call n4SelectWorkMode("Configuration")
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Equipment|Accessories")
+  aqUtils.Delay 1000
+  Set ObjCreateAccessories = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL_ACTION_CREATE", 20, True)
+  If ObjCreateAccessories.WaitProperty("Visible", True,50000)Then
+   Call CommonRoutines.ClickOperation(ObjCreateAccessories,"CreateAccessories")
+   Set ObjEquipmentID = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName","eqIdFull", 20, True)
+   If ObjEquipmentID.WaitProperty("Visible", True,50000)Then
+    Call CommonRoutines.EnterOperation(ObjEquipmentID,flowData.Item("UnitIdEquip"),"EquipmentID")
+    Set ObjEquipmentType = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName","acryEqType", 20, True)
+    Call CommonRoutines.EnterOperation(ObjEquipmentType,flowData.Item("EquipmentType"),"EquipmentType")
+    Delay 1000
+    Call CommonRoutines.EnterOperation(ObjEquipmentType,"[Enter]","Entered")
+    Delay 2000 
+    Set ObjEquipmentOwner = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName","equipmentOwner", 20, True)
+    Call CommonRoutines.EnterOperation(ObjEquipmentOwner,flowData.Item("EquipmentOwner"),"EquipmentOperator")
+    Delay 1000
+    Call CommonRoutines.EnterOperation(ObjEquipmentOwner,"[Enter]","Entered")
+    Delay 2000 
+    Set ObjEquipmentOperator = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName","equipmentOperator", 20, True)
+    Call CommonRoutines.EnterOperation(ObjEquipmentOperator,flowData.Item("EquipmentOperator"),"EquipmentOperator")
+    Delay 1000
+    Call CommonRoutines.EnterOperation(ObjEquipmentOperator,"[Enter]","Entered")
+    Set ObjTareWeigth = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName","eqTareWeightKg", 20, True)
+    ObjTareWeigth.SetText(flowData.Item("EquipmentWeigth")) 
+    Delay 1000 
+    Call CommonRoutines.ClickOperation(ObjTareWeigth,"Entered") 
+    Set ObjAccessoriessave = Aliases.jp2launcher.n4AddAccessories.FindChild("AWTComponentName", "LABEL_ACTION_SAVE", 20, True)
+    If ObjAccessoriessave.WaitProperty("Visible", True,50000)Then
+     Call CommonRoutines.ClickOperation(ObjAccessoriessave,"n4AccessorieCreated")
+     Set ObjAccessoriesverify = Aliases.jp2launcher.FindChild("AWTComponentName", "LABEL__QUICK_SEARCH", 20, True)
+     If ObjAccessoriesverify.WaitProperty("Visible", True,50000)Then
+      Log.Message "N4Accessories Successfully created"
+     Else 
+      Log.Message "Failed to create N4 Accessories"
+     End If
+    End If   
+   End If
+ End If 
+End Sub
+
+'To Create VesselStow Plan
+'Input Parameters: By using Dictionary Object
+'Created: 28/06/2018
+'Created by: DineshRameshKumar
+'Reviewed: 
+'Reviewed by:
+Sub n4CreateVesselStowPlan
+  Dim ObjVesselid,ObjEquipmentid,ObjEquipmenverify,ObjEquipmenttypeverify,ObjEquipmentsave,ObjEquipmenttype,ObjEquipmentOperator,ObjVesselFreigthKind,ObjSaveVessselStowPlan,ObjVesselCategory,ObjVesselPortofLoad,ObjVesselPortOfDischarge,ObjVesselVGMWeigth,ObjVesselGrossWeigth
+  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
+  Delay 1000
+  Call n4SelectWorkMode("Operations")
+  Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Vessel|Vessel Stow Plan") 
+  Delay 500
+  Set ObjVesselid = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitInboundVessel", 20, True)
+  Call CommonRoutines.EnterOperation(ObjVesselid,flowData.Item("n4Vesselid"),"CesselID")
+  Call CommonRoutines.EnterOperation(ObjVesselid,"[Enter]","Entered")
+  Set ObjEquipmentid = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitEquipment.eqIdFull", 20, True)
+  Call CommonRoutines.EnterOperation(ObjEquipmentid,flowData.Item("n4UnitID"),"Equipment")
+  Call CommonRoutines.EnterOperation(ObjEquipmentid,"[Enter]","Entered")
+  Delay 1000
+	If Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqIdFull", 20, True).Visible Then
+    Set ObjEquipmenverify = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqIdFull", 20, True)
+		If ObjEquipmenverify.Enabled Then
+			Call CommonRoutines.EnterOperation(ObjEquipmenverify,flowData.Item("n4UnitID"),"Equipment")
+			'Call CommonRoutines.EnterOperation(ObjEquipmentid,"[Enter]","Entered")
+			Delay 500
+			Set ObjEquipmenttypeverify = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqEquipType", 20, True)
+			' If ObjEquipmenttypeverify.WaitProperty("Visible", True,50000)Then
+			Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,flowData.Item("n4EquipmntType"),"EquipmentType")
+			Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,"[Enter]","EquipmentType")
+			Set ObjEquipmentsave = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","LABEL_ACTION_SAVE", 20, True)
+			Call CommonRoutines.ClickOperation(ObjEquipmentsave,"n4VesselEquipmentVerified")
+		Else
+			Log.Message "Failed TO Update Equipmentid in Action Window"
+    End If
+  Else
+			Set ObjEquipmenttype = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitEquipment.eqEquipType", 20, True)
+			Call CommonRoutines.EnterOperation(ObjEquipmenttype,flowData.Item("n4EquipmntType"),"EquipmentType")
+			Set ObjEquipmentOperator = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitLineOperator", 20, True)
+			Call CommonRoutines.EnterOperation(ObjEquipmentOperator,flowData.Item("n4EquipmntLineOperator"),"EquipmentLineOperator")
+			Call CommonRoutines.EnterOperation(ObjEquipmentOperator,"[Enter]","Entered")
+			Set ObjVesselFreigthKind = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitFreightKind", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselFreigthKind,flowData.Item("n4VesselFreigthKind"),"VesselFreigthKind")
+			Set ObjVesselGrossWeigth = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitGoodsAndCtrWtKg", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselGrossWeigth,flowData.Item("n4VesselGrossWeigth"),"VesselGrossWeigth")
+			Set ObjVesselVGMWeigth = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitGoodsAndCtrWtKgVerfiedGross", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselVGMWeigth,flowData.Item("n4VesselVGMWeigth"),"VesselVGMWeigth")
+			Set ObjVesselPortofLoad = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitRouting.rtgPOL", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselPortofLoad,flowData.Item("n4VesselPortofLoad"),"VesselPortofLoad")
+			Delay 1000
+			Call CommonRoutines.EnterOperation(ObjVesselPortofLoad,"[Enter]","Entered")
+			Set ObjVesselPortOfDischarge = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitRouting.rtgPOD1", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselPortOfDischarge,flowData.Item("n4VesselPortOfDischarge"),"VesselPortOfDischarge")
+			Call CommonRoutines.EnterOperation(ObjVesselPortOfDischarge,"[Enter]","Entered")
+			Delay 1000
+			Set ObjVesselCategory = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitCategory", 20, True)
+			Call CommonRoutines.EnterOperation(ObjVesselCategory,flowData.Item("n4VesselCategory"),"VesselCategory")
+			Set ObjSaveVessselStowPlan = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE", 20, True)
+			Call CommonRoutines.ClickOperation(ObjSaveVessselStowPlan,"n4VesselStowplanCreated")
+			Set ObjVessselCancel = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","LABEL_ACTION_CANCEL", 20, True)
+			Call CommonRoutines.ClickOperation(ObjVessselCancel,"n4VesselCLose")
+			Set ObjVessselclose = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES", 20, True)
+			Call CommonRoutines.ClickOperation(ObjVessselclose,"n4Vesselexit") 
+	End If
+End Sub
+  
+
+
 
 
 

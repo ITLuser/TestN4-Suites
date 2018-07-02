@@ -29,29 +29,6 @@ End Sub
 'Created by: Dinesh RameshKumar
 'Reviewed:
  
-
-Sub  n4mobileRailEditcaridRailInventory
-  Dim Objunit,ObjClick
-  Set ObjRailcarid = Aliases.browser.FindChild("idStr", "program:MRIV001-mrivRailcarID_input", 20, True) 
-   If ObjRailcarid.WaitProperty("Visible", True,5000) Then 
-    Call CommonRoutines.EnterOperation(ObjRailcarid,flowData.Item("n4RailInventoryRailCarId"),"RailCarIDEntered")
-    Set ObjClick = Aliases.browser.FindChild("idStr", "program:one_2_SEND", 20, True) 
-    Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
-    Delay 1000
-    If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True).WaitProperty("Visible", True,5000) Then
-     Log.Checkpoint("RailCarID Entered for RailInventory is  successful")
-    Else
-     Log.Checkpoint("RailCarID Entered for RailInventory is  unsuccessful") 
-    End If
-   End If  
-End Sub
-
-'To Add Railcartype RailInventory
-'Input Parameters: By using Dictionary Object
-'Created: 06/06/2018 
-'Created by: Dinesh RameshKumar
-'Reviewed:
- 
 Sub n4MobileRailCarTypeRailInventory
   Dim ObjEdit,ObjCarType,ObjDamage,SelectFlip,SelDamage,ObjInspected,SelectInspect
   Set ObjEdit = Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarEditButton_input", 20, True)
@@ -59,47 +36,43 @@ Sub n4MobileRailCarTypeRailInventory
   Delay 1000
   Set ObjCarType = Aliases.browser.FindChild("idStr", "program:MRIV006-mrivEditRailcarType_input", 20, True)
   Call CommonRoutines.EnterOperation(ObjCarType,flowData.Item("n4MobileCartype"),"RailCarTypeEntered")
-  Delay 2000 
+  Delay 2000
   Set ObjDamage = Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsDamaged_input",20,True)
-  Selectrailtype = flowData.Item("n4SelectrailDamage")
-  If Selectrailtype = "Yes" Then
-   Call CommonRoutines.ClickOperation(ObjDamage,"Damage")
-   If ObjDamage.Enabled Then
-    Log.Message "Damage Clicked Succesfully"
+  If ObjDamage.WaitProperty("Visible", True,5000) Then
+   Selectrailtype = flowData.Item("n4SelectrailDamage")
+   If Selectrailtype = "Yes" Then
+    Call CommonRoutines.ClickOperation(ObjDamage,"DamageClicked")
    Else
     Log.Message "Damage not Clicked"
    End If 
-  End If
+  End If 
   Set ObjInspected = Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsInspected_input",20,True)
+   If ObjInspected.WaitProperty("Visible", True,5000) Then
+    Selectrailtype = flowData.Item("n4SelectrailInspect")
+   If Selectrailtype = "Yes" Then
+     Call CommonRoutines.ClickOperation(ObjInspected,"Inspected Clicked")
+    Else
+     Log.Message "Inspect not Selected"
+    End If 
+   End If
   Delay 2000   
-  Selectrailtype = flowData.Item("n4SelectrailInspect")
-  If Selectrailtype = "Yes" Then
-   Call CommonRoutines.ClickOperation(ObjInspected,"Inspected Clicked")
-    If ObjInspected.Enabled Then
-      Log.Message "Inspected Clicked Succesfully"
-    Else
-      Log.Message "Inspected not Clicked"
-    End If 
-   End If     
-   Set ObjFlipped= Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsFlip_input",20,True) 
-   Delay 2000 
+  Set ObjFlipped= Aliases.browser.FindChild("idStr","program:MRIV006-mrivEditRailcarIsFlip_input",20,True)  
+  If ObjFlipped.WaitProperty("Visible", True,5000) Then
    Selectrailtype = flowData.Item("n4SelectrailFlipped")
-   If Selectrailtype = "Yes" Then 
+   If Selectrailtype = "Yes" Then
     Call CommonRoutines.ClickOperation(ObjFlipped,"Flipped Clicked")
-    If ObjFlipped.Enabled Then
-     Log.Message "Flipped Clicked Succesfully"
-    Else
-     Log.Message "Flipped not Clicked"
-    End If 
-   End If   
-   Set ObjClick = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True) 
-   Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
-   Delay 1000
-   If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarIDLabel_outputText", 20, True).WaitProperty("Visible", True,5000) Then
-    Log.Message "Succesfully Clicked the railcartype"
    Else
-    Log.Message "Failed To click the railcartype"
-   End If 
+    Log.Message "Flipped not Selected"
+   End If
+  End If
+  Set ObjClick = Aliases.browser.FindChild("idStr", "program:optional_2_SEND", 20, True) 
+  Call CommonRoutines.ClickOperation(ObjClick,"Clickedsend") 
+  Delay 1000
+  If Aliases.browser.FindChild("idStr", "program:MRIV003-mrivRailcarIDLabel_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+    Log.Message "Succesfully Clicked the railcartype"
+  Else
+   Log.Message "Failed To click the railcartype"
+  End If
 End Sub
 
 'To Add Track,Position of RailInventory
@@ -480,29 +453,29 @@ Sub n4MobileAddContainerRailInventory
     Else                                    
      Log.Message "Failed to entered for Inspection "
     End If 
-  ElseIf ObjContainer2.Exists Then
-   StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
-   If StrContainerNumber2 = (flowData.Item("n4OrphanUnit2")) Then
-    Set ObjQuery1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_2", 20, True)
-    Call CommonRoutines.ClickOperation(ObjQuery1,"SendButton")
-   Else
-    Log.Message "NO unit in slot2"
-   End If  
-   Delay 2000 
-   If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then 
-    Log.Message "Unit2 entered for Inspection "
-   Else                                    
-    Log.Message "Unit Failed for Inspection "
+    ElseIf ObjContainer2.Exists Then
+     StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
+     If StrContainerNumber2 = (flowData.Item("n4OrphanUnit2")) Then
+      Set ObjQuery1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_2", 20, True)
+      Call CommonRoutines.ClickOperation(ObjQuery1,"SendButton")
+     Else
+      Log.Message "NO unit in slot2"
+     End If  
+     Delay 2000 
+     If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then 
+      Log.Message "Unit2 entered for Inspection "
+     Else                                    
+      Log.Message "Unit Failed for Inspection "
+     End If 
+    End If
+    Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
+    Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
+    Delay 2000
+    If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+     Log.Message "Inspection Button Clicked Succesfully "
+    Else                                    
+     Log.Message "Failed to Click  Inspection Button "
    End If 
-  End If
-  Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
-  Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
-  Delay 2000
-  If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
-   Log.Message "Inspection Button Clicked Succesfully "
-  Else                                    
-   Log.Message "Failed to Click  Inspection Button "
-  End If 
 End Sub
 
 'To Press BackButton in RailInventory
@@ -521,7 +494,58 @@ End Sub
 
 
 
+Sub play
+Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+   Set ObjContainer2 = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_1", 20, True)
+  StrContainerNumber2 = ObjContainer2.GetAttribute("Value", Text)
+  Delay 2000
+    If StrContainerNumber2 = (flowData.Item("n4OrphanUnit2")) Then
+    
+     Set ObjQuery1  = Aliases.browser.FindChild("idStr", "program:MRIV0041_variField_valuetable:dataTable:1:column_2", 20, True)
+     Call CommonRoutines.ClickOperation(ObjQuery1,"SendButton")
+      Delay 2000
+     If  Aliases.browser.FindChild("idStr", "program:MRIVContInsp-mrivUnitID_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+      Delay 2000  
+      Log.Message "Unit2 entered for Inspection "
+     Else                                    
+      Log.Message "Unit Failed for Inspection "
+     End If 
+     Else 
+     Log.Message "NO unit in slot2"
+     
+    End If
+ 
+  Delay 2000
+  Set ObjInspection  = Aliases.browser.FindChild("idStr", "program:MRIVContInsp-rinvUnitInspectionButton_input", 20, True)
+  Call CommonRoutines.ClickOperation(ObjInspection,"Inspection") 
+  Delay 2000
+  If  Aliases.browser.FindChild("idStr", "program:MRI002-mrContainerNumber_outputText", 20, True).WaitProperty("Visible", True,5000) Then
+   Log.Message "Inspection Button Clicked Succesfully "
+  Else                                    
+   Log.Message "Failed to Click  Inspection Button "
+  End If 
+End Sub
 
-
+ Sub Tested
+  Call CommonRoutines.fetchData("N4MobileCommonRoutines")
+  Call N4MobileCommonRoutines.n4mobileLogin  
+  Call N4MobileCommonRoutines.n4mobileScopeSelection  
+  Call CommonRoutines.fetchData("N4MobileRailInventory") 
+  Call N4MobileCommonRoutines.n4mobileSelectProgram 
+  Call n4mobileRailcaridRailInventory
+   Call n4AddEditSegBreakRailInventory
+  Call n4MobileAddContainerRailInventory
+  
+  Call n4MobileInventoryAddRefeer
+  Call n4RailInventoryOOgDetails
+  Call n4railInventoryAddSealDetails
+  Call n4railInventoryAddHAzardDetails
+  Call n4RailInventoryAddBundleDetails
+  call n4RailInventoryAddButton
+  Call n4RailInventoryAddWeightDetails
+  Call n4MobileRailInventoryAddDamage
+  Call n4MobilePressBackButton
+ End Sub 
+ 
  
  

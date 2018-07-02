@@ -52,11 +52,17 @@
 		<child name="N4MobileGateInspectionCommonRoutines" key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
 			<data path="N4MobileGateInspectionCommonRoutines.svb" />
 		</child>
-		<child name="N4MobileDepotHatchClerkCommonRoutines" key="{5A69FE5B-8728-4CDE-8840-1809B2AA55F8}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
-			<data path="N4MobileDepotHatchClerkCommonRoutines.svb" />
+		<child name="N4mobileYardInventoryContainerQuery_Script" key="{C12599FA-9934-4CFB-AA62-CC9A0AEA70D4}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="..\..\..\LatestTestComplete\Basic Test Suite\Script\N4mobileYardInventoryContainerQuery_Script.svb" />
 		</child>
-		<child name="N4mobileYardInventoryContainerQuery_Script" key="{B912B19A-A08D-4AE1-BBF6-5B65A74E3F09}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
-			<data path="N4mobileYardInventoryContainerQuery_Script.svb" />
+		<child name="N4MobileHatchClerkCommonRoutines" key="{6DF7F44A-18E3-4410-83DD-9C04965549B0}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="..\..\..\LatestTestComplete\Basic Test Suite\Script\N4MobileHatchClerkCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileRailInventoryCommonRoutines" key="{729C13CA-B120-4BE7-84B1-9B719940D085}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="..\..\..\LatestTestComplete\Basic Test Suite\Script\N4MobileRailInventoryCommonRoutines.svb" />
+		</child>
+		<child name="N4MobileYardInspectionContainerQuery_Script" key="{48151F07-FE4A-4285-A403-293F14D50353}" type="Script Unit" typeId="{291CAE9C-4D20-4F33-8B5F-D48B587F3D65}" pluginName="Script">
+			<data path="N4MobileYardInspectionContainerQuery_Script.svb" />
 		</child>
 	</children>
 	<folders>
@@ -85,8 +91,10 @@
 				<ref key="{041998D1-13F9-42AD-9B90-40B28B8430B5}" />
 				<ref key="{00FD1C9C-9797-4429-9B4D-017C752A9BCA}" />
 				<ref key="{FD80B861-295C-4F94-9C11-48AC9FB7DA33}" />
-				<ref key="{5A69FE5B-8728-4CDE-8840-1809B2AA55F8}" />
-				<ref key="{B912B19A-A08D-4AE1-BBF6-5B65A74E3F09}" />
+				<ref key="{C12599FA-9934-4CFB-AA62-CC9A0AEA70D4}" />
+				<ref key="{6DF7F44A-18E3-4410-83DD-9C04965549B0}" />
+				<ref key="{729C13CA-B120-4BE7-84B1-9B719940D085}" />
+				<ref key="{48151F07-FE4A-4285-A403-293F14D50353}" />
 			</references>
 		</folder>
 		<folder caption="ECN4" description="A logical folder that is used to organize project items and elements." moniker="">

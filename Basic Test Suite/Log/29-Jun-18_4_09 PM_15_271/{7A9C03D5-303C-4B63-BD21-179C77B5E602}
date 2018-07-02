@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="message 11">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="107"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="298"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object left" type="I" value="160"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4AddVesselStowPlanWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Unit/Slot&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.centerPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitEquipment.eqIdFull&quot;)"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage8.png"/>
+					<Prp name="datetime" type="D" value="43280.4441158449"/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="'[Enter]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INV002.Unit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Unit/Slot&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.centerPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitEquipment.eqIdFull&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="11"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732846296"/>
+		</Node>
+		<Node name="message 14">
+			<Prp name="pictype" type="I" value="2"/>
+			<Prp name="picture" type="S" value="Picture2.png"/>
+			<Prp name="remarks" type="S" value="&lt;html&gt;&lt;body&gt;&lt;p&gt;The test execution has stopped because --&lt;/p&gt;&lt;ul&gt;&lt;li&gt;An error message was posted to the log and&lt;/li&gt;&lt;li&gt;The &lt;a href=&quot;aqa-help://6090&quot;&gt;Stop on Error&lt;/a&gt; project property is enabled.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt; If you don't want the test to stop on errors, disable this property (&lt;b&gt;Project Editor &amp;rArr; Properties &amp;rArr; Playback&lt;/b&gt;), or change your test commands so that they do not post errors to the log automatically. For instance, if some window or process was not found, use the WaitWindow, WaitProcess or similar methods to obtain the desired object.&lt;/p&gt;&lt;a href=&quot;aqa-help://2207&quot;&gt;Read More&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="id" type="I" value="14"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="3"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The test run has stopped because the &quot;Stop on Error&quot; setting is enabled."/>
+			<Prp name="stack end" type="I" value="1"/>
+			<Prp name="line no" type="I" value="630"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6733652894"/>
+			<Prp name="stack beginning" type="I" value="1"/>
+		</Node>
+		<Node name="message 5">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="56"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="298"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object left" type="I" value="104"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4AddVesselStowPlanWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Vessel&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.northPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitInboundVessel&quot;)"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage5.png"/>
+					<Prp name="datetime" type="D" value="43280.4440572106"/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="'VVANA' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INV002.Unit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Vessel&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.northPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitInboundVessel&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="5"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732315278"/>
+		</Node>
+		<Node name="message 7">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="56"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="298"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object left" type="I" value="104"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4AddVesselStowPlanWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Vessel&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.northPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitInboundVessel&quot;)"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage6.png"/>
+					<Prp name="datetime" type="D" value="43280.4440787732"/>
+					<Prp name="object bottom" type="I" value="78"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="'[Enter]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INV002.Unit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Vessel&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.northPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitInboundVessel&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="7"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732471991"/>
+		</Node>
+		<Node name="item 0">
+			<Prp name="line no" type="I" value="630"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="stacktext" type="S" value="n4CreateVesselStowPlan"/>
+		</Node>
+		<Node name="message 0">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="1364"/>
+					<Prp name="line #" type="I" value="618"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage1.png"/>
+					<Prp name="datetime" type="D" value="43280.4439787037"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu&#xA;(Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingMenu)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="0"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The menu item 'Windows|Close All Tabs' was clicked."/>
+			<Prp name="line no" type="I" value="618"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6731501042"/>
+		</Node>
+		<Node name="message 6">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="6"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The value VVANA is entered in CesselID field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732442477"/>
+		</Node>
+		<Node name="message 13">
+			<Prp name="pictype" type="I" value="2"/>
+			<Prp name="picture" type="S" value="Picture1.png"/>
+			<Prp name="remarks" type="S" value="VBScript runtime error.&#xA;&#xA;Object required: 'ObjEquipAliases'&#xA;&#xA;Error location:&#xA;Unit: &quot;N4 Test Suites\Basic_TestSuite\Script\SparcsN4CommonRoutines&quot;&#xA;Line: 631 Column: 2."/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="13"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="3"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Object required: 'ObjEquipAliases'"/>
+			<Prp name="stack end" type="I" value="0"/>
+			<Prp name="line no" type="I" value="630"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6733625347"/>
+			<Prp name="stack beginning" type="I" value="0"/>
+		</Node>
+		<Node name="message 4">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="1364"/>
+					<Prp name="line #" type="I" value="621"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage4.png"/>
+					<Prp name="datetime" type="D" value="43280.4440349306"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu&#xA;(Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingMenu)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="4"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The menu item 'Vessel|Vessel Stow Plan' was clicked."/>
+			<Prp name="line no" type="I" value="621"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732061574"/>
+		</Node>
+		<Node name="message 8">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="8"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The value [Enter] is entered in Entered field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732599306"/>
+		</Node>
+		<Node name="item 1">
+			<Prp name="line no" type="I" value="630"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="stacktext" type="S" value=""/>
+		</Node>
+		<Node name="stack"/>
+		<Node name="message 10">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="10"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The value DINU7540155 is entered in Equipment field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732814236"/>
+		</Node>
+		<Node name="message 9">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="107"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="298"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object left" type="I" value="160"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4AddVesselStowPlanWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Unit/Slot&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.centerPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitEquipment.eqIdFull&quot;)"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage7.png"/>
+					<Prp name="datetime" type="D" value="43280.4440972917"/>
+					<Prp name="object bottom" type="I" value="129"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="'DINU7540155' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INV002.Unit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;Unit/Slot&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;variform.INV002.borderLayout.centerPanel.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;unitEquipment.eqIdFull&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="9"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732687732"/>
+		</Node>
+		<Node name="message 2">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="2"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The Menu Button is clicked successfully"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6731802315"/>
+		</Node>
+		<Node name="child data"/>
+		<Node name="units">
+			<Prp name="unit 0" type="S" value="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}"/>
+			<Prp name="unit 1" type="S" value="{0F437420-9C3A-4013-9118-D93A58732F54}"/>
+		</Node>
+		<Node name="message 12">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="12"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The value [Enter] is entered in Entered field"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6732973958"/>
+		</Node>
+		<Node name="message 1">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="object right" type="I" value="37"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingObject(&quot;topLevelMenu&quot;)"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+					<Prp name="image file name" type="S" value="visImage2.png"/>
+					<Prp name="datetime" type="D" value="43280.4439983565"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="click point y" type="I" value="33"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="click point x" type="I" value="18"/>
+					<Prp name="need update" type="B" value="0"/>
+				</Node>
+			</Node>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value="A click at point (18, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingObject(&quot;topLevelMenu&quot;)"/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="1"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="1"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6731676736"/>
+		</Node>
+		<Node name="message 3">
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="id" type="I" value="3"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="type" type="I" value="7"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="message" type="S" value="Operations is already selected"/>
+			<Prp name="line no" type="I" value="91"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="date" type="D" value="43280.6731821759"/>
+		</Node>
+		<Prp name="status" type="I" value="2"/>
+	</Node>
+</Nodes>

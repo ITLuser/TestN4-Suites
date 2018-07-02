@@ -23,21 +23,48 @@
 		<Node name="logs">
 			<Node name="log idx=0000">
 				<Prp name="caption" type="S" value=""/>
-				<Prp name="datetime" type="D" value="43265.5314842593"/>
+				<Prp name="datetime" type="D" value="43280.6710469676"/>
 				<Prp name="description" type="S" value=""/>
-				<Prp name="key" type="S" value="{9D796E46-1AB3-4FAB-9DD9-C7E617320ABB}"/>
-				<Prp name="nameofroot" type="S" value="Script Test Log [N4MobileGateInspectionCommonRoutines\n4mobileGateInspectionUpdateContainerDamage]"/>
-				<Prp name="relpath" type="S" value="6_14_2018_12_45 PM_20_240\Description.tcLog"/>
+				<Prp name="key" type="S" value="{84B2569B-1A95-4D3A-86EE-22D89061A346}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [SparcsN4CommonRoutines\n4CreateVesselStowPlan]"/>
+				<Prp name="relpath" type="S" value="29-Jun-18_4_06 PM_18_458\Description.tcLog"/>
 				<Prp name="status" type="I" value="2"/>
 			</Node>
 			<Node name="log idx=0001">
 				<Prp name="caption" type="S" value=""/>
-				<Prp name="datetime" type="D" value="43265.5339983102"/>
+				<Prp name="datetime" type="D" value="43280.6730934143"/>
 				<Prp name="description" type="S" value=""/>
-				<Prp name="key" type="S" value="{3A9F921B-5B78-4E1B-834C-E6F722F0FD0E}"/>
-				<Prp name="nameofroot" type="S" value="Script Test Log [N4MobileGateInspectionCommonRoutines\n4mobileGateInspectionUpdateContainerDamage]"/>
-				<Prp name="relpath" type="S" value="6_14_2018_12_48 PM_57_454\Description.tcLog"/>
-				<Prp name="status" type="I" value="0"/>
+				<Prp name="key" type="S" value="{BBC6A6C0-513F-40C9-B5FA-A8947B14D5BB}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [SparcsN4CommonRoutines\n4CreateVesselStowPlan]"/>
+				<Prp name="relpath" type="S" value="29-Jun-18_4_09 PM_15_271\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
+			<Node name="log idx=0002">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="43280.6745079282"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{B93B6C34-6638-4335-9CFC-F6B42A5252D8}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [SparcsN4CommonRoutines\n4CreateVesselStowPlan]"/>
+				<Prp name="relpath" type="S" value="29-Jun-18_4_11 PM_17_485\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
+			<Node name="log idx=0003">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="43280.7264854514"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{183109AD-09E6-4C17-9821-C441FFD74ECE}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [SparcsN4CommonRoutines\n4CreateVesselStowPlan]"/>
+				<Prp name="relpath" type="S" value="29-Jun-18_5_26 PM_08_343\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
+			</Node>
+			<Node name="log idx=0004">
+				<Prp name="caption" type="S" value=""/>
+				<Prp name="datetime" type="D" value="43280.7276084491"/>
+				<Prp name="description" type="S" value=""/>
+				<Prp name="key" type="S" value="{DDA6C340-B7B1-47F5-9A04-7A9B4F15E55C}"/>
+				<Prp name="nameofroot" type="S" value="Script Test Log [SparcsN4CommonRoutines\n4CreateVesselStowPlan]"/>
+				<Prp name="relpath" type="S" value="29-Jun-18_5_27 PM_45_370\Description.tcLog"/>
+				<Prp name="status" type="I" value="2"/>
 			</Node>
 		</Node>
 		<Prp name="signature" type="S" value="{681DCC69-A39F-4C4D-8E7D-B2D9362FAF4F}"/>
