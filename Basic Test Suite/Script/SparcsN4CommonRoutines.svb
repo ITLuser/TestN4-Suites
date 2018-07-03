@@ -669,13 +669,52 @@ Sub n4CreateVesselStowPlan
 			Call CommonRoutines.ClickOperation(ObjVessselclose,"n4Vesselexit") 
 	End If
 End Sub
-  
 
+'Copy Snx file from Source to temporary folder
+'Input parameters : Snx file name
+'Created: 03/07/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub CopySnxFile(SnxFile)
+  Call CommonRoutines.GetCurrentDirectory
+  Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile(CurrentDirectory+"\ScriptData\SNX\"+SnxFile,1)
+  strFileText = objFileToRead.ReadAll()
+  objFileToRead.Close
+  Set objFSO = CreateObject("Scripting.FileSystemObject") 
+  Set objFileToWrite = objFSO.OpenTextFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFile, 2)
+  objFileToWrite.Write strFileText
+  objFileToWrite.Close
+End Sub
 
-
-
-
-
-
-
+'Replacing String in Snx file
+'Input parameters : Snx file along with path,Key in Snx, Value which need to replace the Kap in SNX
+'Created: 03/07/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub ReplaceStringInSnx(SnxFile,Stringkey,Stringval)
+  Dim Contentintxtfile,readfile,writefile
+  SnxFileName = SnxFile
+  Call CopySnxFile(SnxFile)
+  Set FSO = CreateObject("scripting.filesystemobject")
+  Set readfile = fso.OpenTextFile (CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFileName, 1) 
+  Contentintxtfile = readfile.ReadAll
+'  Arraykey = Split(Stringkey , "~")
+  Arrayval = Split(Stringval , "~")
+  Lengthkey = UBound(Stringkey)
+  Lengthval = UBound(Arrayval)
+  If Lengthkey = Lengthval Then 
+    For i = LBound(Stringkey) to UBound(Stringkey)
+      Contentintxtfile = Replace(Contentintxtfile,Stringkey(i),Arrayval(i))
+    Next
+  Else
+    Log.Error "Key length and value length are not matching"    
+  End If
+  Set writefile = fso.OpenTextFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFile, 2)
+  writefile.WriteLine(Contentintxtfile)
+  readfile.Close
+  writefile.Close                                                               
+  Set FSO=Nothing
+End Sub
 

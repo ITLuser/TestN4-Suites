@@ -628,21 +628,17 @@ Sub n4CreateVesselStowPlan
   Call CommonRoutines.EnterOperation(ObjEquipmentid,flowData.Item("n4UnitID"),"Equipment")
   Call CommonRoutines.EnterOperation(ObjEquipmentid,"[Enter]","Entered")
   Delay 1000
-	If Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqIdFull", 20, True).Visible Then
+	If Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqIdFull", 20, True).Exists Then
     Set ObjEquipmenverify = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqIdFull", 20, True)
-		If ObjEquipmenverify.Enabled Then
-			Call CommonRoutines.EnterOperation(ObjEquipmenverify,flowData.Item("n4UnitID"),"Equipment")
-			'Call CommonRoutines.EnterOperation(ObjEquipmentid,"[Enter]","Entered")
-			Delay 500
-			Set ObjEquipmenttypeverify = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqEquipType", 20, True)
-			' If ObjEquipmenttypeverify.WaitProperty("Visible", True,50000)Then
-			Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,flowData.Item("n4EquipmntType"),"EquipmentType")
-			Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,"[Enter]","EquipmentType")
-			Set ObjEquipmentsave = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","LABEL_ACTION_SAVE", 20, True)
-			Call CommonRoutines.ClickOperation(ObjEquipmentsave,"n4VesselEquipmentVerified")
-		Else
-			Log.Message "Failed TO Update Equipmentid in Action Window"
-    End If
+		Call CommonRoutines.EnterOperation(ObjEquipmenverify,flowData.Item("n4UnitID"),"Equipment")
+		'Call CommonRoutines.EnterOperation(ObjEquipmentid,"[Enter]","Entered")
+		Delay 500
+		Set ObjEquipmenttypeverify = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","eqEquipType", 20, True)
+		' If ObjEquipmenttypeverify.WaitProperty("Visible", True,50000)Then
+		Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,flowData.Item("n4EquipmntType"),"EquipmentType")
+		Call CommonRoutines.EnterOperation(ObjEquipmenttypeverify,"[Enter]","EquipmentType")
+		Set ObjEquipmentsave = Aliases.jp2launcher.n4AddequipmentDialog.FindChild("AWTComponentName","LABEL_ACTION_SAVE", 20, True)
+		Call CommonRoutines.ClickOperation(ObjEquipmentsave,"n4VesselEquipmentVerified")
   Else
 			Set ObjEquipmenttype = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","unitEquipment.eqEquipType", 20, True)
 			Call CommonRoutines.EnterOperation(ObjEquipmenttype,flowData.Item("n4EquipmntType"),"EquipmentType")
@@ -673,13 +669,61 @@ Sub n4CreateVesselStowPlan
 			Call CommonRoutines.ClickOperation(ObjVessselclose,"n4Vesselexit") 
 	End If
 End Sub
-  
 
+'Copy Snx file from Source to temporary folder
+'Input parameters : Snx file name
+'Created: 03/07/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub CopySnxFile(SnxFile)
+  Call CommonRoutines.GetCurrentDirectory
+  Log.Message(CurrentDirectory)
+  Log.Message(CurrentDirectory+"\ScriptData\SNX\Temp\"+"ReceiveEmptyUnit2200.xml")
+  Log.Message(CurrentDirectory)
+  Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile(CurrentDirectory+"\ScriptData\SNX\"+SnxFile,1)
+  strFileText = objFileToRead.ReadAll()
+  objFileToRead.Close
+  Set objFSO = CreateObject("Scripting.FileSystemObject") 
+  Set objFileToWrite = objFSO.OpenTextFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFile, 2)
+  objFileToWrite.Write strFileText
+  objFileToWrite.Close
+End Sub
 
+'Replacing String in Snx file
+'Input parameters : Snx file along with path,Key in Snx, Value which need to replace the Kap in SNX
+'Created: 03/07/2018
+'Created by: Aswini Uthayakumar
+'Reviewed: 
+'Reviewed by:
+Sub ReplaceStringInSnx(SnxFile,Stringkey,Stringval)
+  Dim Contentintxtfile,readfile,writefile
+  SnxFileName = SnxFile
+  Call CopySnxFile(SnxFile)
+  Set FSO = CreateObject("scripting.filesystemobject")
+  Set readfile = fso.OpenTextFile (CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFileName, 1) 
+  Contentintxtfile = readfile.ReadAll
+'  Arraykey = Split(Stringkey , "~")
+  Arrayval = Split(Stringval , "~")
+  Lengthkey = UBound(Stringkey)
+  Lengthval = UBound(Arrayval)
+  If Lengthkey = Lengthval Then 
+    For i = LBound(Stringkey) to UBound(Stringkey)
+      Contentintxtfile = Replace(Contentintxtfile,Stringkey(i),Arrayval(i))
+    Next
+  Else
+    Log.Error "Key length and value length are not matching"    
+  End If
+  Set writefile = fso.OpenTextFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+SnxFile, 2)
+  writefile.WriteLine(Contentintxtfile)
+  readfile.Close
+  writefile.Close                                                               
+  Set FSO=Nothing
+End Sub
 
-
-
-
-
-
-
+Sub Play
+'Call CommonRoutines.fetchData("YINV_YINS_101")
+'ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+'Call ReplaceStringInSnx("C:\Users\ITL-USER\Desktop\TestComplete\Basic Test Suite\ScriptData\SNX\Temp\ReceiveEmptyUnit2200.xml",ValInScript,"ASWU2705190~ASW~F10L.1")
+Call CopySnxFile("ReceiveEmptyUnit2200.xml")
+End Sub
