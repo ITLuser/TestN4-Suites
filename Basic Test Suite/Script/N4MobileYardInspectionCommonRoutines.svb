@@ -205,6 +205,26 @@ Dim ObjBundleButton, ObjCheckElement, ObjCommit, ObjSend, ObjSlave1
     End If 
 End Sub
 
+'To Click B Button in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 04/07/2018
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+Sub n4mobileYardInspectionClickBButton
+  Set ObjBButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myBDLButton_input",20,True)
+    If ObjBButton.WaitProperty("Enabled", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjBButton,"B button")
+      aqUtils.delay 1000
+      Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI009-myDMGButton1_input",20,True)
+        If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+          Log.Checkpoint("B button Clicked Successfully")
+        Else
+          Log.Error("Failed to click B Button")
+        End If
+    End If
+End Sub
+
 'To Enter weight details to Container in Yard Inspection Page in N4 Mobile
 'Input Parameters: By using Dictionary Object
 'Created: 05/06/2018 
