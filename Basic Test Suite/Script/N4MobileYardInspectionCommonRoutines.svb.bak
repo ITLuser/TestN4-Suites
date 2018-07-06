@@ -215,6 +215,7 @@ Sub n4mobileYardInspectionClickBButton
   Set ObjBButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myBDLButton_input",20,True)
     If ObjBButton.WaitProperty("Enabled", True,5000) Then
       Call CommonRoutines.ClickOperation(ObjBButton,"B button")
+      aqUtils.delay 1000
       Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI009-myDMGButton1_input",20,True)
         If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
           Log.Checkpoint("B button Clicked Successfully")
@@ -223,6 +224,13 @@ Sub n4mobileYardInspectionClickBButton
         End If
     End If
 End Sub
+
+'To Unbundle Selected Container in Yard Inspection Page in N4 Mobile
+'Input Parameters: By using Dictionary Object
+'Created: 05/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
 
 'To Enter weight details to Container in Yard Inspection Page in N4 Mobile
 'Input Parameters: By using Dictionary Object

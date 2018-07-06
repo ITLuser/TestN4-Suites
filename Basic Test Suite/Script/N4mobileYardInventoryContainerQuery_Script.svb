@@ -24,10 +24,13 @@
 Sub YINV_101
   Dim ObjClass, ObjDep, ObjId, ObjISO, ObjLine, ObjStatus
   Call CommonRoutines.fetchData("YINV_101")
-  Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
   Call CommonRoutines.GetCurrentDirectory
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -46,7 +49,7 @@ Sub YINV_101
   Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
   Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "MTY")
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -61,24 +64,30 @@ End Sub
 'TCID: YINV.102
 'TC Description: N4 mobile prepopulates the chassis number if the carriage equipment is known.
 'Test Steps: 
-'1.    Login N4 Mobile using valid credentials
-'2.    Select scope 
-'3.    Click on Yard inventory button
-'4.    Click on Query button
-'5.    Enter the Unit which is mounted on a chassis and located in yard in the ID field
-'6.    Click on the Right arrow
+'1.Login N4 Mobile using valid credentials
+'2.Select scope 
+'3.Click on Yard inventory button
+'4.Click on Query button
+'5.Enter the Unit which is mounted on a chassis and located in yard in the ID field
+'6.Click on the Right arrow
 'Expected Result:
-'1.    The Carriage equipment attached to the container will be displayed in the Chassis field.
+'1.The Carriage equipment attached to the container will be displayed in the Chassis field.
 
 Sub YINV_102
   Dim ObjChs
   Call CommonRoutines.fetchData("YINV_102")
-  Call SparcsN4CommonRoutines.n4LogIn
   Call CommonRoutines.GetCurrentDirectory
-  Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ChassisUnit.xml")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("EquipmentToBeAttached"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  ValInScript = Array("GChassisID","GLineOperator","GChassisType")
+  ValInSnx =flowData.Item("Unit2inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call SparcsN4CommonRoutines.n4AttachUnit
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
@@ -88,8 +97,8 @@ Sub YINV_102
   Set ObjChs = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitCHS_input", 20, True)
   Call aqObject.CheckProperty(ObjChs, "text", cmpEqual, "CHSASW")
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("CHSASW")
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("EquipmentToBeAttached"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -125,9 +134,13 @@ End Sub
 Sub YINV_103
   Dim Objdropdown, ObjIssealed, Objlistbox, Objseal1, Objseal2, Objseal3, Objseal4, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_103")
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -157,7 +170,7 @@ Sub YINV_103
   Call aqObject.CheckProperty(ObjIssealed, "text", cmpEqual, "Yes")
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -193,9 +206,13 @@ End Sub
 Sub YINV_104
   Dim ObjClose, ObjDamage, ObjHomeView, ObjSearchUnit, ObjSelectall
   Call CommonRoutines.fetchData("YINV_104")
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -219,7 +236,7 @@ Sub YINV_104
   Set ObjClose = Aliases.jp2launcher.FindChild("AWTComponentName","INV039.EquipmentState",20, True)
   ObjClose.Close
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -255,9 +272,13 @@ End Sub
 Sub YINV_105
   Dim Objdropdown, Objlistbox, ObjSafeWeight, ObjSelectall, ObjTareWeight
   Call CommonRoutines.fetchData("YINV_105")
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -281,7 +302,7 @@ Sub YINV_105
   Call aqObject.CheckProperty(ObjSafeWeight, "text", cmpEqual, "26,000 ")
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -317,9 +338,13 @@ End Sub
 Sub YINV_106
   Dim Objdropdown, ObjIsOOG, Objlistbox, ObjOOGB, ObjOOGF, ObjOOGH, ObjOOGL, ObjOOGR, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_106")
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -351,7 +376,7 @@ Sub YINV_106
   Call aqObject.CheckProperty(ObjIsOOG, "text", cmpEqual, "Yes")
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
@@ -388,9 +413,13 @@ End Sub
 Sub YINV_107
   Dim Objdropdown, ObjGrade, Objlistbox, ObjSelectall, Objwin
   Call CommonRoutines.fetchData("YINV_107")
+  Call CommonRoutines.GetCurrentDirectory
   Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
   Call N4MobileCommonRoutines.n4mobileLogin
   Call N4MobileCommonRoutines.n4mobileScopeSelection
   Call N4MobileCommonRoutines.n4mobileSelectProgram
@@ -412,7 +441,7 @@ Sub YINV_107
   Call aqObject.CheckProperty(ObjGrade, "text", cmpEqual, "FOOD")
   Objwin.Close
   Call N4MobileCommonRoutines.n4MobileLogout
-  Call SparcsN4CommonRoutines.n4DeleteUnit("ASWU2705190")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
   'Call SparcsN4CommonRoutines.n4Close
   Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub

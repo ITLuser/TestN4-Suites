@@ -111,6 +111,6 @@ End Sub
 'Reviewed by:
 Dim CurrentDirectory
 Sub GetCurrentDirectory
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-CurrentDirectory = objFSO.GetAbsolutePathName(".")
+  Set objFSO = CreateObject("Scripting.FileSystemObject")
+  CurrentDirectory = objFSO.GetAbsolutePathName(".")
 End Sub

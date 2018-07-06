@@ -51,7 +51,7 @@ Set flowData = CreateObject("Scripting.Dictionary")
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
   Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
+   ("C:\Users\ITL-USER\Desktop\Test N4\currentcluster.csv")
   Set objDriverSheet = objWorkbook.Worksheets("currentcluster")
   columncount = objDriverSheet.usedrange.columns.count
   rowcount = objDriverSheet.usedrange.rows.count
@@ -111,6 +111,6 @@ End Sub
 'Reviewed by:
 Dim CurrentDirectory
 Sub GetCurrentDirectory
-Set objFSO = CreateObject("Scripting.FileSystemObject")
-CurrentDirectory = objFSO.GetAbsolutePathName(".")
+  Set objFSO = CreateObject("Scripting.FileSystemObject")
+  CurrentDirectory = objFSO.GetAbsolutePathName(".")
 End Sub

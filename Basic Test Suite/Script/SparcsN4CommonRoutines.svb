@@ -678,7 +678,9 @@ End Sub
 'Reviewed by:
 Sub CopySnxFile(SnxFile)
   Call CommonRoutines.GetCurrentDirectory
-  Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile(CurrentDirectory+"\ScriptData\SNX\"+SnxFile,1)
+  Log.Message (CurrentDirectory)
+  aqUtils.Delay 1000
+  Set objFileToRead = CreateObject("Scripting.FileSystemObject").OpenTextFile(CurrentDirectory+"\ScriptData\SNX\"+SnxFile, 1)
   strFileText = objFileToRead.ReadAll()
   objFileToRead.Close
   Set objFSO = CreateObject("Scripting.FileSystemObject") 
@@ -717,4 +719,6 @@ Sub ReplaceStringInSnx(SnxFile,Stringkey,Stringval)
   writefile.Close                                                               
   Set FSO=Nothing
 End Sub
-
+Sub Play
+  Call CopySnxFile("ReceiveEmptyUnit2200.xml")
+End Sub
