@@ -397,8 +397,17 @@
 									</Property>
 								</Properties>
 							</Child>
-							<Child Name="equipmentDialog" Key="{3D5F2A7E-7057-4924-9643-16159B4303E4}" ParallelWalk="True">
-								<Image FileName="1248829816" Left="2" Top="2" Right="288" Bottom="202" />
+							<Child Name="INV002_Unit" Key="{80B3B730-5A87-4575-AB21-3659799EA03F}" ParallelWalk="True">
+								<Image FileName="-560194649" Left="2" Top="2" Right="317" Bottom="717" />
+								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
+								<Properties>
+									<Property Name="AWTComponentName">
+										<Value PropertyType="0" Value="INV002.Unit" Type="5" />
+									</Property>
+								</Properties>
+							</Child>
+							<Child Name="equipmentDialog" Key="{A0C294F7-80E1-4065-9EEC-DEEE14528B63}" ParallelWalk="True">
+								<Image FileName="-575178500" Left="2" Top="2" Right="288" Bottom="202" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
@@ -406,12 +415,12 @@
 									</Property>
 								</Properties>
 							</Child>
-							<Child Name="INV002_Unit" Key="{80B3B730-5A87-4575-AB21-3659799EA03F}" ParallelWalk="True">
-								<Image FileName="-560194649" Left="2" Top="2" Right="317" Bottom="717" />
+							<Child Name="INV034_Unit" Key="{3DCC1FCF-DC15-45BE-BD95-614DFC257C70}" ParallelWalk="True">
+								<Image FileName="-1805975762" Left="2" Top="2" Right="281" Bottom="294" />
 								<TypeInfo Item0="{EC1FB1B8-714E-4CFB-9342-D0CE3DE2E0BD}" />
 								<Properties>
 									<Property Name="AWTComponentName">
-										<Value PropertyType="0" Value="INV002.Unit" Type="5" />
+										<Value PropertyType="0" Value="INV034.Unit" Type="5" />
 									</Property>
 								</Properties>
 							</Child>
@@ -473,8 +482,9 @@
 			<Child Name="n4AddAdvanceTrainVisitWindow" Owner="{2C77053E-F0CE-434A-824D-E76E2B3015B2}" />
 			<Child Name="n4AddAdvanceVesselVisitWindow" Owner="{5C7B5C62-1A19-448A-85B9-0B234CB152E0}" />
 			<Child Name="n4AddAccessories" Owner="{3A29D98F-940F-4DEE-AFF7-CD37E6F29795}" />
-			<Child Name="n4AddequipmentDialog" Owner="{3D5F2A7E-7057-4924-9643-16159B4303E4}" />
 			<Child Name="n4AddVesselStowPlanWindow" Owner="{80B3B730-5A87-4575-AB21-3659799EA03F}" />
+			<Child Name="n4AddequipmentDialog" Owner="{A0C294F7-80E1-4065-9EEC-DEEE14528B63}" />
+			<Child Name="n4AddVesselDischarge" Owner="{3DCC1FCF-DC15-45BE-BD95-614DFC257C70}" />
 		</Child>
 		<Child Name="browser" Owner="{5F007DB2-2C5E-4427-8E7B-6C8D07B7DBC6}" />
 	</LogicalNodes>
