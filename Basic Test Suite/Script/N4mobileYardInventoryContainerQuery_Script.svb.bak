@@ -1,0 +1,452 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+'USEUNIT N4MobileYardInventoryCommonRoutines
+'USEUNIT SparcsN4CommonRoutines
+
+'To Check whether N4 mobile displays Unit information when Clerk queries the container.
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID = YINV.101
+'TC Description = N4 mobile displays Unit information when Clerk queries the container.
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on Right arrow
+'Expected Result:
+'1.	The information about the particular unit will be displayed.
+Sub YINV_101
+  Dim ObjClass, ObjDep, ObjId, ObjISO, ObjLine, ObjStatus
+  Call CommonRoutines.fetchData("YINV_101")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  Call CommonRoutines.GetCurrentDirectory
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Set ObjId = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitID_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjId, "contentText", cmpEqual, "ASWU2705190")
+  Set ObjDep = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitDep_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjDep, "contentText", cmpEqual, "U-GEN_CARRIER")
+  Set ObjClass = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitClass_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjClass, "contentText", cmpEqual, "CONTAINER")
+  Set ObjLine = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvLineOperator_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjLine, "contentText", cmpEqual, "ASW")
+  Set ObjISO = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitISO_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjISO, "contentText", cmpEqual, "2200")
+  Set ObjStatus = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitStatus_outputText", 20, True)
+  Call aqObject.CheckProperty(ObjStatus, "contentText", cmpEqual, "MTY")
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To Check whether N4 mobile prepopulates the chassis number if the carriage equipment is known.
+'Input Parameters: By using Dictionary Object
+'Created: 07/05/2018 
+'Created by: Anantha Narayanan
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.102
+'TC Description: N4 mobile prepopulates the chassis number if the carriage equipment is known.
+'Test Steps: 
+'1.Login N4 Mobile using valid credentials
+'2.Select scope 
+'3.Click on Yard inventory button
+'4.Click on Query button
+'5.Enter the Unit which is mounted on a chassis and located in yard in the ID field
+'6.Click on the Right arrow
+'Expected Result:
+'1.The Carriage equipment attached to the container will be displayed in the Chassis field.
+
+Sub YINV_102
+  Dim ObjChs
+  Call CommonRoutines.fetchData("YINV_102")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call CommonRoutines.GetCurrentDirectory
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("EquipmentToBeAttached"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  ValInScript = Array("GChassisID","GLineOperator","GChassisType")
+  ValInSnx =flowData.Item("Unit2inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call SparcsN4CommonRoutines.n4AttachUnit
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Set ObjChs = Aliases.browser.FindChild("idStr", "program:YINVUnit-yinvUnitCHS_input", 20, True)
+  Call aqObject.CheckProperty(ObjChs, "text", cmpEqual, "CHSASW")
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("EquipmentToBeAttached"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To update seal values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Anantha Narayanan
+'Reviewed:
+'Reviewed by:
+
+'TCID = YINV.103
+'TC Description = To update seal values to unit using yard inventory form in n4 mobile.
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on S button
+'9.	Enter the Seal values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units tab
+'14.	Search for the Unit
+'15.	Open Unit Inspector
+'16.  Go to Primary Equip.
+'Expected Result:
+'1.	Seal value will be updated to the unit
+Sub YINV_103
+  Dim Objdropdown, ObjIssealed, Objlistbox, Objseal1, Objseal2, Objseal3, Objseal4, ObjSelectall, Objwin
+  Call CommonRoutines.fetchData("YINV_103")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterSeal
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Primary Equip.")
+  set Objseal1 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr1",20, True)
+  Call aqObject.CheckProperty(Objseal1, "text", cmpEqual, "S1")
+  set Objseal2 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr2",20, True)
+  Call aqObject.CheckProperty(Objseal2, "text", cmpEqual, "S2")
+  set Objseal3 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr3",20, True)
+  Call aqObject.CheckProperty(Objseal3, "text", cmpEqual, "S3")
+  set Objseal4 = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitSealNbr4",20, True)
+  Call aqObject.CheckProperty(Objseal4, "text", cmpEqual, "S4")
+  set ObjIssealed = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitIsCtrSealed",20, True)
+  Call aqObject.CheckProperty(ObjIssealed, "text", cmpEqual, "Yes")
+  Objwin.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To update Damage values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 08/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.104
+'TC Description: To update damage values to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on D button
+'9.	Enter the Damage values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Equipment Status
+'14.	Search for the Unit
+'15.	Open Equipment Inspector
+'16.  Go to Damages
+'Expected Result:
+'1.	Damage value will be updated to the unit
+Sub YINV_104
+  Dim ObjClose, ObjDamage, ObjHomeView, ObjSearchUnit, ObjSelectall
+  Call CommonRoutines.fetchData("YINV_104")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterDamage
+  Call SparcsN4CommonRoutines.n4SelectWorkMode("Operations")
+  Set ObjHomeView = Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu
+  ObjHomeView.Click("Windows|Close All Tabs")
+  ObjHomeView.Click("Unit|Equipment Status")
+  Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,(flowData.Item("UnitId")),"Container Number")
+  Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV076",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  aqUtils.Delay 1000
+  set ObjDamage = Aliases.jp2launcher.FindChild("AWTComponentName","eqsDamageSeverity",20, True)
+  Call aqObject.CheckProperty(ObjDamage, "text", cmpEqual, "Major")
+  Set ObjClose = Aliases.jp2launcher.FindChild("AWTComponentName","INV039.EquipmentState",20, True)
+  ObjClose.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To update Weight values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 10/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.105
+'TC Description: To update weight details to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on W button
+'9.	Enter the Safe Weight and Tare Weight values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Container
+'14.	Search for the container
+'15.  Open Unit Inspector
+'16.  Go to Primary Equip.
+'Expected Result:
+'1.	Safe weight and Tare weight will be updated to the unit
+Sub YINV_105
+  Dim Objdropdown, Objlistbox, ObjSafeWeight, ObjSelectall, ObjTareWeight
+  Call CommonRoutines.fetchData("YINV_105")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterWeight
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Primary Equip.")
+  set ObjTareWeight = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipment.eqTareWeightKg",20, True)
+  Call aqObject.CheckProperty(ObjTareWeight, "text", cmpEqual, "2,000 ")
+  set ObjSafeWeight = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipment.eqSafeWeightKg",20, True)
+  Call aqObject.CheckProperty(ObjSafeWeight, "text", cmpEqual, "26,000 ")
+  Objwin.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To update OOG values to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 09/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.106
+'TC Description: To update OOG details to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on O  button
+'9.	Enter the OOG values
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units
+'14.	Search for the Unit
+'15.  Open Unit Inspector
+'16.  Go to Contents
+'Expected Result:
+'1.	OOG will be updated to the unit
+Sub YINV_106
+  Dim Objdropdown, ObjIsOOG, Objlistbox, ObjOOGB, ObjOOGF, ObjOOGH, ObjOOGL, ObjOOGR, ObjSelectall, Objwin
+  Call CommonRoutines.fetchData("YINV_106")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterOOG
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Contents")
+  set ObjOOGB = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogBackCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGB, "text", cmpEqual, "10.0 ")
+  set ObjOOGF = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogFrontCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGF, "text", cmpEqual, "11.0 ")
+  set ObjOOGL = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogLeftCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGL, "text", cmpEqual, "10.0 ")
+  set ObjOOGR = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogRightCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGR, "text", cmpEqual, "12.0 ")
+  set ObjOOGH = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitOogTopCm",20, True)
+  Call aqObject.CheckProperty(ObjOOGH, "text", cmpEqual, "10.0 ")
+  set ObjIsOOG = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitIsOog",20, True)
+  Call aqObject.CheckProperty(ObjIsOOG, "text", cmpEqual, "Yes")
+  Objwin.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'To update Grade value to unit using yard inventory form in n4 mobile 
+'Input Parameters: By using Dictionary Object
+'Created: 09/05/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID: YINV.107
+'TC Description: To update Grade to unit using yard inventory form in n4 mobile
+'Test Steps: 
+'1.	Login N4 Mobile using valid credentials
+'2.	Select scope 
+'3.	Click on Yard inventory button
+'4.	Click on Query button
+'5.	Enter the Unit which is in yard in the ID field 
+'6.	Click on the Right arrow
+'7.	Click on Inspection button
+'8.	Click on A  button
+'9.	Enter the Grade value
+'10.	Click on the Right arrow
+'11.	Login N4
+'12.	Select Scope
+'13.	Go to Units
+'14.	Search for the Unit
+'15.  Open Unit Inspector
+'16.  Go to Primary Equip.
+'Expected Result:
+'1.	Grade will be updated to the unit.
+
+Sub YINV_107
+  Dim Objdropdown, ObjGrade, Objlistbox, ObjSelectall, Objwin
+  Call CommonRoutines.fetchData("YINV_107")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInventoryCommonRoutines.n4mobileSelectYardInventoryOperations
+  Call N4MobileYardInventoryCommonRoutines.n4mobileQueryContainerYardInventory
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryQueryClickInspection
+  Call N4MobileYardInventoryCommonRoutines.n4mobileYardInventoryEnterGrade
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set Objlistbox = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTIONS_LIST",20, True)
+  Objlistbox.ClickItem("Primary Equip.")
+  set ObjGrade = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","ufvUnit.unitEquipmentState.eqsGradeID.eqgrdId",20, True)
+  Call aqObject.CheckProperty(ObjGrade, "text", cmpEqual, "FOOD")
+  Objwin.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("UnitId"))
+  'Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+Sub Main
+  Call YINV_104
+  Call YINV_105
+  Call YINV_106
+  Call YINV_107
+  Call YINV_101
+  Call YINV_102
+  Call YINV_103
+End Sub
