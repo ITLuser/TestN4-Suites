@@ -1,0 +1,140 @@
+﻿'USEUNIT CommonRoutines
+'USEUNIT N4MobileCommonRoutines
+'USEUNIT N4MobileYardInventoryCommonRoutines
+'USEUNIT SparcsN4CommonRoutines
+'USEUNIT N4MobileYardInspectionCommonRoutines
+
+'To Bundle more than one container in yard
+'Input Parameters: By using Dictionary Object
+'Created: 27/06/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID="YIN_YINS.101" 
+'TCDESCRIPTION="Bundle more than one container in yard"
+'Test Setup Data:
+'1.	Place Two containers in yard.	
+'Test Steps: 
+'1.	Open N4 Mobile Login page
+'2.	Enter User name & Password
+'3.	Click "SND" Button.
+'4.	Enter valid operator
+'5.	Click SND button.
+'6.	Click "Yard Inspection" Program.
+'7.	Container Entry Screen will open.
+'8.	Enter the Container Number say "A" which is already in yard. 
+'9.	Inspection Screen will Open.
+'10.	Click "B" Button.
+'11.	Enter a container say "C" already in yard.
+'12.	Click "SNC" and "SAV" button.
+'13.	Go to SPARCS N4->Operations->Unit->units
+'14.	Select the unit "A" and go to Unit inspector->All Equipments tab.
+'Expected:
+'1.	Container "C" should be Attached with attached Date & Time.
+Sub YINV_YINS_101
+  Dim ValInScript, ValInSnx, ValInSnx1, ValInSnx2, Unit1, Unit2, Unit3
+  Call CommonRoutines.fetchData("YINV_YINS_101")
+  Call CommonRoutines.GetCurrentDirectory
+  Call SparcsN4CommonRoutines.n4LogIn
+  Unit1 = flowData.Item("DeleteUnit1")
+  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit1)
+'  Unit2 = flowData.Item("DeleteUnit2")
+'  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit2)
+'  Unit3 = flowData.Item("DeleteUnit3") 
+'  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit3)
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  ValInScript = Array("GUnitId","GLineOperator","GYardSlot")
+  ValInSnx =flowData.Item("Unit1inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  aqUtils.Delay 1000
+  ValInSnx1 =flowData.Item("Unit2inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx1)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  aqUtils.Delay 1000
+  ValInSnx2 =flowData.Item("Unit3inSNX")
+  Call SparcsN4CommonRoutines.ReplaceStringInSnx(flowData.Item("SnxName"),ValInScript,ValInSnx2)
+  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\Temp\"+flowData.Item("SnxName"))
+  Call SparcsN4CommonRoutines.n4AttachUnit
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber
+  Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionClickBButton
+  Set ObjBundleContainerC = Aliases.browser.FindChild("idStr","program:MYI009-myBundleID2_input",20,True)
+  ObjBundleContainerC.SetText(flowData.Item("n4YInspBUndleContainer2"))
+  Set ObjSend  = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+  Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+  Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+  Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+  Set ObjSearch = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearch,flowData.Item("UnitAttached"),"Search")
+  Call CommonRoutines.EnterOperation(ObjSearch,"[Enter]","Search")
+  Set  ObjSelectallEquipment = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INV041",20, True)
+  ObjSelectallEquipment.selectAll
+    If Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName", "LABEL_ACTION_DELETE", 20, True).Enabled Then
+      Log.Checkpoint("Equipment Attached to unit successfully")
+    Else
+      Log.Error("Failed to Attach Equipment")
+    End If
+  Objwin.Close
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit1)
+  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit2)
+  Call SparcsN4CommonRoutines.n4DeleteUnit(Unit3)
+  Call SparcsN4CommonRoutines.n4Close
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+End Sub
+
+'Unbundle only selected bundled containers
+'Input Parameters: By using Dictionary Object
+'Created: 04/07/2018 
+'Created by: Aswini Uthayakumar
+'Reviewed:
+'Reviewed by:
+
+'TCID="YIN_YINS.102" 
+'TCDESCRIPTION="Unbundle only selected bundled containers"
+'Test Setup Data 
+'1.	Place Three containers in yard.		
+'Test Steps	 
+'1.	Open N4 Mobile Login page
+'2.	Enter User name & Password of User with above created role. 
+'3.	Click "SND" Button.
+'4.	Enter valid operator,Complex,Facility, Yard- Main
+'5.	Click SND button.
+'6.	Click "Yard Inspection" Program.
+'7.	Container Entry Screen will open.
+'8.	Enter the Container Number say "A" which is already in yard. 
+'9.	Inspection Screen will Open.
+'10.	Click "B" Button.
+'11.	Enter two containers say "B" & "C" already in yard.
+'12.	Click "SND" and "SAV" button.
+'13.	Enter the container "A" and Click "SND" button.
+'14.	Click "B" Button, bundle form will display with B & C containers.
+'15.	Enter the letter "T" beside to container "B" (ie.1st container) in the list. 
+'16.	Click "SND" and "SAV" button.
+'17.	Go to SPARCS N4->Operations->Unit->units
+'18.	Select the unit "A" and go to Unit inspector->All Equipments tab.
+'Expected
+'1.	Container "B" should be Detached and "C" should remain same (As Attached)
+'2.	New Units with "Active - Yard" state should create for detached container "B". 
+'3.	Old Units for container "B" should update with "Retired" State.
+Sub YINV_YINS_102
+  Call CommonRoutines.fetchData("YINV_YINS_102")
+  Call CommonRoutines.GetCurrentDirectory
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("DeleteUnit1"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("DeleteUnit2"))
+  Call SparcsN4CommonRoutines.n4DeleteUnit(flowData.Item("DeleteUnit3"))  
+End Sub
+
