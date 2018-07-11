@@ -22,20 +22,53 @@
 
 Sub J20591_1
 
-  Call CommonRoutines.fetchData("J20591_1")
-  Call SparcsN4CommonRoutines.n4LogIn
-  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU8889512")
-  Call CommonRoutines.GetCurrentDirectory
-  Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
-  Call SparcsN4CommonRoutines.n4ScopeSelection("Configuration")
-  Call SparcsN4CommonRoutines.n4CreateAccessories
-  Call SparcsN4VesselRoutines.
-  
-  
-  
-  
-  
-  Call N4MobileCommonRoutines.n4mobileLogin 
+Dim ObjReeferButton,ObjTemp,ObjOnPower,ObjTempUnit,ObjGenSetID,ObjSend,ObjCommit
+ Call CommonRoutines.fetchData("J20591_1")
+ Call SparcsN4CommonRoutines.n4LogIn
+ Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+ Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+ 'Call CommonRoutines.GetCurrentDirectory
+ 'Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
+ Call SparcsN4CommonRoutines.n4CreateAccessories
+ Call SparcsN4CommonRoutines.n4CreateVesselStowPlan
+ Call SparcsN4CommonRoutines.n4VesselDischarge
+ 
+ Call SparcsN4CommonRoutines.n4AttachUnit
+ Call N4MobileCommonRoutines.n4mobileLogin
+ Call N4MobileCommonRoutines.n4mobileScopeSelection
+ Call N4MobileCommonRoutines.n4mobileSelectProgram
+ Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber
+ Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterSeal
+ Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterReeferDetails
+ Delay 1000
+ Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
+   'If ObjReeferButton.WaitProperty("Enabled", True,5000) Then
+     Call CommonRoutines.ClickOperation(ObjReeferButton,"Reefer Button")
+     Set ObjTemp = Aliases.browser.FindChild("idStr","program:MYI004-myReeferTemperature_input",20,True)
+       'If ObjTemp.WaitProperty("Enabled", True,5000) Then
+         Set ObjOnPower = Aliases.browser.FindChild("idStr","program:MYI004-myUnitIsPowered_input",20,True)
+         Call CommonRoutines.ClickOperation(ObjOnPower,"On Power")
+         ObjTemp.SetText(flowData.Item("n4YInspTemperature"))
+         Set ObjTempUnit = Aliases.browser.FindChild("idStr","program:MYI004-myTemperatureUnit_input",20,True)
+         ObjTempUnit.SetText(flowData.Item("n4YInspTemperatureUnit"))
+         'Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
+         'ObjTempUnit.SetText(flowData.Item("n4YInspGensetID")
+         Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
+         Call aqObject.CheckProperty(ObjGenSetID, "text", cmpEqual, "DINU857531")
+         Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
+         Call aqObject.CheckProperty(ObjGenSetType, "text", cmpEqual, "NMGS")
+         'Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
+         'Call CommonRoutines.EnterOperation(ObjGenSetType,flowData.Item("n4YInspGenSetType"),"Genset Type")
+         Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+         Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+         Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+         aqUtils.Delay 1000
+          Call N4MobileCommonRoutines.n4MobileLogout
+ Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+   Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+ 'Call SparcsN4CommonRoutines.n4Close
+ Call N4MobileCommonRoutines.n4mobileCloseBrowser
   
    
   
