@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Nodes [
+
+<!ENTITY % NameValue "CDATA">
+<!ENTITY % PropType "(I|S|D|L|H|B)">
+<!ENTITY % VersionValue "CDATA">
+
+<!ELEMENT Prp (#PCDATA)>
+<!ELEMENT Node (Node|Prp)*>
+<!ELEMENT Nodes (Node)+>
+
+<!ATTLIST Nodes version CDATA "1">
+
+<!ATTLIST Node name CDATA #REQUIRED>
+
+<!ATTLIST Prp name CDATA #REQUIRED>
+<!ATTLIST Prp type CDATA #REQUIRED>
+<!ATTLIST Prp value CDATA #REQUIRED>
+]>
+<Nodes version="1">
+	<Node name="root">
+		<Node name="message 11">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4UnitInspectorWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_TOGGLE_BUTTON&quot;)"/>
+					<Prp name="object bottom" type="I" value="386"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage9.png"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object top" type="I" value="364"/>
+					<Prp name="datetime" type="D" value="43301.3265914468"/>
+					<Prp name="object left" type="I" value="17"/>
+					<Prp name="object right" type="I" value="39"/>
+					<Prp name="click point y" type="I" value="375"/>
+					<Prp name="click point x" type="I" value="28"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="id" type="I" value="11"/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="remarks" type="S" value="A click at point (11, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INSPECTOR_UNIT.UnitFacilityVisit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_TOGGLE_BUTTON&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557604282"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="stack"/>
+		<Node name="message 3">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage2.png"/>
+					<Prp name="line #" type="I" value="410"/>
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="datetime" type="D" value="43301.3264733218"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object right" type="I" value="1364"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="message" type="S" value="The menu item 'Windows|Close All Tabs' was clicked."/>
+			<Prp name="id" type="I" value="3"/>
+			<Prp name="line no" type="I" value="410"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu&#xA;(Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingMenu)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556449653"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 8">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value [Enter] is entered in Container Number field"/>
+			<Prp name="id" type="I" value="8"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557262847"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 17">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="message" type="S" value="Equipment Attached to unit successfully"/>
+			<Prp name="id" type="I" value="17"/>
+			<Prp name="line no" type="I" value="243"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5558278819"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="7"/>
+		</Node>
+		<Node name="message 14">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value DINU857531 is entered in Search field"/>
+			<Prp name="id" type="I" value="14"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5558034838"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 15">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4UnitInspectorWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_CONTENT_PANEL&quot;).SwingObject(&quot;INV041.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+					<Prp name="object bottom" type="I" value="424"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage11.png"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object top" type="I" value="402"/>
+					<Prp name="datetime" type="D" value="43301.3266400116"/>
+					<Prp name="object left" type="I" value="300"/>
+					<Prp name="object right" type="I" value="410"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="id" type="I" value="15"/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="remarks" type="S" value="'[Enter]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INSPECTOR_UNIT.UnitFacilityVisit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_CONTENT_PANEL&quot;).SwingObject(&quot;INV041.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5558076042"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="units">
+			<Prp name="unit 1" type="S" value="{3C4ACEA9-FE9E-4CCE-86F6-D50140B22C8A}"/>
+			<Prp name="unit 2" type="S" value="{48151F07-FE4A-4285-A403-293F14D50353}"/>
+			<Prp name="unit 0" type="S" value="{0F437420-9C3A-4013-9118-D93A58732F54}"/>
+		</Node>
+		<Node name="message 4">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage4.png"/>
+					<Prp name="line #" type="I" value="411"/>
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="datetime" type="D" value="43301.3264951968"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object right" type="I" value="1364"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="message" type="S" value="The menu item 'Unit|Units' was clicked."/>
+			<Prp name="id" type="I" value="4"/>
+			<Prp name="line no" type="I" value="411"/>
+			<Prp name="remarks" type="S" value="Tested object:&#xA;Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu&#xA;(Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingMenu)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556664931"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 0">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingObject(&quot;topLevelMenu&quot;)"/>
+					<Prp name="object bottom" type="I" value="45"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage0.png"/>
+					<Prp name="line #" type="I" value="79"/>
+					<Prp name="object top" type="I" value="22"/>
+					<Prp name="datetime" type="D" value="43301.326440706"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object right" type="I" value="37"/>
+					<Prp name="click point y" type="I" value="33"/>
+					<Prp name="click point x" type="I" value="18"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The window was clicked with the left mouse button."/>
+			<Prp name="id" type="I" value="0"/>
+			<Prp name="line no" type="I" value="79"/>
+			<Prp name="remarks" type="S" value="A click at point (18, 11) with no key pressed.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;mainMenuBar&quot;).SwingObject(&quot;topLevelMenu&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556091088"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 12">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The Dropdown is clicked successfully"/>
+			<Prp name="id" type="I" value="12"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557766319"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 13">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4UnitInspectorWindow.SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_CONTENT_PANEL&quot;).SwingObject(&quot;INV041.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+					<Prp name="object bottom" type="I" value="424"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage10.png"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object top" type="I" value="402"/>
+					<Prp name="datetime" type="D" value="43301.3266147106"/>
+					<Prp name="object left" type="I" value="300"/>
+					<Prp name="object right" type="I" value="410"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="id" type="I" value="13"/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="remarks" type="S" value="'DINU857531' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INSPECTOR_UNIT.UnitFacilityVisit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_CONTENT_PANEL&quot;).SwingObject(&quot;INV041.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557875116"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 16">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value [Enter] is entered in Search field"/>
+			<Prp name="id" type="I" value="16"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5558246412"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 9">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="NameMapping.Sys.jp2launcher.n4HomeView.RootPane.null_layeredPane.SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIScrollPane$BasicScrollPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIScrollPane$BasicScrollPane$BasicViewport&quot;, &quot;&quot;, 0).SwingObject(&quot;INV007&quot;)"/>
+					<Prp name="object bottom" type="I" value="623"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage7.png"/>
+					<Prp name="line #" type="I" value="222"/>
+					<Prp name="object top" type="I" value="121"/>
+					<Prp name="datetime" type="D" value="43301.3265660995"/>
+					<Prp name="object left" type="I" value="34"/>
+					<Prp name="object right" type="I" value="1380"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="id" type="I" value="9"/>
+			<Prp name="line no" type="I" value="222"/>
+			<Prp name="remarks" type="S" value="'[Enter]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIScrollPane$BasicScrollPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIScrollPane$BasicScrollPane$BasicViewport&quot;, &quot;&quot;, 0).SwingObject(&quot;INV007&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557342708"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 10">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="Aliases.jp2launcher.n4UnitInspectorWindow"/>
+					<Prp name="object bottom" type="I" value="401"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage8.png"/>
+					<Prp name="line #" type="I" value="224"/>
+					<Prp name="object top" type="I" value="0"/>
+					<Prp name="datetime" type="D" value="43301.3265826505"/>
+					<Prp name="object left" type="I" value="0"/>
+					<Prp name="object right" type="I" value="659"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="message" type="S" value="The 'Unit Inspector for DINU1259753' window was moved/resized (see details)."/>
+			<Prp name="id" type="I" value="10"/>
+			<Prp name="line no" type="I" value="224"/>
+			<Prp name="remarks" type="S" value="Window position: (0, 0) Size: 600 x 400.&#xA;&#xA;Tested object:&#xA;Aliases.jp2launcher.n4UnitInspectorWindow&#xA;(Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INSPECTOR_UNIT.UnitFacilityVisit&quot;))"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557496644"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 7">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="NameMapping.Sys.jp2launcher.n4HomeView.RootPane.null_layeredPane.SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage6.png"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object top" type="I" value="74"/>
+					<Prp name="datetime" type="D" value="43301.3265407523"/>
+					<Prp name="object left" type="I" value="716"/>
+					<Prp name="object right" type="I" value="872"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="id" type="I" value="7"/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="remarks" type="S" value="'[Enter]' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557107755"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Node name="message 1">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The Menu Button is clicked successfully"/>
+			<Prp name="id" type="I" value="1"/>
+			<Prp name="line no" type="I" value="81"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556234606"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="child data"/>
+		<Node name="message 2">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="1"/>
+			<Prp name="message" type="S" value="Operations is already selected"/>
+			<Prp name="id" type="I" value="2"/>
+			<Prp name="line no" type="I" value="92"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556248495"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="7"/>
+		</Node>
+		<Node name="message 18">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="2"/>
+			<Prp name="message" type="S" value="The property checkpoint passed: Enabled equals True."/>
+			<Prp name="id" type="I" value="18"/>
+			<Prp name="line no" type="I" value="251"/>
+			<Prp name="remarks" type="S" value="&lt;h3&gt;Result&lt;/h3&gt;&lt;span&gt;The property checkpoint &lt;b&gt;passed&lt;/b&gt;: Sys.Process(&quot;jp2launcher...).SwingObject(&quot;INV041&quot;).Enabled&lt;b&gt; equals &lt;/b&gt;True.&lt;/span&gt;&lt;h3&gt;Details&lt;/h3&gt;&lt;table style='width: 100%'&gt;&lt;tr&gt;&lt;th style='width: 10%'&gt;Object&lt;/th&gt;&lt;td&gt;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;INSPECTOR_UNIT.UnitFacilityVisit&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;INSPECTION_CONTENT_PANEL&quot;).SwingObject(&quot;INV041.parent&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UIScrollPane$BasicScrollPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIScrollPane$BasicScrollPane$BasicViewport&quot;, &quot;&quot;, 0).SwingObject(&quot;INV041&quot;)&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Property&lt;/th&gt;&lt;td&gt;Enabled&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Condition&lt;/th&gt;&lt;td&gt;equals&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Actual value&lt;/th&gt;&lt;td&gt;True&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th&gt;Expected value&lt;/th&gt;&lt;td&gt;True&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"/>
+			<Prp name="picture" type="S" value="Picture1.png"/>
+			<Prp name="date" type="D" value="43301.5558296181"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="-1"/>
+			<Prp name="type" type="I" value="7"/>
+		</Node>
+		<Node name="message 6">
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="The value DINU1259753 is entered in Container Number field"/>
+			<Prp name="id" type="I" value="6"/>
+			<Prp name="line no" type="I" value="98"/>
+			<Prp name="remarks" type="S" value=""/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5557067245"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="0"/>
+		</Node>
+		<Node name="message 5">
+			<Node name="visualizer">
+				<Node name="current">
+					<Prp name="object name" type="S" value="NameMapping.Sys.jp2launcher.n4HomeView.RootPane.null_layeredPane.SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+					<Prp name="object bottom" type="I" value="96"/>
+					<Prp name="rect color" type="I" value="255"/>
+					<Prp name="version" type="I" value="2"/>
+					<Prp name="need update" type="B" value="0"/>
+					<Prp name="kind" type="I" value="0"/>
+					<Prp name="storage file name" type="S" value=""/>
+					<Prp name="image file name" type="S" value="visImage5.png"/>
+					<Prp name="line #" type="I" value="96"/>
+					<Prp name="object top" type="I" value="74"/>
+					<Prp name="datetime" type="D" value="43301.326519919"/>
+					<Prp name="object left" type="I" value="716"/>
+					<Prp name="object right" type="I" value="872"/>
+					<Prp name="click point y" type="I" value="-1"/>
+					<Prp name="click point x" type="I" value="-1"/>
+					<Prp name="signature" type="S" value="{87B03792-E854-4F5D-9F33-165F1F874209}"/>
+				</Node>
+			</Node>
+			<Prp name="priority" type="I" value="300"/>
+			<Prp name="pictype" type="I" value="0"/>
+			<Prp name="owner id" type="I" value="-1"/>
+			<Prp name="unit id" type="I" value="0"/>
+			<Prp name="message" type="S" value="Keyboard input."/>
+			<Prp name="id" type="I" value="5"/>
+			<Prp name="line no" type="I" value="96"/>
+			<Prp name="remarks" type="S" value="'DINU1259753' was sent as a keyboard input to the following window or control.&#xA;&#xA;Tested object:&#xA;Sys.Process(&quot;jp2launcher&quot;).SwingObject(&quot;homeView&quot;).SwingObject(&quot;JRootPane&quot;, &quot;&quot;, 0).SwingObject(&quot;null.layeredPane&quot;).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBackgroundPane$BasicBackgroundPanel&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 1).SwingObject(&quot;UITabbedPane$BasicTabbedPane&quot;, &quot;Units&quot;, 0).SwingObject(&quot;UILazyComponent$BasicLazyComponent&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIBorderLayoutPane$BasicBorderLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;UIGridBagLayoutPane$BasicGridBagLayoutPane&quot;, &quot;&quot;, 0).SwingObject(&quot;LABEL__QUICK_SEARCH&quot;)"/>
+			<Prp name="picture" type="S" value=""/>
+			<Prp name="date" type="D" value="43301.5556916782"/>
+			<Prp name="child index" type="I" value="-1"/>
+			<Prp name="link" type="S" value=""/>
+			<Prp name="as html" type="B" value="0"/>
+			<Prp name="type" type="I" value="1"/>
+		</Node>
+		<Prp name="status" type="I" value="0"/>
+	</Node>
+</Nodes>

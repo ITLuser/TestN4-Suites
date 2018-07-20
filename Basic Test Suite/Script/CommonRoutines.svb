@@ -51,7 +51,7 @@ Set flowData = CreateObject("Scripting.Dictionary")
 Public Sub ClusterDetails
   Set objExcel = CreateObject("Excel.Application")
   Set objWorkbook = objExcel.Workbooks.Open _
-   ("C:\Users\ITL-USER\Desktop\Test N4\currentcluster.csv")
+   ("C:\Users\itluser\Desktop\Test N4\currentcluster.csv")
   Set objDriverSheet = objWorkbook.Worksheets("currentcluster")
   columncount = objDriverSheet.usedrange.columns.count
   rowcount = objDriverSheet.usedrange.rows.count
@@ -114,3 +114,25 @@ Sub GetCurrentDirectory
   Set objFSO = CreateObject("Scripting.FileSystemObject")
   CurrentDirectory = objFSO.GetAbsolutePathName(".")
 End Sub
+
+
+'To Get the Current Directory
+'Created: 19/07/2018
+'Created by: DineshRameshkumar
+'Reviewed: 
+'Reviewed by:
+Sub JavaUpdate
+   Dim ObjClick
+  Delay 2000
+  If  Aliases.jp2launcher.FindChild("ClassName","CheckBoxGlyph", 20, True).Exists Then
+   Set ObjClick = Aliases.jp2launcher.FindChild("ClassName","CheckBoxGlyph", 20, True)
+   Call CommonRoutines.ClickOperation(ObjClick,"JavaUpdate") 
+   Log.message "Clicked JavaUpdate Dialog box Clicked Successfully"
+  End If 
+
+End Sub
+
+
+
+
+

@@ -15,7 +15,7 @@ Sub n4mobileYardInspectionEnterContainerNumber
   Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
   aqUtils.Delay 1000
   Set ObjCheckElement = Aliases.browser.FindChild("idStr","program:MYI002-myContainerNumber_outputText",20,True)
-    If ObjCheckElement.WaitProperty("Enabled", True,5000) Then
+    If ObjCheckElement.WaitProperty("Visible", True,5000) Then
       Log.Checkpoint("Container Entered for Yard Inspection")
     Else
       Log.Error("Failed to enter container for Yard Inspection")

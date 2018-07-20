@@ -3,6 +3,7 @@
 'USEUNIT N4MobileYardInventoryCommonRoutines
 'USEUNIT SparcsN4CommonRoutines
 'USEUNIT SparcsN4VesselRoutines
+'USEUNIT N4MobileYardInspectionCommonRoutines
 
 'Yard Inspection program shows Genset ID and Genset Type.
 'Input Parameters: By using Dictionary Object
@@ -21,60 +22,239 @@
 
 
 Sub J20591_1
-
-Dim ObjReeferButton,ObjTemp,ObjOnPower,ObjTempUnit,ObjGenSetID,ObjSend,ObjCommit
- Call CommonRoutines.fetchData("J20591_1")
- Call SparcsN4CommonRoutines.n4LogIn
- Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
- Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
- 'Call CommonRoutines.GetCurrentDirectory
- 'Call SparcsN4CommonRoutines.n4ImportSnxFile(CurrentDirectory+"\ScriptData\SNX\ReceiveEmptyUnit2200.xml")
- Call SparcsN4CommonRoutines.n4CreateAccessories
- Call SparcsN4CommonRoutines.n4CreateVesselStowPlan
- Call SparcsN4CommonRoutines.n4VesselDischarge
- 
- Call SparcsN4CommonRoutines.n4AttachUnit
- Call N4MobileCommonRoutines.n4mobileLogin
- Call N4MobileCommonRoutines.n4mobileScopeSelection
- Call N4MobileCommonRoutines.n4mobileSelectProgram
- Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber
- Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterSeal
- Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterReeferDetails
- Delay 1000
- Set ObjReeferButton = Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
-   'If ObjReeferButton.WaitProperty("Enabled", True,5000) Then
-     Call CommonRoutines.ClickOperation(ObjReeferButton,"Reefer Button")
-     Set ObjTemp = Aliases.browser.FindChild("idStr","program:MYI004-myReeferTemperature_input",20,True)
-       'If ObjTemp.WaitProperty("Enabled", True,5000) Then
-         Set ObjOnPower = Aliases.browser.FindChild("idStr","program:MYI004-myUnitIsPowered_input",20,True)
-         Call CommonRoutines.ClickOperation(ObjOnPower,"On Power")
-         ObjTemp.SetText(flowData.Item("n4YInspTemperature"))
-         Set ObjTempUnit = Aliases.browser.FindChild("idStr","program:MYI004-myTemperatureUnit_input",20,True)
-         ObjTempUnit.SetText(flowData.Item("n4YInspTemperatureUnit"))
-         'Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
-         'ObjTempUnit.SetText(flowData.Item("n4YInspGensetID")
-         Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
-         Call aqObject.CheckProperty(ObjGenSetID, "text", cmpEqual, "DINU857531")
-         Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
-         Call aqObject.CheckProperty(ObjGenSetType, "text", cmpEqual, "NMGS")
-         'Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
-         'Call CommonRoutines.EnterOperation(ObjGenSetType,flowData.Item("n4YInspGenSetType"),"Genset Type")
-         Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
-         Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
-         Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
-         Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
-         aqUtils.Delay 1000
-          Call N4MobileCommonRoutines.n4MobileLogout
- Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
-   Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
- 'Call SparcsN4CommonRoutines.n4Close
- Call N4MobileCommonRoutines.n4mobileCloseBrowser
-  
-   
-  
-  
-  
-  
- 
+  Call CommonRoutines.fetchData("J20591_1")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+  Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+  Call SparcsN4CommonRoutines.n4SelectWorkMode("Configuration")
+  Call SparcsN4CommonRoutines.n4CreateAccessories
+  Call SparcsN4CommonRoutines.n4CreateVesselStowPlan
+  Call SparcsN4CommonRoutines.n4VesselDischarge 
+  Call SparcsN4CommonRoutines.n4AttachUnit
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber
+  Delay 1000
+  Set ObjSeal =  Aliases.browser.FindChild("idStr","program:MYI002-mySeal1_input",20,True)
+  ObjSeal.SetText(flowData.Item("n4YInspSeal1"))
+  Set ClickReferButton =  Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
+  Call CommonRoutines.ClickOperation(ClickReferButton,"Reefer Button")
+  Set ObjGensetID = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetId_input", 20, True)
+  Delay 1000
+  Call aqObject.CheckProperty(ObjGensetID, "text", cmpEqual, "DINU857531")
+  Set ObjGensettype = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetType_input", 20, True)
+  Call aqObject.CheckProperty(ObjGensettype, "wText", cmpEqual, "NMGS")
+  aqUtils.Delay 1000
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+  Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
 End Sub
+
+'Attaching Unknown Genset to Reefer Unit through Yard Inspection program.
+'Input Parameters: By using Dictionary Object
+'Created: 11/06/2018 
+'Created by: DineshRameshKumar
+'Reviewed:
+'Reviewed by:
+'gTCID="J20591.2"
+'	gTCDESCRIPTION="Attaching Unknown Genset to Reefer Unit through Yard Inspection program."
+'#Test Setup:
+'#1. Vessel Stow plan a reefer container C3 and discharge it to yard.
+'#Test Steps
+'#1. Login to N4 Mobile, select Yard Inspection, enter container number C3, enter seal and click R button.
+'#2. Enter the an Uknown Accessory number A3 in the Genset ID field, click send button and again click send button.
+'#Expected:
+'#1. Error message "No Equipment definition exists with ID A3" should be displayed.
+Sub J20591_2
+  Call CommonRoutines.fetchData("J20591_2")
+  Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753") 
+  Call SparcsN4CommonRoutines.n4CreateVesselStowPlan
+  Call SparcsN4CommonRoutines.n4VesselDischarge 
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber   
+  Set ObjSeal =  Aliases.browser.FindChild("idStr","program:MYI002-mySeal1_input",20,True)
+  ObjSeal.SetText(flowData.Item("n4YInspSeal1"))
+  Set ClickReferButton =  Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
+  Call CommonRoutines.ClickOperation(ClickReferButton,"Reefer Button") 
+  Set ObjGenSetID = Aliases.browser.FindChild("idStr","program:MYI005-myGensetId_input",20,True)
+  Delay 1000 
+  ObjGenSetID.SetText(flowData.Item("n4YInspGensetID"))
+  Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
+  Call CommonRoutines.EnterOperation(ObjGenSetType,flowData.Item("n4YInspGenSetType"),"Genset Type")
+  Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+  Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+  Delay 1000
+  Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+  Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+  Delay 1000
+  Set textNode = Aliases.browser.FindChild("contentText","No Equipment definition exists with ID ACCU12.",20,True)
+  Call aqObject.CheckProperty(textNode, "contentText", cmpEqual, "No Equipment definition exists with ID ACCU12.")
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser 
+End Sub
+
+'Input Parameters: By using Dictionary Object
+'Created: 11/06/2018 
+'Created by: DineshRameshKumar
+'Reviewed:
+'Reviewed by:
+'gTCID="J20591.1"
+'gTCDESCRIPTION="Attaching known Genset to Reefer Unit through Yard Inspection program."
+'#Test Setup:
+'#1. Go to Configuration > Equipment Accessories and add an accessory A2 with Equipment Type as Genset.
+'#2. Vessel Stow plan a reefer container C2 and discharge it to yard.
+'#Test Steps
+'#1. Login to N4 Mobile, select Yard Inspection, enter container number C2, enter seal and click R button.
+'#2. Enter the Accessory Number A2 in the Genset ID field, click send button and commit the information.
+'#3. Go to Units table, select the unit C2, open unit inspector and select the primary equipment tab.
+'#Expected:
+'#1. The accessory A2 should be attached to the unit successfully.
+
+Sub J20591_3 
+  Call CommonRoutines.fetchData("J20591_3")
+  'Call SparcsN4CommonRoutines.n4LogIn
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+  Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+  Call SparcsN4CommonRoutines.n4SelectWorkMode("Configuration")
+  Call SparcsN4CommonRoutines.n4CreateAccessories
+  Call SparcsN4CommonRoutines.n4CreateVesselStowPlan
+  Call SparcsN4CommonRoutines.n4VesselDischarge 
+  Call SparcsN4CommonRoutines.n4AttachUnit
+  Call N4MobileCommonRoutines.n4mobileLogin
+  Call N4MobileCommonRoutines.n4mobileScopeSelection
+  Call N4MobileCommonRoutines.n4mobileSelectProgram
+  Call N4MobileYardInspectionCommonRoutines.n4mobileYardInspectionEnterContainerNumber
+  Set ObjSeal =  Aliases.browser.FindChild("idStr","program:MYI002-mySeal1_input",20,True)
+  ObjSeal.SetText(flowData.Item("n4YInspSeal1"))
+  Set ClickReferButton =  Aliases.browser.FindChild("idStr","program:MYInspButtons-myTMPButton_input",20,True)
+  Call CommonRoutines.ClickOperation(ClickReferButton,"Reefer Button")
+  Set ObjGensetID = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetId_input", 20, True)
+  Delay 1000
+  ObjGenSetID.SetText(flowData.Item("n4YInspGensetID"))
+  Set ObjGenSetType = Aliases.browser.FindChild("idStr","program:MYI005-myGensetType_input",20,True)
+  Call CommonRoutines.EnterOperation(ObjGenSetType,flowData.Item("n4YInspGenSetType"),"Genset Type")
+  Set ObjSend = Aliases.browser.FindChild("idStr","program:optional_2_SEND",20,True)
+  Call CommonRoutines.ClickOperation(ObjSend,"Send Button")
+  Delay 1000
+  Set ObjCommit = Aliases.browser.FindChild("idStr","program:two_2_COMMIT",20,True)
+  Call CommonRoutines.ClickOperation(ObjCommit,"Commit Button")
+  Delay 1000
+  Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+'  Set ObjAdd = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+'  Call CommonRoutines.ClickOperation(ObjAdd,"Add button")
+'  Set ObjEquipmentNumber = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitEquipment.eqIdFull",20, True)
+'  Call CommonRoutines.EnterOperation(ObjEquipmentNumber,flowData.Item("EquipmentToBeAttached"),"Equipment Number")
+'  Set ObjEquipmentRole = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","ueGeneratedRole",20, True)
+'  Call CommonRoutines.EnterOperation(ObjEquipmentRole,flowData.Item("EquipmentRole"),"Equipment Role")
+'  Set ObjAllowSwipe = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitAllowSwipe",20, True)
+'  Call CommonRoutines.ClickOperation(ObjAllowSwipe,"Uncheck Allow swipe")
+'  Set ObjSave = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+'  Call CommonRoutines.ClickOperation(ObjSave,"Save Button")
+  Set ObjSearch = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearch,flowData.Item("EquipmentToBeAttached"),"Search")
+  Call CommonRoutines.EnterOperation(ObjSearch,"[Enter]","Search")
+  Set  ObjSelectallEquipment = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INV041",20, True)
+  ObjSelectallEquipment.selectAll
+  If Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName", "LABEL_ACTION_DELETE", 20, True).Enabled Then
+   Log.Checkpoint("Equipment Attached to unit successfully")
+  Else
+   Log.Checkpoint("Failed to Attach Equipment")
+  End If
+'   Set UICarinaTable_MyBasicTable = jp2launcher.n4UnitInspectorWindow.RootPane.null_layeredPane.UIBackgroundPane_BasicBackgroundPanel.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.INSPECTION_CONTENT_PANEL.INV041_parent.UIBorderLayoutPane_BasicBorderLayoutPane.UIScrollPane_BasicScrollPane.UIScrollPane_BasicScrollPane_BasicViewport.INV041
+'  Call UICarinaTable_MyBasicTable.Click(152, 8)
+  Call aqObject.CheckProperty(ObjSelectallEquipment, "AWTComponentAccessibleName", cmpEqual, flowData.Item("EquipmentToBeAttached"))
+  
+  
+'   Aliases.jp2launcher.n4UnitInspectorWindow.Close
+  
+  
+  
+'  Call aqObject.CheckProperty(ObjGensetID, "text", cmpEqual, "DINU857531")
+'  Set ObjGensettype = Aliases.browser.FindChild("idStr", "program:MYI005-myGensetType_input", 20, True)
+'  Call aqObject.CheckProperty(ObjGensettype, "wText", cmpEqual, "NMGS")
+'  aqUtils.Delay 1000
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  Call N4MobileCommonRoutines.n4MobileLogout
+  Call SparcsN4CommonRoutines.n4DeleteUnit("DINU1259753")
+  Call SparcsN4CommonRoutines.n4DeleteAccessories("DINU857531")
+  Call N4MobileCommonRoutines.n4mobileCloseBrowser
+  
+  
+
+End Sub
+
+
+Sub Main
+  Call J20591_1
+  Call J20591_2
+  Call J20591_3
+End Sub
+
+
+
+
+
+Sub test
+  Call CommonRoutines.fetchData("J20591_3")
+Call SparcsN4CommonRoutines.n4SearchUnit
+  Set  ObjSelectall = Aliases.jp2launcher.FindChild("AWTComponentName","INV007",20, True)
+  ObjSelectall.selectAll
+  ObjSelectall.Keys("[Enter]")
+  Set Objwin = Aliases.jp2launcher.n4UnitInspectorWindow
+  Call Objwin.Position(0, 0, 600, 400)
+  Set Objdropdown = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INSPECTION_TOGGLE_BUTTON",20, True)
+  Call CommonRoutines.ClickOperation(Objdropdown,"Dropdown")
+'  Set ObjAdd = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL_ACTION_CREATE",20, True)
+'  Call CommonRoutines.ClickOperation(ObjAdd,"Add button")
+'  Set ObjEquipmentNumber = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitEquipment.eqIdFull",20, True)
+'  Call CommonRoutines.EnterOperation(ObjEquipmentNumber,flowData.Item("EquipmentToBeAttached"),"Equipment Number")
+'  Set ObjEquipmentRole = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","ueGeneratedRole",20, True)
+'  Call CommonRoutines.EnterOperation(ObjEquipmentRole,flowData.Item("EquipmentRole"),"Equipment Role")
+'  Set ObjAllowSwipe = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","unitAllowSwipe",20, True)
+'  Call CommonRoutines.ClickOperation(ObjAllowSwipe,"Uncheck Allow swipe")
+'  Set ObjSave = Aliases.jp2launcher.n4AttachEquipmentWindow.FindChild("AWTComponentName","LABEL_ACTION_SAVE",20, True)
+'  Call CommonRoutines.ClickOperation(ObjSave,"Save Button")
+ Set ObjSearch = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
+  Call CommonRoutines.EnterOperation(ObjSearch,flowData.Item("EquipmentToBeAttached"),"Search")
+  Call CommonRoutines.EnterOperation(ObjSearch,"[Enter]","Search")
+  Set  ObjSelectallEquipment = Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName","INV041",20, True)
+  ObjSelectallEquipment.selectAll
+  If Aliases.jp2launcher.n4UnitInspectorWindow.FindChild("AWTComponentName", "LABEL_ACTION_DELETE", 20, True).Enabled Then
+   Log.Checkpoint("Equipment Attached to unit successfully")
+  Else
+   Log.Checkpoint("Failed to Attach Equipment")
+  End If
+'   Set UICarinaTable_MyBasicTable = jp2launcher.n4UnitInspectorWindow.RootPane.null_layeredPane.UIBackgroundPane_BasicBackgroundPanel.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.UIBorderLayoutPane_BasicBorderLayoutPane.INSPECTION_CONTENT_PANEL.INV041_parent.UIBorderLayoutPane_BasicBorderLayoutPane.UIScrollPane_BasicScrollPane.UIScrollPane_BasicScrollPane_BasicViewport.INV041
+'  Call UICarinaTable_MyBasicTable.Click(152, 8)
+  'Call aqObject.CheckProperty(ObjSelectallEquipment, "AWTComponentAccessibleName", cmpEqual, flowData.Item("UnitIdEquip"))
+ ' (ObjStatus, "contentText", cmpEqual, "MTY")
+Call aqObject.CheckProperty(ObjSelectallEquipment,"Enabled", cmpEqual, True)
+
+End Sub
+
+
+
+
+
 

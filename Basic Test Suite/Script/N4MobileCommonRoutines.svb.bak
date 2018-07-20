@@ -16,7 +16,7 @@ End Sub
 'To kill existing session of browser
 Sub n4mobileKillBrowser
   While Sys.WaitBrowser().Exists 
-    Call Sys.WaitBrowser().Close()
+    Call Sys.WaitBrowser().Quit()
   Wend
 End Sub
 
@@ -32,8 +32,10 @@ Sub n4mobileLogin
   aqUtils.Delay 1000
   Set ObjUserName = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserUid_input",20,True)
     If ObjUserName.WaitProperty("Exists", True,5000) Then
+      Call CommonRoutines.ClickOperation(ObjUserName,"UserName")
       Call CommonRoutines.EnterOperation(ObjUserName,flowData.Item("n4MobileUserName"),"Username")
       Set ObjPassword = Aliases.browser.FindChild("idStr","framework:FORM_MOBILE_LOGIN-mbuserPassword_input",20,True)
+      Call CommonRoutines.ClickOperation(ObjPassword,"Password")
       Call CommonRoutines.EnterOperation(ObjPassword,flowData.Item("n4MobilePassword"),"Password")
       Set ObjSend = Aliases.browser.FindChild("idStr","framework:_idJsp1",20,True)
       Call CommonRoutines.ClickOperation(ObjSend,"Send")

@@ -7,6 +7,7 @@
 'Reviewed:
 'Reviewed by: 
 Sub n4LogIn
+  'Call JavaUpdate
   Dim ObjUserName,ObjPassWord,ObjLoginButton,ObjAcceptSite
   If Aliases.jp2launcher.n4HomeView.Exists Then
     Log.Checkpoint("N4 is already launched")
@@ -409,9 +410,9 @@ Sub n4SearchUnit
   Call n4SelectWorkMode("Operations")
   ObjHomeView.Click("Windows|Close All Tabs")
   ObjHomeView.Click("Unit|Units")
+  Delay 1000
   Set ObjSearchUnit = Aliases.jp2launcher.n4HomeView.FindChild("AWTComponentName","LABEL__QUICK_SEARCH",20, True)
   Call CommonRoutines.EnterOperation(ObjSearchUnit,(flowData.Item("UnitId")),"Container Number")
-  Log.Message ObjSearchUnit
   Call CommonRoutines.EnterOperation(ObjSearchUnit,"[Enter]","Container Number")
 End Sub
 
@@ -566,7 +567,7 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub n4CreateAccessories
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  'Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
   Dim ObjCreateAccessories,ObjAcccesoriesCreate,ObjEquipmentID,ObjEquipmentType,ObjEquipmentOperator,ObjEquipmentOwner,ObjAccessoriesverify,ObjTareWeigth,ObjAccessoriessave
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Call n4SelectWorkMode("Configuration")
@@ -617,7 +618,7 @@ End Sub
 'Reviewed: 
 'Reviewed by:
 Sub n4CreateVesselStowPlan
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  'Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
   Dim ObjVesselid,ObjEquipmentid,ObjEquipmenverify,ObjEquipmenttypeverify,ObjEquipmentsave,ObjEquipmenttype,ObjEquipmentOperator,ObjVesselFreigthKind,ObjSaveVessselStowPlan,ObjVesselCategory,ObjVesselPortofLoad,ObjVesselPortOfDischarge,ObjVesselVGMWeigth,ObjVesselGrossWeigth
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Delay 1000
@@ -669,10 +670,12 @@ Sub n4CreateVesselStowPlan
 	Call CommonRoutines.ClickOperation(ObjSaveVessselStowPlan,"n4VesselStowplanCreated")
 	Set ObjVessselCancel = Aliases.jp2launcher.n4AddVesselStowPlanWindow.FindChild("AWTComponentName","LABEL_ACTION_CANCEL", 20, True)
 	Call CommonRoutines.ClickOperation(ObjVessselCancel,"n4VesselCLose")
-  Delay 500
-	Set ObjVessselclose = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES", 20, True)
-	Call CommonRoutines.ClickOperation(ObjVessselclose,"n4Vesselexit")
-  Log.Message "Vessel Stow Plan Created" 
+  Delay 2000
+  If  Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES", 20, True).WaitProperty("Visible", True,50000) Then
+	 Set ObjVessselclose = Aliases.jp2launcher.FindChild("AWTComponentName","LABEL_YES", 20, True)
+	 Call CommonRoutines.ClickOperation(ObjVessselclose,"n4Vesselexit")
+   Log.Message "Vessel Stow Plan Created"
+  End If  
 End Sub
 
 'Copy Snx file from Source to temporary folder
@@ -700,7 +703,7 @@ End Sub
 'Reviewed by:
 Sub n4VesselDischarge
   Dim ObjVesselRef,ObjUnitid,ObjyardSlot
-  Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
+  'Call CommonRoutines.fetchData("SparcsN4CommonRoutines")
   Aliases.jp2launcher.n4HomeView.n4MainMenuBar.SwingMenu.Click("Windows|Close All Tabs")
   Delay 1000
   Call n4SelectWorkMode("Operations")
