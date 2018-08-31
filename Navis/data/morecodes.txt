@@ -1,0 +1,27 @@
+*CAUS		
+A1	BOOM	"Boom up/down, BOOM - crane boom"
+A2	QCDW	"QC Breakdown, DOWN - crane downtim"
+A3	CRCL	"Crane Clash,WKSP - workspace"
+A4	LASH	"Lashing,LASH - lashing"
+A5	WCHE	"Waiting tractor, WCHE - waiting CHE"
+A6	FAIL	"System Failure, FAIL - che failure"
+A7	ACCD	Accident
+A8	MLBR	Meal Break
+A9	RPLN	Stowage Replan
+B1	VSST	Vessel Stability
+B2	VSGR	Vessels Gear
+B3	BBMV	"Heavy Lift/Break Bulk, BBMV - breakbulk move"
+B4	EGER	E/Gear
+B5	HTCV	"Hatch Covers, HTCM - hatch cover"
+B6	WTEX	Waiting Export Cntr
+B7	RVPL	"Revised Plan, INST - waiting instructions"
+B8	AGRL	Agent Related
+B9	AUTH	Authorities
+BA	OTVD	"Other vessel delay, VDLY - vessel delay"
+C1	WTHR	"Weather, WTHR - bad weather"
+C2	PWFL	"Power Failure, MAIN - maintenance"
+C3	EMER	Emergencies
+WI	WAINS	WAITING INSTRUCTION
+SP	SPECIAL	SPEACIAL HANDLING
+US	USER	USER DEFINE
+SC	SPREDER	SPREDER CHANGE
