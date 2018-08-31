@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2012 Navis LLC. All Rights Reserved.
+  ~ - a 2nd line is required by Checkstyle -
+
+  ~ This is a generic implementation which allows all chassis options
+  ~ not likely to be used at site.
+  ~ see specific comments in the file to note where it differs from a standard formCommands.xml
+  -->
+
+<form-list xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://www.navis.com/ecn4web/formCommands.xsd">
+    <form id="FORM_DISPATCH" mode="" default="dispatch">
+        <!-- customers who would like a refine button uncomment below, and renumber the commands for this form -->
+        <!--command index="1" template="refineJob" pattern="command.RefineJob"/-->
+        <command index="1" template="jobDone" pattern="command.Job_done"/>
+        <command index="2" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="3" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <!-- Begin diff from standard formCommands.xml -->
+        <command index="4" template="placeContainerOnTruck" visible="not(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="5" template="placeContainerOnTruck" visible="exists(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+            <field pattern="field.Chassis_ID" value="{/message/che/@TRAL}"/>
+        </command>
+        <command index="6" template="dispatchITVtoJob" visible="/message/che/@CFCL='Y'" pattern="command.Dispatch_to">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="7" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="8" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <!-- End diff from standard formCommands.xml -->
+    </form>
+    <form id="FORM_DISPATCH" mode="TWIN" default="dispatch">
+        <command index="1" template="jobDone" pattern="command.Job_done"/>
+        <command index="2" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.FWD:ID_1"/>
+            <field pattern="field.AFT:ID_2"/>
+        </command>
+        <command index="3" template="placeInLocation" enabled="exists(//job[1]/container and //job[2]/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <!-- Begin diff from standard formCommands.xml -->
+        <command index="4" template="placeContainerOnTruck" visible="not(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="5" template="placeContainerOnTruck" visible="exists(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+            <field pattern="field.Chassis_ID" value="{/message/che/@TRAL}"/>
+        </command>
+        <command index="6" template="dispatchITVtoJob" visible="/message/che/@CFCL='Y'" pattern="command.Dispatch_to">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="7" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="8" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="9" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <command index="10" template="singleDispatchFwd" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <command index="11" template="singleDispatchAft" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <!-- End diff from standard formCommands.xml -->
+    </form>
+    <form id="FORM_DISPATCH" mode="TWIN_TRUCK" default="dispatch">
+        <command index="1" template="autoPlaceContainerOnTruck" enabled="exists(/message/che/work/job/position[@type = 'to']/@transport)"
+                 pattern="command.Place_on_with_position"
+                 params="{/message/che/work/job[1]/position[@type = 'to']/@transport},{/message/che/work/job/position[@type = 'to']/@TKPS}"/>
+        <command index="2" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.FWD:ID_1"/>
+            <field pattern="field.AFT:ID_2"/>
+        </command>
+        <command index="3" template="placeInLocation" enabled="exists(//job[1]/container and //job[2]/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <command index="4" template="placeContainerOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="5" template="dispatch" visible="/message/che/work/@count = '2'" pattern="command.Select">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="6" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="7" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="8" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <command index="9" template="singleDispatchFwd" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <command index="10" template="singleDispatchAft" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+    </form>
+    <form id="FORM_DISPATCH" mode="IFT">
+        <command index="1" template="jobDone" pattern="command.Job_done"/>
+        <command index="2" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="3" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="4" template="completeDispatchIFT" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="5" template="dispatchITVtoJob" visible="/message/che/@CFCL='Y'" pattern="command.Dispatch_to">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="6" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="7" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_DISPATCH" mode="CHASSIS" inheritFrom="FORM_DISPATCH" default="dispatch">
+        <command index="1" template="jobDone" pattern="command.Place_on_with_position"
+                 params="{/message/che/work/job/position[@type = 'to']/@PPOS},{/message/che/work/job/position[@type = 'to']/@TKPS}"/>
+        <command index="3" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.Position_On_Chassis"/>
+        </command>
+        <command index="4" template="placeContainerOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+            <field pattern="field.Position_On_Truck"/>
+        </command>
+    </form>
+    <form id="FORM_DISPATCH" mode="TRUCK" inheritFrom="FORM_DISPATCH" default="dispatch">
+        <command index="1" template="autoPlaceContainerOnTruck"
+                 pattern="command.Place_on_with_position"
+                 params="{/message/che/work/job/position[@type = 'to']/@transport},{/message/che/work/job/position[@type = 'to']/@TKPS}"/>
+        <!-- Begin diff from standard formCommands.xml -->
+        <command index="4" template="placeContainerOnTruck" visible="not(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="5" template="placeContainerOnTruck" visible="exists(/message/che/@ACHE)" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+            <field pattern="field.Chassis_ID" value="{/message/che/@TRAL}"/>
+        </command>
+        <command index="6" template="dispatchITVtoJob" visible="/message/che/@CFCL='Y'" pattern="command.Dispatch_to">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="7" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="8" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <command index="9" template="singleDispatchFwd" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <command index="10" template="singleDispatchAft" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <!-- End diff from standard formCommands.xml -->
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="">
+        <command index="1" template="jobDone" pattern="command.Job_done"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="3" template="placeContainerOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="4" template="correctLift" pattern="command.Correct_Lift"/>
+        <command index="5" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="TWIN">
+        <command index="1" template="jobDone" pattern="command.Job_done"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <command index="3" template="placeContainerOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="4" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="5" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <command index="7" template="singleDispatchFwd" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <command index="8" template="singleDispatchAft" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="TWIN_TRUCK">
+        <command index="1" template="autoPlaceContainerOnTruck" enabled="exists(/message/che/work/job/position[@type = 'to']/@transport)"
+                 pattern="command.Place_on_with_position"
+                 params="{/message/che/work/job[1]/position[@type = 'to']/@transport},{/message/che/work/job/position[@type = 'to']/@TKPS}"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <command index="3" template="placeContainerOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="4" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="5" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <command index="7" template="singleDispatchFwd" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+        <command index="8" template="singleDispatchAft" pattern="command.Single_of_Twin" abbrev-pattern="command.Complete_to.arrow" fixed="legend"/>
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="IFT" inheritFrom="FORM_DISPATCH_LIFTED">
+        <command index="3" template="completeDispatchIFT" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="TRUCK" inheritFrom="FORM_DISPATCH_LIFTED">
+        <command index="1" template="autoPlaceContainerOnTruck" enabled="exists(/message/che/work/job/position[@type = 'to']/@transport)"
+                 pattern="command.Place_on" params="{/message/che/work/job/position[@type = 'to']/@transport}"/>
+    </form>
+    <form id="FORM_DISPATCH_LIFTED" mode="CHASSIS" inheritFrom="FORM_DISPATCH_LIFTED">
+        <command index="1" template="jobDone" pattern="command.Place_on_with_position"
+                 params="{/message/che/work/job/position[@type = 'to']/@PPOS},{/message/che/work/job/position[@type = 'to']/@TKPS}"/>
+        <command index="3" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.Position_On_Chassis"/>
+        </command>
+    </form>
+    <form id="FORM_IDLE" mode="">
+        <command index="1" template="dispatch" pattern="command.Dispatch">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="2" template="jobListForward" pattern="command.List_jobs"/>
+        <command index="3" template="inventory" pattern="command.Inventory">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="4" template="searchTruck" pattern="command.Search">
+            <field pattern="field.Truck"/>
+        </command>
+        <command index="5" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="6" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="7" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_IDLE" mode="">
+        <command index="1" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="2" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_TRAILER_SELECTION" mode="">
+        <command index="1" template="selectTrailerAttached" pattern="command.Yes_Im_connected_to_a_trailer"/>
+        <!-- Begin diff from standard formCommands.xml -->
+        <command index="2" template="selectSpecificTrailerAttached" pattern="command.Yes_Im_connected_to_a_specific_trailer">
+            <field pattern="field.Chassis_ID"/>
+        </command>
+        <command index="3" template="selectTrailerUnattached" pattern="command.No,_I'm_not_connected_to_a_trailer"/>
+        <command index="4" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="5" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <!-- End diff from standard formCommands.xml -->
+    </form>
+    <form id="FORM_TRUCK_FETCH_TRAILER" mode="" default="fetchTrailer">
+        <command index="1" template="fetchTrailer" pattern="command.Pull_empty_trailer"/>
+        <!-- Begin diff from standard formCommands.xml -->
+        <command index="2" template="fetchTrailerWithChassisId" pattern="command.Pull_empty_trailer">
+            <field pattern="field.Chassis_ID"/>
+        </command>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+        <!-- End diff from standard formCommands.xml -->
+    </form>
+    <form id="FORM_TRUCK_PARK_TRAILER" mode="" default="detachTrailer">
+        <command index="1" template="parkTrailer"
+                 visible="/message/che/@CHASSIS ne 'BOMBCART'"
+                 pattern="command.Park_trailer">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="detachTrailer"
+                 visible="/message/che/@CHASSIS eq 'BOMBCART'"
+                 pattern="command.Next_step"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_JOB_LIST" mode="" default="dispatch">
+        <command index="1" template="jobListBack" enabled="/message/che/joblist/@totalCnt &gt; count(/message/che/joblist/job)"
+                 pattern="command.&lt;_Prev"
+                 abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="jobListForward" enabled="/message/che/joblist/@totalCnt &gt; count(/message/che/joblist/job)"
+                 pattern="command.Next_&gt;"
+                 abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="joblistFilterTypesForward" pattern="command.Filter" abbrev-pattern="command.Filter" fixed="pagination"/>
+        <command index="4" template="joblistSortTypesForward" enabled="/message/che/joblist/@totalCnt &gt; 1" pattern="command.Sort"
+                 abbrev-pattern="command.Sort" fixed="pagination"/>
+        <command index="5" template="dispatch" pattern="command.Select">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="6" template="inventory" pattern="command.Inventory">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="7" template="searchTruck" pattern="command.Search">
+            <field pattern="field.Truck"/>
+        </command>
+        <command index="8" template="makeAvailable" pattern="command.Home" fixed="footer"/>
+        <command index="9" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="10" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="11" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SELECT_EMPTY_DELIVERY" mode="" default="dispatch">
+        <command index="1" template="jobListBack" enabled="/message/che/joblist/@totalCnt &gt; count(/message/che/joblist/job)"
+                 pattern="command.&lt;_Prev"
+                 abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="jobListForward" enabled="/message/che/joblist/@totalCnt &gt; count(/message/che/joblist/job)"
+                 pattern="command.Next_&gt;"
+                 abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="joblistFilterTypesForward" pattern="command.Filter" abbrev-pattern="command.Filter" fixed="pagination"/>
+        <command index="4" template="joblistSortTypesForward" pattern="command.Sort" abbrev-pattern="command.Sort" fixed="pagination"/>
+        <command index="5" template="dispatch" pattern="command.Select">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="6" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="7" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SELECT_JOB_LIST_FILTER" title="title.Select_item" mode="" default="setJobListFilter">
+        <command index="1" template="joblistFilterTypesBack" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/option)"
+                 pattern="command.&lt;_Prev"
+                 abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="joblistFilterTypesForward" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/option)"
+                 pattern="command.Next_&gt;"
+                 abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="setJobListFilter" pattern="command.Select">
+            <field pattern="field.filter"/>
+            <field pattern="field.param"/>
+        </command>
+        <command index="4" template="jobListForward" pattern="command.Cancel" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SELECT_JOB_LIST_SORT" title="title.Select_item" mode="" default="setJobListSort">
+        <command index="1" template="joblistSortTypesBack" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/option)"
+                 pattern="command.&lt;_Prev"
+                 abbrev-pattern="command.&lt;_Prev.abbrev"
+                 fixed="pagination"/>
+        <command index="2" template="joblistSortTypesForward" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/option)"
+                 pattern="command.Next_&gt;"
+                 abbrev-pattern="command.Next_&gt;.abbrev"
+                 fixed="pagination"/>
+        <command index="3" template="setJobListSort" pattern="command.Select">
+            <field pattern="field.sort"/>
+            <field pattern="field.param"/>
+        </command>
+        <command index="4" template="jobListForward" pattern="command.Cancel" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SELECT_CHE" mode="" async="false" default="clientPing">
+        <command index="1" template="clientPing" pattern="command.Select">
+            <field pattern="field.CHE_ID" name="cheId"/>
+        </command>
+        <command index="2" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LOGIN" mode="" default="cheProgram" async="false">
+        <command index="1" template="cheProgram" pattern="command.Operator">
+            <field pattern="field.User_ID"/>
+            <field pattern="field.Password" type="password" name="chePassword"/>
+            <field pattern="field.CHE_ID" type="text" name="cheId" value="{/message/che/@CHID}"/>
+        </command>
+        <command index="2" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LOGIN" mode="NO_PASSWORD" default="cheProgram" async="false">
+        <command index="1" template="cheProgram" pattern="command.Operator">
+            <field pattern="field.User_ID"/>
+            <field pattern="field.CHE_ID" type="text" name="cheId" value="{/message/che/@CHID}"/>
+        </command>
+        <command index="2" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SURROGATE_CHE_SELECTION" mode="" default="suurogateSelectChe" async="false">
+        <command index="1" template="suurogateSelectChe" pattern="command.Surrogate_for">
+            <field pattern="field.CHE_ID" type="text" value="{/message/che/@ACHE}"/>
+        </command>
+        <command index="2" template="logout" pattern="command.Logout" fixed="footer"/>
+    </form>
+    <form id="SYSTEM_REFRESH" mode="" default="clientPing" async="false">
+        <command index="1" template="clientPing" pattern="command.REFRESH" fixed="footer"/>
+    </form>
+    <form id="FORM_REHANDLE" mode="" default="completeJobTo">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="autoCompleteJobTo" enabled="/message/che/work/job/position[@type= 'to']/@PPOS != ''"
+                 pattern="command.Rehandle_to" params="{/message/che/work/job/position[@type='to']/@PPOS}"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_REHANDLE_NO_SLOT" mode="" default="completeJobTo">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_REHANDLE" mode="TWIN" default="completeJobTo" inheritFrom="FORM_REHANDLE">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+    </form>
+    <form id="FORM_AUTO_REHANDLE" mode="" default="completeJobTo">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="autoCompleteJobTo" enabled="/message/che/work/job/position[@type= 'to']/@PPOS != ''"
+                 pattern="command.Rehandle_to" params="{/message/che/work/job/position[@type='to']/@PPOS}"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="cancelAll" pattern="command.Cancel_All" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_SELECT_EMPTY_AUTO_REHANDLE" mode="" default="completeJobTo">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="autoCompleteJobTo" enabled="/message/che/work/job/position[@type= 'to']/@PPOS != ''"
+                 pattern="command.Rehandle_to" params="{/message/che/work/job/position[@type='to']/@PPOS}"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TBDUNIT" mode="" default="mergeTbdUnit">
+        <command index="1" template="mergeTbdUnit" pattern="command.Merge">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="2" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TBDUNIT" mode="TRUCK" default="mergeTbdUnit">
+        <command index="1" template="mergeTbdUnit" pattern="command.Merge">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="2" template="autoPlaceTBDUnitOnTruck" enabled="exists(/message/che/work/job/position[@type = 'to']/@transport)"
+                 pattern="command.Place_on" params="{/message/che/work/job/position[@type = 'to']/@transport}"/>
+        <command index="3" template="placeTBDUnitOnTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="4" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_UNAVAILABLE" mode="">
+        <command index="1" template="makeAvailable" pattern="command.Home" fixed="footer"/>
+        <command index="2" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_UNAVAILABLE" mode="">
+        <command index="1" template="makeAvailable" pattern="command.Home" fixed="footer"/>
+        <command index="2" template="logout" pattern="command.Logout" fixed="footer"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_EMPTY_TO_ORIGIN" mode="" default="driveToOrigin">
+        <command index="1" template="driveToOrigin" pattern="command.Next_step"/>
+        <command index="2" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_EMPTY_TO_ORIGIN" mode="TWIN" default="driveToOrigin" inheritFrom="FORM_EMPTY_TO_ORIGIN">
+        <!--The same as form FORM_EMPTY_TO_ORIGIN with mode = ''-->
+    </form>
+    <form id="FORM_TRUCK_EMPTY_TO_ORIGIN" mode="" default="driveToOrigin">
+        <command index="1" template="driveToOrigin" pattern="command.Next_step"
+                 visible="not(exists(/message/che/work/job/position[@type = 'from']/transferZone[1]))"/>
+        <command index="2" template="driveToDefaultTZ" pattern="command.Drive_to"
+                 visible="exists(/message/che/work/job/position[@type = 'from']/transferZone[1])"
+                 params="{/message/che/work/job/position[@type = 'from']/transferZone[1]/@BLOCK}"/>
+        <command index="3" template="driveToAllowedTZ" pattern="command.Drive_to"
+                 visible="exists(/message/che/work/job/position[@type = 'from']/transferZone[2])"
+                 params="{/message/che/work/job/position[@type = 'from']/transferZone[2]/@BLOCK}"/>
+        <command index="4" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="5" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_EMPTY_TO_ORIGIN" mode="MULTIPLE">
+        <command index="1" template="driveToSingleOrigin1" enabled="/message/che/work/job[1][@moveStage!='CARRY_UNDERWAY']"
+                 pattern="command.Arrival_to" params="{/message/che/work/job[1]/position[@type = 'from']/@AREA}"/>
+        <command index="2" template="driveToSingleOrigin2" enabled="/message/che/work/job[2][@moveStage!='CARRY_UNDERWAY']"
+                 pattern="command.Arrival_to" params="{/message/che/work/job[2]/position[@type = 'from']/@AREA}"/>
+        <command index="3" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="4" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_EMPTY_AT_ORIGIN" mode="" default="liftContainer">
+        <command index="1" template="liftContainer" pattern="command.Next_step"/>
+        <command index="2" template="mergeTbdUnit" visible="exists(/message/che/work/job[1]/tbdunit)" pattern="command.Merge">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="3" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="4" template="liftOthers" visible="not(exists(/message/che/work/job[1]/tbdunit))" pattern="command.Lift_others"/>
+        <command index="5" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="6" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="7" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_EMPTY_AT_ORIGIN" mode="TWIN" default="liftTwinContainers">
+        <command index="1" template="liftTwinContainers" pattern="command.Next_step"
+                 visible="/message/che/@twinCapable eq 'Y' and (/message/che/work/@planningIntent eq 'TWIN' or /message/che/work/@planningIntent eq 'QUAD_WATERSIDE'
+                 or /message/che/work/@planningIntent eq 'QUAD_LANDSIDE' ) "/>
+        <command index="2" template="mergeTbdUnit" visible="exists(/message/che/work/job[1]/tbdunit)" pattern="command.Merge">
+            <field pattern="field.Container_ID" value="{/message/che/work/job[1]/tbdunit/@ContainerID}"/>
+            <field pattern="field.Container_ID" value="{/message/che/work/job[2]/tbdunit/@ContainerID}"/>
+        </command>
+        <command index="3" template="inventory" pattern="command.Rehandle">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <command index="4" template="liftSingleOfTwin1" visible="not(exists(/message/che/work/job[1]/tbdunit))" pattern="command.Lift_container"
+                 params="{/message/che/work/job[1]/container/@EQID}"/>
+        <command index="5" template="liftSingleOfTwin2" visible="not(exists(/message/che/work/job[2]/tbdunit))" pattern="command.Lift_container"
+                 params="{/message/che/work/job[2]/container/@EQID}"/>
+        <command index="6" template="liftOthers" visible="not(exists(/message/che/work/job[1]/tbdunit))" pattern="command.Lift_others"/>
+        <command index="7" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="8" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="9" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_EMPTY_AT_ORIGIN" mode="" default="pullTrailer">
+        <command index="1" template="pullTrailer"
+                 visible="/message/che/work/job[1]/position[@type='from']/@pullable eq 'Y'"
+                 pattern="command.Next_step"/>
+        <command index="2" template="earlyPark"
+                 visible="(/message/che/work/job[1]/position[@type='from']/@parkable='Y') and not(/message/che[@parkedAndWaiting = 'Y'])"
+                 pattern="command.Park_trailer_at"
+                 params="{/message/che/work/job[1]/position[@type='from']/@PPOS}"/>
+        <command index="3" template="earlyPark"
+                 visible="/message/che/work/job[1]/position[@type='from']/@parkable and not(/message/che[@parkedAndWaiting = 'Y'])"
+                 pattern="command.Park_trailer">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="4" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="5" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_EMPTY_AT_ORIGIN" mode="MULTIPLE">
+        <command index="1" template="pullTrailer"
+                 visible="/message/che/work/job[1]/position[@type='from']/@pullable='Y'"
+                 pattern="command.Next_step"/>
+        <command index="2" template="earlyPark"
+                 visible="(/message/che/work/job[1]/position[@type='from']/@parkable='Y') and not(/message/che[@parkedAndWaiting = 'Y'])"
+                 pattern="command.Park_trailer_at"
+                 params="{/message/che/work/job[1]/position[@type='from']/@PPOS}"/>
+        <command index="3" template="earlyPark"
+                 visible="/message/che/work/job[1]/position[@type='from']/@parkable and not(/message/che[@parkedAndWaiting = 'Y'])"
+                 pattern="command.Park_trailer">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="4" template="carrySingle" enabled="/message/che/work/job[@moveStage='CARRY_UNDERWAY']"
+                 pattern="command.Carry_single_container"/>
+        <command index="5" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="6" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="7" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_STRADDLE_REHANDLE_LIFT" mode="" default="completeJobTo">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="2" template="autoCompleteJobTo" enabled="/message/che/work/job/position[@type= 'to']/@PPOS != ''"
+                 pattern="command.Rehandle_to" params="{/message/che/work/job/position[@type='to']/@PPOS}"/>
+        <command index="3" template="cancel" pattern="command.Cancel" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_STRADDLE_REHANDLE_LIFT" mode="TWIN" default="completeJobTo" inheritFrom="FORM_REHANDLE_LIFT">
+        <command index="1" template="completeJobTo" pattern="command.Rehandle_to.input">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+    </form>
+    <form id="FORM_CONFIRM_CONTAINER" title="title.Confirm_Container" mode="SELECTOPTION" default="acceptContainer">
+        <command index="1" template="acceptContainerBack" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/unit)"
+                 pattern="command.&lt;_Prev" abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="acceptContainerForward" enabled="/message/che/option-list/@count &gt; count(/message/che/option-list/unit)"
+                 pattern="command.Next_&gt;" abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="changeListMode" pattern="command.As_twins" enabled="/message/che/@twinCapable eq 'Y'" fixed="pagination"/>
+        <command index="4" template="acceptContainer" pattern="command.Lifted.input">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <!-- to enable further restriction on the ChangeMode buttons use the enabled check below
+        <command index="4" template="changeListMode" pattern="command.As_twins" fixed="pagination" enabled="not(exists(/message/che/@SPOS))"/-->
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_CONFIRM_CONTAINER_PULLED" title="title.Confirm_Chassis_Pull" mode="" default="confirmChassis">
+        <command index="1" template="acceptContainerBack"
+                 enabled="number(/message/che/option-list/@count) &gt; number(/message/che/option-list/@maxAllowed)"
+                 pattern="command.&lt;_Prev" abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="acceptContainerForward"
+                 enabled="number(/message/che/option-list/@count) &gt; number(/message/che/option-list/@maxAllowed)"
+                 pattern="command.Next_&gt;" abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="confirmChassis" pattern="command.Pull_Equipment.input">
+            <field pattern="field.Equipment_ID"/>
+        </command>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+
+    <form id="FORM_TBDUNIT_CONFIRM_CONTAINER" title="title.Confirm_Container" mode="SELECTOPTION" default="acceptContainer">
+        <command index="1" template="acceptContainerBack" enabled="/message/che/option-list/@count &gt; /message/che/option-list/@maxAllowed"
+                 pattern="command.&lt;_Prev" abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="acceptContainerForward" enabled="/message/che/option-list/@count &gt; /message/che/option-list/@maxAllowed"
+                 pattern="command.Next_&gt;" abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="acceptContainer" pattern="command.Lifted.input">
+            <field pattern="field.Container_ID"/>
+        </command>
+        <!--<command index="4" template="changeListMode" pattern="command.As_twins" fixed="pagination" enabled="not(exists(/message/che/@SPOS))"/>-->
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <!-- TWIN -->
+    <form id="FORM_CONFIRM_CONTAINER" title="title.Confirm_Container.plural" mode="SELECTOPTION_TWIN" default="acceptContainer">
+        <command index="1" template="acceptContainerBack" enabled="/message/che/option-list/@count &gt; /message/che/option-list/@maxAllowed"
+                 pattern="command.&lt;_Prev" abbrev-pattern="command.&lt;_Prev.abbrev" fixed="pagination"/>
+        <command index="2" template="acceptContainerForward" enabled="/message/che/option-list/@count &gt; /message/che/option-list/@maxAllowed"
+                 pattern="command.Next_&gt;" abbrev-pattern="command.Next_&gt;.abbrev" fixed="pagination"/>
+        <command index="3" template="changeListMode" pattern="command.As_singles" fixed="pagination"/>
+        <command index="4" template="acceptContainer" pattern="command.Lifted.input.twin">
+            <field pattern="field.FWD:ID_1"/>
+            <field pattern="field.AFT:ID_2"/>
+        </command>
+        <!-- to enable further restriction on the ChangeMode buttons use the enabled check below
+        <command index="4" template="changeListMode" pattern="command.As_singles" fixed="pagination" enabled="not(exists(/message/che/@SPOS))"/-->
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_PARTIAL_TWIN_LIFT" mode="" default="liftContainer">
+        <command index="1" template="liftContainer" pattern="command.Next_step"/>
+        <command index="2" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_PARTIAL_TWIN_LIFT" mode="TWIN" default="liftContainer">
+        <command index="1" template="liftContainer" pattern="command.Next_step"/>
+        <command index="2" template="deTwin" pattern="command.Carry_single_container"/>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_TO_DEST" mode="" default="driveToDest">
+        <command index="1" template="driveToDest" pattern="command.Next_step"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="3" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_TO_DEST" mode="TWIN" default="driveToDest" inheritFrom="FORM_LADEN_TO_DEST">
+        <command index="2" template="placeInLocation" enabled="exists(//job[1]/container and //job[2]/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+    </form>
+    <form id="FORM_TRUCK_LADEN_TO_DEST" mode="" default="driveToDest">
+        <command index="1" template="driveToDest" pattern="command.Next_step"
+                 visible="not(exists(/message/che/work/job/position[@type = 'to']/transferZone[1]))"/>
+        <command index="2" template="driveToDefaultTZ" pattern="command.Drive_to"
+                 visible="exists(/message/che/work/job[1]/position[@type = 'to']/transferZone[1]/@BLOCK)"
+                 params="{/message/che/work/job[1]/position[@type = 'to']/transferZone[1]/@BLOCK}"/>
+        <command index="3" template="driveToAllowedTZ" pattern="command.Drive_to"
+                 visible="exists(/message/che/work/job[1]/position[@type = 'to']/transferZone[2]/@BLOCK)"
+                 params="{/message/che/work/job[1]/position[@type = 'to']/transferZone[2]/@BLOCK}"/>
+        <command index="4" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_LADEN_TO_DEST" mode="MULTIPLE" default="driveToSingleOrigin1">
+        <command index="1" template="driveToSingleOrigin1" pattern="command.Arrival_to"
+                 params="{/message/che/work/job[1]/position[@type = 'to']/@AREA}"/>
+        <command index="2" template="driveToSingleOrigin2" pattern="command.Arrival_to"
+                 params="{/message/che/work/job[2]/position[@type = 'to']/@AREA}"/>
+        <command index="3" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_AT_DEST" mode="" default="dropContainer">
+        <command index="1" template="dropContainer" pattern="command.Next_step"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_LADEN_AT_DEST" mode="" default="parkTrailerUserInput">
+        <command index="1" template="parkTrailer"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="/message/che/work/job[1]/position[@type='to']/@parkable eq 'Y'"
+                 pattern="command.Park_trailer_at"
+                 params="{/message/che/work/job[1]/position[@type='to']/@PPOS}"/>
+        <command index="2" template="parkTrailerUserInput"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="/message/che/work/job[1]/position[@type='to']/@parkable"
+                 pattern="command.Park_trailer">
+            <field pattern="field.Slot" value="{/message/che/work/job[1]/position[@type='to']/@PPOS}"/>
+        </command>
+        <command index="3" template="parkAndWait"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="boolean(/message/che/work/job[1]/position[@type='to'][@parkable='Y' or @parkable='N'][@AREA_TYPE='Rail' or
+                 @AREA_TYPE='YardRailTZ'])" pattern="command.Park_chassis_and_wait">
+            <field pattern="field.Slot"/>
+        </command>
+        <command index="4" template="signalLifted"
+                 visible="not(/message/che/work/job[1]/position[@type='to'][@parkable = 'Y' or @PPOS = 'FLD' or @AREA_TYPE = 'YardTransTZ'])"
+                 pattern="command.Container_lifted"/>
+        <command index="5" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_TRUCK_LADEN_AT_DEST" mode="MULTIPLE" default="parkTrailerUserInput">
+        <command index="1" template="parkTrailer"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="/message/che/work/job[1]/position[@type='to']/@parkable eq 'Y'"
+                 pattern="command.Park_trailer_at"
+                 params="{/message/che/work/job[1]/position[@type='to']/@PPOS}"/>
+        <command index="2" template="parkTrailerUserInput"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="/message/che/work/job[1]/position[@type='to']/@parkable"
+                 pattern="command.Park_trailer">
+            <field pattern="field.Slot" value="{/message/che/work/job[1]/position[@type='to']/@PPOS}"/>
+        </command>
+
+        <command index="3" template="parkAndWait"
+                 enabled="not(/message/che[@parkedAndWaiting = 'Y'])"
+                 visible="boolean(/message/che/work/job[1]/position[@type='to'][@parkable='Y' or @parkable='N'][@AREA_TYPE='Rail' or
+                 @AREA_TYPE='YardRailTZ'])" pattern="command.Park_chassis_and_wait">
+            <field pattern="field.Slot"/>
+        </command>
+        <command index="4" template="signalLifted"
+                 enabled="not(exists(/message/che/work/job[1]/position[@type='to']/@parkable))"
+                 pattern="command.Container_lifted"/>
+        <command index="5" template="makeUnavailable" pattern="command.Unavailable" fixed="footer"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_AT_DEST" mode="REFINE" default="dropContainer">
+        <command index="1" template="dropContainer" pattern="command.Next_step"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+        </command>
+        <command index="3" template="refine?tier=1" pattern="command.Complete_to_tier_1"/>
+        <command index="4" template="refine?tier=2" pattern="command.Complete_to_tier_2"/>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_AT_DEST" mode="REFINE_TWIN" default="dropContainer">
+        <command index="1" template="dropContainer" pattern="command.Next_step"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job[1]/container and //job[2]/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <command index="3" template="refine?tier=1" pattern="command.Complete_to_tier_1"/>
+        <command index="4" template="refine?tier=2" pattern="command.Complete_to_tier_2"/>
+        <command index="5" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="6" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_AT_DEST" mode="TWIN" default="dropContainer">
+        <command index="1" template="dropContainer" pattern="command.Next_step"/>
+        <command index="2" template="placeInLocation" enabled="exists(//job[1]/container and //job[2]/container)" pattern="command.Complete_to">
+            <field pattern="field.New_location"/>
+            <field pattern="field.New_location2"/>
+        </command>
+        <command index="3" template="swapTwinPositions" pattern="command.Swap_twin_positions"/>
+        <command index="4" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_LADEN_AT_DEST" mode="IFT" default="dropContainer">
+        <command index="1" template="dropContainer" pattern="command.Next_step"/>
+        <command index="2" template="completeIFT" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_CONFIRM_TRUCK" mode="" default="confirmTruck">
+        <command index="1" template="confirmTruck" enabled="/message/che/work/job/position[@type = 'to' and @transport != '']"
+                 pattern="command.Place_on" params="{/message/che/work/job/position[@type = 'to']/@transport}"/>
+        <command index="2" template="confirmNewTruck" pattern="command.Place_on.input">
+            <field pattern="field.Yard_Tractor_ID"/>
+        </command>
+        <command index="3" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+    <form id="FORM_CONFIRM_TRUCK_LANE" mode="" default="confirmTruckLane">
+        <command index="1" template="confirmTruckLane" pattern="command.Stop_at"
+                 visible="exists(/message/che/work/job[@moveStage = 'CARRY_UNDERWAY']/position[@type = 'to' and @AREA_TYPE = 'YardTransTZ'])"
+                 params="{/message/che/work/job/position[@type = 'to']/@PPOS}"/>
+        <command index="2" template="confirmTruckLane" pattern="command.Stop_at"
+                 visible="exists(/message/che/work/job[@moveStage != 'CARRY_UNDERWAY']/position[@type = 'from' and @AREA_TYPE = 'YardTransTZ'])"
+                 params="{/message/che/work/job/position[@type = 'from']/@PPOS}"/>
+        <command index="3" template="confirmTruckNewLane" pattern="command.Stop_at.input"
+                 visible="exists(/message/che/work/job/position[@AREA_TYPE = 'YardTransTZ'])">
+            <field pattern="field.Row"/>
+        </command>
+        <command index="4" template="confirmTruckNewLane" pattern="command.Lane.input"
+                 visible="not(exists(/message/che/work/job/position[@AREA_TYPE = 'YardTransTZ']))">
+            <field pattern="field.Truck_Lane"/>
+        </command>
+        <command index="5" template="clearMessage" enabled="/message/che/displayMsg/@msgID='12'" pattern="command.Clear_message" fixed="message"/>
+    </form>
+</form-list>

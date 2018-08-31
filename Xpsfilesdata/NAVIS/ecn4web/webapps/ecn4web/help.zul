@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2010 Zebra Technologies Corp. All Rights Reserved.
+  ~ $Id: $
+  -->
+
+<window  border="normal" width="70%" height="70%" closable="true" maximizable="true" sizable="true"
+	use="com.navis.framework.zk.help.ZkHelp" title="Zk Help">
+	<borderlayout>
+		<west size="20%" collapsible="true" vflex="1" class="helpNavigator">
+            <tabbox id="tbxNavigator" height="100%"/>
+		</west>
+		<center hflex="1" vflex="1">
+            <window id="contentsWindow" hflex="1" vflex="1">
+                <iframe id="iframe" width="100%" vflex="1" scrolling="true"/>
+            </window>
+		</center>
+	</borderlayout>
+
+</window>

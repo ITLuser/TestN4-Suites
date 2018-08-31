@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 1.0 2004.11 Andrew J. Peterson -->
+
+<!ELEMENT icons (icon*) >
+
+<!-- General notion of an "icon", independent of its size and
+     other subtle variation. This is equivalent to an "icon family"
+     in MacOS terminology. -->
+<!ELEMENT icon (image+) >
+
+<!-- The ID must be a reasonable Java constant name. It should
+     be all uppercase, with underline word separators: GOOD_NAME. -->
+<!ATTLIST icon id ID #REQUIRED >
+
+<!-- An image has an explicit size and state. -->
+<!ELEMENT image (#PCDATA) >
+<!ATTLIST image state (normal|disabled|rollover|pressed) "normal">
+<!ATTLIST image height CDATA #REQUIRED >
+<!ATTLIST image width CDATA #REQUIRED >
+<!ATTLIST image cssclass CDATA "">

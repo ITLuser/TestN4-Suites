@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 1.0 1.2004 Etienne Studer -->
+
+<!ELEMENT menuNodes (menuNode)*>
+
+<!ELEMENT menuNode (#PCDATA)>
+
+<!ATTLIST menuNode
+id CDATA #REQUIRED
+text CDATA #REQUIRED
+mnemonic CDATA #IMPLIED
+accelerator CDATA #IMPLIED
+icon CDATA #IMPLIED
+iconCssClass CDATA #IMPLIED
+commandRefId CDATA #IMPLIED
+variformId CDATA #IMPLIED
+>
+

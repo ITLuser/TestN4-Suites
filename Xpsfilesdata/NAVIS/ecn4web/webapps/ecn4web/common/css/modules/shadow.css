@@ -1,0 +1,27 @@
+/************************************************************************/
+/**** SHADOW.CSS                                                     ****/
+/**** Controls appearance of shadow elements.                        ****/
+/************************************************************************/
+
+.shadow
+{
+  	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=10);
+  	-moz-opacity:0.1;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-color:#000000;
+	visibility:hidden;
+	z-index:1;
+}
+
+.dropShadow {
+  	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=10);
+  	-moz-opacity:0.1;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background-color:#000000;
+	display:block;
+	visibility:hidden;
+}

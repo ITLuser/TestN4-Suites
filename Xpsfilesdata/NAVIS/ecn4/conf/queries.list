@@ -1,0 +1,2 @@
+# a generic read query, always available by ECN4
+com.navis.ecn4.query.impl.GenericReadDomainModelQuery

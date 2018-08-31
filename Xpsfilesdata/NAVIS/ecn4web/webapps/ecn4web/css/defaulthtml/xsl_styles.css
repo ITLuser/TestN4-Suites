@@ -1,0 +1,189 @@
+body {
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    font-size: medium;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Define the appearance of buttons */
+input {
+    font-size: medium;
+    overflow: hidden;
+}
+
+.disabled {
+    cursor: default;
+}
+
+td.label {
+    text-align: right !important;
+    vertical-align: top;
+    padding-left: 5px !important;
+}
+
+td.value {
+    vertical-align: top;
+    text-align: left;
+}
+
+td.index {
+    text-align: right !important;
+}
+
+input.submit {
+    text-align: center
+}
+
+td.header {
+    font-weight: bold;
+}
+
+table.data tr.button {
+    cursor: pointer;
+}
+
+table.data caption, table.unit-data caption {
+    text-align: center;
+    font-weight: bold;
+    padding: 2px;
+    border-width: 1px;
+    border-style: solid;
+    width: 494px;
+}
+
+table.data tr td, table.unit-data tr td, .data .line-item, .info-message {
+    padding-top: 8px;
+    padding-left: 10px;
+    text-align: justify;
+    white-space: nowrap;
+}
+
+table.data td, table.unit-data td, .line-item {
+    padding: 2px 3px 2px 3px;
+}
+
+table.data tr td:first-child, table.unit-data tr td:first-child {
+    padding-left: 0 !important;
+}
+
+.data .table-footer td.footer {
+    padding-left: 10px !important;
+}
+
+.table-footer {
+    border-top-style: dashed;
+    border-top-width: 1px;
+}
+
+.small-footer {
+    margin-bottom: 5px !important;
+}
+
+div.line-item {
+    padding-bottom: 10px
+}
+
+/*Wrap around if the mission statement is too long for the div width*/
+.line-item {
+    white-space: normal !important;
+}
+
+div.header-info {
+    display: inline-block;
+    text-align: center;
+    width: 11em;
+    font-weight: 800;
+    font-family: sans-serif;
+    margin: 1px;
+}
+
+/*This style sheet is used when providing informative messages */
+.info-message {
+    font-size: 20px;
+    text-align: center;
+    padding-bottom: 10px;
+    padding-left: 0;
+}
+
+.data, .unit-data, .info-message {
+    width: 500px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Arial, Century, sans-serif;
+    border-width: 1px;
+    border-style: solid;
+    margin-bottom: 5px;
+    /*css 3 rounded border in Chrome and Firefox (pooooooor IE doesn't support it) */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+
+}
+
+fieldset table.data {
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+fieldset table.unit-data {
+    margin-top: 0px;
+    margin-bottom: -20px;
+}
+
+.attr-left {
+    text-align: right !important;
+}
+
+.line-index {
+    text-align: right !important;
+    padding-right: 20px !important;
+}
+
+.line-index1 {
+    text-align: left !important;
+    padding-right: 20px !important;
+}
+
+.line-index > abbr {
+    padding: 5px;
+}
+
+.line-index a {
+    text-decoration: none;
+}
+
+.attr-op {
+    text-align: justify !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.attr-right {
+    text-align: left;
+    padding-left: 0 !important
+}
+
+.hover-button {
+    font-weight: bold;
+}
+
+.promotedJob {
+    font: bold large;
+}
+
+a:focus {
+    text-decoration: none;
+}
+
+input.labeled {
+    font-weight: normal;
+}
+
+.splash-screen {
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.accesskey {
+    text-decoration: underline !important;
+}

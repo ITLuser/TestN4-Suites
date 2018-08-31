@@ -1,0 +1,74 @@
+<!-- Checks whether the user is logged in: if not redirects to index.zul -->
+<?page id="configurationSettingFormZul" title=" Configuration Setting" cacheable="false"
+        language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<!-- This allows us to use Spring beans. Example, apply="${beanName}". -->
+<?variable-resolver class="com.navis.framework.zk.server.ZDelegatingVariableResolver"?>
+<zk>
+
+    <zscript><![CDATA[
+        import com.navis.framework.FrameworkLabelPropertyKeys;
+        import com.navis.framework.presentation;  //is not working, I dont know why,,so used fully qualified class name
+        import com.navis.framework.zk.server.context.ZkRequestContextFactory;
+        String displayLabel =
+            com.navis.framework.presentation.FrameworkPresentationUtils.getTranslation(FrameworkLabelPropertyKeys.CONFIG_DETAILS);
+        Object formView = ZkRequestContextFactory.currentZkRequestContext().getBean("configurationSettingFormView");
+        Object formController = ZkRequestContextFactory.currentZkRequestContext().getBean("configurationSettingFormController");
+    ]]></zscript>
+    <window id="editConfigurationSetting" apply="com.navis.carina.configuration.zk.controller.ConfigurationSettingZFormComposer"
+            width="650px" border="none">
+        <borderlayout height="600px">
+            <north size="10%">
+                <groupbox id="purposeBox">
+                    <caption label="Purpose"/>
+                    <!-- Purpose goes here, added by ConfigurationSettingForm -->
+                </groupbox>
+            </north>
+            <south size="90%">
+                <borderlayout>
+                    <west size="30%">
+                        <borderlayout>
+                            <north size="75%">
+                                <groupbox id="scopeBox">
+                                    <caption label="Scope"/>
+                                    <!-- Scope tree goes here, added by ConfigurationSettingForm -->
+                                </groupbox>
+                            </north>
+                            <south size="25%">
+                                <groupbox id="detailsBox">
+                                    <caption label="${displayLabel}"/>
+                                    <grid>
+                                        <rows id="displayRows">
+                                            <!-- Details go here, added by ConfigurationSettingForm -->
+                                        </rows>
+                                    </grid>
+                                </groupbox>
+                            </south>
+                        </borderlayout>
+                    </west>
+                    <east size="70%">
+                        <groupbox id="configurationSettingBox">
+                            <caption label="Global Setting"/>
+                            <borderlayout height="510px">
+                                <north height="93%">
+                                    <panel id="configurationSettingBoxPanel0" framable="false"
+                                           border="normal" collapsible="true" width="99%" visible="true">
+                                        <panelchildren>
+                                            <zForm variformId="FORM_CONFIGURATION"
+                                                   use="${formView}"
+                                                    formController="${formController}"
+                                                   />
+                                        </panelchildren>
+                                    </panel>
+                                </north>
+                                <south height="7%" id="buttonHolder">
+                                    <!--zFormButtons go here - added in AbstractZForm-->
+                                </south>
+                            </borderlayout>
+                        </groupbox>
+                    </east>
+                </borderlayout>
+            </south>
+        </borderlayout>
+    </window>
+</zk>

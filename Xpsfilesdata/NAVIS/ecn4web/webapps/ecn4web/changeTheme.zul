@@ -1,0 +1,27 @@
+<zk>
+    <script><![CDATA[
+$(window).bind("popstate", function(e) {
+    var theme;
+    e = e.originalEvent;
+    if (e.state && (theme == e.state.theme)) {
+    	changeTheme(theme, true);
+    }
+});
+function changeTheme(theme, ignore) {
+    // Drives the functionality, adds theme class to the html
+    if(theme == 'night'){
+	    jq('html').addClass('night');
+    } else {
+	    jq('html').removeClass('night');
+    }
+}
+
+zk.afterMount(function(){
+	// === Style switcher === //
+	$('.style-switcher i').click(function() {
+		$(this).parent().toggleClass('opened');
+		$(this).toggleClass('icon-arrow-left').toggleClass('icon-arrow-right');
+	});
+});
+]]></script>
+</zk>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT title ( #PCDATA ) >
+<!ELEMENT description ( #PCDATA ) >
+<!ELEMENT treeTitle ( #PCDATA ) >
+<!ELEMENT treeDescription ( #PCDATA ) >
+<!ELEMENT crumb ( #PCDATA ) >
+<!ELEMENT navTitle ( #PCDATA ) >
+
+<!ELEMENT help EMPTY >
+<!ATTLIST help path CDATA #REQUIRED >
+<!ATTLIST help target CDATA #IMPLIED >
+
+<!ELEMENT link (link)* >
+<!ATTLIST link pageId IDREF #REQUIRED >
+<!ATTLIST link path CDATA #IMPLIED >
+<!ATTLIST link securityCode CDATA #IMPLIED >
+<!ATTLIST link shortcut CDATA #IMPLIED >
+
+<!ELEMENT include EMPTY >
+<!ATTLIST include slot CDATA #REQUIRED >
+<!ATTLIST include path CDATA #REQUIRED >
+
+<!ELEMENT nav EMPTY >
+<!ATTLIST nav slot CDATA #REQUIRED >
+<!ATTLIST nav navBarId IDREF #REQUIRED >
+
+<!ELEMENT navBar (link)* >
+<!ATTLIST navBar id ID #REQUIRED >
+
+<!ELEMENT page ( crumb | nav | page | title | description |
+                 treeTitle | treeDescription |
+                 navTitle | help | include )* >
+<!ATTLIST page id ID #REQUIRED >
+<!ATTLIST page path CDATA #IMPLIED >
+<!ATTLIST page securityCode CDATA #IMPLIED >
+
+<!ELEMENT siteMap ( navBar | page )* >
+<!ATTLIST siteMap javaConstClassName NMTOKEN #REQUIRED >
+<!ATTLIST siteMap pagenameResourceKeyPrefix NMTOKEN #REQUIRED >
+<!ATTLIST siteMap pageDescriptionResourceKeyPrefix NMTOKEN #IMPLIED >
+<!ATTLIST siteMap breadcrumbResourceKeyPrefix NMTOKEN #REQUIRED >
+<!ATTLIST siteMap navTitleResourceKeyPrefix NMTOKEN #REQUIRED >
+<!ATTLIST siteMap treeTitleResourceKeyPrefix NMTOKEN #IMPLIED >
+<!ATTLIST siteMap treeDescriptionResourceKeyPrefix NMTOKEN #IMPLIED >

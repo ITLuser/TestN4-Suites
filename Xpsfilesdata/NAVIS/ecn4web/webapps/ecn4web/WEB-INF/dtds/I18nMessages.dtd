@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2004 NAVIS LLC.  All Rights Reserved.
+
+Note that each tag has the structure:
+
+CATEGORY__ERROR_TYPE
+
+'CATEGORY' is the general category of the error to help keep things organized
+
+'ERROR_TYPE' name as long as necessary to clearly explain the error message.
+This should generally be a direct transformation of the English error message,
+although the English (value) may add a little more.
+
+This file will be used by the presentation tier to build localizable resource
+files and to present messages to the user.
+
+You'll have to encode entities (less than, greater than and ampersands [avoid]),
+and don't use line breaks within the messages. If you need these, bring it up
+as a new requirement.
+
+
+History:
+Version 1.0 2004.03 AJP
+Rewrote many of the framework files, so it made sense to go
+ahead and add DTD validation.
+The Xslts may handle a more flexible format than this, but this is the officially
+sanctioned one. If you have another format, ask Andy to convert it. He has an
+Xsl that will do this.
+ -->
+
+<!ELEMENT properties (message+)>
+
+<!-- a message can have one or more "values", which is the actual localized
+string. By default it is assumed to be English. In the future, we will allow
+multiple languages here and use the "lang" attribute to differenciate them. -->
+<!ELEMENT message (value)*>
+
+<!-- A message must have a key. This should be formatted like a Java constant,
+such as "MYAPP_MODULE_ERROR_FORGOT_TO_BUY_MILK". The naming scheme is somewhat
+loose at this point. Pick a rigorous one if you would like.
+ An optional "class" may be used to group messages into categories. This may
+ make the localizers job easier and will make it easier to break up files later
+ on into different pieces.
+ -->
+<!ATTLIST message class CDATA #IMPLIED>
+<!ATTLIST message key CDATA #REQUIRED>
+
+<!-- Localized message. Make sure the encoding matches the file's encoding.
+See Java documentation on parameter substitution with {0}, {1}, etc. -->
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST value lang CDATA #IMPLIED >

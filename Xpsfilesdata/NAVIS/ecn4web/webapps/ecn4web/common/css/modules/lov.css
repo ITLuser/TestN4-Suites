@@ -1,0 +1,63 @@
+/************************************************************************/
+/**** lovMenu.CSS                                                    ****/
+/**** Used by context lovMenus and lovMenubar lovMenus.              ****/
+/************************************************************************/
+
+/****************************** imports  ********************************/
+/**** Import any module css required by this css                     ****/
+/************************************************************************/
+
+/****************************** global  *********************************/
+/**** Applies to all flavors of autocomplete.                        ****/
+/************************************************************************/
+.lov, .inlineLov
+{
+
+}
+
+/*************************** autocomplete  ******************************/
+/**** Standard autocomplete with popup list.                         ****/
+/************************************************************************/
+.lov
+{
+    display:none;
+    position:absolute;
+    top:0px;
+    left:0px;
+    FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=80);
+    -moz-opacity:0.8;
+    background-color: #EDEDED;
+    z-index:1000;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    overflow:auto;
+}
+.lovInput, .lovInput_active
+{
+    border-right:none;
+    cursor: default;
+    background-image:url(../../images/buttons/inputWidgets/lovDrop.gif);
+    background-position:right top;
+    background-repeat:no-repeat;
+    border:1px #5c5c5c solid;
+    background-color:#FFF;
+}
+.lovInput_active
+{
+    background-color:#EBEBEB;
+    background-image:url(../../images/buttons/inputWidgets/lovDrop_down.gif);
+    border:1px #5c5c5c solid;
+}
+select.lov option
+{
+    color:#000;
+}
+
+/************************ inline autocomplete  **************************/
+/**** Inline autocomplete with static, inline list.                  ****/
+/************************************************************************/
+.inlineLov
+{
+    float:bottom;
+    width:100%;
+}

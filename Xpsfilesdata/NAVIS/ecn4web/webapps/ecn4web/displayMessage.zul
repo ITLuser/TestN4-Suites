@@ -1,0 +1,14 @@
+<!--
+  ~ Copyright (c) 2014 Navis LLC. All Rights Reserved.
+  ~
+  -->
+
+<zk>
+    <zscript><![CDATA[
+        import org.zkoss.zk.ui.Executions;
+        String message = Executions.getCurrent().getParameter("messageString")
+    ]]></zscript>
+    <hbox class="standAloneMessageBox" align="center" pack="center" vflex="1" width="80%">
+        <label class="standAloneMessage" value="${message}"/>
+    </hbox>
+</zk>

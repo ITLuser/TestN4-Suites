@@ -1,0 +1,63 @@
+<!-- Checks whether the user is logged in: if not redirects to index.zul -->
+<?page id="metafieldOverrideFormZul" title=" Overide Metafield" cacheable="false"
+        language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<!-- This allows us to use Spring beans. Example, apply="${beanName}". -->
+<?variable-resolver class="com.navis.framework.zk.server.ZDelegatingVariableResolver"?>
+<zk>
+
+    <zscript><![CDATA[
+        import com.navis.framework.ConfigPropertyKeys;
+        import com.navis.framework.presentation;  //is not working, I dont know why,,so used fully qualified class name
+        import com.navis.framework.zk.server.context.ZkRequestContextFactory;
+        String defaultDefLabel =
+            com.navis.framework.presentation.FrameworkPresentationUtils.getTranslation(ConfigPropertyKeys.LABEL_DEFAULT_DEFINITION);
+        Object formController = ZkRequestContextFactory.currentZkRequestContext().getBean("metafieldOverrideFormController");
+    ]]></zscript>
+    <window id="editMetafield" apply="com.navis.carina.configuration.zk.metafield.controller.MetafieldOverrideZFormComposer"
+            width="850px" border="none">
+        <borderlayout height="450px">
+            <west size="30%">
+                <groupbox id="scopeBox">
+                    <caption label="Scope"/>
+                    <!-- Scope tree goes here, added by MetafieldOverrideForm -->
+                </groupbox>
+            </west>
+            <east size="70%">
+                <borderlayout>
+                    <north height="30%">
+                        <groupbox id="defaultDefBox">
+                            <caption label="${defaultDefLabel}"/>
+                            <grid>
+                                <rows id="displayRows">
+                                    <!-- Default Definition values goes here, added by MetafieldOverrideForm -->
+                                </rows>
+                            </grid>
+                        </groupbox>
+                    </north>
+                    <south height="70%">
+                        <groupbox id="metafieldOverrideBox">
+                            <caption label="Metafield Override"/>
+                            <borderlayout height="300px">
+                                <north height="87%">
+                                    <panel id="metafieldCustomOptionsPanel0" framable="false"
+                                           border="normal" collapsible="true" width="99%" visible="true">
+                                        <panelchildren>
+                                            <zForm variformId="FORM_METAFIELD_OVERRIDE"
+                                                   use="com.navis.carina.configuration.zk.metafield.view.MetafieldOverrideForm"
+                                                   formController="${formController}"
+                                                   />
+                                        </panelchildren>
+                                    </panel>
+                                </north>
+                                 <south height="13%" id="buttonHolder">
+                                     <!--zFormButtons go here - added in AbstractZForm-->
+                                </south>
+                            </borderlayout>
+                        </groupbox>
+                    </south>
+                </borderlayout>
+            </east>
+        </borderlayout>
+    </window>
+</zk>

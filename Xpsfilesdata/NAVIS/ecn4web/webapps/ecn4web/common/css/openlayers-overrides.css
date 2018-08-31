@@ -1,0 +1,591 @@
+/*
+ * Copyright (c) 2010 Zebra Technologies Corp. All Rights Reserved.
+ * $Id: $
+ */
+
+/**
+ * This file overrides those in openlayers.css that reference images
+ *
+ */
+.olControlOverviewMapExtentRectangle {
+    overflow: hidden;
+    background-image: url("../images/openlayers/blank.gif");
+    cursor: move;
+    border: 2px dotted red;
+}
+
+.comnavisolControlOverviewMapWithZoomBarContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.comnavisolControlOverviewMapWithZoomBarElement {
+    padding: 10px 18px 10px 40px;
+    background-color: #F0F0F0;
+    -moz-border-radius: 1em 0 0 0;
+}
+
+.zoomin > img {
+    background-image: url("../images/newopenlayers/zoom-plus-mini.png");
+}
+
+.zoomout > img {
+    background-image: url("../images/newopenlayers/zoom-minus-mini.png");
+}
+
+.comnavisolControlOverviewMapWithZoomBarMinimizeButton {
+    right: 0;
+    bottom: 80px;
+    cursor: pointer;
+}
+
+.comnavisolControlOverviewMapWithZoomBarMaximizeButton {
+    right: 0;
+    bottom: 80px;
+    cursor: pointer;
+}
+
+.comnavisolControlOverviewMapWithZoomBarExtentRectangle {
+    overflow: hidden;
+    background-image: url("img/blank.gif");
+    cursor: move;
+    border: 2px dotted red;
+}
+
+.comnavisolControlOverviewMapWithZoomBarRectReplacement {
+    overflow: hidden;
+    cursor: move;
+    background-image: url("img/overview_replacement.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.comnavisolControlZoomBar div {
+    font-size: 1px;
+}
+
+.olControlOverviewMapRectReplacement {
+    overflow: hidden;
+    cursor: move;
+    background-image: url("../images/openlayers/overview_replacement.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.olControlNavigationHistory {
+   background-image: url("../images/openlayers/navigation_history.png");
+   background-repeat: no-repeat;
+   width:  20px;
+   height: 20px;
+
+}
+.olControlNavToolbar .olControlNavigationItemActive {
+  background-image: url("../images/openlayers/panning-hand-on.png");
+  background-repeat: no-repeat;
+}
+.olControlNavToolbar .olControlNavigationItemInactive {
+  background-image: url("../images/openlayers/panning-hand-off.png");
+  background-repeat: no-repeat;
+}
+.olControlNavToolbar .olControlZoomBoxItemActive {
+  background-image: url("../images/openlayers/drag-rectangle-on.png");
+  background-color: orange;
+  background-repeat: no-repeat;
+}
+.olControlNavToolbar .olControlZoomBoxItemInactive {
+  background-image: url("../images/openlayers/drag-rectangle-off.png");
+  background-repeat: no-repeat;
+}
+.olControlEditingToolbar div {
+  background-image: url("../images/openlayers/editing_tool_bar.png");
+  background-repeat: no-repeat;
+  float:right;
+  width:  20px;
+  height: 20px;
+  margin: 5px;
+}
+div.olControlSaveFeaturesItemActive {
+    background-image: url(../images/openlayers/save_features_on.png);
+    background-repeat: no-repeat;
+    background-position: 0px 1px;
+}
+div.olControlSaveFeaturesItemInactive {
+    background-image: url(../images/openlayers/save_features_off.png);
+    background-repeat: no-repeat;
+    background-position: 0px 1px;
+}
+.olControlPanPanel div {
+    background-image: url(../images/openlayers/pan-panel.png);
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+    position: absolute;
+}
+.olControlZoomPanel div {
+    background-image: url(../images/openlayers/zoom-panel.png);
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    cursor: pointer;
+}
+.olPopupCloseBox {
+  background: url("../images/openlayers/close.gif") no-repeat;
+  cursor: pointer;
+}
+
+.olControlPanel div {
+    display:block;
+    width:  26px;
+    height: 26px;
+    margin: 6px 5px 5px 5px;
+    background-color:transparent;
+}
+
+.olControlPanel {
+    margin-left: 170px;
+}
+
+.olControlPanel .olControlDrawFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -26px -23px ;
+}
+.olControlPanel .olControlDrawFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -26px 0px;
+}
+.olControlPanel .olControlDrawPolygonItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -52px -23px ;
+}
+.olControlPanel .olControlDrawPolygonItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -52px 0px;
+}
+.olControlPanel .olControlDrawRegularPolygonItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -26px -23px ;
+}
+.olControlPanel .olControlDrawRegularPolygonItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -26px 0px;
+}
+.olControlPanel .olControlDrawLineItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/draw_line_on.png");
+}
+.olControlPanel .olControlDrawLineItemInactive {
+    width:  20px;
+    height:  20px;
+    background-image: url("../images/newopenlayers/draw_line_off.png");
+}
+.olControlPanel .olControlModifyFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -77px -23px;
+}
+.olControlPanel .olControlModifyFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/openlayers/editing_tool_bar.png");
+    background-position: -77px -0px;
+}
+.olControlPanel .olControlReshapeFeatureItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 165px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/reshape_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlReshapeFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 166px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/reshape_off.png");
+}
+.olControlPanel .olControlReshapeFeatureItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 166px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/reshape_disabled.png");
+}
+.olControlPanel .olControlResizeFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/remove_point_on.png");
+}
+.olControlPanel .olControlResizeFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/remove_point_off.png");
+}
+.olControlPanel .olControlMoveFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    
+    background-image: url("../images/newopenlayers/move_feature_on.png");
+}
+.olControlPanel .olControlMoveFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/move_feature_off.png");
+}
+.olControlPanel .olControlMoveNodeItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 257px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/move_node_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlMoveNodeItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 258px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/move_node_off.png");
+}
+.olControlPanel .olControlMoveNodeItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 258px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/move_node_disabled.png");
+}
+.olControlPanel .olControlOriginItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 27px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/Origin_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlOriginItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 28px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/Origin_off.png");
+}
+.olControlPanel .olControlOriginItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 28px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/Origin_disabled.png");
+}
+.olControlPanel .olControlRotateFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/info_on.png");
+}
+.olControlPanel .olControlRotateFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/info_off.png");
+}
+.olControlPanel .olControlSelectFeatureItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/info_on.png");
+}
+.olControlPanel .olControlSelectFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/info_off.png");
+}
+.olControlPanel .olControlHoverFeatureItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 188px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/info_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlHoverFeatureItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 189px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/info_off.png");
+}
+.olControlPanel .olControlHoverFeatureItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 189px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/info_disabled.png");
+}
+.olControlPanel .olControlTargetItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/target_on.png");
+}
+.olControlPanel .olControlTargetItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/target_off.png");
+}
+.olControlPanel .olControlTargetItemDisabled {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/target_disabled.png");
+}
+.olControlPanel .olControlDrawEdgeItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 211px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/draw_edge_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlDrawEdgeItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 212px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/draw_edge_off.png");
+}
+.olControlPanel .olControlDrawEdgeItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 212px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/draw_edge_disabled.png");
+}
+.olControlPanel .olControlDrawNodeItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 234px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/draw_node_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlDrawNodeItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 235px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/draw_node_off.png");
+}
+.olControlPanel .olControlDrawNodeItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 235px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/draw_node_disabled.png");
+}
+.olControlPanel .olControlAItemActive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/A_on.png");
+}
+.olControlPanel .olControlAItemInactive {
+    width:  20px;
+    height: 20px;
+    background-image: url("../images/newopenlayers/A_off.png");
+}
+.olControlPanel .olControlBItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 142px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/B_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlBItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 143px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/B_off.png");
+}
+.olControlPanel .olControlBItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 143px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/B_disabled.png");
+}
+.olControlPanel .olControlNItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 96px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/N_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlNItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 97px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/N_off.png");
+}
+.olControlPanel .olControlNItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 97px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/N_disabled.png");
+}
+.olControlPanel .olControlRItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 119px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/R_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlRItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 120px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/R_off.png");
+}
+.olControlPanel .olControlRItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 120px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/R_disabled.png");
+}
+.olControlPanel .olControlSItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 73px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/S_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlSItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 74px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/S_off.png");
+}
+.olControlPanel .olControlSItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 74px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/S_disabled.png");
+}
+.olControlPanel .olControlYItemActive {
+    width:  19px;
+    height: 19px;
+    margin-left: 50px;
+    margin-top: -26px;
+    background-image: url("../images/newopenlayers/Y_on.png");
+    border:1px solid #B71C1C;
+}
+.olControlPanel .olControlYItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 51px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/Y_off.png");
+}
+.olControlPanel .olControlYItemDisabled {
+    width:  20px;
+    height: 20px;
+    margin-left: 51px;
+    margin-top: -25px;
+    background-image: url("../images/newopenlayers/Y_disabled.png");
+}
+.olControlPanel .olControlBlankItemActive {
+    width:  20px;
+    height: 20px;
+    margin-left: 144px;
+    margin-top: -29px;
+    background-image: url("../images/openlayers/blank_on.png");
+}
+.olControlPanel .olControlBlankItemInactive {
+    width:  20px;
+    height: 20px;
+    margin-left: 144px;
+    margin-top: -29px;
+    background-image: url("../images/openlayers/blank_off.png");
+}
+
+
+/**
+ * Below are the custom layout for our popup on the zmap.
+ */
+
+div.zebra_ol_popup {
+  border-color: #848284;
+  border-style: solid;
+  border-width: 1px;
+    font-family: arial,sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 0;
+    padding: 0;
+}
+
+table.zebra_ol_popup {
+    background: none repeat scroll 0 0 white;
+}
+
+tr.zebra_ol_popup {
+    border: 0 none;
+    background: url('../images/openlayers/column-bg.png') repeat-x scroll 0 0 #C7E5F1;
+}
+
+th.zebra_ol_popup {
+    border-color: #FFFFFF #9B9FA7 #C5CAD5 #FFFFFF;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 11px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 2px;
+    white-space: nowrap;
+}
+
+td.zebra_ol_popup {
+    border-bottom: 1px solid #D6DBE9;
+    border-right: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    font-size: 11px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 0 2px;
+}
+
+.markerLabel {
+    font-family: Arial;
+    font-size: xx-small;
+    color: black;
+    background-color: white;
+    width: auto;
+    padding: 1px;
+    border: 1px black solid;
+    opacity: 0.8;
+    z-index: 1000;
+}
+
+.z-window.dialogStyle, .z-window.z-window-shadow, .z-window.z-window-overlapped {
+    background-color: #bdbdbd;
+    top: 10% !important;
+    left: 20% !important;
+}

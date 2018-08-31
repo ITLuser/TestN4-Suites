@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 1.0 1.2004 Etienne Studer -->
+<!-- WARNING! controllerRefId is deprecated -->
+
+<!ELEMENT navigationNodes (navigationNode)*>
+
+<!ELEMENT navigationNode (#PCDATA)>
+
+<!ATTLIST navigationNode
+id CDATA #REQUIRED
+text CDATA #REQUIRED
+mnemonic CDATA #IMPLIED
+icon CDATA #IMPLIED
+iconCssClass CDATA #IMPLIED
+selectedIcon CDATA #IMPLIED
+selectedIconCssClass CDATA #IMPLIED
+controllerRefId CDATA #IMPLIED
+commandRefId CDATA #IMPLIED
+variformId CDATA #IMPLIED
+destination CDATA #IMPLIED
+>
+

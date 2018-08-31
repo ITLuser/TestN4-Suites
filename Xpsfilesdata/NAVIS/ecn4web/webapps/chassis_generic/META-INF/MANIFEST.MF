@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.6
+Created-By: 1.8.0_92-b14 (Oracle Corporation)
+Build-By: teamcity
+Build-Date: 07/12/2018 05:42:26
+Build-Number: - local -
+Revision: ${svnrevision}
+Implementation-Vendor: Navis LLC
+Implementation-URL: http://www.navis.com/
+

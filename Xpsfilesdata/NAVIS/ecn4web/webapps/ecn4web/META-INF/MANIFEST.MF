@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.9.6
+Created-By: 1.8.0_92-b14 (Oracle Corporation)
+Build-By: teamcity
+Build-Date: 07/12/2018 05:47:16
+Build-Number: - local -
+Specification-Version: 3.5.1.8
+Implementation-Title: Ecn4web
+Implementation-Version: 289545
+Implementation-Vendor: Navis LLC
+Implementation-URL: http://www.navis.com/
+

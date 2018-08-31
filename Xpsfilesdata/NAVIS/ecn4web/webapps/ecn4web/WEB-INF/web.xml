@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+             http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <display-name>ecn4web</display-name>
+    <description>
+        Web XML RDT Gateway
+    </description>
+
+    <context-param>
+        <param-name>terminal</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>com.navis.ecn4web.client.xmlRdtClientImplementation</param-name>
+        <param-value>com.navis.ecn4web.client.XmlRdtClientImplEcn4Stub</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            com.navis.ecn4web.servlet.ServletContextListenerImpl
+        </listener-class>
+    </listener>
+
+    <servlet>
+        <servlet-name>ActionServlet</servlet-name>
+        <servlet-class>
+            com.navis.ecn4web.servlet.ActionServlet
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PollServlet</servlet-name>
+        <servlet-class>
+            com.navis.ecn4web.servlet.Poll
+        </servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ReceiveAsyncServlet</servlet-name>
+        <servlet-class>
+            com.navis.ecn4web.servlet.ReceiveAsync
+        </servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ActionServlet</servlet-name>
+        <url-pattern>
+            /servlet/xmlrdt
+        </url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PollServlet</servlet-name>
+        <url-pattern>
+            /servlet/Poll
+        </url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ReceiveAsyncServlet</servlet-name>
+        <url-pattern>
+            /servlet/receive
+        </url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>RequestScopeEntranceFilter</filter-name>
+        <filter-class>com.navis.ecn4web.RequestScopeFilter</filter-class>
+    </filter>
+
+    <filter id="CharacterEncodingFilter">
+        <description>Set character encoding used to UTF-8</description>
+        <filter-name>Character Encoding Filter</filter-name>
+        <filter-class>com.navis.ecn4web.filters.CharacterEncodingFilter</filter-class>
+    </filter>
+
+    <filter id="deviceTypeFilter">
+        <description>Resolves Device Type from User Agent</description>
+        <filter-name>Device Type Filter</filter-name>
+        <filter-class>com.navis.ecn4web.filters.DeviceTypeFilter</filter-class>
+    </filter>
+
+    <filter id="webAssetFilter">
+        <description>Redirect location for web assets. For example, to a customer specific web context</description>
+        <filter-name>Web Asset Filter</filter-name>
+        <filter-class>com.navis.ecn4web.filters.WebAssetFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>Character Encoding Filter</filter-name>
+        <url-pattern>/servlet/xmlrdt</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Character Encoding Filter</filter-name>
+        <url-pattern>/servlet/Poll</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Character Encoding Filter</filter-name>
+        <url-pattern>/servlet/receive</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Device Type Filter</filter-name>
+        <url-pattern>/servlet/xmlrdt</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Device Type Filter</filter-name>
+        <url-pattern>/servlet/Poll</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Device Type Filter</filter-name>
+        <url-pattern>/servlet/receive</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.css</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.js</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.jpg</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.png</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.gif</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>Web Asset Filter</filter-name>
+        <url-pattern>*.mp3</url-pattern>
+    </filter-mapping>
+
+</web-app>

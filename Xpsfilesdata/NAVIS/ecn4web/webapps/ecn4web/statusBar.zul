@@ -1,0 +1,25 @@
+<?page id="statusBarZul" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<window id="statusBar" width="100%" >
+<attribute name="onCreate"><![CDATA[
+			  import com.navis.framework.zk.view.ZkStatusBarService;
+                ZkStatusBarService.saveStatusBarOnUserSession(self);
+			]]></attribute>
+
+<attribute name="onUpdateStatus"><![CDATA[
+            String msg = (String)event.getData();
+            statusMsg.setSclass("statusBarMessage");
+            statusMsg.setValue(msg);
+            statusTimer.start();
+            ]]></attribute>
+
+<label id="statusMsg" sclass="statusBarNeutral" value="">
+</label>
+
+<timer id="statusTimer" delay="8000" repeats="false">
+    <attribute name="onTimer">
+        statusMsg.value = "";
+        statusMsg.setSclass("statusBarNeutral");
+    </attribute>
+</timer>
+</window>

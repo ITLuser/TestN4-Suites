@@ -1,0 +1,46 @@
+<!-- Checks whether the user is logged in: if not redirects to index.zul-->
+<?init class="com.navis.framework.zk.security.ZCheckLogin" ?>
+
+<?page id="pageHome" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<?link rel="shortcut icon" type="image/x-icon" href="/favicon.ico"?>
+<?link rel="icon" type="image/x-icon" href="/favicon.ico"?>
+
+<?link rel="stylesheet" type="text/css"	href="css/cssFramework.carina.css" ?>
+<!--<?link rel="stylesheet" type="text/css" href="css/cssFramework.touch.css"  if="${!empty session.getAttribute('addTouchStyle')}"?>-->
+<?link rel="stylesheet" type="text/css" href="css/cssSandbox.carina.css"?>
+<!-- Clipboard -->
+<?script type="text/javascript" href="common/javascript/clipboard.js"?>
+<!-- override default browser keyboard shortcuts-->
+
+<?script type="text/javascript" href="common/javascript/keyboardShortcutOverride.js"?>
+
+<?script  type="text/javascript" href="common/javascript/reconnecting-websocket.js"?>
+<?script  type="text/javascript" href="common/javascript/navisWebSocket.js"?>
+<!-- This allows us to use Spring beans. Example, apply="${beanName}". -->
+<?variable-resolver class="com.navis.framework.zk.server.ZDelegatingVariableResolver"?>
+<window xmlns:w="client" id="homeView" apply="${homeViewController}" vflex="1"
+        w:onBind="
+                NavisWebSocket.connect(this.desktop.uuid);
+                NavisWebSocket.getInstance().setOnReceiveHandler(function (message) {
+                    NavisWebSocket.getInstance().notify(message.data);
+                });">
+
+    <include src="topBar.zul"/>
+
+    <div id="content" vflex="1">
+        <!--
+            This is empty here. The navigation manager will dynamically pouplate this after the login with
+            appropriate 'stuff', like for example a tab panel or the welcome banner.
+        -->
+
+        <!--
+            Until we have the concept of persisting tabs, or allowing applications to launch commands
+            at startup we're just going to display the welcome view. Remove once more 'intelligent' startup is
+            implemented.
+        -->
+        <include src="welcome.zul"/>
+
+    </div>
+
+</window>

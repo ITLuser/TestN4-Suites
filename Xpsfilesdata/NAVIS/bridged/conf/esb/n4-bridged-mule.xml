@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:spring="http://www.springframework.org/schema/beans"
+      xmlns:metrics="http://www.ryantenney.com/schema/metrics"
+      xmlns:p="http://www.springframework.org/schema/p"
+      xmlns:jms="http://www.mulesoft.org/schema/mule/jms"
+      xmlns:quartz="http://www.mulesoft.org/schema/mule/quartz"
+      xmlns:stdio="http://www.mulesoft.org/schema/mule/stdio"
+      xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+      xmlns:http="http://www.mulesoft.org/schema/mule/http"
+      xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.ryantenney.com/schema/metrics    http://www.ryantenney.com/schema/metrics/metrics-3.0.xsd
+          http://www.mulesoft.org/schema/mule/jms http://www.mulesoft.org/schema/mule/jms/3.1/mule-jms.xsd
+          http://www.mulesoft.org/schema/mule/quartz http://www.mulesoft.org/schema/mule/quartz/3.1/mule-quartz.xsd
+          http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/3.1/mule.xsd
+          http://www.mulesoft.org/schema/mule/stdio http://www.mulesoft.org/schema/mule/stdio/3.1/mule-stdio.xsd
+          http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/3.1/mule-vm.xsd
+          http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/3.1/mule-http.xsd">
+
+    <spring:beans>
+        <spring:bean id="amqConfigParser" class="com.navis.framework.esb.server.configuration.ESBActiveMQBridge"/>
+        <spring:bean id="amqAdvisoryMessageListener" class="com.navis.bridged.bridge2.esb.ActiveMQBrokerConnectionListener">
+            <spring:constructor-arg>
+                <spring:ref bean="metricsLifecycleService"/>
+            </spring:constructor-arg>
+        </spring:bean>
+        <spring:bean id="amqBroker" class="com.navis.bridged.bridge2.esb.BridgeESBBrokerFactoryBean" init-method="init">
+            <spring:property name="config" value="classpath:esb/amq/activemq.xml"/>
+            <spring:property name="start" value="true"/>
+            <spring:property name="parser" ref="amqConfigParser"/>
+            <spring:property name="messageListener" ref="amqAdvisoryMessageListener"/>
+        </spring:bean>
+        <spring:bean id="jmsGroupIdTransformer" class="com.navis.framework.esb.transformers.JmsGroupIdTransformer"/>
+        <metrics:metric-registry id="metricRegistry"/>
+        <spring:bean id="metricsLifecycleService" class="com.navis.framework.portal.context.server.lifecycle.MetricsLifecycleService">
+            <spring:constructor-arg index="0" type="com.codahale.metrics.MetricRegistry" ref="metricRegistry"/>
+            <!-- Next parameter defines if ConsoleReporter is enabled or not -->
+            <spring:constructor-arg index="1" type="boolean" value="false"/>
+            <!-- Next parameter defines reporter's polling period in seconds -->
+            <spring:constructor-arg index="2" type="int" value="120"/>
+            <!-- Enable/Disable JVM metrics -->
+            <spring:constructor-arg index="3" type="boolean" value="false"/>
+            <!-- Enable/Disable InfluxDB reporter -->
+            <spring:constructor-arg index="4" type="boolean" value="false"/>
+        </spring:bean>
+    </spring:beans>
+
+    <configuration>
+        <default-threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+        <default-dispatcher-threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+        <default-receiver-threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+        <default-service-threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+    </configuration>
+
+    <carina:bean class="com.navis.bridged.bridge2.util.esb.N4BridgeMuleConfigGenerator"/>
+
+    <!-- IMPORTANT! brokerURL must match brokerName attribute on the broker bean in carina-activemq.xml -->
+    <jms:activemq-connector
+            name="jmsExternalConnector"
+            specification="1.1"
+            disableTemporaryReplyToDestinations="true"
+            brokerURL="${brokerName}"
+            numberOfConsumers="1"
+            maxRedelivery="1"
+            persistentDelivery="true">
+    </jms:activemq-connector>
+
+    <custom-transformer name="jmsMessageToCollectionOfXpsObjects"
+                        class="com.navis.framework.esb.server.configuration.JmsMessageToCollectionOfObjects"/>
+
+    <flow name="syncallFlow">
+        <vm:inbound-endpoint path="syncCall" exchange-pattern="request-response"/>
+        <component class="com.navis.bridged.bridge2.esb.HttpServerResolver"/>
+        <custom-filter class="com.navis.bridged.bridge2.esb.HttpRequestFilter" />
+        <http:outbound-endpoint host="#[header:INBOUND:hostname]" port="${port}" path="synchronous/get" keep-alive="false" method="GET"
+                                responseTimeout="${httpTimeout}"/>
+    </flow>
+
+    <model name="jmsBridgeModel">
+        <service name="n4-to-bridge-service" initialState="stopped">
+            <inbound>
+                <carina:output arg=""/>
+                <custom-processor class="com.navis.bridged.bridge2.session.bridgeesbinterface.N4MuleAsyncHandler"/>
+            </inbound>
+            <default-service-exception-strategy/>
+            <threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+        </service>
+
+        <service name="bridge-to-n4-service">
+            <inbound>
+                <vm:inbound-endpoint path="postToN4"/>
+            </inbound>
+            <component class="com.navis.framework.esb.server.mule.SiteContextComponent"/>
+            <outbound>
+                <multicasting-router>
+                    <jms:outbound-endpoint queue="bridge.#[header:OUTBOUND:siteCoordinate]?connector=jmsExternalConnector">
+                        <message-properties-transformer scope="outbound">
+                            <add-message-property key="siteCoordinate" value="#[header:INBOUND:siteCoordinate]"/>
+                            <add-message-property key="JMSXGroupID" value="#[header:INBOUND:JMSXGroupID]"/>
+                            <add-message-property key="JMSXGroupSeq" value="#[header:INBOUND:JMSXGroupSeq]"/>
+                        </message-properties-transformer>
+                    </jms:outbound-endpoint>
+                </multicasting-router>
+            </outbound>
+            <threading-profile maxThreadsActive="1" poolExhaustedAction="RUN"/>
+        </service>
+
+        <service name="postToGeneralTopicService">
+            <inbound>
+                <vm:inbound-endpoint address="vm://postToGeneralTopic"/>
+            </inbound>
+            <outbound>
+                <pass-through-router>
+                    <jms:outbound-endpoint topic="generalClusterTopic?connector=jmsExternalConnector">
+                        <message-properties-transformer scope="outbound">
+                            <add-message-property key="Sparcs_Scope" value="#[header:INBOUND:Sparcs_Scope]"/>
+                            <add-message-property key="Sparcs_MessageKind" value="#[header:INBOUND:Sparcs_MessageKind]"/>
+                            <add-message-property key="Sparcs_MessageChannel" value="#[header:INBOUND:Sparcs_MessageChannel]"/>
+                        </message-properties-transformer>
+                    </jms:outbound-endpoint>
+                </pass-through-router>
+            </outbound>
+        </service>
+
+        <service name="generalTopicListenerService">
+            <inbound>
+                <jms:inbound-endpoint topic="generalClusterTopic?connector=jmsExternalConnector"/>
+            </inbound>
+            <component class="com.navis.bridged.bridge2.esb.ProcessClusterMessageComponent"/>
+        </service>
+
+        <!--<service name="generateHeartBeatService">-->
+            <!--<inbound>-->
+                <!--<quartz:inbound-endpoint jobName="heartbeat-job" cronExpression="0/5 * * * * ?">-->
+                    <!--<quartz:event-generator-job/>-->
+                <!--</quartz:inbound-endpoint>-->
+            <!--</inbound>-->
+            <!--<component class="com.navis.bridged.bridge2.esb.PublishClusterHeartBeatComponent"/>-->
+            <!--<outbound>-->
+                <!--<pass-through-router>-->
+                    <!--<jms:outbound-endpoint topic="generalClusterTopic?connector=jmsExternalConnector"/>-->
+                <!--</pass-through-router>-->
+            <!--</outbound>-->
+        <!--</service>-->
+
+    </model>
+
+</mule>

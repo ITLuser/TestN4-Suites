@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (c) 2010 Zebra Technologies Corp. All Rights Reserved.
+  ~ $Id: $
+  -->
+
+<!--
+CONFIGURATION
+Defines the module to which this set of configurations belongs  -->
+<!ELEMENT configuration (feature*)>
+<!ATTLIST configuration module ID #REQUIRED >
+<!ATTLIST configuration abbrev CDATA #REQUIRED >
+
+<!--
+FEATURE
+Defines a set of configurations controlling a particular feature within the module. This feature is NOT a licensed feature but a module grouping -->
+<!ELEMENT feature (config+) >
+<!ATTLIST feature id ID #REQUIRED >
+
+<!--
+CONFIG
+Declaration of individual configurable behaviors for the module/feature -->
+<!ELEMENT config ((boolean|numeric|code|freetext|xml),scope?,license?,description,introduced,deprecated?,enabler?,lifecyclebean?) >
+<!ATTLIST config id ID #REQUIRED >
+<!ATTLIST config serial CDATA #REQUIRED >
+<!ATTLIST config locked CDATA #IMPLIED >
+
+<!ELEMENT license (licensedfeature+)>
+<!ELEMENT licensedfeature (#PCDATA)>
+
+<!--
+BOOLEAN
+Specifies a boolean valued configuration -->
+<!ELEMENT boolean EMPTY >
+<!ATTLIST boolean default (true|false) #REQUIRED >
+
+<!--
+NUMERIC
+Specifies a numeric valued configuration -->
+<!ELEMENT numeric EMPTY >
+<!ATTLIST numeric default CDATA #REQUIRED >
+<!ATTLIST numeric min CDATA #REQUIRED >
+<!ATTLIST numeric max CDATA #REQUIRED >
+
+<!--
+CODE
+Specifies a validated string valued configuration -->
+<!ELEMENT code (choice+) >
+<!ATTLIST code default CDATA #REQUIRED>
+<!ATTLIST code listable (true|false) #IMPLIED>
+<!ELEMENT choice (#PCDATA) >
+
+<!--
+FREETEXT
+Specifies an unvalidated string valued configuration -->
+<!ELEMENT freetext (#PCDATA) >
+<!ATTLIST freetext default CDATA #REQUIRED>
+<!ATTLIST freetext maxlength CDATA #IMPLIED>
+<!ATTLIST freetext password (true|false) #IMPLIED>
+
+<!--
+XML
+Specifies an XML-valued configuration -->
+<!ELEMENT xml (#PCDATA) >
+<!ATTLIST xml contentsEditable (true|false) "false">
+
+<!--
+SCOPE
+defines the allowed min & max scope of the configuration.
+Note that a missing scope element will define the config to be effective
+at all scopes.  See common/etc/xslts/configDefs2Java.xsl. -->
+<!ELEMENT scope EMPTY >
+<!ATTLIST scope min (global|operator|complex|facility|yard|finest) #REQUIRED>
+<!ATTLIST scope max (global|operator|complex|facility|yard|finest) #REQUIRED>
+
+<!--
+DESCRIPTION
+defines the purpose of the configuration - this will be exposed to the end user in the maintenance UI -->
+<!ELEMENT description (#PCDATA) >
+<!ATTLIST description lang CDATA #IMPLIED >
+<!--
+INTRODUCED
+defines the version when this configuration came into being -->
+<!ELEMENT introduced EMPTY >
+<!ATTLIST introduced version CDATA #REQUIRED>
+
+<!--
+DEPRECATED
+defines the version when this configuration was deprecated.  Element data should explain the reason -->
+<!ELEMENT deprecated (#PCDATA) >
+<!ATTLIST deprecated version CDATA #REQUIRED>
+
+<!--
+ENABLER
+defines another boolean-valued configuration that must have value TRUE for this config to be enabled  -->
+<!ELEMENT enabler EMPTY >
+<!ATTLIST enabler id CDATA #REQUIRED >
+
+<!ELEMENT lifecyclebean EMPTY >
+<!ATTLIST lifecyclebean id CDATA #REQUIRED >
+
+

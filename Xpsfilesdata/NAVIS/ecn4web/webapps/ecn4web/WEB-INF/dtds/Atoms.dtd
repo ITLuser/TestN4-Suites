@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Version 1.1 2004.03<br />
+Version 1.2 2005.02 add superclass, constructor arguments<br />
+ @root atomclass
+ -->
+ <!ELEMENT atomclass (constructor-args?,atom+)>
+
+<!-- @attr classname The name of the Java Class for this Atom (must match this file name: XyzAtom.xml becomes XyzAtom.java) -->
+<!ATTLIST atomclass classname CDATA #REQUIRED>
+
+<!-- @attr enum If true, then generate a TypeSafe Enum (new-style Atom, as of 2004.03) instead of a String
+     0.3 2004.06 new persisted enumerated type based on jakarta enums, stored as string  -->
+<!ATTLIST atomclass enum (true|false|string) #IMPLIED>
+
+<!-- @attr comment JavaDoc comment to be inserted into the JavaDoc describing this Atom Class -->
+<!ATTLIST atomclass comment CDATA #IMPLIED>
+
+<!-- @attr interface an interface or list of interfaces implemented by the generated atom. -->
+<!ATTLIST atomclass interface CDATA #IMPLIED>
+
+<!-- @attr superclass an explicit, fully-qualified superclass for this atom, Default is "AtomizedEnum" -->
+<!ATTLIST atomclass superclass CDATA #IMPLIED>
+
+<!-- @attr item-class an explicit, fully-qualified class for each item, Default is the class being generated. -->
+<!ATTLIST atomclass item-class CDATA #IMPLIED>
+
+<!-- Defines additional constructor arguments. The superclass must accept
+these in the exact order defined.
+ -->
+<!ELEMENT constructor-args (arg-def+)>
+
+<!-- An additional argument to the object constructor.
+ -->
+<!ELEMENT arg-def EMPTY >
+<!--
+@attr name the Java parameter name generated
+ -->
+<!ATTLIST arg-def name CDATA #REQUIRED>
+<!--
+@attr type the Java type generated
+ -->
+<!ATTLIST arg-def type CDATA #REQUIRED>
+
+<!-- An individual atom definition. An item of the enumeration. -->
+<!ELEMENT atom (arg*)>
+
+<!-- @attr ref the name of the Java instance constant. -->
+<!ATTLIST atom ref CDATA #REQUIRED>
+
+<!-- @attr key an internal String value that will be the string value stored in the database.
+If you are using the Enum type, it is the value used in the getEnum and similar
+interfaces. In most cases this should be the same as the ref attribute,
+but in some cases this value will not be a valid Java constant name,
+and therefore these need to be different. If you do not  specify the key,
+then the value will be taken from ref. -->
+<!ATTLIST atom key CDATA #IMPLIED>
+
+<!-- @attr description English language user will see in the UI to represent this Atom Instance.
+ It will be put into a properties file. -->
+<!ATTLIST atom description CDATA #REQUIRED>
+
+<!-- @attr doc the JavaDoc of the atom (ignored). -->
+<!ATTLIST atom doc CDATA #IMPLIED>
+
+<!-- @attr code a short code for this instance (sometimes seen in the UI)
+It will be put into a properties file. -->
+<!ATTLIST atom code CDATA #IMPLIED>
+
+<!-- @attr persist if this is an enum=true Atom, this is the integer value under which it will be persisted in the database -->
+<!ATTLIST atom persist (0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30) #IMPLIED>
+
+<!-- @attr backgroundColor the background color for display in tables -->
+<!ATTLIST atom backgroundColor CDATA #IMPLIED>
+
+<!-- @attr foregroundColor the foreground color for display in tables -->
+<!ATTLIST atom foregroundColor CDATA #IMPLIED>
+
+<!-- @attr iconIdPath the path for icon for display in tables -->
+<!ATTLIST atom iconIdPath CDATA #IMPLIED>
+
+<!-- An argument passed directly to the item constructor. This
+may be a complex Java expression, since it is copied directly to the source file. -->
+<!ELEMENT arg (#PCDATA)>
+
+<!--
+The idea here was to add any property. Since Atoms are conceptually immutable,
+exposing these setters seemed fundamentally wrong, and the idea was replaced
+by constructor argument implementation. This code was left to preserve this
+learning.
+!ELEMENT atom (property)*
+<!ELEMENT property (#PCDATA) >
+<!ATTLIST property name CDATA #REQUIRED>
+<!ATTLIST property type CDATA #IMPLIED>  "java.lang.String" is default
+-->

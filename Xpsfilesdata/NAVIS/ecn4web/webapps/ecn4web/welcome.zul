@@ -1,0 +1,14 @@
+<?page id="welcomeZul" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<window width="100%">
+
+    <div sclass="zebra-welcome">
+        <div sclass="zebra-welcome-inner">
+            <div sclass="zebra-welcome-logo">
+
+            </div>
+
+        </div>
+    </div>
+
+</window>

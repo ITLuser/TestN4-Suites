@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version 1.0 1.2004 Etienne Studer -->
+
+<!ELEMENT navigationTree (appUnit)*>
+<!ATTLIST navigationTree nodeRefId CDATA #IMPLIED>
+
+<!ELEMENT appUnit (bizUnit)*>
+<!ATTLIST appUnit nodeRefId CDATA #IMPLIED>
+
+<!ELEMENT bizUnit (funcMod)*>
+<!ATTLIST bizUnit nodeRefId CDATA #IMPLIED>
+
+<!ELEMENT funcMod (funcMod|funcSubMod|separator)*>
+<!ATTLIST funcMod nodeRefId CDATA #IMPLIED>
+
+<!ELEMENT funcSubMod (#PCDATA)>
+<!ATTLIST funcSubMod nodeRefId CDATA #IMPLIED>
+
+<!ELEMENT separator EMPTY>

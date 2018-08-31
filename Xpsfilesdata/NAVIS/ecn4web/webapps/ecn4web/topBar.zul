@@ -1,0 +1,77 @@
+<?page id="exmNavZul" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<!-- This allows us to use Spring beans. Example, apply="${beanName}". -->
+<?variable-resolver class="com.navis.framework.zk.server.ZDelegatingVariableResolver"?>
+
+<window width="100%">
+  <zscript><![CDATA[
+    import com.navis.framework.presentation.context.PresentationContextUtils;
+    import com.navis.framework.presentation.metafields.FieldUsage;
+    import com.navis.framework.presentation.metafields.FieldUsageImp;
+    import com.navis.framework.presentation.navigation.NavigationUtils;
+    import com.navis.framework.web.FrameworkGuiMetafield;
+
+    FieldUsage fieldUsage = new FieldUsageImp(FrameworkGuiMetafield.OPEN_NODE_TAB_CHOOSER, PresentationContextUtils.getRequestContext());
+
+    void gotoTab() {
+      //  openNodeTabChooser is FrameworkGuiMetafield.OPEN_NODE_TAB_CHOOSER.getFieldId()
+      NavigationUtils.gotoNodeTab(openNodeTabChooser.convertedValue);
+    }
+  ]]></zscript>
+
+    <n:table xmlns:n="http://www.zkoss.org/2005/zk/native" class="zebra-top-bar" border="0" width="100%" cellspacing="0" cellpadding="0">
+        <n:tr>
+            <n:td width="100%" align="right">
+                <div sclass="zebra-top-bar-info" id="loginInformation" align="right">
+                    <n:table border="0" width="100%" cellspacing="0" cellpadding="0" align="right">
+                        <n:tr>
+                            <n:td align="right">
+                                <label id="userId"/>
+                            </n:td>
+                            <n:td align="right" width="20px">
+                                <separator orient="vertical" bar="true" spacing="5px"/>
+                            </n:td>
+                            <n:td align="right" width="168px">
+                                <zPopupLov fieldUsage="${fieldUsage}" onSelect="gotoTab()"/>
+                            </n:td>
+                            <n:td align="right" width="20px">
+                                <separator orient="vertical" bar="true" spacing="5px"/>
+                            </n:td>
+                            <n:td align="right" width="50px">
+                                <toolbarbutton label="Logout" id="logout" onClick="logout()" sclass="zebra-login-link"/>
+                            </n:td>
+                        </n:tr>
+                    </n:table>
+                </div>
+            </n:td>
+            <n:td align="right">
+                <div sclass="zebra-top-bar-custlogo">
+                    <image src="/customer_logo.png"/>
+                </div>
+            </n:td>
+        </n:tr>
+    </n:table>
+
+    <zMenubar width="100%"/>
+
+    <zscript><![CDATA[
+        import com.navis.framework.zk.util.ZFrameworkUtils;
+        import com.navis.framework.zk.server.context.ZkRequestContextFactory;
+        import com.navis.framework.FrameworkLabelPropertyKeys;
+        import com.navis.framework.presentation.FrameworkPresentationUtils;
+
+        String logoutLink = FrameworkPresentationUtils.getTranslation(FrameworkLabelPropertyKeys.LABEL_ZK_LOG_OUT);
+        logout.setLabel(logoutLink);
+
+        String userIdLabel = FrameworkPresentationUtils.getTranslation(FrameworkLabelPropertyKeys.LABEL_ZK_USER_ID);
+
+        if (ZFrameworkUtils.isUserLoggedIn()){
+            userId.setValue(userIdLabel +" "+ ZkRequestContextFactory.currentZkRequestContext().getUserContext().getUserId());
+        }
+
+        void logout(){
+            ZFrameworkUtils.logout();
+        }
+    ]]></zscript>
+
+</window>

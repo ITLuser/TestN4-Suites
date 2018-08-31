@@ -1,0 +1,17 @@
+<?page id="pageTestPushToClient" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<zk>
+    <style dynamic="true">
+        .comet-news {
+            color: #0A94F3;
+        }
+    </style>
+    <vbox>
+        <hbox>
+        <button label="Start" width="98px"
+            onClick="com.navis.sandbox.zk.controller.form.TestPushContentToClientController.start(info)"/>
+        <button label="Stop" width="98px" onClick="com.navis.sandbox.zk.controller.form.TestPushContentToClientController.stop()"/>
+        </hbox>
+        <image id="info" width="200px" height="200px"/>
+    </vbox>
+</zk>

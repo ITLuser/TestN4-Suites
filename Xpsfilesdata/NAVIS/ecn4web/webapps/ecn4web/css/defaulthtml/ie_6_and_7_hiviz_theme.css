@@ -1,0 +1,35 @@
+/*IE 6 and IE 7 hiviz (night time) css color rules.
+The rules below apply to IE 6 and IE 7 browsers equally. You may need to tweak the rules below if altering the look of ECN4-Web and
+using either IE 6 or IE 7 otherwise you don't need to touch them*/
+fieldset.button {
+    background: #444444;
+    border-top-color: #777777 !important;
+    border-right-color: #555555 !important;
+    border-bottom-color: #333333 !important;
+    border-left-color: #555555 !important;
+}
+
+div.footer > span.segmented > a.button {
+    background: #444444;
+    border-top-color: #777777 !important;
+    border-right-color: #555555 !important;
+    border-bottom-color: #333333 !important;
+    border-left-color: #555555 !important;
+}
+
+span.segmented a.button {
+    background: #666666;
+}
+
+.focus, a:focus {
+    border-color: #ffcc66;
+}
+
+.close-button, .exclamation-button {
+    background-color: #ffffff;
+}
+
+div.header-info {
+    color: rgb(11, 152, 8);
+}
+

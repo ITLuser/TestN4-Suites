@@ -1,0 +1,61 @@
+body {
+    background: #ffffff;
+    color: #000000;
+    font-family: Verdana, Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center
+}
+
+/* Title at the top of the screen */
+.title {
+    margin: 15px 0;
+    font-size: large;
+}
+
+/* Pad the top and bottom of table cells */
+td {
+    padding: 25px 0
+}
+
+/* Define the appearance of buttons */
+input {
+    width: 180px;
+    height: 50px;
+    font-size: large;
+    overflow: hidden;
+}
+
+/* Define the appearance of long buttons at the bottom of the screen */
+.longButton {
+    width: 400px;
+    height: 50px;
+    font-size: large;
+    overflow: hidden;
+}
+
+/* Define the appearance of long buttons at the bottom of the screen */
+.hideSubmit {
+    width: 100px;
+    height: 20px;
+    font-size: small;
+    display: none;
+}
+
+/* Define the appearance of long buttons at the bottom of the screen */
+.showSubmit {
+    width: 500px;
+    height: 50px;
+    font-size: large;
+    display: block;
+}
+
+/* Define spacing for screen with two columns of buttons */
+.twoCol {
+    padding-right: 100px;
+}
+
+/* Define spacing for screen with three columns of buttons */
+.threeCol {
+    padding-right: 66px;
+}

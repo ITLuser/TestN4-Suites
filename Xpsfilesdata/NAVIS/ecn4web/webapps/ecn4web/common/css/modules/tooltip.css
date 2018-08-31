@@ -1,0 +1,82 @@
+/************************************************************************/
+/**** TOOLTIP.CSS                                                    ****/
+/**** Controls appearance of application tooltips.                   ****/
+/************************************************************************/
+
+/****************************** imports  ********************************/
+/**** Import any module css required by this css                     ****/
+/************************************************************************/
+
+
+.tip
+{
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=90);
+	-moz-opacity:0.9;
+  	position:absolute;
+	top:1px;
+	left:1px;
+	background-color:#6DAD21;
+	padding:3px;
+	font-size:10px;
+	font-family:verdana,arial,sans-serif;
+	color:#FFFFFF;
+	display:block;
+	visibility:hidden;
+	z-index:100;
+}
+.tipPointer
+{
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=90);
+	-moz-opacity:0.9;
+	top:1px;
+	left:1px;
+	visibility:hidden;
+	position:absolute;
+}
+.tipShadow
+{
+  	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=10);
+  	-moz-opacity:0.1;
+	position:absolute;
+	top:1px;
+	left:1px;
+	background-color:#000000;
+	display:block;
+	visibility:hidden;
+	z-index:1;
+}
+.tipPointerShadow
+{
+  	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=10);
+  	-moz-opacity:0.1;
+	top:1px;
+	left:1px;
+	visibility:hidden;
+	position:absolute;
+}
+.errorTip
+{
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=90);
+	-moz-opacity:0.9;
+  	position:absolute;
+	top:1px;
+	left:1px;
+	background-color:#CC0000;
+	padding:3px;
+	font-size:10px;
+	font-family:verdana,arial,sans-serif;
+	font-weight:normal;
+	color:#FFFFFF;
+	display:block;
+	visibility:hidden;
+	z-index:100;
+}
+.errorTipPointer
+{
+	FILTER:progid:DXImageTransform.Microsoft.Alpha(style=0,opacity=90);
+	-moz-opacity:0.9;
+	top:1px;
+	left:1px;
+	visibility:hidden;
+	position:absolute;
+}

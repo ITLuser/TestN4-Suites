@@ -1,0 +1,133 @@
+__________________________________________________________________________
+
+Thu Aug 09 06:27:09 IST 2018
+
+Free Memory: 64198 kB
+Total Memory: 126464 kB
+
+java.class.path:
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData\IAClasses.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData\Execute.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\Windows\InstallerData\Execute.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData\Resource1.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\Windows\InstallerData\Resource1.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\Windows\InstallerData
+
+ZGUtil.CLASS_PATH:
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData\IAClasses.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData\Execute.zip
+    C:\Users\itluser\AppData\Local\Temp\I1533819111\InstallerData
+
+sun.boot.class.path:
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar
+    C:\Program Files\Java\jdk1.8.0_131\jre\classes
+
+java.ext.dirs:
+    C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext
+    C:\Windows\Sun\Java\lib\ext
+
+java.version                  == 1.8.0_131 (Java 1)
+java.vm.name                  == Java HotSpot(TM) 64-Bit Server VM
+java.vm.vendor                == Oracle Corporation
+java.vm.version               == 25.131-b11
+java.vm.specification.name    == Java Virtual Machine Specification
+java.vm.specification.vendor  == Oracle Corporation
+java.vm.specification.version == 1.8
+java.specification.name       == Java Platform API Specification
+java.specification.vendor     == Oracle Corporation
+java.specification.version    == 1.8
+java.vendor                   == Oracle Corporation
+java.vendor.url               == http://java.oracle.com/
+java.class.version            == 52.0
+java.library.path             == C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\ProgramData\Oracle\Java\javapath;C:\STAF\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;D:\N4_Code_base\n4-app\tools\ant\bin;D:\Backup\activator-1.3.7-minimal;C:\Program Files\Git\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\ManagementStudio\;C:\Program Files\nodejs\;C:\Program Files\TortoiseSVN\bin;C:\Users\itluser\Downloads\marathonite\marathonite-5.0;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\Java\jre1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Java\jdk1.8.0_131\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files\Java\jdk1.8.0_131\bin;.
+java.compiler                 == null
+java.home                     == C:\Program Files\Java\jdk1.8.0_131\jre
+java.io.tmpdir                == C:\Users\itluser\AppData\Local\Temp\
+os.name                       == Microsoft Windows 8.1 Enterprise
+os.arch                       == amd64
+os.version                    == 6.3.9600
+path.separator                == ;
+file.separator                == \
+file.encoding                 == Cp1252
+user.name                     == itluser
+user.home                     == C:\Users\itluser
+user.dir                      == C:\Users\itluser\AppData\Local\Temp\I1533819111\Windows
+user.language                 == en
+user.region                   == null
+__________________________________________________________________________
+
+Installed Feature(s) Application, Configu of N4
+
+Install Begin: AUGUST 9, 2018 6:24:40 PM IST
+Install End: AUGUST 9, 2018 6:25:25 PM IST
+
+Installed by InstallAnywhere 18.0 Premier Build 5608
+
+INSTALLATION WAS CANCELLED BY USER DURING PRE-INSTALLATION
+
+User Interactions
+-----------------
+
+
+#Choose Install Set
+#------------------
+CHOSEN_FEATURE_LIST=Application,Configu
+CHOSEN_INSTALL_FEATURE_LIST=Application,Configu
+CHOSEN_INSTALL_SET=Green
+
+#Choose Host Type
+#----------------
+CENTER_NODE=1
+CENTER_CONFIGS=0
+CLUSTER_NODES=0
+
+#Choose Install Folders
+#----------------------
+USER_INSTALL_DIR=D:\\NAVIS
+USER_MAGIC_FOLDER_2=D:\\NAVIS
+
+#Network Shared Folder
+#---------------------
+USER_MAGIC_FOLDER_3=\\192.168.1.100
+
+Summary
+-------
+
+Installation:  Cancelled during pre-install.
+
+8 Successes
+0 Warnings
+0 NonFatalErrors
+0 FatalErrors
+
+Action Notes:
+
+None
+
+Install Log Detail:
+
+Check Disk Space:         D:\NAVIS
+                          Status: SUCCESSFUL
+                          Additional Notes: NOTE - Required Disk Space:7,125,081 Bytes Free Disk Space:137,687,789,568 Bytes 
+
+
+Execute Command:          cmd /c sc query "n4center"
+                          Status: SUCCESSFUL
+
+Execute Command:          cmd /c sc query "n4cluster"
+                          Status: SUCCESSFUL
+
+
+Custom Action:            com.zerog.ia.customcode.utils.ModifyString
+                          Status: SUCCESSFUL
+
+
+
+INSTALLATION WAS CANCELLED BY USER DURING PRE-INSTALLATION

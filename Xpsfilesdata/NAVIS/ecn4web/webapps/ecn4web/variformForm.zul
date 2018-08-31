@@ -1,0 +1,43 @@
+<!-- Checks whether the user is logged in: if not redirects to index.zul -->
+<?page id="editExceptionHostZul" title=" Edit Exception Host" cacheable="false"
+        language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+
+<!-- This allows us to use Spring beans. Example, apply="${beanName}". -->
+<?variable-resolver class="com.navis.framework.zk.server.ZDelegatingVariableResolver"?>
+<zk>
+    <zscript><![CDATA[
+        import java.lang.String;
+        import java.util.List;
+        import com.navis.framework.zk.server.context.ZkRequestContextFactory;
+        import com.navis.framework.presentation.util.PresentationConstants;
+        import com.navis.framework.zk.ZFrmConsts;
+
+        List variformIds = arg.get(PresentationConstants.VARIFORM_ID);
+        String variformId = variformIds.get(0);
+        Object use = arg.get(PresentationConstants.VIEW);
+        Object hideMessageBox = arg.get(ZFrmConsts.HIDE_MESSAGE_BOX);
+        Object formController = arg.get(PresentationConstants.CONTROLLER);
+        Object layoutStrategy = arg.get(PresentationConstants.LAYOUT_STRATEGY);
+        if (layoutStrategy != null){
+            if(layoutStrategy instanceof String) {
+                layoutStrategy = ZkRequestContextFactory.currentZkRequestContext().getBean(layoutStrategy);
+            }
+        }
+        String fixedGridLayout = arg.get("fixedGridLayout");
+        String id = "edit_" + variformId;
+    ]]></zscript>
+
+    <window id="${id}" border="none">
+        <zscript><![CDATA[
+        for (Object key : arg.keySet()) {
+            Object value = arg.get(key);
+            self.setAttribute(key, value);
+        }
+        ]]></zscript>
+             <hlayout hflex="min" visible="${hideMessageBox == false}">
+        	  	         <messages/>
+        	 </hlayout>
+        <zForm variformId="${variformId}" use="${use}" formController="${formController}" fixedGridLayout="${fixedGridLayout}"
+               layoutStrategy="${layoutStrategy}"/>
+    </window>
+</zk>

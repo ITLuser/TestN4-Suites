@@ -1,0 +1,39 @@
+/************************************************************************/
+/**** CONTENT.CSS                                                    ****/
+/**** Used by any page with a content panel.  Controls the           ****/
+/**** appearance of the content framing, margins, highlights, etc.   ****/
+/************************************************************************/
+
+/*************************** contentTable  ******************************/
+/**** Used to frame-up the content area in a gray panel.             ****/
+/************************************************************************/
+@media print
+{
+	.formTable td, .formTable th, .listTable td, listTable th
+	{
+	width:auto!important;
+	border-width:1px!important;
+	border-color: #000000!important;
+	border-style:solid!important;
+	}
+	.navPanel, .headerRow, .tabTable, .headerActionBar, .footerActionBar, .pageGutter, .contentBody_left, .contentHeaderRow_rightCorner, .contentHeaderRow, .contentBody_right, .contentFooterRow, img
+	{
+	display:none;
+	}
+	a
+	{
+	text-decoration:none;
+	}
+	.tableTitleRow td, .tableTitleRow, .breadcrumb
+	{
+	border-width:0px!important;
+	}
+	.contentBody, .pageDescArea
+	{
+	padding:0px!important;
+	}
+	input, textarea, select
+	{
+	border-width:0px!important; 
+	}
+}

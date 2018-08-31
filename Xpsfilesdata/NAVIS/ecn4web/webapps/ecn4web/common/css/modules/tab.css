@@ -1,0 +1,147 @@
+/************************************************************************/
+/**** TAB.CSS                                                        ****/
+/**** Controls appearance of tabs.                                   ****/
+/************************************************************************/
+
+/******************************* Globals ********************************/
+/**** Applies to all tabs.                                           ****/
+/************************************************************************/
+.tabTable
+{
+    width:auto;
+}
+
+/**************************** Content Tabs ******************************/
+/**** Used for tabs appearing in the content area.                   ****/
+/************************************************************************/
+.tabLink, .tabLink_active
+{
+	border-top:1px solid #F5F5F5;
+	color:#333;
+	text-decoration:none;
+	font-size:11px;
+	padding: 3px 10px;	
+	display:block;
+	white-space:nowrap;
+	vertical-align:middle;
+}
+.tabLink_active
+{
+    cursor:default;
+}
+.tabCap_left
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab1/activeTabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    border-top:1px solid #9F9F9F;
+    vertical-align:bottom;
+    width:2px;
+}
+.tabCap_right
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab1/tabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    vertical-align:bottom;
+}
+.tabTd_active
+{
+    border-top:1px solid #9F9F9F;
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#E4E4E4;
+}
+.tabTd
+{
+    border-top:1px solid #9F9F9F;
+    background-image:url(../../images/tabs/tab1/tabRowBgTile.gif);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#CCC;
+}
+
+/************************** Content Sub-Tabs ****************************/
+/**** Used for sub-tabs appearing in the content area.               ****/
+/************************************************************************/
+.subTabLink
+{
+	border-top:1px solid #F5F5F5;
+	color:#333;
+	text-decoration:none;
+	font-size:11px;
+	padding: 3px 10px;	
+	display:block;
+	white-space:nowrap;
+	vertical-align:middle;
+}
+.subTabTd_active .subTabLink
+{
+    cursor:default;
+}
+.subTabCap_left
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab1/activeTabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    border-top:1px solid #9F9F9F;
+    vertical-align:bottom;
+    width:2px;
+}
+.subTabCap_right
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab1/tabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    vertical-align:bottom;
+}
+.subTabTd_active
+{
+    border-top:1px solid #9F9F9F;
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#F0F0F0;
+}
+.subTabTd
+{
+    border-top:1px solid #9F9F9F;
+    background-image:url(../../images/tabs/tab1/tabRowBgTile.gif);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#D5D5D5;
+}
+
+/***************************** Header Tabs ******************************/
+/**** Used for tabs appearing in the header panel of the main page.  ****/
+/************************************************************************/
+.headerTabCap_left
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab2/activeTabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    border-top:1px solid #9F9F9F;
+    vertical-align:bottom;
+    width:2px;
+}
+.headerTabCap_right
+{
+    white-space:nowrap;
+    background-image:url(../../images/tabs/tab2/tabCapLeft_bgTile.gif);
+    background-repeat:repeat-y;
+    vertical-align:bottom;
+}
+.headerTabTd_active
+{
+    border-top:1px solid #9F9F9F;
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#EEEEDD;
+}
+.headerTabTd
+{
+    border-top:1px solid #9F9F9F;
+    background-image:url(../../images/tabs/tab2/tabRowBgTile.gif);
+    background-repeat:repeat-x;
+    background-position:bottom;
+    background-color:#F5F5EB;
+}

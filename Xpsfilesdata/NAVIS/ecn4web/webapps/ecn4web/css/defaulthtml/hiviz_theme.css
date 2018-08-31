@@ -1,0 +1,269 @@
+/*All css colors used in ECN4-Web are available here. This is the only css file with color and only color styles.
+The first part contains color rules for all css rules available in widgets.css and the second part is for xsl_styles.css */
+
+/* Part I widgets.css CSS colors */
+fieldset {
+    color: #666666;
+}
+
+fieldset.pagination {
+    border-color: #777777 #555555 #333333;
+}
+
+fieldset.command-legend {
+    color: #0de00d;
+    background: #999999;
+
+}
+
+legend.command a, legend.command span {
+    color: #0de00d;
+}
+
+legend.command a.disabled {
+    color: #666666;
+}
+
+fieldset.disabled span {
+    color: #333333;
+}
+
+span.legend-arrow {
+    color: #00AA00;
+}
+
+span.header {
+    background: #000000;
+}
+
+fieldset.button, div.commands > a.button {
+    border-color: #999999 #666666 #333333;
+    color: #00AA00;
+    background: #444444;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#333333));
+    background: -moz-linear-gradient(center top, #666666, #333333) repeat scroll 0 0 transparent;
+}
+
+tr.button {
+    background: #000000;
+}
+tr.twin {
+    background: rgba(8, 177, 93, 0.54) !important;
+}
+
+tr.button > td {
+    border-top-color: #000000;
+}
+
+span.arrow {
+    color: #0de00d;
+}
+
+legend.main {
+    color: #999999;
+}
+
+legend span.inline {
+    color: #999999;
+}
+
+.active {
+    box-shadow: 0 0 0 rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 0 0 rgba(0, 0, 0, .5);
+}
+
+.submitted {
+    color: #e05e0f !important;
+    text-shadow: 0 0 1px rgba(0, 255, 0, 0.2), 0 0 1px rgba(0, 255, 0, 0.2), 0 0 1px rgba(0, 255, 0, 0.2), 0 0 1px rgba(0, 255, 0, 0.2) !important;
+}
+
+.selected {
+    color: #ffb12b !important;
+}
+
+.field {
+    color: #00AA00;
+    background: none repeat scroll 0 0 #000000;
+    -moz-box-shadow: inset 1px 2px 2px #888;
+    -webkit-box-shadow: inset 1px 1px 2px #888;
+    box-shadow: inset 1px 1px 2px #888;
+}
+
+label span.label {
+    color: #aaa;
+}
+
+fieldset.disabled input {
+    color: #999999 !important;
+}
+
+ul.commands li.button {
+    color: #999999;
+    background: #000000;
+    box-shadow: rgba(0, 0, 0, .1) 2px 2px 3px;
+    -webkit-box-shadow: rgba(0, 0, 0, .1) 2px 2px 3px;
+    -moz-box-shadow: rgba(0, 0, 0, .1) 2px 2px 3px;
+}
+
+span.segmented a.button {
+    border-color: #999999 #666666 #333333 !important;
+    color: #0DE00D;
+    background: #444444;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#333333));
+    background: -moz-linear-gradient(center top, #666666, #333333) repeat scroll 0 0 transparent;
+}
+
+div.footer > span.segmented > a.button {
+    border-color: #999999 #666666 #333333;
+    color: #0DE00D;
+    background: #444444;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, .5);
+    background: -webkit-gradient(linear, left top, left bottom, from(#666666), to(#333333));
+    background: -moz-linear-gradient(center top, #666666, #333333) repeat scroll 0 0 transparent;
+}
+
+div.header-info {
+    color: rgb(11, 152, 8);
+    background: -webkit-linear-gradient(left, rgba(134, 130, 130, 0.62), rgba(223, 223, 223, 0.93)); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, rgba(134, 130, 130, 0.62), rgba(223, 223, 223, 0.93));    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, rgba(134, 130, 130, 0.62), rgba(223, 223, 223, 0.93));  /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, rgba(134, 130, 130, 0.62), rgba(223, 223, 223, 0.93)); /* Standard syntax (must be last) */
+}
+
+.page-header {
+    color: rgb(21, 163, 22);
+    background: rgb(161, 161, 161);
+}
+
+.message-fragment, #alert {
+    border-color: red;
+    color: red;
+}
+
+span.header em {
+    color: #0DE00D;
+}
+
+.message {
+    color: red !important;
+    border-color: red !important;
+}
+
+.cheMessage {
+    color: #00ff00 !important;
+    border-color: #00ff00 !important;
+    background: #000000;
+}
+
+/* Right angled speech bubble -------------------- */
+.cheMessage:before {
+    border-color: #00ff00 transparent;
+}
+
+/* creates the smaller  triangle */
+.cheMessage:after {
+    border-color: #000000 transparent;
+}
+
+.close-button, .exclamation-button {
+    color: #ffffff;
+}
+
+.exclamation-button {
+    background-color: red;
+}
+
+.close-button {
+    background-color: #00ff00;
+}
+
+#alert {
+    color: red;
+}
+
+ul.commands a {
+    color: #00AA00;
+}
+
+/* Part II, xsl_styles.css */
+
+body {
+    background: #000000;
+    color: #24e019;
+}
+
+.enabled {
+    color: #000000
+}
+
+.disabled {
+    color: #000000 !important;
+}
+
+td.value {
+    color: #00ff00;
+}
+
+td.label {
+    color: #00AA00;
+}
+
+table.data caption, table.unit-data caption {
+    color: #00ff00;
+    background: #333333;
+    border-color: #999999 #666666 #333333;
+}
+
+table.data, table.unit-data {
+    border-color: #666666 #666666 #333333;
+}
+
+.data, .unit-data, .info-message {
+    color: #00ff00;
+    border-color: #00ff00;
+}
+
+.line-index > abbr {
+    color: inherit;
+}
+
+.line-index a {
+    color: #00ff00
+}
+
+.hover-button {
+    text-shadow: 0 0 1px rgba(0, 255, 0, 0.4), 0 0 1px rgba(0, 255, 0, 0.4), 0 0 1px rgba(0, 255, 0, 0.4), 0 0 1px rgba(0, 255, 0, 0.4) !important;
+    color: #98e003 !important;
+}
+
+.promotedJob {
+    color: #0DE00D;
+    background-color: #575656 !important;
+}
+
+.workZone {
+    color: #9F6000 !important;
+    background-color: #FEF5B3 !important;
+    border-color: #9F6000 !important;
+}
+
+.warning-color {
+    background-color: #FABE00 !important;
+}
+
+a:focus {
+    color: inherit;
+}
+
+input.labeled {
+    color: #00AA00;
+}

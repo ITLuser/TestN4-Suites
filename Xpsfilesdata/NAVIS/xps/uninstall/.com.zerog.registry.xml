@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registry install_date="2018-08-09 18:19:59" version="1.1" last_modified="2018-08-09 18:20:25">
+	<products>
+		<product name="XPS" id="bcd5b92b-1efe-11b2-9eb2-e5ebf7261b87" upgrade_id="bcd5b92b-1efe-11b2-9eb2-e5ebf7261b87" version="3.5.0.0" copyright="2017" info_url="" support_url="" location="D:\NAVIS" last_modified="2018-08-09 18:20:00">
+		<![CDATA[]]>
+			<vendor name="Navis LLC" id="bcd5b92a-1efe-11b2-9eb2-e5ebf7261b87" home_page="http://www.navis.com/" email=""/>
+			<feature short_name="Application" name="Application" last_modified="2018-08-09 18:20:00">
+			<![CDATA[This installs the application feature.]]>
+				<component ref_id="34fdf38d-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" location="D:\NAVIS\xps\uninstall\UninstallXPS.exe"/>
+				<component ref_id="34fde0b4-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" location="D:\NAVIS\conf_examples\ecn4_settings_prod.xml"/>
+			</feature>
+			<feature short_name="Configu" name="Configuration" last_modified="2018-08-09 18:19:59">
+			<![CDATA[<Enter Product Feature description here -- do not forget to assign this Feature to desired Install Sets>]]>
+				<component ref_id="34fdf38d-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" location="D:\NAVIS\xps\uninstall\UninstallXPS.exe"/>
+				<component ref_id="34fdeaa2-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" location="C:\Users\itluser\AppData\Local\Temp\I1533818455\Windows\.\tomcat6.xml"/>
+			</feature>
+		</product>
+	</products>
+	<components>
+		<component id="34fde0b4-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" name="xps" location="D:\NAVIS\conf_examples\ecn4_settings_prod.xml" vendor="Navis LLC">
+			<resource keyfile="false" name="bridged" location="D:\NAVIS\bridged" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="bin" location="D:\NAVIS\bridged\bin" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="bridged-32bit.exe" location="D:\NAVIS\bridged\bin\bridged-32bit.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="bridged.exe" location="D:\NAVIS\bridged\bin\bridged.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="bridged.sh" location="D:\NAVIS\bridged\bin\bridged.sh" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="bridgedw.exe" location="D:\NAVIS\bridged\bin\bridgedw.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="conf" location="D:\NAVIS\bridged\conf" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="bridged.conf" location="D:\NAVIS\bridged\conf\bridged.conf" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="esb" location="D:\NAVIS\bridged\conf\esb" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="n4-bridge-queue-listener.xml" location="D:\NAVIS\bridged\conf\esb\n4-bridge-queue-listener.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="n4-bridged-mule.xml" location="D:\NAVIS\bridged\conf\esb\n4-bridged-mule.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="log4j.properties" location="D:\NAVIS\bridged\conf\log4j.properties" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="lib" location="D:\NAVIS\bridged\lib" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="abdera-client-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-client-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="abdera-core-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-core-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="abdera-i18n-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-i18n-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="abdera-parser-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-parser-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="abdera-server-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-server-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="abdera-spring-incubating.jar" location="D:\NAVIS\bridged\lib\abdera-spring-incubating.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="activemq.jar" location="D:\NAVIS\bridged\lib\activemq.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="asm-commons.jar" location="D:\NAVIS\bridged\lib\asm-commons.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="asm.jar" location="D:\NAVIS\bridged\lib\asm.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="axiom-api.jar" location="D:\NAVIS\bridged\lib\axiom-api.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="axiom-impl.jar" location="D:\NAVIS\bridged\lib\axiom-impl.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="backport-util-concurrent.jar" location="D:\NAVIS\bridged\lib\backport-util-concurrent.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="coherence-mock.jar" location="D:\NAVIS\bridged\lib\coherence-mock.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-beanutils.jar" location="D:\NAVIS\bridged\lib\commons-beanutils.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-cli.jar" location="D:\NAVIS\bridged\lib\commons-cli.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-codec.jar" location="D:\NAVIS\bridged\lib\commons-codec.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-collections.jar" location="D:\NAVIS\bridged\lib\commons-collections.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-dbcp.jar" location="D:\NAVIS\bridged\lib\commons-dbcp.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-httpclient.jar" location="D:\NAVIS\bridged\lib\commons-httpclient.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-io.jar" location="D:\NAVIS\bridged\lib\commons-io.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-lang.jar" location="D:\NAVIS\bridged\lib\commons-lang.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-logging.jar" location="D:\NAVIS\bridged\lib\commons-logging.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="commons-pool.jar" location="D:\NAVIS\bridged\lib\commons-pool.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="dom4j.jar" location="D:\NAVIS\bridged\lib\dom4j.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="groovy-all.jar" location="D:\NAVIS\bridged\lib\groovy-all.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="guava.jar" location="D:\NAVIS\bridged\lib\guava.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="hibernate3.jar" location="D:\NAVIS\bridged\lib\hibernate3.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="ibeans-annotation-api.jar" location="D:\NAVIS\bridged\lib\ibeans-annotation-api.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="ibeans-support.jar" location="D:\NAVIS\bridged\lib\ibeans-support.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="j2ee-connector-1.5-spec.jar" location="D:\NAVIS\bridged\lib\j2ee-connector-1.5-spec.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="j2ee-jms-1.1-spec.jar" location="D:\NAVIS\bridged\lib\j2ee-jms-1.1-spec.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="j2ee-management-spec.jar" location="D:\NAVIS\bridged\lib\j2ee-management-spec.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jackson-core-asl.jar" location="D:\NAVIS\bridged\lib\jackson-core-asl.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jackson-mapper-asl.jar" location="D:\NAVIS\bridged\lib\jackson-mapper-asl.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jaxen.jar" location="D:\NAVIS\bridged\lib\jaxen.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jdom.jar" location="D:\NAVIS\bridged\lib\jdom.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jstaf.jar" location="D:\NAVIS\bridged\lib\jstaf.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jta.jar" location="D:\NAVIS\bridged\lib\jta.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="jug.jar" location="D:\NAVIS\bridged\lib\jug.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="log4j.jar" location="D:\NAVIS\bridged\lib\log4j.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-annotation.jar" location="D:\NAVIS\bridged\lib\metrics-annotation.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-core.jar" location="D:\NAVIS\bridged\lib\metrics-core.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-healthchecks.jar" location="D:\NAVIS\bridged\lib\metrics-healthchecks.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-influxdb.jar" location="D:\NAVIS\bridged\lib\metrics-influxdb.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-jvm.jar" location="D:\NAVIS\bridged\lib\metrics-jvm.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-servlets.jar" location="D:\NAVIS\bridged\lib\metrics-servlets.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="metrics-spring.jar" location="D:\NAVIS\bridged\lib\metrics-spring.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-module-annotations.jar" location="D:\NAVIS\bridged\lib\mule-module-annotations.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-module-atom.jar" location="D:\NAVIS\bridged\lib\mule-module-atom.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-module-ibeans.jar" location="D:\NAVIS\bridged\lib\mule-module-ibeans.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-module-json.jar" location="D:\NAVIS\bridged\lib\mule-module-json.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-module-rss.jar" location="D:\NAVIS\bridged\lib\mule-module-rss.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule-tests-functional.jar" location="D:\NAVIS\bridged\lib\mule-tests-functional.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mule.jar" location="D:\NAVIS\bridged\lib\mule.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mx4j-jmx.jar" location="D:\NAVIS\bridged\lib\mx4j-jmx.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mx4j-remote.jar" location="D:\NAVIS\bridged\lib\mx4j-remote.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="mx4j-tools.jar" location="D:\NAVIS\bridged\lib\mx4j-tools.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="n4-bridged.jar" location="D:\NAVIS\bridged\lib\n4-bridged.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="n4-framework.jar" location="D:\NAVIS\bridged\lib\n4-framework.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="n4-xpscache.jar" location="D:\NAVIS\bridged\lib\n4-xpscache.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="ognl-osgi.jar" location="D:\NAVIS\bridged\lib\ognl-osgi.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.aop.jar" location="D:\NAVIS\bridged\lib\org.springframework.aop.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.asm.jar" location="D:\NAVIS\bridged\lib\org.springframework.asm.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.beans.jar" location="D:\NAVIS\bridged\lib\org.springframework.beans.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.context.jar" location="D:\NAVIS\bridged\lib\org.springframework.context.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.context.support.jar" location="D:\NAVIS\bridged\lib\org.springframework.context.support.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.core.jar" location="D:\NAVIS\bridged\lib\org.springframework.core.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.expression.jar" location="D:\NAVIS\bridged\lib\org.springframework.expression.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.jdbc.jar" location="D:\NAVIS\bridged\lib\org.springframework.jdbc.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.orm.jar" location="D:\NAVIS\bridged\lib\org.springframework.orm.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.oxm.jar" location="D:\NAVIS\bridged\lib\org.springframework.oxm.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.transaction.jar" location="D:\NAVIS\bridged\lib\org.springframework.transaction.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="org.springframework.web.jar" location="D:\NAVIS\bridged\lib\org.springframework.web.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="quartz.jar" location="D:\NAVIS\bridged\lib\quartz.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="rome.jar" location="D:\NAVIS\bridged\lib\rome.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="slf4j-api.jar" location="D:\NAVIS\bridged\lib\slf4j-api.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="slf4j-log4j12.jar" location="D:\NAVIS\bridged\lib\slf4j-log4j12.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="stax-utils-osgi.jar" location="D:\NAVIS\bridged\lib\stax-utils-osgi.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="wrapper.jar" location="D:\NAVIS\bridged\lib\wrapper.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="xbean-spring.jar" location="D:\NAVIS\bridged\lib\xbean-spring.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="xstream.jar" location="D:\NAVIS\bridged\lib\xstream.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="NavisXPS.exe" location="D:\NAVIS\xps\NavisXPS.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="NavisXPS.pdb" location="D:\NAVIS\xps\NavisXPS.pdb" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="dbghelp.dll" location="D:\NAVIS\xps\dbghelp.dll" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="staf.dll" location="D:\NAVIS\xps\staf.dll" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="vc120.pdb" location="D:\NAVIS\xps\vc120.pdb" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="vcredist_x64.exe" location="D:\NAVIS\xps\vcredist_x64.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="vcredist_x86.exe" location="D:\NAVIS\xps\vcredist_x86.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="windows_event_log_dll.dll" location="D:\NAVIS\xps\windows_event_log_dll.dll" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="conf_examples" location="D:\NAVIS\conf_examples" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="true" name="ecn4_settings_prod.xml" location="D:\NAVIS\conf_examples\ecn4_settings_prod.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="log4j.properties" location="D:\NAVIS\conf_examples\log4j.properties" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="NavisXPS.pdb" location="C:\Windows\sysWOW64\NavisXPS.pdb" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+		</component>
+		<component id="34fdeaa2-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" name="xps conf" location="C:\Users\itluser\AppData\Local\Temp\I1533818455\Windows\.\tomcat6.xml" vendor="Navis LLC">
+			<resource keyfile="false" name="ant" location="C:\Users\itluser\AppData\Local\Temp\382576.tmp\ant" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="build.xml" location="C:\Users\itluser\AppData\Local\Temp\382576.tmp\ant\build.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="build.properties" location="C:\Users\itluser\AppData\Local\Temp\382576.tmp\ant\build.properties" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="environment" location="[key=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment][variable=JAVA_HOME][value=C:\Program Files\Java\jdk1.8.0_131]" type="environment" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="environment" location="[key=HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment][variable=PATH][value=C:\Program Files\Java\jdk1.8.0_131\bin]" type="environment" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="xps" location="D:\NAVIS\xps" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="log" location="D:\NAVIS\xps\log" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="bridged" location="D:\NAVIS\bridged" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="conf" location="D:\NAVIS\bridged\conf" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="ecn4_settings_prod.xml" location="D:\NAVIS\bridged\conf\ecn4_settings_prod.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="bridged.conf" location="D:\NAVIS\bridged\conf\bridged.conf" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="logs" location="D:\NAVIS\bridged\logs" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="Navis" location="C:\Users\itluser\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Navis" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="Navis Bridged Configuration.lnk" location="C:\Users\itluser\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Navis\Navis Bridged Configuration.lnk" type="shortcut" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[]]>
+			</resource>
+		</component>
+		<component id="34fdf38d-1f01-11b2-a490-ba029922edc2" version="2.2.0.0" name="InstallAnywhere Uninstall Component" location="D:\NAVIS\xps\uninstall\UninstallXPS.exe" vendor="Navis LLC">
+			<resource keyfile="false" name="XPS_Install_08_09_2018_18_19_59.log" location="D:\NAVIS\xps\uninstall\Logs\XPS_Install_08_09_2018_18_19_59.log" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="xps" location="D:\NAVIS\xps" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="uninstall" location="D:\NAVIS\xps\uninstall" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="Logs" location="D:\NAVIS\xps\uninstall\Logs" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName|STRING|XPS$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="uninstaller.jar" location="D:\NAVIS\xps\uninstall\uninstaller.jar" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="true" name="UninstallXPS.exe" location="D:\NAVIS\xps\uninstall\UninstallXPS.exe" type="executable" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="UninstallXPS.lax" location="D:\NAVIS\xps\uninstall\UninstallXPS.lax" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="resource" location="D:\NAVIS\xps\uninstall\resource" type="directory" uninstall="true" rollbackEnabledCancel="true">
+			<![CDATA[false]]>
+			</resource>
+			<resource keyfile="false" name="iawin64_x64.dll" location="D:\NAVIS\xps\uninstall\resource\iawin64_x64.dll" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="iawin32.dll" location="D:\NAVIS\xps\uninstall\resource\iawin32.dll" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win64_32_x64.exe" location="D:\NAVIS\xps\uninstall\resource\win64_32_x64.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="remove.exe" location="D:\NAVIS\xps\uninstall\resource\remove.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="invoker.exe" location="D:\NAVIS\xps\uninstall\resource\invoker.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName|STRING|XPS$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|UninstallString|STRING|&quot;D:\NAVIS\xps\uninstall\UninstallXPS.exe&quot;$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|UninstallString" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|Publisher|STRING|Navis LLC$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|Publisher" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|URLInfoAbout|STRING|http://www.navis.com/$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|URLInfoAbout" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|ProductID|STRING|bcd5b92b-1efe-11b2-9eb2-e5ebf7261b87$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|ProductID" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|InstallLocation|STRING|D:\NAVIS$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|InstallLocation" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|InstallDate|STRING|Thu Aug 09 18:20:10 IST 2018$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|InstallDate" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayVersion|STRING|3.5.0.0$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayVersion" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName|STRING|XPS$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|DisplayName" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="win_reg_entry" location="$INSTALLED$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|EstimatedSize|INTEGER|52d06$DELETE$|HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\XPS|131103|EstimatedSize" type="win_reg_entry" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name="ZGWin32LaunchHelper.exe" location="D:\NAVIS\xps\uninstall\resource\ZGWin32LaunchHelper.exe" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+			<resource keyfile="false" name=".com.zerog.registry.xml" location="D:\NAVIS\xps\uninstall\.com.zerog.registry.xml" type="file" uninstall="true" rollbackEnabledCancel="true"/>
+		</component>
+	</components>
+</registry>

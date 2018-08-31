@@ -1,0 +1,43 @@
+/************************************************************************/
+/**** FONT.CSS                                                       ****/
+/**** Controls the appearance of all fonts used in the application.  ****/
+/**** All pages should call this file.                               ****/
+/************************************************************************/
+
+body, td, p, li, input, textarea, button, option, select, .txt
+{
+    font-size:11px;
+    font-weight:normal;
+    font-style:normal;
+    font-family:verdana,arial,sans-serif;
+    color:#333;
+}
+.error
+{
+    color:#cc0000;
+    font-weight:bold;
+}
+.warning
+{
+    color:#996600;
+    font-weight:bold;
+}
+h1
+{
+    color:#333;
+    font-size:12px;
+    font-weight:bold;
+    margin:0px;
+}
+h2
+{
+    color:#333;
+    font-size:12px;
+    font-weight:bold;
+    margin:0px;
+}
+
+a
+{
+color:#0000FF;
+}

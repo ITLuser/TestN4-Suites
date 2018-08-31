@@ -1,0 +1,134 @@
+/************************************************************************/
+/**** navPane.CSS                                                    ****/
+/**** Controls appearance of elements in the left-hand navigation    ****/
+/**** panel.                                                         ****/
+/************************************************************************/
+
+.navUtilities
+{
+}
+.navUtilTitle
+{
+    color:#666;
+    font-weight:bold;
+    font-size:10px;
+    padding: 0px 5px;
+}
+.searchPanel
+{
+    border-top:1px solid #A9A9A9;
+    border-bottom:1px solid #A9A9A9;
+    background-color:#F5F5EB;
+    padding:5px 10px;
+    font-weight:normal;
+    margin-bottom:10px;
+    white-space:nowrap;
+}
+.recentItemsPanel
+{
+    height:72px;
+    overflow:auto;
+    border-top:1px solid #A9A9A9;
+    background-color:#F5F5EB;
+    padding:5px 10px;
+}
+.recentItemsPanel a
+{
+    color:#5C5C5C;
+    text-decoration:none;
+    font-size:10px;
+}
+.recentItemsPanel a:hover
+{
+    text-decoration:underline;
+}
+
+/******************************** global ********************************/
+/**** The following applies to all navigation elements.              ****/
+/************************************************************************/
+.navItemTd .activeNav
+{
+    background-image:url(../../images/navPointer.gif);
+    background-repeat:no-repeat;
+    background-position:0px;
+}
+.subNavItemTd .activeNav
+{
+    background-image:url(../../images/subNavPointer.gif);
+    background-repeat:no-repeat;
+    background-position:0px;
+}
+/******************************* leftNav ********************************/
+/**** Used for left-hand navigation elements.                        ****/
+/************************************************************************/
+.navPanel
+{
+    vertical-align:top;
+    background-color:#EEEEDD;
+    width:180px;
+}
+.navItemTd
+{
+    border-bottom:1px solid #A9A9A9;
+    border-left:1px solid #A9A9A9;
+    white-space:nowrap;
+}
+.navItemLink
+{
+	color:#666;
+	border-top:1px solid #FFFFF5;
+	border-left:1px solid #FFFFF5;
+	border-bottom:1px solid #CFCFCF;
+	border-right:1px solid #CFCFCF;
+	background-color:#F5F5EB;
+	text-decoration:none;
+	font-weight:bold;
+	padding: 3px 7px;	
+	display:block;
+	width:100%;
+	padding-left:10px;
+}
+.navItemLink:hover
+{
+	color:#333;
+	border-top:1px solid #FFFFF5;
+	border-left:1px solid #FFFFF5;
+	border-bottom:1px solid #CFCFCF;
+	border-right:1px solid #CFCFCF;
+	background-color:#F0F0E0;
+	text-decoration:none;
+	font-weight:bold;
+	padding: 3px 7px;	
+	display:block;
+	padding-left:10px;
+}
+
+/******************************** subNav ********************************/
+/**** Used sub left-hand sub-navigation elements.                    ****/
+/************************************************************************/
+.subNavItemTd
+{
+    border-bottom:1px solid #A9A9A9;
+	white-space:nowrap;
+}
+.subNavItemLink
+{
+	color:#666;
+	background-color:#EEEEDD;
+	text-decoration:none;
+	font-weight:bold;
+	padding: 3px 7px;	
+	display:block;
+	width:100%;
+	padding-left:25px;
+}
+.subNavItemLink:hover
+{
+	color:#333;
+	background-color:#EAEAD9;
+	text-decoration:none;
+	font-weight:bold;
+	padding: 3px 7px;
+	display:block;
+	padding-left:25px;
+}

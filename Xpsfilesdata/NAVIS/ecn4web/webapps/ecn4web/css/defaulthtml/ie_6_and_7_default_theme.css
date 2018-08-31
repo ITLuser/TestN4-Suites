@@ -1,0 +1,29 @@
+/*IE 6 and IE 7 default css color rules.
+The rules below apply to IE 6 and IE 7 browsers equally. You may need to tweak the rules below if altering the look of ECN4-Web and
+using either IE 6 or IE 7 otherwise you don't need to touch them*/
+fieldset.button {
+    background: #ddd !important;
+    border-color: #ccc !important;
+}
+
+div.footer > span.segmented > a.button {
+    background: #ddd !important;
+    border-color: #ccc !important;
+}
+
+span.segmented a.button {
+    background: #ddd;
+}
+
+.focus, a:focus {
+    border-color: #ffcc66;
+}
+
+.close-button, .exclamation-button {
+    background-color: #ffffff;
+}
+
+div.header-info {
+    color: rgb(11, 152, 8);
+}
+

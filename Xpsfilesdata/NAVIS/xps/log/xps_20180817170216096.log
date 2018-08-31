@@ -1,0 +1,17 @@
+Program Version: 3.5.1.8 304811, build date 20180712_0514
+2018-08-17 17:02:16,065 TRACE | main | ... Continuing from previous log file './log/xps.log'.
+2018-08-17 17:02:16,065 INFO  | main | -- Emitting log statements captured prior to logging initialization. --
+2018-08-17 17:02:16,065 INFO  | main | Daemon: Instantiated. Working directory is 'D:/NAVIS/xps'.
+2018-08-17 17:02:16,065 INFO  | main | Daemon::_determineSettingsFilePath: fSettingsFile is 'C:/Users/itluser/AppData/Roaming/Navis/XPS/Preferences/settings.xml'.
+2018-08-17 17:02:16,065 INFO  | main | Daemon::_determineServiceName: Service Type 'XPS', Name 'Navis XPS', Version 3.5.1.8 304811, Build Date 20180712_0514.
+2018-08-17 17:02:16,080 INFO  | main | No 'logging' configuration section in settings file. A default logging configuration will be created.
+2018-08-17 17:02:16,080 INFO  | main | -- End of log statements captured prior to logging initialization. --
+2018-08-17 17:02:16,080 INFO  | main | Sockets initialized.
+2018-08-17 17:02:16,080 INFO  | main | Daemon::_startDaemon: Running.
+2018-08-17 17:02:16,080 INFO  | main | Daemon::_startDaemon: Instantiating server.
+2018-08-17 17:02:16,080 FATAL | main | Database Files directory './database' not found.
+2018-08-17 17:02:16,080 ERROR | main | @ ..\..\common\lib\navis\process\daemon.cpp:104: Daemon is returning error code -1.
+2018-08-17 17:02:16,080 INFO  | main | Daemon: Destructed.
+2018-08-17 17:02:16,080 INFO  | main | Sockets de-initialized.
+2018-08-17 17:02:16,080 INFO  | main | Daemon::finishShutdown: Calling shutdown registry.
+2018-08-17 17:02:16,096 INFO  | main | Daemon::finishShutdown: Shutting down logging.

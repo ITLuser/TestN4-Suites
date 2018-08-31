@@ -1,0 +1,17 @@
+/************************************************************************/
+/**** ACTIONBAR.CSS                                                  ****/
+/**** Used by any page with menubar, toolbar, or breadcrumb bar.     ****/
+/************************************************************************/
+
+/****************************** selectedRow *****************************
+***** Used for selected list table rows.
+*************************************************************************/
+.selectedRow
+{
+background:highlight;
+}
+
+.selectedRow td, .selectedRow a
+{
+color:highlighttext;
+}
