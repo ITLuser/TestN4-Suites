@@ -1,4 +1,0 @@
-<?page id="sessionKeepAliveZul" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
-
-<timer repeats="true" running="true" delay="300000" onTimer=""/>
-

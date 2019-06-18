@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Context docBase="${catalina.home}/webapps/ecn4web" antiJARLocking="false" antiResourceLocking="false" reloadable="true" privileged="true" crossContext="true">
-    <Manager className="org.apache.catalina.session.PersistentManager"
-             maxActive="1" maxInactiveInterval="1800" saveOnRestart="false"
-             sessionCounter="1">
-    </Manager>
-    <WatchedResource>WEB-INF/web.xml</WatchedResource>
-</Context>
